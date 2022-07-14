@@ -1,0 +1,264 @@
+body {
+  background: #efeff3;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #212121;
+}
+h1 {
+  font-family: "Montserrat", sans-serif;
+  size: 3rem;
+  line-height: 1.5;
+  color: black;
+}
+
+.wrapper {
+  position: relative;
+  clear: both;
+  margin: 0 auto 75px auto;
+  width: 100%;
+  overflow: hidden;
+}
+.top {
+  background: #b14242;
+  height: 180px;
+  border-top: 20px solid #b14125;
+}
+
+.top .title {
+  width: 700px;
+  margin: 38px auto 0 auto;
+}
+
+.title h1 {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.content {
+  margin: -80px auto 100px;
+  padding-bottom: 20px;
+}
+
+.card-index {
+  position: relative;
+  background: #fff;
+  padding: 50px;
+  width: 600px;
+  margin: 20px auto 0 auto;
+  box-shadow: 0 2px 4px rgba(100, 100, 100, 0.1);
+}
+
+.card h2 {
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.card h2 a {
+  color: #cc0000;
+  text-decoration: none;
+}
+
+.card .text {
+  color: #212121;
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+#footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #ef8172;
+  color: white;
+  text-align: center;
+}
+.perro {
+  background-color: #ff4136;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+.css-button-gradient--5 {
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  background-size: 120% auto;
+  background-image: linear-gradient(315deg, #000428 0%, #004e92 75%);
+}
+.css-button-gradient--5:hover {
+  background-position: right center;
+}
+.css-button-gradient--5:active {
+  top: 2px;
+}
+.card-title {
+  color: #000428;
+}
+.nicolas {
+  color: rgb(5, 1, 1);
+}
+.title {
+  color: #00010a;
+}
+.card-title {
+  color: #080707;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.card-body {
+  text-align: center;
+  font-size: 2rem;
+}
+.letras-tarjeta {
+  font-size: 1.5rem;
+  color: #2e2725;
+}
+.especial_botton {
+  margin-bottom: 10px;
+}
+
+/* Features section */
+#features {
+  padding: 7% 15%;
+  text-align: center;
+  margin-left: 20px;
+}
+
+.feature-box {
+  text-align: center;
+  padding: 5%;
+  margin: auto;
+}
+.card {
+  width: 70%;
+  margin-bottom: 50px;
+  border-color: #ef8172;
+}
+h3 {
+  font-family: "Montserrat-Bold", sans-serif;
+  font-size: 1.5rem;
+  color: black;
+}
+
+p {
+  color: #8f8f8f;
+  font-size: 1.1rem;
+}
+
+.icon {
+  color: #ef8172;
+  margin-right: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+.icon:hover {
+  color: #ff4c68;
+}
+
+/* Nav-Bar */
+
+.navbar {
+  font-family: Montserrat;
+  color: rgb(5, 1, 1);
+  font-size: 1.5rem;
+}
+
+.navbar-brand {
+  font-size: 3rem;
+  font-family: Montserrat;
+}
+/* Title section */
+
+#title {
+  background-color: #ef8172;
+  text-align: center;
+  font-family: "Montserrat-Bold", sans-serif;
+  color: #fff;
+}
+/* Testimonials section */
+#testimonials {
+  padding: 7% 15%;
+  text-align: center;
+  background-color: #ef8172;
+  color: #fff;
+}
+.title-section {
+  color: #fff;
+}
+.title-image {
+  width: 20%;
+}
+
+h2 {
+  text-align: center;
+  font-family: Montserrat-Bold, sans;
+  font-size: 3rem;
+  line-height: 1.5;
+  color: rgb(251, 251, 251);
+}
+
+.dog-image {
+  border-radius: 100%;
+  width: 25%;
+  margin-bottom: 50px;
+}
+.pebbles {
+  font-size: 2rem;
+  font-family: "Montserrat", sans-serif;
+  margin-left: 80px;
+  color: #fff;
+}
+
+/* section press */
+#press {
+  background-color: #ef8172;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+/* pricing section */
+#pricing {
+  color: #00010a;
+}
+.pricing-title {
+  color: #00010a;
+  font-family: Montserrat-Bold, sans;
+  font-size: 3rem;
+  font-weight: bold;
+}
+.text-pricing {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ef8172;
+}
+
+#cta {
+  background-color: #ef8172;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.cta-title {
+  color: #fff;
+}
+.navbar-nav {
+  color: rgb(0, 0, 0);
+}
+.frio {
+  margin-bottom: 30px;
+}

@@ -1,0 +1,67 @@
+body {
+  background-color: #22333b;
+}
+#header {
+  background-color: #f5ebe0;
+  color: #eae0d5;
+  font-size: 2.5rem;
+  font-family: "Ubuntu";
+}
+#navbar a {
+  color: #22333b;
+  font-size: 1.5rem;
+  font-family: "Ubuntu";
+}
+.Nico {
+  color: #eae0d5;
+}
+.texto_header {
+  color: #eae0d5;
+}
+.header .logo h1 {
+  font-family: "Ubuntu";
+  margin-left: 10px;
+}
+.date {
+  color: #457b9d;
+}
+.post-meta {
+  color: #ccd5ae;
+}
+
+.post-entry-1 h2 a {
+  color: #83c5be;
+}
+.mb-4 d-block {
+  color: #ccd5ae;
+}
+p {
+  color: #ccd5ae;
+}
+
+.section-header h2 {
+  color: #ccd5ae;
+  font-size: 2.5rem;
+  font-family: "Ubuntu";
+}
+.trending h3 {
+  color: #ccd5ae;
+  font-size: 2.5rem;
+  font-family: "Ubuntu";
+}
+.trending trending-post li a h3 {
+  color: #ccd5ae;
+  font-family: "Ubuntu";
+}
+h3 {
+  color: #ccd5ae;
+}
+.mb-2 {
+  color: #ccd5ae;
+}
+.trending-1 {
+  color: #ccd5ae;
+}
+.h3 trending-1 {
+  color: #ccd5ae;
+}
