@@ -151,8 +151,7 @@ def resultado():
 
 @app.route("/registro/<int:index>", methods=["GET","POST"])
 def registro(index):
-    id = len(db.session.query(Resultado).all())
-    registro = Resultado.query.get(id)
+    registro = Resultado.query.get(index)
     return render_template('resultados.html',datos=registro)
 
 @app.route("/resultados",methods=["GET","POST"])
