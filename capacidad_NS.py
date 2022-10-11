@@ -11,6 +11,7 @@ def tipo_terreno(num):
     elif num < 9:
         return "Terreno Montañoso"
     else:
+        
         return "Terreno Escarpado"
 
 print(tipo_terreno(7.5))

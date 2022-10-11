@@ -2,12 +2,13 @@ from flask import Flask, render_template, redirect, url_for, request
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, FloatField, IntegerField
+from wtforms import StringField, SubmitField, FloatField, IntegerField, SelectField
 from wtforms.validators import DataRequired, NumberRange,  URL
 from flask_ckeditor import CKEditor, CKEditorField
 from datetime import date
 import requests
 import capacidad_NS as cap
+import multicarril as mp
 
 
 app = Flask(__name__)
@@ -56,6 +57,21 @@ class Capacidad(FlaskForm):
     p_buses = IntegerField(label="Porcentaje de buses", validators = [DataRequired(),NumberRange(min=0, max=100)])
     p_camiones = IntegerField(label="Porcentaje de camiones", validators = [DataRequired(),NumberRange(min=0, max=100)])
     vol_cap = IntegerField(label="Volumen horario total ambos sentidos", validators = [DataRequired(),NumberRange(min=0, max=100000)])
+    submit = SubmitField("Calcular Capacidad y Nivel de servicio")
+
+class Multicarril(FlaskForm):
+    pendiente = FloatField(label="Pendiente", validators = [DataRequired(),NumberRange(min=0, max=8)] )
+    l_tramo = FloatField(label="Longitud del tramo (metros)", validators = [DataRequired(),NumberRange(min=500, max=8000)] )
+    n_carriles = IntegerField(label="Número de carriles", validators = [DataRequired(),NumberRange(min=0, max=50)])
+    a_carril = SelectField(u'Ancho de carril (metros)', choices=[('3', '3 metros'), ('3.3', '3.3 metros'), ('3.5', '3.5 metros o mayor')])
+    separador = SelectField(u'¿La vía cuenta con separador?', choices=[('1', 'Si'), ('0', 'False')])
+    a_separador = FloatField(label="Ancho de separador (metros)", validators = [DataRequired(),NumberRange(min=0, max=5)] )
+    a_berma_derecha = FloatField(label="Ancho de Berma derecha", validators = [DataRequired(),NumberRange(min=0, max=5)] )
+    a_berma_izquierda = FloatField(label="Ancho de Berma izquierda", validators = [DataRequired(),NumberRange(min=0, max=5)] )
+    n_accesos = IntegerField(label="Número de accesos", validators = [DataRequired(),NumberRange(min=0, max=50)])
+    fhpico = FloatField(label="Factor de Hora Pico", validators = [DataRequired(),NumberRange(min=0, max=5)] )
+    p_camiones = IntegerField(label="Porcentaje de camiones", validators = [DataRequired(),NumberRange(min=0, max=100)])
+    vol_transito = IntegerField(label="Volumen del tránsito", validators = [DataRequired(),NumberRange(min=0, max=100000)])
     submit = SubmitField("Calcular Capacidad y Nivel de servicio")
 
 class Resultado(db.Model):
@@ -143,6 +159,14 @@ def home():
         return redirect(url_for('resultado'))
     return render_template ('index.html', form=form)
 
+@app.route("/multicarril", methods=["GET","POST"])
+def multicarril():
+    form = Multicarril()
+    if form.validate_on_submit():
+        print(form.data)
+        return redirect(url_for("home"))
+    return render_template("multicarril.html", form = form)
+
 @app.route("/resultado", methods=["GET","POST"])
 def resultado():
     id = len(db.session.query(Resultado).all())
@@ -219,3 +243,4 @@ def delete(post_id):
     return render_template("blog_final.html")
 if __name__ == "__main__":
     app.run(debug=True)
+
