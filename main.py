@@ -6,7 +6,6 @@ from wtforms import StringField, SubmitField, FloatField, IntegerField, SelectFi
 from wtforms.validators import DataRequired, NumberRange,  URL
 from flask_ckeditor import CKEditor, CKEditorField
 from datetime import date
-import requests
 import capacidad_NS as cap
 import multicarril as mp
 
@@ -60,17 +59,23 @@ class Capacidad(FlaskForm):
     submit = SubmitField("Calcular Capacidad y Nivel de servicio")
 
 class Multicarril(FlaskForm):
+    tipo_analisis = SelectField('¿Qué tipo de analísis desea realizar?', choices=[('Operacional', 'Operacional'), ('Planeacion', 'Planeación')])
+    tipo_tramo = SelectField("¿Cuál es el tipo de tramo?", choices=[('Generico', 'Generico'), ('Ascenso', 'Ascenso'), ('Descenso', 'Descenso')])
+    clasificacion = SelectField('¿Cuál es la clasificación de la vía Multicarril? (Referencia Tabla 10)', choices=[("A1", 'A1'), ("B1", 'B1'), ("C1",'C1')])
     pendiente = FloatField(label="Pendiente", validators = [DataRequired(),NumberRange(min=0, max=8)] )
-    l_tramo = FloatField(label="Longitud del tramo (metros)", validators = [DataRequired(),NumberRange(min=500, max=8000)] )
-    n_carriles = IntegerField(label="Número de carriles", validators = [DataRequired(),NumberRange(min=0, max=50)])
-    a_carril = SelectField(u'Ancho de carril (metros)', choices=[('3', '3 metros'), ('3.3', '3.3 metros'), ('3.5', '3.5 metros o mayor')])
-    separador = SelectField(u'¿La vía cuenta con separador?', choices=[('1', 'Si'), ('0', 'False')])
+    l_tramo = IntegerField(label="Longitud del tramo (metros)", validators = [DataRequired(),NumberRange(min=500, max=8000)] )
+    n_carriles = IntegerField(label="Número de carriles", validators = [DataRequired(),NumberRange(min=0, max=10)])
+    a_carril = SelectField('Ancho de carril (metros)', choices=[('3', '3 metros'), ('3.3', '3.3 metros'), ('3.5', '3.5 metros o mayor')])
+    separador = SelectField('¿La vía cuenta con separador?', choices=[(True, 'Si'), (False, 'No')])
     a_separador = FloatField(label="Ancho de separador (metros)", validators = [DataRequired(),NumberRange(min=0, max=5)] )
     a_berma_derecha = FloatField(label="Ancho de Berma derecha", validators = [DataRequired(),NumberRange(min=0, max=5)] )
     a_berma_izquierda = FloatField(label="Ancho de Berma izquierda", validators = [DataRequired(),NumberRange(min=0, max=5)] )
     n_accesos = IntegerField(label="Número de accesos", validators = [DataRequired(),NumberRange(min=0, max=50)])
+    control_accesos = SelectField('¿La vía cuenta con control de accesos?', choices=[(1, 'Si'), (2, 'No')])
+    control_peatones = SelectField('¿Peatones frecuentes?', choices=[(True, 'Si'), (False, 'No')])
+    fp = SelectField("¿Conductores frecuentes?", choices=[(1, 'Si'), (0.90, 'No')])
     fhpico = FloatField(label="Factor de Hora Pico", validators = [DataRequired(),NumberRange(min=0, max=5)] )
-    p_camiones = IntegerField(label="Porcentaje de camiones", validators = [DataRequired(),NumberRange(min=0, max=100)])
+    p_camiones = FloatField(label="Porcentaje de camiones", validators = [DataRequired(),NumberRange(min=0, max=50)])
     vol_transito = IntegerField(label="Volumen del tránsito", validators = [DataRequired(),NumberRange(min=0, max=100000)])
     submit = SubmitField("Calcular Capacidad y Nivel de servicio")
 
@@ -163,7 +168,30 @@ def home():
 def multicarril():
     form = Multicarril()
     if form.validate_on_submit():
-        print(form.data)
+        v1 = form.tipo_analisis.data
+        v2 = form.tipo_tramo.data
+        v3 = form.clasificacion.data
+        v4 = form.pendiente.data
+        v5 = form.l_tramo.data
+        v6 = form.n_carriles.data
+        v7 = float(form.a_carril.data)
+        v8 = bool(form.separador.data)
+        v9 = form.a_separador.data
+        v10 = form.a_berma_derecha.data
+        v11 = form.a_berma_izquierda.data
+        v12 = form.n_accesos.data
+        v13 = form.control_accesos.data
+        if v13 == 1:
+            v13 = True
+        else:
+            v13 = False
+        v14 = bool(form.control_peatones.data)
+        v15 = float(form.fp.data)
+        v16 = float(form.fhpico.data)
+        v17 = form.p_camiones.data
+        v18 = form.vol_transito.data
+        resultado = mp.calc_multicarril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+        print(resultado)
         return redirect(url_for("home"))
     return render_template("multicarril.html", form = form)
 

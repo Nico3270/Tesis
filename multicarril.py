@@ -129,7 +129,16 @@ def intervalos(num):
             inf = x
             sup= list[list.index(inf)+1]
     return(inf,sup)
-
+#función para determinar los limites inferior y superior para las pendientes en Ec Ascenso y Ec Descenso
+def intervalosp(num):
+    inf = 0
+    sup = 0
+    list = [0,1,2,3,4,5,6,7,8]
+    for x in list:
+        if num -x >= 0 and num - x <= 1:
+            inf = x
+            sup = list[list.index(inf)+1]
+    return(inf,sup)
 #Función para determinar los limites inferior y superior, para la intrpolación Ec en tabla 18 para longitudes menores a 4000
 def intervalos1(num):
     inf = 0
@@ -152,30 +161,12 @@ def intervalos2(num):
             sup= list[list.index(inf)+1]
     return(inf,sup)
 
-#Para tramo generico
 
-pendiente = 4
-a_carril = 3.3
-a_berma_der = 2.0
-a_berma_izq = 1.0
-acc_laterales = 6
-vol_transito = 1850
-fhp = 0.90
-p_camiones = 30
-num_carriles = 2
-longitud = 3000
 
-#Opciones de los tramos (Generico, Ascenso, Descenso)
-tramo = "Ascenso"
-
-#Preguntar si tiene separador en caso de que si lo tenga ingresar cantidad
-separador = True
-lon_separador = 1.5
-accesos = True
-terreno = tipo_terreno(pendiente)
 
 #Paso 2 - Estimación de Velocidad a flujo libre (VL)
 #Preguntar la clasificación de la carretera multicarril - Tipo A1 - B1 - C1
+#Tipo se refiere a la clasificación
 
 #Función para calcular la velocidad generica
 def Vl(Tipo, separador,accesos,peatones):
@@ -237,7 +228,7 @@ def correccion_accesos(puntos):
     else:    
         fa = interpolacion(tabla_15, tabla_15x,puntos)
     return fa
-print(correccion_accesos(0))
+
 
 #Función final para determinar velocidad a flujo libre del sector de anáisis (VL)
 
@@ -290,6 +281,8 @@ def tipo(numero):
         b = 692.345
         c = 1.010
     return tipo, vel_f_libre, a, b, c
+
+    
 Tipo = tipo(resultado)[0]
 vel_flujo_libre = tipo(resultado)[1]
 a = tipo(resultado)[2]
@@ -299,7 +292,7 @@ c = tipo(resultado)[4]
 #Cálculo del flujo vehicular - Paso 3
 #Equivalente de camiones Ec
 
-def Ec_generico():
+def Ec_generico(terreno):
     Ec = 0
     if terreno == "Terreno Plano":
         Ec = 1.8
@@ -308,10 +301,12 @@ def Ec_generico():
     elif terreno == "Terreno Montañoso":
         Ec = 4.4
     return Ec
-Ec = Ec_generico()
+
 
 #Factor de corrección por camiones - Equivalente de camiones Ec para tramos en ascenso
 def Ec_ascenso(pendiente, p_camiones, longitud):
+    pen_inf = (intervalosp(pendiente))[0]
+    pen_sup = (intervalosp(pendiente))[1]
     if longitud >= 8000:
         longitud = 7999
     if pendiente < 1:
@@ -319,15 +314,23 @@ def Ec_ascenso(pendiente, p_camiones, longitud):
     elif pendiente >= 1 and longitud < 4000:
         longitud_inf = intervalos(longitud)[0]
         longitud_sup = intervalos(longitud)[1]
-        fac_lon_inf = interpolacion(tabla_18x, tabla_18[pendiente].get(longitud_inf), p_camiones)
-        fac_lon_sup = interpolacion(tabla_18x, tabla_18[pendiente].get(longitud_sup), p_camiones)
-        Ec_asc = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+        fac_lon_inf = interpolacion(tabla_18x, tabla_18[pen_inf].get(longitud_inf), p_camiones)
+        fac_lon_sup = interpolacion(tabla_18x, tabla_18[pen_inf].get(longitud_sup), p_camiones)
+        Ec_asc_pen_inf = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+        fac_lon_inf = interpolacion(tabla_18x, tabla_18[pen_sup].get(longitud_inf), p_camiones)
+        fac_lon_sup = interpolacion(tabla_18x, tabla_18[pen_sup].get(longitud_sup), p_camiones)
+        Ec_asc_pen_sup = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+        Ec_asc = interpolacion([pen_inf,pen_sup],[Ec_asc_pen_inf, Ec_asc_pen_sup], pendiente)
     elif pendiente >= 1 and longitud >= 4000:  
         longitud_inf = intervalos1(longitud)[0]
         longitud_sup = intervalos1(longitud)[1]
-        fac_lon_inf = interpolacion(tabla_18x, tabla_18[pendiente].get(longitud_inf), p_camiones)
-        fac_lon_sup = interpolacion(tabla_18x, tabla_18[pendiente].get(longitud_sup), p_camiones)
-        Ec_asc = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+        fac_lon_inf = interpolacion(tabla_18x, tabla_18[pen_inf].get(longitud_inf), p_camiones)
+        fac_lon_sup = interpolacion(tabla_18x, tabla_18[pen_inf].get(longitud_sup), p_camiones)
+        Ec_asc_pen_inf = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+        fac_lon_inf = interpolacion(tabla_18x, tabla_18[pen_sup].get(longitud_inf), p_camiones)
+        fac_lon_sup = interpolacion(tabla_18x, tabla_18[pen_sup].get(longitud_sup), p_camiones)
+        Ec_asc_pen_sup = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+        Ec_asc = interpolacion([pen_inf,pen_sup],[Ec_asc_pen_inf, Ec_asc_pen_sup], pendiente)
     return Ec_asc
 
 
@@ -335,53 +338,33 @@ def Ec_ascenso(pendiente, p_camiones, longitud):
 #Factor de corrección Ec, de equivalente camiones para descenso
 def Ec_descenso(pendiente, p_camiones, longitud):
     pendiente = abs(pendiente)
+    pen_inf = (intervalosp(pendiente))[0]
+    pen_sup = (intervalosp(pendiente))[1]
     if pendiente <= 2:
         Ec_desc = interpolacion(tabla_19x, tabla_19[2].get(500), p_camiones)
     elif pendiente > 2 and longitud < 1000:
-        fac_lon_inf = interpolacion(tabla_19x, tabla_19[pendiente].get(500), p_camiones)
-        fac_lon_sup = interpolacion(tabla_19x, tabla_19[pendiente].get(1000), p_camiones)
-        Ec_desc = interpolacion([500,1000],[fac_lon_inf, fac_lon_sup], longitud)
+        fac_lon_inf = interpolacion(tabla_19x, tabla_19[pen_inf].get(500), p_camiones)
+        fac_lon_sup = interpolacion(tabla_19x, tabla_19[pen_inf].get(1000), p_camiones)
+        Ec_desc_inf = interpolacion([500,1000],[fac_lon_inf, fac_lon_sup], longitud)
+        fac_lon_inf = interpolacion(tabla_19x, tabla_19[pen_sup].get(500), p_camiones)
+        fac_lon_sup = interpolacion(tabla_19x, tabla_19[pen_sup].get(1000), p_camiones)
+        Ec_desc_sup = interpolacion([500,1000],[fac_lon_inf, fac_lon_sup], longitud)
+        Ec_desc = interpolacion([pen_inf,pen_sup],[Ec_desc_inf,Ec_desc_sup], pendiente)
     elif pendiente > 2 and longitud > 1000:  
         longitud_inf = intervalos2(longitud)[0]
         longitud_sup = intervalos2(longitud)[1]
-        fac_lon_inf = interpolacion(tabla_19x, tabla_19[pendiente].get(longitud_inf), p_camiones)
-        fac_lon_sup = interpolacion(tabla_19x, tabla_19[pendiente].get(longitud_sup), p_camiones)
-        Ec_desc = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+        fac_lon_inf = interpolacion(tabla_19x, tabla_19[pen_inf].get(longitud_inf), p_camiones)
+        fac_lon_sup = interpolacion(tabla_19x, tabla_19[pen_inf].get(longitud_sup), p_camiones)
+        Ec_desc_inf = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+        fac_lon_inf = interpolacion(tabla_19x, tabla_19[pen_sup].get(longitud_inf), p_camiones)
+        fac_lon_sup = interpolacion(tabla_19x, tabla_19[pen_sup].get(longitud_sup), p_camiones)
+        Ec_desc_sup = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+        Ec_desc = interpolacion([pen_inf,pen_sup],[Ec_desc_inf,Ec_desc_sup], pendiente)
     return Ec_desc 
 
 
-Ec = 0
-if tramo == "Generico":
-    Ec = Ec_generico()
-elif tramo == "Ascenso":
-    Ec = Ec_ascenso(pendiente, p_camiones, longitud)
 
-elif tramo == "Descenso":
-    Ec = Ec_descenso(pendiente, p_camiones, longitud)
-print("Resultado Ec")
-print(Ec)
 
-#preguntar porcentaje camiones
-
-print(Ec)
-fhv = round(1/((1+(p_camiones/100)*(Ec-1))),3)
-print(fhv)
-#Factor de conocimiento de la vía - Preguntar
-
-fp = 1
-
-#Flujo vehicular qp
-qp = int(vol_transito/(fhp*num_carriles*fhv*fp))
-
-print(qp)
-
-#Paso 4 - Determinación de la velocidad de operación en el sector de análisis
-
-v_densidad = round((vel_flujo_libre - a*((qp/b)**c)),1)
-
-#Paso 5 - Cálculo de la densidad 
-
-densidad = round((qp/v_densidad),2)
 
 def n_servicio(densidad):
     if Tipo == "Tipo 1" or Tipo == "Tipo 2":
@@ -424,8 +407,47 @@ def n_servicio(densidad):
         else: 
             ns = "F"
     return ns
-print(densidad)
-final = n_servicio(densidad)
-print(f"El nivel de servicio es {final}")
 
 
+
+def calc_multicarril(tipo_analisis, tipo_tramo, clasificacion, separador,control_accesos, control_peatones,a_carril,a_separador,
+a_berma_derecha, a_berma_izquierda, n_accesos, pendiente, p_camiones, l_tramo, vol_transito, fhpico, n_carriles , fp):
+    a = 0 
+    b = 0
+    c = 0
+    Ec = 0
+    terreno = ""
+    terreno = tipo_terreno(pendiente) 
+    vel_generica = Vl(clasificacion, separador, control_accesos, control_peatones)
+    fc = correccion_carril(a_carril)
+    fs = correccion_separador(a_separador)
+    fb = correccion_bermas(a_berma_derecha,a_berma_izquierda)
+    fa = correccion_accesos(n_accesos)
+    V_libre = int(vel_generica-fc-fs-fb-fa)
+    Tipo = tipo(V_libre)[0]
+    vel_flujo_libre = tipo(V_libre)[1]
+    a = tipo(V_libre)[2]
+    b = tipo(V_libre)[3]
+    c = tipo(V_libre)[4]
+    if tipo_tramo == "Generico":
+        Ec = Ec_generico(terreno)
+    elif tipo_tramo == "Ascenso":
+        Ec = Ec_ascenso(pendiente, p_camiones, l_tramo)
+    elif tipo_tramo == "Descenso":
+        Ec = Ec_descenso(pendiente, p_camiones, l_tramo)
+    fhv = round(1/((1+(p_camiones/100)*(Ec-1))),3)
+    qp = int(float(vol_transito)/(float(fhpico)*float(n_carriles)*fhv*float(fp)))
+    v_densidad = round((vel_flujo_libre - a*((qp/b)**c)),1)
+    densidad = round((qp/v_densidad),2)
+    final = n_servicio(densidad)
+    return a,b,c,vel_generica,fc,fs,fb,fa,V_libre,vel_flujo_libre,Ec,fhv,qp,v_densidad,densidad,final
+
+#resultado = calc_multicarril("operacional", "Descenso", "B1", True, False, True, 3.3 ,1.5, 2.0,1.0, 6, 4, 30, 3000,1850,0.90,2,1)
+
+
+
+
+
+
+
+ 

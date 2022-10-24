@@ -13,110 +13,48 @@
     <title>Hello, world!</title>
   </head>
   <body>
-        <form class="form-horizontal">
-            <fieldset>
-            <!-- Form Name -->
-            <legend>Calculo de capacidad y nivel de servicio</legend>
-            
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="a_carril">Ancho de carril</label>  
-              <div class="col-md-4">
-              <input id="a_carril" name="a_carril" type="text" placeholder="" class="form-control input-md" required="">
-              <span class="help-block">metros</span>  
-              </div>
-            </div>
-            
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="a_berma">Ancho de berma</label>  
-              <div class="col-md-4">
-              <input id="a_berma" name="a_berma" type="text" placeholder="" class="form-control input-md" required="">
-              <span class="help-block">metros</span>  
-              </div>
-            </div>
-            
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="p_promedio">Pendiente promedio</label>  
-              <div class="col-md-4">
-              <input id="p_promedio" name="p_promedio" type="text" placeholder="" class="form-control input-md" required="">
-              <span class="help-block">%</span>  
-              </div>
-            </div>
-            
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="l_sector">Longitud del sector</label>  
-              <div class="col-md-4">
-              <input id="l_sector" name="l_sector" type="text" placeholder="" class="form-control input-md" required="">
-              <span class="help-block">metros</span>  
-              </div>
-            </div>
-            
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="d_sentido">Distribución por sentido</label>  
-              <div class="col-md-4">
-              <input id="d_sentido" name="d_sentido" type="text" placeholder="" class="form-control input-md" required="">
-              <span class="help-block">Si es 55:45, insertar 55</span>  
-              </div>
-            </div>
-            
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="p_no_rebase">Porcentajes de zonas de no rebase</label>  
-              <div class="col-md-4">
-              <input id="p_no_rebase" name="p_no_rebase" type="text" placeholder="" class="form-control input-md" required="">
-              <span class="help-block">%</span>  
-              </div>
-            </div>
-            
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="p_autos">Porcentaje de autos</label>  
-              <div class="col-md-4">
-              <input id="p_autos" name="p_autos" type="text" placeholder="" class="form-control input-md" required="">
-              <span class="help-block">%</span>  
-              </div>
-            </div>
-            
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="p_buses">Porcentaje de buses</label>  
-              <div class="col-md-4">
-              <input id="p_buses" name="p_buses" type="text" placeholder="" class="form-control input-md" required="">
-              <span class="help-block">%</span>  
-              </div>
-            </div>
-            
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="p_camiones">Porcentaje de camiones</label>  
-              <div class="col-md-4">
-              <input id="p_camiones" name="p_camiones" type="text" placeholder="" class="form-control input-md" required="">
-              <span class="help-block">%</span>  
-              </div>
-            </div>
-            
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="vol">Volumen horario total ambos sentidos (Q)</label>  
-              <div class="col-md-4">
-              <input id="vol" name="vol" type="text" placeholder="" class="form-control input-md" required="">
-              <span class="help-block">Veh/h</span>  
-              </div>
-            </div>
-            
-            <!-- Button -->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="submit"></label>
-              <div class="col-md-4">
-                <button id="submit" name="submit" class="btn btn-warning">Calcular Capacidad y Nivel de servicio</button>
-              </div>
-            </div>
-            
-            </fieldset>
-            </form>     
+    <div class="container" style="width:30rem">
+      <div class="card">
+        <h4 class="card-header", style="text-align: center; color: #df4759;background-color: white;">
+          Clasificación de las carreteras multicarril según sus características geométricas
+        </h4>
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center">Tipo A1</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Velocidad de diseño: 100 a 120 km/h</li>
+            <li class="list-group-item">Radio minimo: 400 m</li>
+            <li class="list-group-item">Pendiente máxima: 5 %</li>
+            <li class="list-group-item">Ancho de calzada: 7.30 m</li>
+            <li class="list-group-item">Ancho de berma izquierda: 1.00 m</li>
+            <li class="list-group-item">Ancho de berma derecha: 2.50 m</li>
+          </ul>
+        </div>
+        <hr>
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center">Tipo B1</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Velocidad de diseño: 80 a 100 km/h</li>
+            <li class="list-group-item">Radio minimo: 230 m</li>
+            <li class="list-group-item">Pendiente máxima: 6 %</li>
+            <li class="list-group-item">Ancho de calzada: 7.30 m</li>
+            <li class="list-group-item">Ancho de berma izquierda: 0.50 m</li>
+            <li class="list-group-item">Ancho de berma derecha: 1.80 m</li>
+          </ul>
+        </div>
+        <hr>
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center">Tipo C1</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Velocidad de diseño: 60 a 80 km/h</li>
+            <li class="list-group-item">Radio minimo: 70 m</li>
+            <li class="list-group-item">Pendiente máxima: 8 %</li>
+            <li class="list-group-item">Ancho de calzada: 7.00 m</li>
+            <li class="list-group-item">Ancho de berma izquierda: 0.50 m</li>
+            <li class="list-group-item">Ancho de berma derecha: 1.50 m</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+       
     </body>
 </html>
