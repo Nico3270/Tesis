@@ -35,6 +35,69 @@ class BlogPost(db_blog.Model):
     author = db_blog.Column(db_blog.String(250), nullable=False)
     img_url = db_blog.Column(db_blog.String(250), nullable=False)
 
+#Base de datos resultados para capacidad y nivel de servicio con dos carriles
+class Resultado(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    Fpe = db.Column(db.Float, nullable=False)
+    Fd = db.Column(db.Float, nullable=False)
+    Fcb = db.Column(db.Float, nullable=False)
+    Ec = db.Column(db.Float, nullable=False)
+    Fp = db.Column(db.Float, nullable=False)
+    cap_60 = db.Column(db.Integer, nullable=False)
+    cap_5 = db.Column(db.Integer, nullable=False)
+    FHP = db.Column(db.Float, nullable=False)
+    v1 = db.Column(db.Float, nullable=False)
+    Fu = db.Column(db.Float, nullable=False)
+    Fcb1 = db.Column(db.Float, nullable=False)
+    v2 = db.Column(db.Float, nullable=False)
+    Ec_vel = db.Column(db.Float, nullable=False)
+    Fp_vel = db.Column(db.Float, nullable=False)
+    Ft = db.Column(db.Float, nullable=False)
+    vM = db.Column(db.Float, nullable=False)
+    Vi = db.Column(db.Integer, nullable=False)
+    Final = db.Column(db.Integer, nullable=False)
+
+#Base de datos resultados para capacidad y nivel de servicio para vías multicariil
+class Multicaril_db(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    a = db.Column(db.Float, nullable=False)
+    b = db.Column(db.Float, nullable=False)
+    c = db.Column(db.Float, nullable=False)
+    vel_generica = db.Column(db.Integer, nullable=False)
+    fc = db.Column(db.Float, nullable=False)
+    fs = db.Column(db.Integer, nullable=False)
+    fb = db.Column(db.Integer, nullable=False)
+    fa = db.Column(db.Float, nullable=False)
+    V_libre = db.Column(db.Integer, nullable=False)
+    vel_flujo_libre = db.Column(db.Integer, nullable=False)
+    Ec = db.Column(db.Float, nullable=False)
+    fhv = db.Column(db.Float, nullable=False)
+    qp = db.Column(db.Integer, nullable=False)
+    v_densidad = db.Column(db.Float, nullable=False)
+    densidad = db.Column(db.Float, nullable=False)
+    final = db.Column(db.String(10), nullable=False)
+    # Valores insertados
+    v1 = db.Column(db.String(10), nullable=False)
+    v2 = db.Column(db.String(10), nullable=False)
+    v3 = db.Column(db.String(10), nullable=False)
+    v4 = db.Column(db.Float, nullable=False)
+    v5 = db.Column(db.Integer, nullable=False)
+    v6 = db.Column(db.Integer, nullable=False)
+    v7 = db.Column(db.String(10), nullable=False)
+    v8 = db.Column(db.String(10), nullable=False)
+    v9 = db.Column(db.Float, nullable=False) 
+    v10 = db.Column(db.Float, nullable=False)
+    v11 = db.Column(db.Float, nullable=False)
+    v12 = db.Column(db.Integer, nullable=False)
+    v13 = db.Column(db.String(10), nullable=False)
+    v14 = db.Column(db.String(10), nullable=False)
+    v15 = db.Column(db.String(10), nullable=False)
+    v16 = db.Column(db.Float, nullable=False)
+    v17 = db.Column(db.Float, nullable=False)
+    v18 =db.Column(db.Integer, nullable=False) 
+db.create_all()
+
+
 
 ##WTForm
 class CreatePostForm(FlaskForm):
@@ -79,28 +142,13 @@ class Multicarril(FlaskForm):
     vol_transito = IntegerField(label="Volumen del tránsito", validators = [DataRequired(),NumberRange(min=0, max=100000)])
     submit = SubmitField("Calcular Capacidad y Nivel de servicio")
 
-class Resultado(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    Fpe = db.Column(db.Float, nullable=False)
-    Fd = db.Column(db.Float, nullable=False)
-    Fcb = db.Column(db.Float, nullable=False)
-    Ec = db.Column(db.Float, nullable=False)
-    Fp = db.Column(db.Float, nullable=False)
-    cap_60 = db.Column(db.Integer, nullable=False)
-    cap_5 = db.Column(db.Integer, nullable=False)
-    FHP = db.Column(db.Float, nullable=False)
-    v1 = db.Column(db.Float, nullable=False)
-    Fu = db.Column(db.Float, nullable=False)
-    Fcb1 = db.Column(db.Float, nullable=False)
-    v2 = db.Column(db.Float, nullable=False)
-    Ec_vel = db.Column(db.Float, nullable=False)
-    Fp_vel = db.Column(db.Float, nullable=False)
-    Ft = db.Column(db.Float, nullable=False)
-    vM = db.Column(db.Float, nullable=False)
-    Vi = db.Column(db.Integer, nullable=False)
-    Final = db.Column(db.Integer, nullable=False)
-db.create_all()
 
+#Función que convierte en si o no un True or False
+def True_or_false(variable):
+    if variable == 1 or variable == True or variable == "1":
+        return "Si"
+    else:
+        return "No"
 
 
 def Capacidad_Ns(a_carril, a_berma, p_promedio, l_sector, d_sentido, p_no_rebase, p_autos, p_buses,
@@ -190,9 +238,17 @@ def multicarril():
         v16 = float(form.fhpico.data)
         v17 = form.p_camiones.data
         v18 = form.vol_transito.data
-        resultado = mp.calc_multicarril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
-        print(resultado)
-        return redirect(url_for("home"))
+        rs= mp.calc_multicarril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+        v8 = True_or_false(v8)
+        v13 = True_or_false(v13)
+        v14 = True_or_false(v14)
+        calculo = Multicaril_db(a=rs[0], b=rs[1], c=rs[2], vel_generica=rs[3], fc=rs[4], fs=rs[5], fb=rs[6],
+        fa=rs[7], V_libre=rs[8], vel_flujo_libre=rs[9],Ec=rs[10], fhv=rs[11],qp=rs[12], v_densidad=rs[13],
+        densidad=rs[14], final=rs[15], v1=v1, v2=v2, v3=v3, v4=v4, v5=v5, v6=v6, v7=v7, v8=v8, v9=v9, v10=v10,
+        v11=v11, v12=v12, v13=v13, v14=v14, v15=v15, v16=v16, v17=v17, v18=v18)
+        db.session.add(calculo)
+        db.session.commit()
+        return redirect(url_for("resultado_Multicarril"))
     return render_template("multicarril.html", form = form)
 
 @app.route("/resultado", methods=["GET","POST"])
@@ -200,6 +256,13 @@ def resultado():
     id = len(db.session.query(Resultado).all())
     registro = Resultado.query.get(id)
     return render_template('resultados.html',datos=registro)
+
+@app.route("/resultado_Multicarril", methods=["GET","POST"])
+def resultado_Multicarril():
+    id = len(db.session.query(Multicaril_db).all())
+    registro = Multicaril_db.query.get(id)
+    return render_template('resultados_multicarril.html',datos=registro)
+
 
 @app.route("/registro/<int:index>", methods=["GET","POST"])
 def registro(index):
