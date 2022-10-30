@@ -8,6 +8,7 @@ from flask_ckeditor import CKEditor, CKEditorField
 from datetime import date
 import capacidad_NS as cap
 import multicarril as mp
+import numpy as np
 
 
 app = Flask(__name__)
@@ -94,7 +95,10 @@ class Multicaril_db(db.Model):
     v15 = db.Column(db.String(10), nullable=False)
     v16 = db.Column(db.Float, nullable=False)
     v17 = db.Column(db.Float, nullable=False)
-    v18 =db.Column(db.Integer, nullable=False) 
+    v18 = db.Column(db.Integer, nullable=False) 
+    v19 = db.Column(db.String(100), nullable=False)
+    v20 = db.Column(db.String(100), nullable=False)
+    v21 = db.Column(db.String(10), nullable=False)
 db.create_all()
 
 
@@ -122,6 +126,9 @@ class Capacidad(FlaskForm):
     submit = SubmitField("Calcular Capacidad y Nivel de servicio")
 
 class Multicarril(FlaskForm):
+    carretera = StringField(label="Nombre de carretera o proyecto", validators=[DataRequired()])
+    proyecto = StringField(label="Proyecto o abscisa")
+    terreno = SelectField('Tipo de terreno', choices=[('Plano', 'Plano'),('Ondulado', 'Ondulado'), ('Montañoso', 'Montañoso')])
     tipo_analisis = SelectField('¿Qué tipo de analísis desea realizar?', choices=[('Operacional', 'Operacional'), ('Planeacion', 'Planeación')])
     tipo_tramo = SelectField("¿Cuál es el tipo de tramo?", choices=[('Generico', 'Generico'), ('Ascenso', 'Ascenso'), ('Descenso', 'Descenso')])
     clasificacion = SelectField('¿Cuál es la clasificación de la vía Multicarril? (Referencia Tabla 10)', choices=[("A1", 'A1'), ("B1", 'B1'), ("C1",'C1')])
@@ -229,6 +236,9 @@ def multicarril():
         v11 = form.a_berma_izquierda.data
         v12 = form.n_accesos.data
         v13 = form.control_accesos.data
+        v19 = form.carretera.data
+        v20 = form.proyecto.data
+        v21 = form.terreno.data
         if v13 == 1:
             v13 = True
         else:
@@ -245,7 +255,7 @@ def multicarril():
         calculo = Multicaril_db(a=rs[0], b=rs[1], c=rs[2], vel_generica=rs[3], fc=rs[4], fs=rs[5], fb=rs[6],
         fa=rs[7], V_libre=rs[8], vel_flujo_libre=rs[9],Ec=rs[10], fhv=rs[11],qp=rs[12], v_densidad=rs[13],
         densidad=rs[14], final=rs[15], v1=v1, v2=v2, v3=v3, v4=v4, v5=v5, v6=v6, v7=v7, v8=v8, v9=v9, v10=v10,
-        v11=v11, v12=v12, v13=v13, v14=v14, v15=v15, v16=v16, v17=v17, v18=v18)
+        v11=v11, v12=v12, v13=v13, v14=v14, v15=v15, v16=v16, v17=v17, v18=v18, v19=v19, v20=v20, v21=v21)
         db.session.add(calculo)
         db.session.commit()
         return redirect(url_for("resultado_Multicarril"))

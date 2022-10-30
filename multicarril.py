@@ -117,7 +117,10 @@ def interpolacion(x,y,z):
 
 #Función que devuelve un Bool si un numero se encuentra dentro de un rango
 def in_range(rango,numero):
-    return numero in range(*rango)
+    if numero >= rango[0] and numero <= rango[1]:
+        return True
+    else:
+        return False
 
 #Función para determinar los limites inferior y superior, para la intrpolación Ec en tabla 18 para longitudes menores a 4000
 def intervalos(num):
