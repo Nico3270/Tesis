@@ -178,7 +178,7 @@
       </div>
     </section>
     <hr>
-    <section class="procedimiento-1" style="background-color:white; margin-bottom: 0%; padding-bottom: 0%;">
+    <section class="procedimiento" style="background-color:white">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-4">
@@ -189,8 +189,7 @@
               <h5>Revisar datos ingresados</b></h5>
               <hr>
               <h4 style="text-align:center ; color: rgb(215, 74, 74);">Paso 2: Determinación de la velocidad a flujo libre del sector de análisis</h4>
-              <br>
-              <h5><b>Estimación de Velocidad a flujo libre</b></h5>
+              <h4><b>Estimación de Velocidad a flujo libre</b></h4>
               <h5>La velocidad a flujo libre se estima mediante la siguiente ecuación: </h5>
               <h4 style="font-family: 'Tinos', serif; text-align: center;"><i> VL = VG - f<sub>c</sub> - f<sub>s</sub> - f<sub>B</sub> - f<sub>A</sub></i></h4>
               <h5>Donde: </h5>
@@ -200,10 +199,7 @@
               <h5><b>f<sub>S</sub></b> = Correción por ancho de separador.</h5>
               <h5><b>f<sub>B</sub></b> = Correción por promedio de ancho de bermas.</h5>
               <h5><b>f<sub>A</sub></b> = Correción por densidad de accesos.</h5>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-4">
-            <div class="container">
+              <hr>
               <h4 style="text-align:center ; color: rgb(215, 74, 74)">Velocidad genérica seleccionada</h4>
               <h5>La velocidad generica se selecciona a partir de los resultados ingresados, y los parámetros establecidos en la tabla 11.</h5>
               <h5><b>Tabla 11. Velocidad genérica por tipo de carretera.</b></h5>
@@ -246,15 +242,8 @@
                 </table>
                 <br>
                 <h5>La velocidad genérica seleccionada a partir de los valores ingresados es <b>{{datos.vel_generica}} km/h</b> para vía tipo <b>{{datos.v3}}</b>. </h5>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-4">
-          <div class="container">
-            <h4 style="text-align:center ; color: rgb(215, 74, 74)">Correcciones a la velocidad genérica</h4>
+                <hr>
+                <h4 style="text-align:center ; color: rgb(215, 74, 74)">Correcciones a la velocidad genérica</h4>
                 <h5 style="text-align:center ;"><b>* Correción por ancho de carril (f<sub>C</sub>)</b></h5>
                 <h5>La corrección por ancho de carril se hace con los factores indicados en la Tabla 12.</h5>
                 <h5><b>Tabla 12. Ajuste de velocidad genérica por efecto del ancho</b></h5>
@@ -320,11 +309,9 @@
                     </tr>
                 </table>
                 <h5>Para una vía con ancho de separador de {{datos.v9}} metros, se obtiene factor de corrección f<sub>S</sub> igual a <b>{{datos.fs}} km/h</b>. </h5>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-4">
-          <div class="container">
-            <h5 style="text-align:center ;"><b>* Correción por ancho promedio de bermas (f<sub>B</sub>)</b></h5>
+                <br>
+                <hr>
+                <h5 style="text-align:center ;"><b>* Correción por ancho promedio de bermas (f<sub>B</sub>)</b></h5>
                 <h5>La corrección por ancho promedio de bermas se realiza con los factores indicados en la Tabla 14.</h5>
                 <h5><b>Tabla 14. Ajuste de velocidad genérica por efecto del ancho promedio de bermas (f<sub>B</sub>)</b></h5>
                 <table class="table-bordered">
@@ -389,32 +376,20 @@
                 </table>
                 <h5>Para una vía con una densidad de accesos de {{datos.v12}} Puntos/km, se realiza una interpolación para obtener un factor de corrección f<sub>A</sub> igual a <b>{{datos.fa}} km/h</b>. </h5>
                 <br>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-4">
-          <div class="container">
-            <h4 style="text-align:center ;"><b>Velocidad a flujo libre corregida</b></h4>
-              <br>
+                <hr>
+                <h4 style="text-align:center ;"><b>Velocidad a flujo libre corregida</b></h4>
               <h5>Se obtiene la velocidad a flujo libre corregida, reemplazando los valores obtenidos previaments: </h5>
               <h4 style="font-family: 'Tinos', serif; text-align: center;"><i> VL = {{datos.vel_generica}}km/h - {{datos.fc}}km/h - {{datos.fs}}km/h - {{datos.fb}}km/h - {{datos.fa}}km/h</i></h4>
               <h4 style="font-family: 'Tinos', serif; text-align: center;"><i> VL = <b>{{datos.V_libre}} km/h</b></i></h4>
               <br>
               <h4 style="text-align:center ;"><b>Elección de la curva maestra de referencia</b></h4>
-              <br>
               <h5>Esta velocidad se debe aproximar a la velocidad a flujo libre de una de las cuatro curvas maestras típicas desarrolladas:</h5>
               <br>
               <h5><b>Figura 1. Curvas flujo-velocidad maestras para Colombia</b></h5>
               <img src="../static/assets/img/curva_maestra.JPG" class="img-fluid" alt="Responsive image">
-              <h6>Fuente: Manual INVIAS</h6>
               <br>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-4">
-          <div class="container">
-            <h4 style="text-align:center ; color: rgb(215, 74, 74);">Paso 3: Cálculo del flujo vehicular</h4>
+              <br>
+              <h4 style="text-align:center ; color: rgb(215, 74, 74);">Paso 3: Cálculo del flujo vehicular</h4>
               <h5>Debe corregirse el volumen de tránsito mixto y tenerse en cuenta el equivalente de camiones</h5>
               <h5 style="text-align:center ;"><b>* Correción del volumen de tránsito mixto</b></h5>
               <h5>El volumen de tránsito en vehículos mixtos (veh/h/sentido) se debe convertir en flujo vehicular, mediante la siguiente ecuación: </h5>
@@ -436,14 +411,8 @@
               <h5><b>f<sub>HV</sub></b> = Factor de corrección por camiones</h5>
               <h5><b>P<sub>C</sub></b> = Porcentaje de camiones</h5>
               <h5><b>E<sub>c</sub></b> =Factor de equivalencia de camiones </h5>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-4">
-          <div class="container">
-            <h5 style="text-align:center ;"><b>* Equivalente de camiones </b></h5>
+              <br>
+              <h5 style="text-align:center ;"><b>* Equivalente de camiones </b></h5>
               <h5>Para determinar este factor se tienen en cuenta el tipo de terreno y las rampas:</h5>
               {% if datos.v2 == "Generico" %}
               <h5 style="text-align:center ;"><b>* Tipo de terreno genérico </b></h5>
@@ -488,11 +457,7 @@
               <br>
               <h5 style="text-align:justify ;">Reemplazando en la ecuación anterior, los valores P<sub>C</sub> igual a {{datos.v17}}% y E<sub>C</sub> equivalente a {{datos.Ec}}, se obtiene  que el factor de corrección por camiones <b>(f<sub>HV</sub>)</b> es igual a <b>{{datos.fhv}}.</b></h5>
               <br>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-4">
-          <div class="container">
-            <h5 style="text-align:center ;"><b>* Flujo de tránsito, en veh/h/carril. (q<sub>p</sub>) </b></h5>
+              <h5 style="text-align:center ;"><b>* Flujo de tránsito, en veh/h/carril. (q<sub>p</sub>) </b></h5>
               <h5>Se reemplazan los siguientes valores en la ecuacion .</h5>
                 <ul>
                   <li><b><i>V</i></b>: {{datos.v18}} veh/h/sentido</li>
@@ -508,16 +473,10 @@
                 </ul>
               <h5>Finalmente se obtiene un flujo vehicular <b>(q<sub>p</sub> = v<sub>p</sub>)</b> igual a <b>{{datos.qp}} veh/h/carril </b></h5>
               <br>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-4">
-          <div class="container">
-            <h4 style="text-align:center ; color: rgb(215, 74, 74);">Paso 4: Determinación de la velocidad de operación en el sector de análisis (V)</h4>
+              <hr>
+              <h4 style="text-align:center ; color: rgb(215, 74, 74);">Paso 4: Determinación de la velocidad de operación en el sector de análisis (V)</h4>
               <h5 style="text-align:justify ;">En el paso 2 se selecciona la curva maestra con una velocidad a flujo libre de {{datos.vel_flujo_libre}} km/h. La ecuación del flujo-velocidad tiene la forma funcional:</h5>
-              <img src="../static/assets/img/paso4.JPG" class="img-fluid" style="width:40%; margin-left: 5rem;" alt="Responsive image">
+              <img src="../static/assets/img/paso4.JPG" class="img-fluid" style="width:60%; margin-left: 5rem;" alt="Responsive image">
               <h5>Se reemplazan los siguientes valores en la ecuación.</h5>
               <ul>
                 <li><b>FHP:</b> {{datos.v16}}</li>
@@ -529,9 +488,10 @@
               </ul>
               <h5>La velocidad de operación obtenida es igual a <b>{{datos.v_densidad}} km/h</b></h5>
               <br>
+              <hr>
               <h4 style="text-align:center ; color: rgb(215, 74, 74);">Paso 5: Cálculo de la densidad</h4>
               <h5>La densidad del sector de análisis, en veh/km/carril, se determina con la expresión: </h5>
-              <img src="../static/assets/img/densidad.JPG" class="img-fluid" style="width:15%; margin-left: 10rem;" alt="Responsive image">
+              <img src="../static/assets/img/densidad.JPG" class="img-fluid" style="width:20%; margin-left: 10rem;" alt="Responsive image">
               <h5>Se reemplazan los siguientes valores en la ecuación.</h5>
               <ul>
                 <li><b>q<sub>p</sub>: </b> {{datos.qp}} veh/h/carril</li>
@@ -539,15 +499,10 @@
               </ul>
               <h5>La densidad del sector resultante es <b>{{datos.densidad}} veh/km/carril</b></h5>
               <br>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-4">
-          <div class="container">
-            <h4 style="text-align:center ; color: rgb(215, 74, 74);">Paso 6: Determinación del Nivel de Servicio</h4>
-              <h5 style="text-align:justify ;">Para la determinación del Nivel de servicio se utiliza como variable de efectividad la densidad. Con este valor y la curva maestra tipo {%if datos.vel_flujo_libre == 80%} 3 {%endif%}  {%if datos.vel_flujo_libre == 90 %} 2 {%endif%} {%if datos.vel_flujo_libre == 96%} 1 {%endif%}  {%if datos.vel_flujo_libre == 70 %} 4 {%endif%}, {{datos.vel_flujo_libre}} km/h, determinada en el paso 2, se determina el Nivel de Servicio ofrecido en la vía mediante el uso de la <b>Tabla 20.</b></h5>
-              <br>
+              <hr>
+              <h4 style="text-align:center ; color: rgb(215, 74, 74);">Paso 6: Determinación del Nivel de Servicio</h4>
+              <h5 style="text-align:justify ;">Para la determinación del Nivel de servicio se utiliza como variable de efectividad la densidad. Con este valor y la curva maestra tipo {%if datos.vel_flujo_libre == 80%} 3 {%endif%}  {%if datos.vel_flujo_libre == 90 %} 2 {%endif%} {%if datos.vel_flujo_libre == 96%} 1 {%endif%}  {%if datos.vel_flujo_libre == 70 %} 4 {%endif%}, {{datos.vel_flujo_libre}} km/h, determinada en el paso 2, se determina el Nivel de Servicio ofrecido en la vía mediante el uso de la <b>Tabla 20.</b>.</h5>
               <h5><b>Tabla 20. Niveles de Servicio para carreteras multicarril en Colombia.</b></h5>
-              <br>
               <table class="table-bordered">
                 <thead class="thead-dark">
                   <tr>
@@ -597,15 +552,12 @@
               </table>
               <br>
               <h5 style="text-align:justify ;">Finalmente con una densidad de {{datos.densidad}} veh/km/carril y la curva maestra tipo {%if datos.vel_flujo_libre == 80%} 3 {%endif%}  {%if datos.vel_flujo_libre == 90 %} 2 {%endif%} {%if datos.vel_flujo_libre == 96%} 1 {%endif%}  {%if datos.vel_flujo_libre == 70 %} 4 {%endif%}, {{datos.vel_flujo_libre}} km/h, determinada en el paso 2, se determina que el Nivel de servicio ofrecido por la vía es <b>{{datos.final}}.</b>  </h5>
+            </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <hr>
-    <section class="procedimiento-1" style="background-color:white; margin-top: 0%; padding-top: 0%;">
-      <h2 style="text-align: center ;">Análisis de sensibilidad</h2>
-    </section> 
-
 
   </main><!-- End #main -->
 

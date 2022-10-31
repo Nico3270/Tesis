@@ -8,6 +8,7 @@ from flask_ckeditor import CKEditor, CKEditorField
 from datetime import date
 import capacidad_NS as cap
 import multicarril as mp
+import Sensibilidad as sen
 import numpy as np
 
 
@@ -138,8 +139,8 @@ class Multicarril(FlaskForm):
     a_carril = SelectField('Ancho de carril (metros)', choices=[('3', '3 metros'), ('3.3', '3.3 metros'), ('3.5', '3.5 metros o mayor')])
     separador = SelectField('¿La vía cuenta con separador?', choices=[(True, 'Si'), (False, 'No')])
     a_separador = FloatField(label="Ancho de separador (metros)", validators = [DataRequired(),NumberRange(min=0, max=5)] )
-    a_berma_derecha = FloatField(label="Ancho de Berma derecha", validators = [DataRequired(),NumberRange(min=0, max=5)] )
-    a_berma_izquierda = FloatField(label="Ancho de Berma izquierda", validators = [DataRequired(),NumberRange(min=0, max=5)] )
+    a_berma_derecha = FloatField(label="Ancho de Berma derecha (metros)", validators = [DataRequired(),NumberRange(min=0, max=5)] )
+    a_berma_izquierda = FloatField(label="Ancho de Berma izquierda (metros)", validators = [DataRequired(),NumberRange(min=0, max=5)] )
     n_accesos = IntegerField(label="Número de accesos", validators = [DataRequired(),NumberRange(min=0, max=50)])
     control_accesos = SelectField('¿La vía cuenta con control de accesos?', choices=[(1, 'Si'), (2, 'No')])
     control_peatones = SelectField('¿Peatones frecuentes?', choices=[(True, 'Si'), (False, 'No')])
@@ -248,6 +249,15 @@ def multicarril():
         v16 = float(form.fhpico.data)
         v17 = form.p_camiones.data
         v18 = form.vol_transito.data
+        #análisis de sensibilidad
+        vol = sen.sensibilidad_volumen(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+        pen = sen.sensibilidad_pendiente(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+        sen.sensibilidad_camiones(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+        sen.sensiblidad_carriles(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+        sen.sensibilidad_ancho_carril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+        sen.sensibilidad_ancho_separador(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+        sen.sensibilidad_ancho_bermas(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+        sen.sensibilidad_n_accesos(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
         rs= mp.calc_multicarril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
         v8 = True_or_false(v8)
         v13 = True_or_false(v13)
@@ -258,6 +268,7 @@ def multicarril():
         v11=v11, v12=v12, v13=v13, v14=v14, v15=v15, v16=v16, v17=v17, v18=v18, v19=v19, v20=v20, v21=v21)
         db.session.add(calculo)
         db.session.commit()
+
         return redirect(url_for("resultado_Multicarril"))
     return render_template("multicarril.html", form = form)
 
