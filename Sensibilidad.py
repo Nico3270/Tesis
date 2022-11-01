@@ -1,4 +1,3 @@
-from main import resultado
 import multicarril as mp
 import numpy as np
 import matplotlib.pyplot as plt
@@ -6,7 +5,7 @@ v3 = 0
 datos = ["Operacional", "Generico", "B1", True, False, True, '3.3', 1.5, 2.0, 1.0, 6, 4, 30, 2200,1850,0.90,2,1]
 
 def sensibilidad_volumen(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15):
-    list = np.arange(1,3000)
+    list = np.arange(1,4000,10)
     Nivel = []
     Densidad = []
     Velocidad = []
@@ -19,11 +18,10 @@ def sensibilidad_volumen(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16
         Densidad.append(resultado[14])
         Velocidad.append(resultado[13])
         Flujo.append(resultado[12])
-
-    N_servicio =  [list[(Nivel.index('B'))], list[(Nivel.index('C'))], list[(Nivel.index('D'))], list[(Nivel.index('E'))], list[(Nivel.index('F'))], 
-    Velocidad[(Nivel.index('B'))], Velocidad[(Nivel.index('C'))], Velocidad[(Nivel.index('D'))], Velocidad[(Nivel.index('E'))],Velocidad[(Nivel.index('F'))],
+    N_servicio =  [list[(Nivel.index('B'))], list[(Nivel.index('C'))], list[(Nivel.index('D'))], list[(Nivel.index('E'))], list[(Nivel.index('F'))],
+    Flujo[(Nivel.index('B'))], Flujo[(Nivel.index('C'))], Flujo[(Nivel.index('D'))], Flujo[(Nivel.index('E'))],Flujo[(Nivel.index('F'))], 
     Densidad[(Nivel.index('B'))], Densidad[(Nivel.index('C'))], Densidad[(Nivel.index('D'))], Densidad[(Nivel.index('E'))],Densidad[(Nivel.index('F'))],
-    Flujo[(Nivel.index('B'))], Flujo[(Nivel.index('C'))], Flujo[(Nivel.index('D'))], Flujo[(Nivel.index('E'))],Flujo[(Nivel.index('F'))],  ]
+    Velocidad[(Nivel.index('B'))], Velocidad[(Nivel.index('C'))], Velocidad[(Nivel.index('D'))], Velocidad[(Nivel.index('E'))],Velocidad[(Nivel.index('F'))]]
     #Gráfica Nivel de servicio vs Volumen de tránsito
     plt.style.use("seaborn-dark-palette")
     plt.plot(list, Nivel ,color="red")
@@ -66,7 +64,7 @@ def sensibilidad_volumen(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16
 #print(sensibilidad_volumen("Operacional", "Generico", "B1", True, False, True, '3.3', 1.5, 2.0, 1.0, 6, 4, 30, 2200,1850,0.90,2,1))
 
 def sensibilidad_pendiente(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15):
-    list = np.arange(0,10)
+    list = np.arange(0,9)
     Nivel1 = []
     Densidad = []
     Velocidad = []
@@ -117,7 +115,8 @@ def sensibilidad_pendiente(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v
     plt.close()
     return data
 
-
+#casa = sensibilidad_pendiente("Operacional", "Ascenso", "B1", True, False, True, 3.3, 1.5, 2.0, 1.0, 6, 4.0, 30, 2200, 1850, 0.9, 2, 1.0)
+#print(casa)
 #Función sensibilidad camiones
 def sensibilidad_camiones(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15):
     list = np.arange(0, 50)
@@ -258,4 +257,19 @@ def sensibilidad_n_accesos(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v
     plt.savefig("static/assets/img/sensibilidad/plot16.png")
     plt.close()
     return Nivel
+
 #sensibilidad_n_accesos("Operacional", "Generico", "B1", True, False, True, '3.3', 1.5, 2.0, 1.0, 6, 4, 30, 2200,1850,0.90,2,1)
+def sensibilidad_bool(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15):
+    sep_1 = mp.calc_multicarril(v1,v2,v3,True,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+    sep_0 = mp.calc_multicarril(v1,v2,v3,False,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+    acc_1= mp.calc_multicarril(v1,v2,v3,v8,True,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+    acc_0 = mp.calc_multicarril(v1,v2,v3,v8,False,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+    pea_1= mp.calc_multicarril(v1,v2,v3,v8,v13,True,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+    pea_0 = mp.calc_multicarril(v1,v2,v3,v8,v13,False,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+    con_1 = mp.calc_multicarril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,1)
+    con_0 = mp.calc_multicarril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,0.90)
+    data = [sep_1[12], sep_1[13], sep_1[14], sep_1[15], sep_0[12], sep_0[13], sep_0[14], sep_0[15],
+    acc_1[12], acc_1[13], acc_1[14], acc_1[15], acc_0[12], acc_0[13], acc_0[14], acc_0[15],
+    pea_1[12], pea_1[13], pea_1[14], pea_1[15], pea_0[12], pea_0[13], pea_0[14], pea_0[15],
+    con_1[12], con_1[13], con_1[13], con_1[14], con_0[12], con_0[13], con_0[13], con_0[14],]
+    return data

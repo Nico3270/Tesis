@@ -100,9 +100,100 @@ class Multicaril_db(db.Model):
     v19 = db.Column(db.String(100), nullable=False)
     v20 = db.Column(db.String(100), nullable=False)
     v21 = db.Column(db.String(10), nullable=False)
+
+
+#Base de datos para análisis de sensibilidad - Multicarril
+class Sensibilidad(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    n1 = db.Column(db.String(10), nullable=False)
+    n2 = db.Column(db.String(10), nullable=False)
+    n3 = db.Column(db.String(10), nullable=False)
+    n4 = db.Column(db.String(10), nullable=False)
+    n5 = db.Column(db.String(10), nullable=False)
+    n6 = db.Column(db.String(10), nullable=False)
+    n7 = db.Column(db.Float, nullable=False)
+    n8 = db.Column(db.Float, nullable=False)
+    n9 = db.Column(db.Float, nullable=False)
+    n10 = db.Column(db.Float, nullable=False)
+    n11 = db.Column(db.Float, nullable=False)
+    n12 = db.Column(db.Float, nullable=False)
+    n13 = db.Column(db.Float, nullable=False)
+    n14 = db.Column(db.Float, nullable=False)
+    n15 = db.Column(db.Float, nullable=False)
+    n16 = db.Column(db.Float, nullable=False)
+    n17 = db.Column(db.Float, nullable=False)
+    n18 = db.Column(db.Float, nullable=False)
+    n19 = db.Column(db.Float, nullable=False)
+    n20 = db.Column(db.Float, nullable=False)
+    n21 = db.Column(db.String(10), nullable=False)
+    n22 = db.Column(db.String(10), nullable=False)
+    n23 = db.Column(db.String(10), nullable=False)
+    n24 = db.Column(db.String(10), nullable=False)
+    n25 = db.Column(db.String(10), nullable=False)
+    n26 = db.Column(db.String(10), nullable=False)
+    n27 = db.Column(db.String(10), nullable=False)
+    n28 = db.Column(db.String(10), nullable=False)
+    n29 = db.Column(db.Float, nullable=False)
+    n30 = db.Column(db.Float, nullable=False)
+    n31 = db.Column(db.Float, nullable=False)
+    n32 = db.Column(db.Float, nullable=False)
+    n33 = db.Column(db.Float, nullable=False)
+    n34 = db.Column(db.Float, nullable=False)
+    n35 = db.Column(db.Float, nullable=False)
+    n36 = db.Column(db.Float, nullable=False)
+    n37 = db.Column(db.Float, nullable=False)
+    n38 = db.Column(db.Float, nullable=False)
+    n39 = db.Column(db.Float, nullable=False)
+    n40 = db.Column(db.Float, nullable=False)
+    n41 = db.Column(db.Float, nullable=False)
+    n42 = db.Column(db.Float, nullable=False)
+    n43 = db.Column(db.Float, nullable=False)
+    n44 = db.Column(db.Float, nullable=False)
+    n45 = db.Column(db.Float, nullable=False)
+    n46 = db.Column(db.Float, nullable=False)
+    n47 = db.Column(db.Float, nullable=False)
+    n48 = db.Column(db.Float, nullable=False)
+    n49 = db.Column(db.Float, nullable=False)
+    n50 = db.Column(db.Float, nullable=False)
+    n51 = db.Column(db.Float, nullable=False)
+    n52 = db.Column(db.Float, nullable=False)
+    n53 = db.Column(db.Float, nullable=False)
+    n54 = db.Column(db.Float, nullable=False)
+    n55 = db.Column(db.Float, nullable=False)
+    n56 = db.Column(db.Float, nullable=False)
+    n57 = db.Column(db.Float, nullable=False)
+    n58 = db.Column(db.Float, nullable=False)
+    n59 = db.Column(db.Float, nullable=False)
+    n60 = db.Column(db.String(10), nullable=False)
+    n61 = db.Column(db.Float, nullable=False)
+    n62 = db.Column(db.Float, nullable=False)
+    n63 = db.Column(db.Float, nullable=False)
+    n64 = db.Column(db.String(10), nullable=False)
+    n65 = db.Column(db.Float, nullable=False)
+    n66 = db.Column(db.Float, nullable=False)
+    n67 = db.Column(db.Float, nullable=False)
+    n68 = db.Column(db.String(10), nullable=False)
+    n69 = db.Column(db.Float, nullable=False)
+    n70 = db.Column(db.Float, nullable=False)
+    n71 = db.Column(db.Float, nullable=False)
+    n72 = db.Column(db.String(10), nullable=False)
+    n73 = db.Column(db.Float, nullable=False)
+    n74 = db.Column(db.Float, nullable=False)
+    n75 = db.Column(db.Float, nullable=False)
+    n76 = db.Column(db.String(10), nullable=False)
+    n77 = db.Column(db.Float, nullable=False)
+    n78 = db.Column(db.Float, nullable=False)
+    n79 = db.Column(db.Float, nullable=False)
+    n80 = db.Column(db.String(10), nullable=False)
+    n81 = db.Column(db.Float, nullable=False)
+    n82 = db.Column(db.Float, nullable=False)
+    n83 = db.Column(db.Float, nullable=False)
+    n84 = db.Column(db.String(10), nullable=False)
+    n85 = db.Column(db.Float, nullable=False)
+    n86 = db.Column(db.Float, nullable=False)
+    n87 = db.Column(db.Float, nullable=False)
+    n88 = db.Column(db.String(10), nullable=False)
 db.create_all()
-
-
 
 ##WTForm
 class CreatePostForm(FlaskForm):
@@ -219,6 +310,10 @@ def home():
         db.session.commit()
         return redirect(url_for('resultado'))
     return render_template ('index.html', form=form)
+datos = ["","0","1","2","3","4","5","6","7","8","9","10","0","1","2","3","4","5","6","7","8","9","10",
+        "0","1","2","3","4","5","6","7","8","9","0","1","2","3","4","5","6","7","8","9","10","0","1","2","3","4","5","6","7","8","9","10",
+        "0","1","2","3","4","5","6","7","8","9","10","0","1","2","3","4","5","6","7","8","9","10",
+        "0","81","83","84","85","86","87","84","85","76","86","88"]
 
 @app.route("/multicarril", methods=["GET","POST"])
 def multicarril():
@@ -249,15 +344,17 @@ def multicarril():
         v16 = float(form.fhpico.data)
         v17 = form.p_camiones.data
         v18 = form.vol_transito.data
+        print(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
         #análisis de sensibilidad
         vol = sen.sensibilidad_volumen(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
         pen = sen.sensibilidad_pendiente(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+        fin = sen.sensibilidad_bool(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
         sen.sensibilidad_camiones(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
         sen.sensiblidad_carriles(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
         sen.sensibilidad_ancho_carril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
         sen.sensibilidad_ancho_separador(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
         sen.sensibilidad_ancho_bermas(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
-        sen.sensibilidad_n_accesos(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+        sen.sensibilidad_n_accesos(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)       
         rs= mp.calc_multicarril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
         v8 = True_or_false(v8)
         v13 = True_or_false(v13)
@@ -268,7 +365,96 @@ def multicarril():
         v11=v11, v12=v12, v13=v13, v14=v14, v15=v15, v16=v16, v17=v17, v18=v18, v19=v19, v20=v20, v21=v21)
         db.session.add(calculo)
         db.session.commit()
-
+        datos[0]="element"
+        datos[1]=vol[0]
+        datos[2]=vol[1]
+        datos[3]=vol[2]
+        datos[4]=vol[3]
+        datos[5]=vol[4]
+        datos[6]=vol[5]
+        datos[7]=vol[6]
+        datos[8]=vol[7]
+        datos[9]=vol[8]
+        datos[10]=vol[9]
+        datos[11]=vol[10]
+        datos[12]=vol[11]
+        datos[13]=vol[12]
+        datos[14]=vol[13]
+        datos[15]=vol[14]
+        datos[16]=vol[15]
+        datos[17]=vol[16]
+        datos[18]=vol[17]
+        datos[19]=vol[18]
+        datos[20]=vol[19]
+        datos[21]=pen[0]
+        datos[22]=pen[1]
+        datos[23]=pen[2]
+        datos[24]=pen[3]
+        datos[25]=pen[4]
+        datos[26]=pen[5]
+        datos[27]=pen[6]
+        datos[28]=pen[7]
+        datos[29]=pen[8]
+        datos[30]=pen[9]
+        datos[31]=pen[10]
+        datos[32]=pen[11]
+        datos[33]=pen[12]
+        datos[34]=pen[13]
+        datos[35]=pen[14]
+        datos[36]=pen[15]
+        datos[37]=pen[16]
+        datos[38]=pen[17]
+        datos[39]=pen[18]
+        datos[40]=pen[19]
+        datos[41]=pen[20]
+        datos[42]=pen[21]
+        datos[43]=pen[22]
+        datos[44]=pen[23]
+        datos[45]=pen[24]
+        datos[46]=pen[25]
+        datos[47]=pen[26]
+        datos[48]=pen[27]
+        datos[49]=pen[28]
+        datos[50]=pen[29]
+        datos[51]=pen[30]
+        datos[52]=pen[31]
+        datos[53]=pen[32]
+        datos[54]=pen[33]
+        datos[55]=pen[34]
+        datos[56]=pen[35]
+        datos[57]=fin[0]
+        datos[58]=fin[1]
+        datos[59]=fin[2]
+        datos[60]=fin[3]
+        datos[61]=fin[4]
+        datos[62]=fin[5]
+        datos[63]=fin[6]
+        datos[64]=fin[7]
+        datos[65]=fin[8]
+        datos[66]=fin[9]
+        datos[67]=fin[10]
+        datos[68]=fin[11]
+        datos[69]=fin[12]
+        datos[70]=fin[13]
+        datos[71]=fin[14]
+        datos[72]=fin[15]
+        datos[73]=fin[16]
+        datos[74]=fin[17]
+        datos[75]=fin[18]
+        datos[76]=fin[19]
+        datos[77]=fin[20]
+        datos[78]=fin[21]
+        datos[79]=fin[22]
+        datos[80]=fin[23]
+        datos[81]=fin[24]
+        datos[82]=fin[25]
+        datos[83]=fin[26]
+        datos[84]=fin[27]
+        datos[85]=fin[28]
+        datos[86]=fin[29]
+        datos[87]=fin[30]
+        datos[88]=fin[31]
+        print(datos)
         return redirect(url_for("resultado_Multicarril"))
     return render_template("multicarril.html", form = form)
 
@@ -282,7 +468,8 @@ def resultado():
 def resultado_Multicarril():
     id = len(db.session.query(Multicaril_db).all())
     registro = Multicaril_db.query.get(id)
-    return render_template('resultados_multicarril.html',datos=registro)
+    id1 = len(db.session.query(Sensibilidad).all())
+    return render_template('resultados_multicarril.html',datos=registro, data=datos)
 
 
 @app.route("/registro/<int:index>", methods=["GET","POST"])
