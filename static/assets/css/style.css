@@ -682,6 +682,9 @@ section {
   justify-content: center;
 }
 
+.casa {
+  color: #18d26e;
+}
 .counts .count-box span {
   font-size: 36px;
   display: block;
@@ -726,6 +729,9 @@ section {
   margin: 0;
 }
 
+.tab {
+  text-align: center;
+}
 .tabs .nav-link:hover {
   color: #e03a3c;
 }

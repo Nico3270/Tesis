@@ -407,7 +407,7 @@
               <h5>Esta velocidad se debe aproximar a la velocidad a flujo libre de una de las cuatro curvas maestras típicas desarrolladas:</h5>
               <br>
               <h5><b>Figura 1. Curvas flujo-velocidad maestras para Colombia</b></h5>
-              <img src="../static/assets/img/curva_maestra.JPG" class="img-fluid" alt="Responsive image">
+              <img src="../static/assets/img/sensibilidad/plot17.png" class="img-fluid" alt="Responsive image">
               <h6>Fuente: Manual INVIAS</h6>
               <br>
           </div>
@@ -603,8 +603,135 @@
     </section>
     <hr>
     <section class="procedimiento-1" style="background-color:white; margin-top: 0%; padding-top: 0%;">
-      <h2 style="text-align: center ;">Análisis de sensibilidad</h2>
-      <h5>Probando datos {{data[56]}}, {{data[21]}}</h5>
+      <div class="container">
+        <h2 style="text-align:center;">Análisis de sensibilidad</h2>
+        <div class="row">
+          <div class="col-lg-5 col-md-12 col-sm-12">
+            <div class="container">
+              <br>
+              <h4 style="text-align:center ; color: rgb(215, 74, 74);">Efecto producido debido a variaciones del volumen de tránsito</h4>
+              <h5 style="text-align:center ;"><b>* Cambios en el Nivel de Servicio</b></h5>
+              <h5 style="text-align:justify ;"> La gráfica 1 presenta la variación que presenta el Nivel del servicio, debido al aumento del volumen de tránsito. Los rangos se presentan a continuación: </h5>
+              <br>
+              <h5><b>Tabla #. Niveles de servicio según volumenes.</b></h5>
+              <table class="table-bordered">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" class="tab">Nivel de servicio</th>
+                    <th scope="col" class="tab">Volumen de tránsito (veh/h/sentido)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="tab">A</td>
+                    <td class="tab">0 - {{data[1]}}</td>
+                  </tr>
+                  <tr>
+                    <td class="tab">B</td>
+                    <td class="tab">{{data[1]+1}} - {{data[2]}}</td>
+                  </tr>
+                  <tr>
+                    <td class="tab">C</td>
+                    <td class="tab">{{data[2]+1}} - {{data[3]}}</td>
+                  </tr>
+                  <tr>
+                    <td class="tab">D</td>
+                    <td class="tab">{{data[3]+1}} - {{data[4]}}</td>
+                  </tr>
+                  <tr>
+                    <td class="tab">E</td>
+                    <td class="tab">{{data[4]+1}} - {{data[5]}}</td>
+                  </tr>
+                  <tr>
+                    <td class="tab">F</td>
+                    <td class="tab">Mayores a {{data[5]+1}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <br>
+              <h5 style="text-align:justify">De los resultados obtenidos se analiza que la vía va a presentar un nivel de servicio <b>E</b> a partir de un voolmen de tránsito igual a <b>{{data[4]+1}} (veh/h/sentido)</b>, valor equivalente a la capacidad de la vía.</h5>
+            </div>
+          </div>
+          <div class="col-lg-7 col-md-12 col-sm-12">
+            <div class="container">
+              <img src="../static/assets/img/sensibilidad/plot.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
+            </div>
+          </div>
+        </div>
+        <hr>
+        <h5 style="text-align:center ; color: rgb(215, 74, 74);"><b>Efecto sobre el flujo vehicular (V<sub>p</sub>, q<sub>p</sub>), velocidad de operación y densidad </b></h5>
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+              <div class="container">
+                <h5 style="text-align:center ;"><b>* Cambios en el flujo vehicular</b></h5>
+                <img src="../static/assets/img/sensibilidad/plot3.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
+                <br>
+                <h5 style="text-align:center ;"><b>* Cambios en la velocidad de operación</b></h5>
+                <img src="../static/assets/img/sensibilidad/plot1.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
+                <br>
+                <hr>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="container">
+                <h5 style="text-align:center ;"><b>* Cambios en la densidad del sector</b></h5>
+                <img src="../static/assets/img/sensibilidad/plot2.png" class="img-fluid" style="width:100%; margin-left: 2rem; margin-top: 0em;" alt="Responsive image">
+                <br>
+                <h5>Tabla de resultados</h5>
+                <table class="table-bordered">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col" class="tab">Nivel de servicio</th>
+                      <th scope="col" class="tab">Flujo vehicular (veh/h/sentido)</th>
+                      <th scope="col" class="tab">Velocidad de operación (km/h)</th>
+                      <th scope="col" class="tab">Densidad (veh/km/carril)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="tab">A</td>
+                      <td class="tab">0 - {{data[6]}}</td>
+                      <td class="tab">{{datos.vel_flujo_libre}} - {{data[16]}}</td>
+                      <td class="tab">0 - {{data[11]}}</td>
+                    </tr>
+                    <tr>
+                      <td class="tab">B</td>
+                      <td class="tab">{{data[6]}} - {{data[7]}}</td>
+                      <td class="tab">{{data[16]}} - {{data[17]}}</td>
+                      <td class="tab">{{data[11]}} - {{data[12]}}</td>
+                    </tr>
+                    <tr>
+                      <td class="tab">C</td>
+                      <td class="tab">{{data[7]}} - {{data[8]}}</td>
+                      <td class="tab">{{data[17]}} - {{data[18]}}</td>
+                      <td class="tab">{{data[12]}} - {{data[13]}}</td>
+                    </tr>
+                    <tr>
+                      <td class="tab">D</td>
+                      <td class="tab">{{data[8]}} - {{data[9]}}</td>
+                      <td class="tab">{{data[18]}} - {{data[19]}}</td>
+                      <td class="tab">{{data[13]}} - {{data[14]}}</td>
+                    </tr>
+                    <tr>
+                      <td class="tab">E</td>
+                      <td class="tab">{{data[9]}} - {{data[10]}}</td>
+                      <td class="tab">{{data[19]}} - {{data[20]}}</td>
+                      <td class="tab">{{data[14]}} - {{data[15]}}</td>
+                    </tr>
+                    <tr>
+                      <td class="tab">F</td>
+                      <td class="tab">Mayores a {{data[10]}}</td>
+                      <td class="tab">Menores a - {{data[20]}}</td>
+                      <td class="tab">Mayores a - {{data[15]}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </section> 
 
 

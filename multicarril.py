@@ -308,62 +308,91 @@ def Ec_generico(terreno):
 
 #Factor de corrección por camiones - Equivalente de camiones Ec para tramos en ascenso
 def Ec_ascenso(pendiente, p_camiones, longitud):
-    pen_inf = (intervalosp(pendiente))[0]
-    pen_sup = (intervalosp(pendiente))[1]
-    if longitud >= 8000:
-        longitud = 7999
-    if pendiente < 1:
-        Ec_asc = interpolacion(tabla_18_1, tabla_18_1x, p_camiones)
-    elif pendiente >= 1 and longitud < 4000:
+    if pendiente < 8:
+        pen_inf = (intervalosp(pendiente))[0]
+        pen_sup = (intervalosp(pendiente))[1]
+        if longitud >= 8000:
+            longitud = 7999
+        if pendiente < 1:
+            Ec_asc = interpolacion(tabla_18_1, tabla_18_1x, p_camiones)
+        elif pendiente >= 1 and longitud < 4000:
+            longitud_inf = intervalos(longitud)[0]
+            longitud_sup = intervalos(longitud)[1]
+            fac_lon_inf = interpolacion(tabla_18x, tabla_18[pen_inf].get(longitud_inf), p_camiones)
+            fac_lon_sup = interpolacion(tabla_18x, tabla_18[pen_inf].get(longitud_sup), p_camiones)
+            Ec_asc_pen_inf = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+            fac_lon_inf = interpolacion(tabla_18x, tabla_18[pen_sup].get(longitud_inf), p_camiones)
+            fac_lon_sup = interpolacion(tabla_18x, tabla_18[pen_sup].get(longitud_sup), p_camiones)
+            Ec_asc_pen_sup = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+            Ec_asc = interpolacion([pen_inf,pen_sup],[Ec_asc_pen_inf, Ec_asc_pen_sup], pendiente)
+        elif pendiente >= 1 and longitud >= 4000:  
+            longitud_inf = intervalos1(longitud)[0]
+            longitud_sup = intervalos1(longitud)[1]
+            fac_lon_inf = interpolacion(tabla_18x, tabla_18[pen_inf].get(longitud_inf), p_camiones)
+            fac_lon_sup = interpolacion(tabla_18x, tabla_18[pen_inf].get(longitud_sup), p_camiones)
+            Ec_asc_pen_inf = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+            fac_lon_inf = interpolacion(tabla_18x, tabla_18[pen_sup].get(longitud_inf), p_camiones)
+            fac_lon_sup = interpolacion(tabla_18x, tabla_18[pen_sup].get(longitud_sup), p_camiones)
+            Ec_asc_pen_sup = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+            Ec_asc = interpolacion([pen_inf,pen_sup],[Ec_asc_pen_inf, Ec_asc_pen_sup], pendiente)
+        return Ec_asc
+    if pendiente == 8 and longitud < 4000:
         longitud_inf = intervalos(longitud)[0]
         longitud_sup = intervalos(longitud)[1]
-        fac_lon_inf = interpolacion(tabla_18x, tabla_18[pen_inf].get(longitud_inf), p_camiones)
-        fac_lon_sup = interpolacion(tabla_18x, tabla_18[pen_inf].get(longitud_sup), p_camiones)
-        Ec_asc_pen_inf = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
-        fac_lon_inf = interpolacion(tabla_18x, tabla_18[pen_sup].get(longitud_inf), p_camiones)
-        fac_lon_sup = interpolacion(tabla_18x, tabla_18[pen_sup].get(longitud_sup), p_camiones)
-        Ec_asc_pen_sup = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
-        Ec_asc = interpolacion([pen_inf,pen_sup],[Ec_asc_pen_inf, Ec_asc_pen_sup], pendiente)
-    elif pendiente >= 1 and longitud >= 4000:  
+        fac_lon_inf = interpolacion(tabla_18x, tabla_18[pendiente].get(longitud_inf), p_camiones)
+        fac_lon_sup = interpolacion(tabla_18x, tabla_18[pendiente].get(longitud_sup), p_camiones)
+        Ec_asc = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+        return Ec_asc
+    elif pendiente == 8 and longitud >= 4000:
         longitud_inf = intervalos1(longitud)[0]
         longitud_sup = intervalos1(longitud)[1]
-        fac_lon_inf = interpolacion(tabla_18x, tabla_18[pen_inf].get(longitud_inf), p_camiones)
-        fac_lon_sup = interpolacion(tabla_18x, tabla_18[pen_inf].get(longitud_sup), p_camiones)
-        Ec_asc_pen_inf = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
-        fac_lon_inf = interpolacion(tabla_18x, tabla_18[pen_sup].get(longitud_inf), p_camiones)
-        fac_lon_sup = interpolacion(tabla_18x, tabla_18[pen_sup].get(longitud_sup), p_camiones)
-        Ec_asc_pen_sup = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
-        Ec_asc = interpolacion([pen_inf,pen_sup],[Ec_asc_pen_inf, Ec_asc_pen_sup], pendiente)
-    return Ec_asc
-
+        fac_lon_inf = interpolacion(tabla_18x, tabla_18[pendiente].get(longitud_inf), p_camiones)
+        fac_lon_sup = interpolacion(tabla_18x, tabla_18[pendiente].get(longitud_sup), p_camiones)
+        Ec_asc = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+        return Ec_asc
 
 
 #Factor de corrección Ec, de equivalente camiones para descenso
 def Ec_descenso(pendiente, p_camiones, longitud):
     pendiente = abs(pendiente)
-    pen_inf = (intervalosp(pendiente))[0]
-    pen_sup = (intervalosp(pendiente))[1]
-    if pendiente <= 2:
-        Ec_desc = interpolacion(tabla_19x, tabla_19[2].get(500), p_camiones)
-    elif pendiente > 2 and longitud < 1000:
-        fac_lon_inf = interpolacion(tabla_19x, tabla_19[pen_inf].get(500), p_camiones)
-        fac_lon_sup = interpolacion(tabla_19x, tabla_19[pen_inf].get(1000), p_camiones)
-        Ec_desc_inf = interpolacion([500,1000],[fac_lon_inf, fac_lon_sup], longitud)
-        fac_lon_inf = interpolacion(tabla_19x, tabla_19[pen_sup].get(500), p_camiones)
-        fac_lon_sup = interpolacion(tabla_19x, tabla_19[pen_sup].get(1000), p_camiones)
-        Ec_desc_sup = interpolacion([500,1000],[fac_lon_inf, fac_lon_sup], longitud)
-        Ec_desc = interpolacion([pen_inf,pen_sup],[Ec_desc_inf,Ec_desc_sup], pendiente)
-    elif pendiente > 2 and longitud > 1000:  
+    if pendiente < 8:
+        pen_inf = (intervalosp(pendiente))[0]
+        pen_sup = (intervalosp(pendiente))[1]
+        if pendiente <= 2:
+            Ec_desc = interpolacion(tabla_19x, tabla_19[2].get(500), p_camiones)
+        elif pendiente > 2 and longitud < 1000:
+            fac_lon_inf = interpolacion(tabla_19x, tabla_19[pen_inf].get(500), p_camiones)
+            fac_lon_sup = interpolacion(tabla_19x, tabla_19[pen_inf].get(1000), p_camiones)
+            Ec_desc_inf = interpolacion([500,1000],[fac_lon_inf, fac_lon_sup], longitud)
+            fac_lon_inf = interpolacion(tabla_19x, tabla_19[pen_sup].get(500), p_camiones)
+            fac_lon_sup = interpolacion(tabla_19x, tabla_19[pen_sup].get(1000), p_camiones)
+            Ec_desc_sup = interpolacion([500,1000],[fac_lon_inf, fac_lon_sup], longitud)
+            Ec_desc = interpolacion([pen_inf,pen_sup],[Ec_desc_inf,Ec_desc_sup], pendiente)
+        elif pendiente > 2 and longitud > 1000:  
+            longitud_inf = intervalos2(longitud)[0]
+            longitud_sup = intervalos2(longitud)[1]
+            fac_lon_inf = interpolacion(tabla_19x, tabla_19[pen_inf].get(longitud_inf), p_camiones)
+            fac_lon_sup = interpolacion(tabla_19x, tabla_19[pen_inf].get(longitud_sup), p_camiones)
+            Ec_desc_inf = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+            fac_lon_inf = interpolacion(tabla_19x, tabla_19[pen_sup].get(longitud_inf), p_camiones)
+            fac_lon_sup = interpolacion(tabla_19x, tabla_19[pen_sup].get(longitud_sup), p_camiones)
+            Ec_desc_sup = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+            Ec_desc = interpolacion([pen_inf,pen_sup],[Ec_desc_inf,Ec_desc_sup], pendiente)
+        return Ec_desc
+    if pendiente == 8 and longitud <= 1000:
+        fac_lon_inf = interpolacion(tabla_19x, tabla_19[pendiente].get(500), p_camiones)
+        fac_lon_sup = interpolacion(tabla_19x, tabla_19[pendiente].get(1000), p_camiones)
+        Ec_desc = interpolacion([500,1000],[fac_lon_inf, fac_lon_sup], longitud)    
+        return Ec_desc
+    elif pendiente == 8 and longitud > 1000:
         longitud_inf = intervalos2(longitud)[0]
         longitud_sup = intervalos2(longitud)[1]
-        fac_lon_inf = interpolacion(tabla_19x, tabla_19[pen_inf].get(longitud_inf), p_camiones)
-        fac_lon_sup = interpolacion(tabla_19x, tabla_19[pen_inf].get(longitud_sup), p_camiones)
-        Ec_desc_inf = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
-        fac_lon_inf = interpolacion(tabla_19x, tabla_19[pen_sup].get(longitud_inf), p_camiones)
-        fac_lon_sup = interpolacion(tabla_19x, tabla_19[pen_sup].get(longitud_sup), p_camiones)
-        Ec_desc_sup = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
-        Ec_desc = interpolacion([pen_inf,pen_sup],[Ec_desc_inf,Ec_desc_sup], pendiente)
-    return Ec_desc 
+        fac_lon_inf = interpolacion(tabla_19x, tabla_19[pendiente].get(longitud_inf), p_camiones)
+        fac_lon_sup = interpolacion(tabla_19x, tabla_19[pendiente].get(longitud_sup), p_camiones)
+        Ec_desc = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
+        return Ec_desc   
+
+
 
 
 

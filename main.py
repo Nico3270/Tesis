@@ -10,6 +10,9 @@ import capacidad_NS as cap
 import multicarril as mp
 import Sensibilidad as sen
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+from matplotlib import pyplot as plt
 
 
 app = Flask(__name__)
@@ -366,15 +369,15 @@ def multicarril():
         db.session.add(calculo)
         db.session.commit()
         datos[0]="element"
-        datos[1]=vol[0]
-        datos[2]=vol[1]
-        datos[3]=vol[2]
-        datos[4]=vol[3]
-        datos[5]=vol[4]
-        datos[6]=vol[5]
-        datos[7]=vol[6]
-        datos[8]=vol[7]
-        datos[9]=vol[8]
+        datos[1]=int(vol[0])
+        datos[2]=int(vol[1])
+        datos[3]=int(vol[2])
+        datos[4]=int(vol[3])
+        datos[5]=int(vol[4])
+        datos[6]=int(vol[5])
+        datos[7]=int(vol[6])
+        datos[8]=int(vol[7])
+        datos[9]=int(vol[8])
         datos[10]=vol[9]
         datos[11]=vol[10]
         datos[12]=vol[11]
@@ -454,6 +457,8 @@ def multicarril():
         datos[86]=fin[29]
         datos[87]=fin[30]
         datos[88]=fin[31]
+        plt.close()
+        matplotlib.use('Agg')
         print(datos)
         return redirect(url_for("resultado_Multicarril"))
     return render_template("multicarril.html", form = form)
