@@ -336,7 +336,7 @@ def Ec_ascenso(pendiente, p_camiones, longitud):
             Ec_asc_pen_sup = interpolacion([longitud_inf,longitud_sup],[fac_lon_inf, fac_lon_sup], longitud)
             Ec_asc = interpolacion([pen_inf,pen_sup],[Ec_asc_pen_inf, Ec_asc_pen_sup], pendiente)
         return Ec_asc
-    if pendiente == 8 and longitud < 4000:
+    elif pendiente == 8 and longitud < 4000:
         longitud_inf = intervalos(longitud)[0]
         longitud_sup = intervalos(longitud)[1]
         fac_lon_inf = interpolacion(tabla_18x, tabla_18[pendiente].get(longitud_inf), p_camiones)

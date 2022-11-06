@@ -144,7 +144,7 @@
               <dt class="col-sm-4">Velocidad a flujo libre aproximada a curva maestra de referencia: </dt>
               <dd class="col-sm-8">{{datos.vel_flujo_libre}} km/h</dd>
               <hr>
-              <dt class="col-sm-4">Coeficientes de las ecuaciones flujo - velocidad</dt>
+              <dt class="col-sm-4">Coeficientes de las ecuaciónes flujo - velocidad</dt>
               <dd class="col-sm-8">
                 <p>Velocidad a flujo libre (vf): <b>{{datos.vel_flujo_libre}} km/h</b></p>
                 <p>Coeficiente <b>a</b> =      <b>{{datos.a}}</b>.</p>
@@ -152,7 +152,7 @@
                 <p>Coeficiente <b>c</b> =      <b>{{datos.c}}</b>.</p>
               </dd>
               <hr>
-              <h5 style="text-align:center;color:rgb(215, 74, 74) ;"><b>Correción del Volumen de tránsito mixto</b></h5>
+              <h5 style="text-align:center;color:rgb(215, 74, 74) ;"><b>Corrección del Volumen de tránsito mixto</b></h5>
               <dt class="col-sm-5">Factor de equivalencia de camiones (Ec): </dt>
               <dd class="col-sm-7"><b>{{datos.Ec}}</b> (Tipo de terreno: {{datos.v2}})</dd>
               <hr>
@@ -181,7 +181,7 @@
     <section class="procedimiento-1" style="background-color:white; margin-bottom: 0%; padding-bottom: 0%;">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-4">
+          <div class="col-lg-6 ">
             <div class="container">
               <h2 style="text-align:center ;">Procedimiento realizado</h2>
               <h4 style="text-align:center ; color: rgb(215, 74, 74);">Paso 1: Sectorización, definición del tipo de aplicación y preparación
@@ -196,13 +196,13 @@
               <h5>Donde: </h5>
               <h5><b>VL</b> = velocidad a flujo libre del sector</h5>
               <h5><b>VG</b> = velocidad genérica del sector</h5>
-              <h5><b>f<sub>C</sub></b> = Correción por ancho de carril.</h5>
-              <h5><b>f<sub>S</sub></b> = Correción por ancho de separador.</h5>
-              <h5><b>f<sub>B</sub></b> = Correción por promedio de ancho de bermas.</h5>
-              <h5><b>f<sub>A</sub></b> = Correción por densidad de accesos.</h5>
+              <h5><b>f<sub>C</sub></b> = Corrección por ancho de carril.</h5>
+              <h5><b>f<sub>S</sub></b> = Corrección por ancho de separador.</h5>
+              <h5><b>f<sub>B</sub></b> = Corrección por promedio de ancho de bermas.</h5>
+              <h5><b>f<sub>A</sub></b> = Corrección por densidad de accesos.</h5>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-4">
+          <div class="col-lg-6">
             <div class="container">
               <h4 style="text-align:center ; color: rgb(215, 74, 74)">Velocidad genérica seleccionada</h4>
               <h5>La velocidad generica se selecciona a partir de los resultados ingresados, y los parámetros establecidos en la tabla 11.</h5>
@@ -252,10 +252,10 @@
       </div>
       <hr>
       <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-4">
+        <div class="col-lg-6 ">
           <div class="container">
             <h4 style="text-align:center ; color: rgb(215, 74, 74)">Correcciones a la velocidad genérica</h4>
-                <h5 style="text-align:center ;"><b>* Correción por ancho de carril (f<sub>C</sub>)</b></h5>
+                <h5 style="text-align:center ;"><b>* Corrección por ancho de carril (f<sub>C</sub>)</b></h5>
                 <h5>La corrección por ancho de carril se hace con los factores indicados en la Tabla 12.</h5>
                 <h5><b>Tabla 12. Ajuste de velocidad genérica por efecto del ancho</b></h5>
                 <table class="table-bordered">
@@ -281,9 +281,9 @@
                 </table>
                 
                 <br>
-                <h5>Para una vía con ancho por carril de {{datos.v7}} metros, se obtiene factor de corrección f<sub>C</sub> igual a <b>{{datos.fc}} km/h</b>. </h5>
+                <h5>Para una vía con ancho por carril de {{datos.v7}} metros, se obtiene un factor de corrección f<sub>C</sub> igual a <b>{{datos.fc}} km/h</b>. </h5>
                 <hr>
-                <h5 style="text-align:center ;"><b>* Correción por ancho de separador (f<sub>S</sub>)</b></h5>
+                <h5 style="text-align:center ;"><b>* Corrección por ancho de separador (f<sub>S</sub>)</b></h5>
                 <h5>La corrección por ancho de separador se hace con los factores indicados en la Tabla 13.</h5>
                 <h5><b>Tabla 13. Ajuste de velocidad genérica por efecto del ancho de separador</b></h5>
                 <table class="table-bordered">
@@ -322,9 +322,9 @@
                 <h5>Para una vía con ancho de separador de {{datos.v9}} metros, se obtiene factor de corrección f<sub>S</sub> igual a <b>{{datos.fs}} km/h</b>. </h5>
           </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-4">
+        <div class="col-lg-6 ">
           <div class="container">
-            <h5 style="text-align:center ;"><b>* Correción por ancho promedio de bermas (f<sub>B</sub>)</b></h5>
+            <h5 style="text-align:center ;"><b>* Corrección por ancho promedio de bermas (f<sub>B</sub>)</b></h5>
                 <h5>La corrección por ancho promedio de bermas se realiza con los factores indicados en la Tabla 14.</h5>
                 <h5><b>Tabla 14. Ajuste de velocidad genérica por efecto del ancho promedio de bermas (f<sub>B</sub>)</b></h5>
                 <table class="table-bordered">
@@ -359,8 +359,8 @@
                 <h5>Para una vía con ancho promedio de bermas de {{(datos.v10+datos.v11)/2}} metros, se obtiene factor de corrección f<sub>B</sub> igual a <b>{{datos.fb}} km/h</b>. </h5>
                 <br>
                 <hr>
-                <h5 style="text-align:center ;"><b>* Correción por densidad de accesos (f<sub>A</sub>)</b></h5>
-                <h5>La corrección por densidad de accesos se realiza con los factores indicados en la Tabla 15.</h5>
+                <h5 style="text-align:center ;"><b>* Corrección por densidad de accesos (f<sub>A</sub>)</b></h5>
+                <h5>La corrección por densidad de accesos se efectua con los factores indicados en la Tabla 15.</h5>
                 <h5><b>Tabla 15. Ajuste de velocidad genérica por efecto de densidad de accesos (f<sub>A</sub>)</b></h5>
                 <table class="table-bordered">
                   <thead class="thead-dark">
@@ -394,11 +394,11 @@
       </div>
       <hr>
       <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-4">
+        <div class="col-lg-6">
           <div class="container">
             <h4 style="text-align:center ;"><b>Velocidad a flujo libre corregida</b></h4>
               <br>
-              <h5>Se obtiene la velocidad a flujo libre corregida, reemplazando los valores obtenidos previaments: </h5>
+              <h5>Se obtiene la velocidad a flujo libre corregida, reemplazando los valores obtenidos previamente: </h5>
               <h4 style="font-family: 'Tinos', serif; text-align: center;"><i> VL = {{datos.vel_generica}}km/h - {{datos.fc}}km/h - {{datos.fs}}km/h - {{datos.fb}}km/h - {{datos.fa}}km/h</i></h4>
               <h4 style="font-family: 'Tinos', serif; text-align: center;"><i> VL = <b>{{datos.V_libre}} km/h</b></i></h4>
               <br>
@@ -412,11 +412,11 @@
               <br>
           </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-4">
+        <div class="col-lg-6 ">
           <div class="container">
             <h4 style="text-align:center ; color: rgb(215, 74, 74);">Paso 3: Cálculo del flujo vehicular</h4>
               <h5>Debe corregirse el volumen de tránsito mixto y tenerse en cuenta el equivalente de camiones</h5>
-              <h5 style="text-align:center ;"><b>* Correción del volumen de tránsito mixto</b></h5>
+              <h5 style="text-align:center ;"><b>* Corrección del volumen de tránsito mixto</b></h5>
               <h5>El volumen de tránsito en vehículos mixtos (veh/h/sentido) se debe convertir en flujo vehicular, mediante la siguiente ecuación: </h5>
               <img src="../static/assets/img/ecuacion.JPG" class="img-fluid" style="width:60%; margin-left: 5rem;" alt="Responsive image">
               <br>
@@ -483,7 +483,7 @@
               <h5 style="text-align:center ;"><b>* Rampas en Descenso </b></h5>
               <h5 style="text-align:justify ;">Esta situación corresponde a sectores de análisis con pendientes decendentes sostenidas. Es posible realizar ponderaciones de pendientes en tramos con rampas continuas en descenso con longitudes de pendientes menores de 1500 m. Si se supera este límite de longitud se deberá estudiar esa rampa en forma independiente.</h5>
               <h5 style="text-align:justify ;">Cuando la aplicación corresponde a rampa en descenso se deben utilizar los equivalentes indicados en la <b><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger btn-sm">Tabla 19</a></b>.</h5>
-              <h5 style="text-align:justify ;">Para un tipo de terreno <b>{{datos.v2}} - {{datos.v21}}</b> con pendiente de <b>{{datos.v4}}%</b> , se realiza la interpolación mediante el uso de la <b>>Tabla 19</b>, y se obtiene un equivalente de camiones <b>E<sub>C</sub></b> igual a <b>{{datos.Ec}}.</b></h5>
+              <h5 style="text-align:justify ;">Para un tipo de terreno <b>{{datos.v2}} - {{datos.v21}}</b> con pendiente de <b>{{datos.v4}}%</b>, se realiza la interpolación mediante el uso de la <b>>Tabla 19</b>, y se obtiene un equivalente de camiones <b>E<sub>C</sub></b> igual a <b>{{datos.Ec}}.</b></h5>
               {% endif %}
               <br>
               <h5 style="text-align:justify ;">Reemplazando en la ecuación anterior, los valores P<sub>C</sub> igual a {{datos.v17}}% y E<sub>C</sub> equivalente a {{datos.Ec}}, se obtiene  que el factor de corrección por camiones <b>(f<sub>HV</sub>)</b> es igual a <b>{{datos.fhv}}.</b></h5>
@@ -493,7 +493,7 @@
         <div class="col-lg-6 col-md-6 col-sm-4">
           <div class="container">
             <h5 style="text-align:center ;"><b>* Flujo de tránsito, en veh/h/carril. (q<sub>p</sub>) </b></h5>
-              <h5>Se reemplazan los siguientes valores en la ecuacion .</h5>
+              <h5>Se reemplazan los siguientes valores en la ecuación .</h5>
                 <ul>
                   <li><b><i>V</i></b>: {{datos.v18}} veh/h/sentido</li>
                   <li><b><i>N</i></b>: {{datos.v6}} carriles</li>
@@ -506,7 +506,7 @@
                   <li><b>FHP:</b> {{datos.v16}}</li>
                   <li><b>F<sub>HV</sub>:</b> {{datos.fhv}}</li>
                 </ul>
-              <h5>Finalmente se obtiene un flujo vehicular <b>(q<sub>p</sub> = v<sub>p</sub>)</b> igual a <b>{{datos.qp}} veh/h/carril </b></h5>
+              <h5>Finalmente, se obtiene un flujo vehicular <b>(q<sub>p</sub> = v<sub>p</sub>)</b> igual a <b>{{datos.qp}} veh/h/carril </b></h5>
               <br>
           </div>
         </div>
@@ -613,7 +613,7 @@
               <h5 style="text-align:center ;"><b>* Cambios en el Nivel de Servicio</b></h5>
               <h5 style="text-align:justify ;"> La gráfica 1 presenta la variación que presenta el Nivel del servicio, debido al aumento del volumen de tránsito. Los rangos se presentan a continuación: </h5>
               <br>
-              <h5><b>Tabla #. Niveles de servicio según volumenes.</b></h5>
+              <h6><b>Tabla #. Niveles de servicio según volumenes.</b></h6>
               <table class="table-bordered">
                 <thead class="thead-dark">
                   <tr>
@@ -654,6 +654,7 @@
           </div>
           <div class="col-lg-7 col-md-12 col-sm-12">
             <div class="container">
+              <h6 style="text-align:center ;margin-bottom: 0em;"><b>Gráfica #. Niveles de servicio según volumenes.</b></h6>
               <img src="../static/assets/img/sensibilidad/plot.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
             </div>
           </div>
@@ -664,20 +665,24 @@
             <div class="col-lg-6 col-md-12 col-sm-12">
               <div class="container">
                 <h5 style="text-align:center ;"><b>* Cambios en el flujo vehicular</b></h5>
+                <h6><b>Gráfica #. Efecto producido en el flujo vehicular, por cambios en volumen de tránsito.</b></h6>
                 <img src="../static/assets/img/sensibilidad/plot3.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
                 <br>
                 <h5 style="text-align:center ;"><b>* Cambios en la velocidad de operación</b></h5>
+                <h6><b>Gráfica #. Efecto producido en la velocidad de operación, por cambios en volumnen de tránsito.</b></h6>
                 <img src="../static/assets/img/sensibilidad/plot1.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
                 <br>
-                <hr>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="container">
                 <h5 style="text-align:center ;"><b>* Cambios en la densidad del sector</b></h5>
+                <h6><b>Gráfica #. Efecto producido en la densidad, por cambios en volumnen de tránsito.</b></h6>
                 <img src="../static/assets/img/sensibilidad/plot2.png" class="img-fluid" style="width:100%; margin-left: 2rem; margin-top: 0em;" alt="Responsive image">
                 <br>
-                <h5>Tabla de resultados</h5>
+                <br>
+                <hr>
+                <h6><b>Tabla #. Resultados obtenidos.</b></h6>
                 <table class="table-bordered">
                   <thead class="thead-dark">
                     <tr>
@@ -726,6 +731,149 @@
                     </tr>
                   </tbody>
                 </table>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+              <h5 style="text-align:center ; color: rgb(215, 74, 74);"><b>Efecto sobre el flujo vehicular (V<sub>p</sub>, q<sub>p</sub>), velocidad de operación y densidad al variar la pendiente y mantener constante los demás factores</b></h5>
+              <div class="col-lg-6">
+                <div class="container">
+                  <h5 style="text-align:center ;"><b>* Cambios en el Nivel de Servicio</b></h5>
+                  <h5 style="text-align:justify ;"> La gráfica # presenta la variación que presenta el Nivel del servicio, debido a la pendiente del sector de estudio. Los resultados se presentan a continuación: </h5>
+                  <br>
+                  <h6><b>Tabla #. Niveles de servicio según volumenes.</b></h6>
+                  <table class="table-bordered">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col" class="tab">Pendiente</th>
+                        <th scope="col" class="tab">Nivel de servicio</th>
+                        <th scope="col" class="tab">Flujo vehicular (veh/h/sentido)</th>
+                        <th scope="col" class="tab">Velocidad de operación (km/h)</th>
+                        <th scope="col" class="tab">Densidad (veh/km/carril)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="tab">0</td>
+                        <td class="tab">{{data[21]}}</td>
+                        <td class="tab">{{data[30]}}</td>
+                        <td class="tab">{{data[39]}}</td>
+                        <td class="tab">{{data[48]}}</td>
+                      </tr>
+                      <tr>
+                        <td class="tab">1</td>
+                        <td class="tab">{{data[22]}}</td>
+                        <td class="tab">{{data[31]}}</td>
+                        <td class="tab">{{data[40]}}</td>
+                        <td class="tab">{{data[49]}}</td>
+                      </tr>
+                      <tr>
+                        <td class="tab">2</td>
+                        <td class="tab">{{data[23]}}</td>
+                        <td class="tab">{{data[32]}}</td>
+                        <td class="tab">{{data[41]}}</td>
+                        <td class="tab">{{data[50]}}</td>
+                      </tr>
+                      <tr>
+                        <td class="tab">3</td>
+                        <td class="tab">{{data[24]}}</td>
+                        <td class="tab">{{data[33]}}</td>
+                        <td class="tab">{{data[42]}}</td>
+                        <td class="tab">{{data[51]}}</td>
+                      </tr>
+                      <tr>
+                        <td class="tab">4</td>
+                        <td class="tab">{{data[25]}}</td>
+                        <td class="tab">{{data[34]}}</td>
+                        <td class="tab">{{data[43]}}</td>
+                        <td class="tab">{{data[52]}}</td>
+                      </tr>
+                      <tr>
+                        <td class="tab">5</td>
+                        <td class="tab">{{data[26]}}</td>
+                        <td class="tab">{{data[35]}}</td>
+                        <td class="tab">{{data[44]}}</td>
+                        <td class="tab">{{data[53]}}</td>
+                      </tr>
+                      <tr>
+                        <td class="tab">6</td>
+                        <td class="tab">{{data[27]}}</td>
+                        <td class="tab">{{data[36]}}</td>
+                        <td class="tab">{{data[45]}}</td>
+                        <td class="tab">{{data[54]}}</td>
+                      </tr>
+                      <tr>
+                        <td class="tab">7</td>
+                        <td class="tab">{{data[28]}}</td>
+                        <td class="tab">{{data[37]}}</td>
+                        <td class="tab">{{data[46]}}</td>
+                        <td class="tab">{{data[55]}}</td>
+                      </tr>
+                      <tr>
+                        <td class="tab">8</td>
+                        <td class="tab">{{data[29]}}</td>
+                        <td class="tab">{{data[38]}}</td>
+                        <td class="tab">{{data[47]}}</td>
+                        <td class="tab">{{data[56]}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <br>
+                  <h6><b>Gráfica #. Efecto producido en la densidad, por cambios en volumnen de tránsito.</b></h6>
+                  <img src="../static/assets/img/sensibilidad/plot5.png" class="img-fluid" style="width:100%; margin-left: 2rem; margin-top: 0em;" alt="Responsive image">
+                  <br>
+                  <h6><b>Gráfica #. Efecto producido en la densidad, por cambios en volumnen de tránsito.</b></h6>
+                  <img src="../static/assets/img/sensibilidad/plot6.png" class="img-fluid" style="width:100%; margin-left: 2rem; margin-top: 0em;" alt="Responsive image">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="container">
+                  <h6><b>Gráfica #. Efecto producido en la densidad, por cambios en volumnen de tránsito.</b></h6>
+                  <img src="../static/assets/img/sensibilidad/plot4.png" class="img-fluid" style="width:100%; margin-left: 2rem; margin-top: 0em;" alt="Responsive image">
+                  <h6><b>Gráfica #. Efecto producido en la densidad, por cambios en volumnen de tránsito.</b></h6>
+                  <img src="../static/assets/img/sensibilidad/plot7.png" class="img-fluid" style="width:100%; margin-left: 2rem; margin-top: 0em;" alt="Responsive image">
+                </div>
+              </div>
+          </div>
+          <hr>
+          <div class="row">
+            <h5 style="text-align:center ; color: rgb(215, 74, 74);"><b>Efecto sobre el flujo vehicular (V<sub>p</sub>, q<sub>p</sub>), velocidad de operación y densidad al variar el porcentaje de camiones y mantener constante los demás factores</b></h5>
+            <div class="col-lg-6">
+              <div class="container">
+                <h6><b>Gráfica #. Efecto producido en la densidad, por cambios en volumnen de tránsito.</b></h6>
+                <img src="../static/assets/img/sensibilidad/plot8.png" class="img-fluid" style="width:100%; margin-left: 2rem; margin-top: 0em;" alt="Responsive image">
+                <h6><b>Gráfica #. Efecto producido en la densidad, por cambios en volumnen de tránsito.</b></h6>
+                <img src="../static/assets/img/sensibilidad/plot9.png" class="img-fluid" style="width:100%; margin-left: 2rem; margin-top: 0em;" alt="Responsive image">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="container">
+                <h6><b>Gráfica #. Efecto producido en la densidad, por cambios en volumnen de tránsito.</b></h6>
+                <img src="../static/assets/img/sensibilidad/plot10.png" class="img-fluid" style="width:100%; margin-left: 2rem; margin-top: 0em;" alt="Responsive image">
+                <h6><b>Gráfica #. Efecto producido en la densidad, por cambios en volumnen de tránsito.</b></h6>
+                <img src="../static/assets/img/sensibilidad/plot11.png" class="img-fluid" style="width:100%; margin-left: 2rem; margin-top: 0em;" alt="Responsive image">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <h5 style="text-align:center ; color: rgb(215, 74, 74);"><b>Otros análisis de sensibilidad</b></h5>
+            <div class="col-lg-6">
+              <div class="container">
+                <h6><b>Gráfica #. Efecto producido en la densidad, por cambios en volumnen de tránsito.</b></h6>
+                <img src="../static/assets/img/sensibilidad/plot12.png" class="img-fluid" style="width:100%; margin-left: 2rem; margin-top: 0em;" alt="Responsive image">
+                <h6><b>Gráfica #. Efecto producido en la densidad, por cambios en volumnen de tránsito.</b></h6>
+                <img src="../static/assets/img/sensibilidad/plot13.png" class="img-fluid" style="width:100%; margin-left: 2rem; margin-top: 0em;" alt="Responsive image">
+                <h6><b>Gráfica #. Efecto producido en la densidad, por cambios en volumnen de tránsito.</b></h6>
+                <img src="../static/assets/img/sensibilidad/plot16.png" class="img-fluid" style="width:100%; margin-left: 2rem; margin-top: 0em;" alt="Responsive image">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="container">
+                <h6><b>Gráfica #. Efecto producido en la densidad, por cambios en volumnen de tránsito.</b></h6>
+                <img src="../static/assets/img/sensibilidad/plot14.png" class="img-fluid" style="width:100%; margin-left: 2rem; margin-top: 0em;" alt="Responsive image">
+                <h6><b>Gráfica #. Efecto producido en la densidad, por cambios en volumnen de tránsito.</b></h6>
+                <img src="../static/assets/img/sensibilidad/plot15.png" class="img-fluid" style="width:100%; margin-left: 2rem; margin-top: 0em;" alt="Responsive image">
               </div>
             </div>
           </div>

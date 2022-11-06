@@ -245,6 +245,57 @@ class Multicarril(FlaskForm):
     submit = SubmitField("Calcular Capacidad y Nivel de servicio")
 
 
+#Gráfica de curva maestra
+lista_maestra = np.arange(0,2500)
+def velo(vel, a, b, c, valor):
+    res = vel-a*((valor/b)**c)
+    return res
+datos96 = []
+datos90 = []
+datos80 = []
+datos70 = []
+for element in lista_maestra:
+    res1 = velo(80,2.375,1036.550,2.044,element)
+    res2= velo(70,5.497,692.345,1.010,element)
+    res3= velo(96,4.609,1124.526,1.624,element)
+    res4= velo(90,1.040,882.082,2.545,element)
+    datos80.append(res1)
+    datos70.append(res2)
+    datos96.append(res3)
+    datos90.append(res4)
+
+def maestra(flujo, vel_operacion):
+    plt.plot(lista_maestra, datos96, color="black")
+    plt.plot(lista_maestra, datos90, color="black")
+    plt.plot(lista_maestra, datos80, color="black")
+    plt.plot(lista_maestra, datos70, color="black")
+    plt.plot([0,600],[0,100])
+    plt.plot([0,1100],[0,100])
+    plt.plot([0,1600],[0,100])
+    plt.plot([0,2200],[0,100])
+    plt.plot([0,2300],[0,82])
+    plt.text(150.0,70.0,"70")
+    plt.text(150.0,80.0,"80")
+    plt.text(150.0,90.0,"90")
+    plt.text(150.0,96.0,"96")
+    plt.text(30.0,55.0,"Nivel A",weight="bold")
+    plt.text(400.0,60.0,"Nivel B",weight="bold")
+    plt.text(810.0,68.0,"Nivel C",weight="bold")
+    plt.text(1700.0,90.0,"Nivel D",weight="bold")
+    plt.text(2050.0,88.0,"Nivel E",weight="bold")
+    plt.scatter(flujo,vel_operacion, label="Resultado obtenido")
+    plt.ylim([0,100])
+    plt.xlim([0,2300])
+    plt.xlabel("Flujo vehicular, qp, (ades/hora/carril)")
+    plt.ylabel("Velocidad (km/h)")
+    plt.xticks(np.arange(0,2201,200))
+    plt.yticks(np.arange(0,101,10))
+    plt.legend(loc="lower right")
+    plt.grid()
+    plt.savefig("static/assets/img/sensibilidad/plot17.png")
+    plt.close()
+
+
 #Función que convierte en si o no un True or False
 def True_or_false(variable):
     if variable == 1 or variable == True or variable == "1":
@@ -349,16 +400,17 @@ def multicarril():
         v18 = form.vol_transito.data
         print(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
         #análisis de sensibilidad
-        vol = sen.sensibilidad_volumen(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
-        pen = sen.sensibilidad_pendiente(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
-        fin = sen.sensibilidad_bool(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
-        sen.sensibilidad_camiones(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
-        sen.sensiblidad_carriles(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
-        sen.sensibilidad_ancho_carril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
-        sen.sensibilidad_ancho_separador(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
-        sen.sensibilidad_ancho_bermas(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
-        sen.sensibilidad_n_accesos(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)       
         rs= mp.calc_multicarril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+        vol = sen.sensibilidad_volumen(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15,rs[15],v18,rs[13],rs[12],rs[14])
+        pen = sen.sensibilidad_pendiente(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15, rs[15],v18,rs[13],rs[12],rs[14])
+        fin = sen.sensibilidad_bool(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+        sen.sensibilidad_camiones(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15,rs[15],v18,rs[13],rs[12],rs[14])
+        sen.sensiblidad_carriles(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15,rs[15])
+        sen.sensibilidad_ancho_carril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15, rs[15])
+        sen.sensibilidad_ancho_separador(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15, rs[15])
+        sen.sensibilidad_ancho_bermas(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15, rs[15])
+        sen.sensibilidad_n_accesos(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15, rs[15])
+        maestra(rs[12], rs[9])       
         v8 = True_or_false(v8)
         v13 = True_or_false(v13)
         v14 = True_or_false(v14)
