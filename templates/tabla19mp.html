@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Tabla 19</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/assets/img/favicon.png" rel="icon">
+  <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,700;1,100&family=Tinos:ital@0;1&family=Ubuntu:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="../static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+  <!-- Template Main CSS File -->
+  <link href="../static/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Presento - v3.9.0
+  * Template URL: https://bootstrapmade.com/presento-bootstrap-corporate-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+  {% import "bootstrap/wtf.html" as wtf %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo me-auto"><a href="{{url_for('home')}}">Capacidad y Niveles de Servicio<span>.</span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a href="{{url_for('home')}}" class="logo me-auto"><img src="../static/assets/img/logo.png" alt=""></a>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{{url_for('home')}}">Inicio</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('blog')}}">Blog</a></li>
+          <li><a class="nav-link scrollto " href="{{url_for('resultados')}}">Resultados</a></li>
+          <li><a href="{{url_for('resultado')}}">Último</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('multicarril')}}">Multicarril</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="#about" class="get-started-btn scrollto">Iniciar</a>
+    </div>
+  </header><!-- End Header -->
+    <br>
+    <br>
+  <section class="tabla18">
+    <div class="container">
+      <h3 class = "tab" >Tabla 19. Equivalentes de camión en pendientes descendentes.</h3>
+      <br>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="table-responsive">
+            <table class="table-bordered table-hover table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col"class = "tab"" >Pendiente</th>
+                  <th scope="col"class = "tab"" >Longitud</th>
+                  <th colspan = "9" class = "tab"" >Porcentaje de camiones (%)</th>
+                </tr>
+              </thead>
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col"class = "tab"" > (%)</th>
+                    <th scope="col"class = "tab"" > (m)</th>
+                    <th scope="col"class = "tab"" >5</th>
+                    <th scope="col"class = "tab"" >10</th>
+                    <th scope="col"class = "tab"" >15</th>
+                    <th scope="col"class = "tab"" >20</th>
+                    <th scope="col"class = "tab"" >30</th>
+                    <th scope="col"class = "tab"" >35</th>
+                    <th scope="col"class = "tab"" >40</th>
+                    <th scope="col"class = "tab"" >50</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class = "tab" > <= 2</td>
+                    <td class = "tab" >500</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >2.0</td>
+                    <td class = "tab" >1.9</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >1000</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >2.0</td>
+                    <td class = "tab" >1.9</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >2000</td>
+                    <td class = "tab" >2.9</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.0</td>
+                    <td class = "tab" >2.0</td>
+                    <td class = "tab" >1.9</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >3000</td>
+                    <td class = "tab" >2.9</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >2.0</td>
+                    <td class = "tab" >2.0</td>
+                    <td class = "tab" >1.9</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >4000</td>
+                    <td class = "tab" >2.9</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >2.0</td>
+                    <td class = "tab" >2.0</td>
+                    <td class = "tab" >1.9</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >5000</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.0</td>
+                    <td class = "tab" >1.9</td>
+                    <td class = "tab" >1.9</td>
+                    <td class = "tab" >1.8</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >6000</td>
+                    <td class = "tab" >3.5</td>
+                    <td class = "tab" >3.3</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >2.8</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.1</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >7000</td>
+                    <td class = "tab" >3.4</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.1</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >8000</td>
+                    <td class = "tab" >3.4</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.1</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >9000</td>
+                    <td class = "tab" >3.3</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.1</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" >-3</td>
+                    <td class = "tab" >500</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.8</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >2.0</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >1000</td>
+                    <td class = "tab" >3.3</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >2.0</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >2000</td>
+                    <td class = "tab" >3.3</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >1.9</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >3000</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >1.9</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >4000</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >2.0</td>
+                    <td class = "tab" >1.9</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >5000</td>
+                    <td class = "tab" >3.5</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >2.0</td>
+                    <td class = "tab" >1.9</td>
+                    <td class = "tab" >1.9</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >6000</td>
+                    <td class = "tab" >4.6</td>
+                    <td class = "tab" >4.3</td>
+                    <td class = "tab" >3.8</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.9</td>
+                    <td class = "tab" >2.8</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.4</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >7000</td>
+                    <td class = "tab" >4.5</td>
+                    <td class = "tab" >4.2</td>
+                    <td class = "tab" >3.7</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.9</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.4</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >8000</td>
+                    <td class = "tab" >4.4</td>
+                    <td class = "tab" >4.0</td>
+                    <td class = "tab" >3.6</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.9</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.3</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >9000</td>
+                    <td class = "tab" >4.3</td>
+                    <td class = "tab" >3.9</td>
+                    <td class = "tab" >3.5</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.8</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.3</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" >-4</td>
+                    <td class = "tab" >500</td>
+                    <td class = "tab" >3.6</td>
+                    <td class = "tab" >2.8</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >2.0</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >1000</td>
+                    <td class = "tab" >3.6</td>
+                    <td class = "tab" >2.9</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >2.0</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >2000</td>
+                    <td class = "tab" >3.7</td>
+                    <td class = "tab" >2.9</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >2.0</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >3000</td>
+                    <td class = "tab" >3.6</td>
+                    <td class = "tab" >2.9</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >2.0</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >4000</td>
+                    <td class = "tab" >3.5</td>
+                    <td class = "tab" >2.8</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >2.0</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >5000</td>
+                    <td class = "tab" >3.7</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >2.0</td>
+                    <td class = "tab" >1.9</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >6000</td>
+                    <td class = "tab" >5.4</td>
+                    <td class = "tab" >5.0</td>
+                    <td class = "tab" >4.4</td>
+                    <td class = "tab" >3.9</td>
+                    <td class = "tab" >3.3</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.8</td>
+                    <td class = "tab" >2.6</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >7000</td>
+                    <td class = "tab" >5.3</td>
+                    <td class = "tab" >4.8</td>
+                    <td class = "tab" >4.3</td>
+                    <td class = "tab" >3.8</td>
+                    <td class = "tab" >3.3</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.8</td>
+                    <td class = "tab" >2.6</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >8000</td>
+                    <td class = "tab" >5.2</td>
+                    <td class = "tab" >4.6</td>
+                    <td class = "tab" >4.1</td>
+                    <td class = "tab" >3.7</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.8</td>
+                    <td class = "tab" >2.6</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >9000</td>
+                    <td class = "tab" >5.1</td>
+                    <td class = "tab" >4.4</td>
+                    <td class = "tab" >4.0</td>
+                    <td class = "tab" >3.6</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.5</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" >-5</td>
+                    <td class = "tab" >500</td>
+                    <td class = "tab" >3.5</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.8</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.1</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >1000</td>
+                    <td class = "tab" >3.5</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.9</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.1</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >2000</td>
+                    <td class = "tab" >3.5</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.8</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.1</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >3000</td>
+                    <td class = "tab" >3.4</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.9</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.1</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >4000</td>
+                    <td class = "tab" >3.3</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.8</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.0</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >5000</td>
+                    <td class = "tab" >3.7</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.1</td>
+                    <td class = "tab" >1.9</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >6000</td>
+                    <td class = "tab" >6.5</td>
+                    <td class = "tab" >5.3</td>
+                    <td class = "tab" >5.1</td>
+                    <td class = "tab" >4.3</td>
+                    <td class = "tab" >3.6</td>
+                    <td class = "tab" >3.3</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.7</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >7000</td>
+                    <td class = "tab" >6.5</td>
+                    <td class = "tab" >5.1</td>
+                    <td class = "tab" >4.9</td>
+                    <td class = "tab" >4.3</td>
+                    <td class = "tab" >3.6</td>
+                    <td class = "tab" >3.3</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.7</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >8000</td>
+                    <td class = "tab" >6.4</td>
+                    <td class = "tab" >5.0</td>
+                    <td class = "tab" >4.7</td>
+                    <td class = "tab" >4.2</td>
+                    <td class = "tab" >3.5</td>
+                    <td class = "tab" >3.3</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.7</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >9000</td>
+                    <td class = "tab" >6.1</td>
+                    <td class = "tab" >4.8</td>
+                    <td class = "tab" >4.5</td>
+                    <td class = "tab" >4.1</td>
+                    <td class = "tab" >3.4</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >2.9</td>
+                    <td class = "tab" >2.6</td>
+                  </tr>
+              </table>
+          </div>  
+        </div>
+        <div class="col-lg-6">
+          <div class="table-responsive">
+            <table class="table-bordered table-hover table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col"class = "tab"" >Pendiente</th>
+                  <th scope="col"class = "tab"" >Longitud</th>
+                  <th colspan = "9" class = "tab"" >Porcentaje de camiones (%)</th>
+                </tr>
+              </thead>
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col"class = "tab"" > (%)</th>
+                    <th scope="col"class = "tab"" > (m)</th>
+                    <th scope="col"class = "tab"" >5</th>
+                    <th scope="col"class = "tab"" >10</th>
+                    <th scope="col"class = "tab"" >15</th>
+                    <th scope="col"class = "tab"" >20</th>
+                    <th scope="col"class = "tab"" >30</th>
+                    <th scope="col"class = "tab"" >35</th>
+                    <th scope="col"class = "tab"" >40</th>
+                    <th scope="col"class = "tab"" >50</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class = "tab" >-6</td>
+                    <td class = "tab" >500</td>
+                    <td class = "tab" >3.7</td>
+                    <td class = "tab" >3.3</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >2.9</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.2</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >1000</td>
+                    <td class = "tab" >3.7</td>
+                    <td class = "tab" >3.3</td>
+                    <td class = "tab" >3.3</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.2</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >2000</td>
+                    <td class = "tab" >3.6</td>
+                    <td class = "tab" >3.3</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >2.9</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.2</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >3000</td>
+                    <td class = "tab" >3.5</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.8</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.2</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >4000</td>
+                    <td class = "tab" >3.5</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.1</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >5000</td>
+                    <td class = "tab" >3.9</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.9</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.0</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >6000</td>
+                    <td class = "tab" >7.6</td>
+                    <td class = "tab" >6.7</td>
+                    <td class = "tab" >5.2</td>
+                    <td class = "tab" >4.9</td>
+                    <td class = "tab" >3.7</td>
+                    <td class = "tab" >3.5</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >2.8</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >7000</td>
+                    <td class = "tab" >7.2</td>
+                    <td class = "tab" >6.4</td>
+                    <td class = "tab" >5.2</td>
+                    <td class = "tab" >4.9</td>
+                    <td class = "tab" >3.7</td>
+                    <td class = "tab" >3.4</td>
+                    <td class = "tab" >3.8</td>
+                    <td class = "tab" >2.8</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >8000</td>
+                    <td class = "tab" >7.1</td>
+                    <td class = "tab" >6.3</td>
+                    <td class = "tab" >5.0</td>
+                    <td class = "tab" >4.7</td>
+                    <td class = "tab" >3.6</td>
+                    <td class = "tab" >3.3</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >2.8</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >9000</td>
+                    <td class = "tab" >6.8</td>
+                    <td class = "tab" >6.0</td>
+                    <td class = "tab" >4.7</td>
+                    <td class = "tab" >4.5</td>
+                    <td class = "tab" >3.5</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.8</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" >-7</td>
+                    <td class = "tab" >500</td>
+                    <td class = "tab" >4.4</td>
+                    <td class = "tab" >3.6</td>
+                    <td class = "tab" >3.4</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.8</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.3</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >1000</td>
+                    <td class = "tab" >4.5</td>
+                    <td class = "tab" >3.6</td>
+                    <td class = "tab" >3.4</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.8</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.3</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >2000</td>
+                    <td class = "tab" >4.4</td>
+                    <td class = "tab" >3.6</td>
+                    <td class = "tab" >3.3</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.3</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >3000</td>
+                    <td class = "tab" >4.2</td>
+                    <td class = "tab" >3.4</td>
+                    <td class = "tab" >3.2</td>
+                    <td class = "tab" >2.9</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.2</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >4000</td>
+                    <td class = "tab" >4.0</td>
+                    <td class = "tab" >3.4</td>
+                    <td class = "tab" >3.1</td>
+                    <td class = "tab" >2.8</td>
+                    <td class = "tab" >2.6</td>
+                    <td class = "tab" >2.5</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.2</td>
+                  </tr>
+                  <tr>
+                    <td class = "tab" ></td>
+                    <td class = "tab" >5000</td>
+                    <td class = "tab" >4.3</td>
+                    <td class = "tab" >3.5</td>
+                    <td class = "tab" >3.0</td>
+                    <td class = "tab" >2.7</td>
+                    <td class = "tab" >2.4</td>
+                    <td class = "tab" >2.3</td>
+                    <td class = "tab" >2.2</td>
+                    <td class = "tab" >2.1</td>
+                  </tr>
+                </tr>
+                <tr>
+                  <td class = "tab" ></td>
+                  <td class = "tab" >6000</td>
+                  <td class = "tab" >8.8</td>
+                  <td class = "tab" >7.2</td>
+                  <td class = "tab" >5.2</td>
+                  <td class = "tab" >4.9</td>
+                  <td class = "tab" >3.9</td>
+                  <td class = "tab" >3.6</td>
+                  <td class = "tab" >3.4</td>
+                  <td class = "tab" >3.1</td>
+                </tr>
+                <tr>
+                  <td class = "tab" ></td>
+                  <td class = "tab" >7000</td>
+                  <td class = "tab" >8.6</td>
+                  <td class = "tab" >6.9</td>
+                  <td class = "tab" >5.1</td>
+                  <td class = "tab" >4.7</td>
+                  <td class = "tab" >4.0</td>
+                  <td class = "tab" >3.6</td>
+                  <td class = "tab" >3.5</td>
+                  <td class = "tab" >3.1</td>
+                </tr>
+                <tr>
+                  <td class = "tab" ></td>
+                  <td class = "tab" >8000</td>
+                  <td class = "tab" >8.4</td>
+                  <td class = "tab" >6.7</td>
+                  <td class = "tab" >4.9</td>
+                  <td class = "tab" >4.6</td>
+                  <td class = "tab" >3.9</td>
+                  <td class = "tab" >3.6</td>
+                  <td class = "tab" >3.4</td>
+                  <td class = "tab" >3.0</td>
+                </tr>
+                <tr>
+                  <td class = "tab" ></td>
+                  <td class = "tab" >9000</td>
+                  <td class = "tab" >8.0</td>
+                  <td class = "tab" >6.4</td>
+                  <td class = "tab" >4.7</td>
+                  <td class = "tab" >4.4</td>
+                  <td class = "tab" >3.7</td>
+                  <td class = "tab" >3.4</td>
+                  <td class = "tab" >3.3</td>
+                  <td class = "tab" >3.0</td>
+                </tr>
+                <tr>
+                  <td class = "tab" >-8</td>
+                  <td class = "tab" >500</td>
+                  <td class = "tab" >4.2</td>
+                  <td class = "tab" >3.7</td>
+                  <td class = "tab" >3.7</td>
+                  <td class = "tab" >3.3</td>
+                  <td class = "tab" >2.9</td>
+                  <td class = "tab" >2.7</td>
+                  <td class = "tab" >2.6</td>
+                  <td class = "tab" >2.4</td>
+                </tr>
+                <tr>
+                  <td class = "tab" ></td>
+                  <td class = "tab" >1000</td>
+                  <td class = "tab" >4.3</td>
+                  <td class = "tab" >3.8</td>
+                  <td class = "tab" >3.7</td>
+                  <td class = "tab" >3.2</td>
+                  <td class = "tab" >2.9</td>
+                  <td class = "tab" >2.7</td>
+                  <td class = "tab" >2.6</td>
+                  <td class = "tab" >2.4</td>
+                </tr>
+                <tr>
+                  <td class = "tab" ></td>
+                  <td class = "tab" >2000</td>
+                  <td class = "tab" >4.2</td>
+                  <td class = "tab" >3.7</td>
+                  <td class = "tab" >3.6</td>
+                  <td class = "tab" >3.2</td>
+                  <td class = "tab" >2.9</td>
+                  <td class = "tab" >2.7</td>
+                  <td class = "tab" >2.6</td>
+                  <td class = "tab" >2.3</td>
+                </tr>
+                <tr>
+                  <td class = "tab" ></td>
+                  <td class = "tab" >3000</td>
+                  <td class = "tab" >4.1</td>
+                  <td class = "tab" >3.5</td>
+                  <td class = "tab" >3.5</td>
+                  <td class = "tab" >3.1</td>
+                  <td class = "tab" >2.8</td>
+                  <td class = "tab" >2.6</td>
+                  <td class = "tab" >2.5</td>
+                  <td class = "tab" >2.3</td>
+                </tr>
+                <tr>
+                  <td class = "tab" ></td>
+                  <td class = "tab" >4000</td>
+                  <td class = "tab" >3.9</td>
+                  <td class = "tab" >3.4</td>
+                  <td class = "tab" >3.3</td>
+                  <td class = "tab" >3.0</td>
+                  <td class = "tab" >2.7</td>
+                  <td class = "tab" >2.5</td>
+                  <td class = "tab" >2.5</td>
+                  <td class = "tab" >2.3</td>
+                </tr>
+                <tr>
+                  <td class = "tab" ></td>
+                  <td class = "tab" >5000</td>
+                  <td class = "tab" >4.4</td>
+                  <td class = "tab" >3.5</td>
+                  <td class = "tab" >3.1</td>
+                  <td class = "tab" >2.8</td>
+                  <td class = "tab" >2.5</td>
+                  <td class = "tab" >2.4</td>
+                  <td class = "tab" >2.3</td>
+                  <td class = "tab" >2.1</td>
+                </tr>
+                <tr>
+                  <td class = "tab" ></td>
+                  <td class = "tab" >6000</td>
+                  <td class = "tab" >9.8</td>
+                  <td class = "tab" >7.1</td>
+                  <td class = "tab" >5.7</td>
+                  <td class = "tab" >4.9</td>
+                  <td class = "tab" >4.0</td>
+                  <td class = "tab" >3.8</td>
+                  <td class = "tab" >3.6</td>
+                  <td class = "tab" >3.3</td>
+                </tr>
+                <tr>
+                  <td class = "tab" ></td>
+                  <td class = "tab" >7000</td>
+                  <td class = "tab" >9.6</td>
+                  <td class = "tab" >6.8</td>
+                  <td class = "tab" >5.5</td>
+                  <td class = "tab" >4.8</td>
+                  <td class = "tab" >4.0</td>
+                  <td class = "tab" >3.7</td>
+                  <td class = "tab" >3.6</td>
+                  <td class = "tab" >3.2</td>
+                </tr>
+                <tr>
+                  <td class = "tab" ></td>
+                  <td class = "tab" >8000</td>
+                  <td class = "tab" >9.4</td>
+                  <td class = "tab" >6.6</td>
+                  <td class = "tab" >5.3</td>
+                  <td class = "tab" >4.7</td>
+                  <td class = "tab" >4.0</td>
+                  <td class = "tab" >3.7</td>
+                  <td class = "tab" >3.6</td>
+                  <td class = "tab" >3.2</td>
+                </tr>
+                <tr>
+                  <td class = "tab" ></td>
+                  <td class = "tab" >9000</td>
+                  <td class = "tab" >9.0</td>
+                  <td class = "tab" >6.3</td>
+                  <td class = "tab" >5.1</td>
+                  <td class = "tab" >4.5</td>
+                  <td class = "tab" >3.8</td>
+                  <td class = "tab" >3.6</td>
+                  <td class = "tab" >3.4</td>
+                  <td class = "tab" >3.1</td>
+                </tr>
+              </table>
+          </div>
+      
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../static/assets/vendor/aos/aos.js"></script>
+  <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../static/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../static/assets/js/main.js"></script>
+
+</body>
+
+</html>

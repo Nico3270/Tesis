@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Multicarril</title>
+  <title>Resultados Multicarril</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -208,42 +208,45 @@
               <h5>La velocidad generica se selecciona a partir de los resultados ingresados, y los parámetros establecidos en la tabla 11.</h5>
               <h5><b>Tabla 11. Velocidad genérica por tipo de carretera.</b></h5>
               <div class="container">
-                <table class="table-bordered">
-                  <thead class="thead-dark">
-                    <tr>
-                      <th scope="col"style="text-align:center" >Tipo de carretera</th>
-                      <th scope="col"style="text-align:center" >Con separador</th>
-                      <th scope="col"style="text-align:center" >Sin separador</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Multicarril, con características geométricas de vía tipo A1, zona despejada de 9 m o con elementos de contención vehicular, accesos controlados, sin peatones</td>
-                      <td style="text-align:center ;">120 km/h</td>
-                      <td style="text-align:center ;">No aplica</td>
-                    </tr>
-                    <tr>
-                      <td>Multicarril, con características geométricas de vía tipo B1, control parcial de accesos, sin concentración de peatones</td>
-                      <td style="text-align:center ;">100 km/h</td>
-                      <td style="text-align:center ;">90 km/h</td>
-                    </tr>
-                    <tr>
-                      <td>Multicarril, con características geométricas de vía tipo B1, sin control de accesos, sin concentración de peatones.</td>
-                      <td style="text-align:center ;">90 km/h</td>
-                      <td style="text-align:center ;">80 km/h</td>
-                    </tr>
-                    <tr>
-                      <td>Multicarril, con características geométricas de vía tipo C1, sin control de accesos, sin peatones frecuentes.</td>
-                      <td style="text-align:center ;">80 km/h</td>
-                      <td style="text-align:center ;">70 km/h</td>
-                    </tr>
-                    <tr>
-                      <td>Multicarril, con características geométricas de vía tipo C1, sin control de accesos, con peatones frecuentes.</td>
-                      <td style="text-align:center ;">70 km/h</td>
-                      <td style="text-align:center ;">60 km/h</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="table-bordered">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col"style="text-align:center" >Tipo de carretera</th>
+                        <th scope="col"style="text-align:center" >Con separador</th>
+                        <th scope="col"style="text-align:center" >Sin separador</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Multicarril, con características geométricas de vía tipo A1, zona despejada de 9 m o con elementos de contención vehicular, accesos controlados, sin peatones</td>
+                        <td style="text-align:center ;">120 km/h</td>
+                        <td style="text-align:center ;">No aplica</td>
+                      </tr>
+                      <tr>
+                        <td>Multicarril, con características geométricas de vía tipo B1, control parcial de accesos, sin concentración de peatones</td>
+                        <td style="text-align:center ;">100 km/h</td>
+                        <td style="text-align:center ;">90 km/h</td>
+                      </tr>
+                      <tr>
+                        <td>Multicarril, con características geométricas de vía tipo B1, sin control de accesos, sin concentración de peatones.</td>
+                        <td style="text-align:center ;">90 km/h</td>
+                        <td style="text-align:center ;">80 km/h</td>
+                      </tr>
+                      <tr>
+                        <td>Multicarril, con características geométricas de vía tipo C1, sin control de accesos, sin peatones frecuentes.</td>
+                        <td style="text-align:center ;">80 km/h</td>
+                        <td style="text-align:center ;">70 km/h</td>
+                      </tr>
+                      <tr>
+                        <td>Multicarril, con características geométricas de vía tipo C1, sin control de accesos, con peatones frecuentes.</td>
+                        <td style="text-align:center ;">70 km/h</td>
+                        <td style="text-align:center ;">60 km/h</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
                 <br>
                 <h5>La velocidad genérica seleccionada a partir de los valores ingresados es <b>{{datos.vel_generica}} km/h</b> para vía tipo <b>{{datos.v3}}</b>. </h5>
             </div>
@@ -258,67 +261,70 @@
                 <h5 style="text-align:center ;"><b>* Corrección por ancho de carril (f<sub>C</sub>)</b></h5>
                 <h5>La corrección por ancho de carril se hace con los factores indicados en la Tabla 12.</h5>
                 <h5><b>Tabla 12. Ajuste de velocidad genérica por efecto del ancho</b></h5>
-                <table class="table-bordered">
-                  <thead class="thead-dark">
-                    <tr>
-                      <th scope="col"style="text-align:center" >Ancho de carril (m)</th>
-                      <th scope="col"style="text-align:center" >Corrección a la velocidad genérica por efecto del ancho del carril (km/h)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td style="text-align:center ;">3.0</td>
-                      <td style="text-align:center ;">14.8</td>
-                    </tr>
-                    <tr>
-                      <td style="text-align:center ;">3.3</td>
-                      <td style="text-align:center ;">2.0</td>
-                    </tr>
-                    <tr>
-                      <td style="text-align:center ;"> >= 3.5</td>
-                      <td style="text-align:center ;"> 0.0 </td>
-                    </tr>
-                </table>
-                
+                <div class="table-responsive">
+                  <table class="table-bordered">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col"style="text-align:center" >Ancho de carril (m)</th>
+                        <th scope="col"style="text-align:center" >Corrección a la velocidad genérica por efecto del ancho del carril (km/h)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="text-align:center ;">3.0</td>
+                        <td style="text-align:center ;">14.8</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:center ;">3.3</td>
+                        <td style="text-align:center ;">2.0</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:center ;"> >= 3.5</td>
+                        <td style="text-align:center ;"> 0.0 </td>
+                      </tr>
+                  </table>
+                </div>
                 <br>
                 <h5>Para una vía con ancho por carril de {{datos.v7}} metros, se obtiene un factor de corrección f<sub>C</sub> igual a <b>{{datos.fc}} km/h</b>. </h5>
                 <hr>
                 <h5 style="text-align:center ;"><b>* Corrección por ancho de separador (f<sub>S</sub>)</b></h5>
                 <h5>La corrección por ancho de separador se hace con los factores indicados en la Tabla 13.</h5>
                 <h5><b>Tabla 13. Ajuste de velocidad genérica por efecto del ancho de separador</b></h5>
-                <table class="table-bordered">
-                  <thead class="thead-dark">
-                    <tr>
-                      <th scope="col"style="text-align:center" >Ancho del separador (m)</th>
-                      <th scope="col"style="text-align:center" >Corrección a la velocidad genérica por efecto del ancho de separador (km/h)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td style="text-align:center ;">0.0</td>
-                      <td style="text-align:center ;">2.80</td>
-                    </tr>
-                    <tr>
-                      <td style="text-align:center ;">0.5</td>
-                      <td style="text-align:center ;">1.60</td>
-                    </tr>
-                    <tr>
-                      <td style="text-align:center ;">1.0</td>
-                      <td style="text-align:center ;">1.30</td>
-                    </tr>
-                    <tr>
-                      <td style="text-align:center ;">1.5</td>
-                      <td style="text-align:center ;">0.90</td>
-                    </tr>
-                    <tr>
-                      <td style="text-align:center ;">2.0</td>
-                      <td style="text-align:center ;">0.70</td>
-                    </tr>
-                    <tr>
-                      <td style="text-align:center ;">>3.0</td>
-                      <td style="text-align:center ;">0.00</td>
-                    </tr>
-                </table>
+                <div class="table-responsive">
+                  <table class="table-bordered">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col"style="text-align:center" >Ancho del separador (m)</th>
+                        <th scope="col"style="text-align:center" >Corrección a la velocidad genérica por efecto del ancho de separador (km/h)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="text-align:center ;">0.0</td>
+                        <td style="text-align:center ;">2.80</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:center ;">0.5</td>
+                        <td style="text-align:center ;">1.60</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:center ;">1.0</td>
+                        <td style="text-align:center ;">1.30</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:center ;">1.5</td>
+                        <td style="text-align:center ;">0.90</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:center ;">2.0</td>
+                        <td style="text-align:center ;">0.70</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:center ;">>3.0</td>
+                        <td style="text-align:center ;">0.00</td>
+                      </tr>
+                  </table>
+                </div>
                 <h5>Para una vía con ancho de separador de {{datos.v9}} metros, se obtiene factor de corrección f<sub>S</sub> igual a <b>{{datos.fs}} km/h</b>. </h5>
           </div>
         </div>
@@ -327,66 +333,71 @@
             <h5 style="text-align:center ;"><b>* Corrección por ancho promedio de bermas (f<sub>B</sub>)</b></h5>
                 <h5>La corrección por ancho promedio de bermas se realiza con los factores indicados en la Tabla 14.</h5>
                 <h5><b>Tabla 14. Ajuste de velocidad genérica por efecto del ancho promedio de bermas (f<sub>B</sub>)</b></h5>
-                <table class="table-bordered">
-                  <thead class="thead-dark">
-                    <tr>
-                      <th scope="col"style="text-align:center" >Ancho promedio de bermas (m)</th>
-                      <th scope="col"style="text-align:center" >Corrección a la velocidad genérica por efecto del ancho promedio de bermas (km/h)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td style="text-align:center ;">0.0</td>
-                      <td style="text-align:center ;">7.9</td>
-                    </tr>
-                    <tr>
-                      <td style="text-align:center ;">0.5</td>
-                      <td style="text-align:center ;">2.5</td>
-                    </tr>
-                    <tr>
-                      <td style="text-align:center ;">1.0 - 1.5</td>
-                      <td style="text-align:center ;">1.7</td>
-                    </tr>
-                    <tr>
-                      <td style="text-align:center ;">1.8</td>
-                      <td style="text-align:center ;">0.8</td>
-                    </tr>
-                    <tr>
-                      <td style="text-align:center ;">= 2.0</td>
-                      <td style="text-align:center ;">0.0</td>
-                    </tr>
-                </table>
+                <div class="table-responsive">
+                  <table class="table-bordered">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col"style="text-align:center" >Ancho promedio de bermas (m)</th>
+                        <th scope="col"style="text-align:center" >Corrección a la velocidad genérica por efecto del ancho promedio de bermas (km/h)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="text-align:center ;">0.0</td>
+                        <td style="text-align:center ;">7.9</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:center ;">0.5</td>
+                        <td style="text-align:center ;">2.5</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:center ;">1.0 - 1.5</td>
+                        <td style="text-align:center ;">1.7</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:center ;">1.8</td>
+                        <td style="text-align:center ;">0.8</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:center ;">= 2.0</td>
+                        <td style="text-align:center ;">0.0</td>
+                      </tr>
+                  </table>
+                </div>
                 <h5>Para una vía con ancho promedio de bermas de {{(datos.v10+datos.v11)/2}} metros, se obtiene factor de corrección f<sub>B</sub> igual a <b>{{datos.fb}} km/h</b>. </h5>
                 <br>
                 <hr>
                 <h5 style="text-align:center ;"><b>* Corrección por densidad de accesos (f<sub>A</sub>)</b></h5>
                 <h5>La corrección por densidad de accesos se efectua con los factores indicados en la Tabla 15.</h5>
                 <h5><b>Tabla 15. Ajuste de velocidad genérica por efecto de densidad de accesos (f<sub>A</sub>)</b></h5>
-                <table class="table-bordered">
-                  <thead class="thead-dark">
-                    <tr>
-                      <th scope="col"style="text-align:center" >Densidad de accesos (Puntos/km)</th>
-                      <th scope="col"style="text-align:center" >Corrección a la velocidad genérica por efecto de la densidad de accesos (km/h)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td style="text-align:center ;">5</td>
-                      <td style="text-align:center ;">3.0</td>
-                    </tr>
-                    <tr>
-                      <td style="text-align:center ;">10</td>
-                      <td style="text-align:center ;">6.4</td>
-                    </tr>
-                    <tr>
-                      <td style="text-align:center ;">15</td>
-                      <td style="text-align:center ;">11.0</td>
-                    </tr>
-                    <tr>
-                      <td style="text-align:center ;">>=20</td>
-                      <td style="text-align:center ;">17.4</td>
-                    </tr>
-                </table>
+                <div class="table-responsive">
+                  <table class="table-bordered">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col"style="text-align:center" >Densidad de accesos (Puntos/km)</th>
+                        <th scope="col"style="text-align:center" >Corrección a la velocidad genérica por efecto de la densidad de accesos (km/h)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="text-align:center ;">5</td>
+                        <td style="text-align:center ;">3.0</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:center ;">10</td>
+                        <td style="text-align:center ;">6.4</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:center ;">15</td>
+                        <td style="text-align:center ;">11.0</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:center ;">>=20</td>
+                        <td style="text-align:center ;">17.4</td>
+                      </tr>
+                  </table>
+
+                </div>  
                 <h5>Para una vía con una densidad de accesos de {{datos.v12}} Puntos/km, se realiza una interpolación para obtener un factor de corrección f<sub>A</sub> igual a <b>{{datos.fa}} km/h</b>. </h5>
                 <br>
           </div>
@@ -418,7 +429,8 @@
               <h5>Debe corregirse el volumen de tránsito mixto y tenerse en cuenta el equivalente de camiones</h5>
               <h5 style="text-align:center ;"><b>* Corrección del volumen de tránsito mixto</b></h5>
               <h5>El volumen de tránsito en vehículos mixtos (veh/h/sentido) se debe convertir en flujo vehicular, mediante la siguiente ecuación: </h5>
-              <img src="../static/assets/img/ecuacion.JPG" class="img-fluid" style="width:60%; margin-left: 5rem;" alt="Responsive image">
+              <img src="../static/assets/img/ecuacion.JPG" class="img-fluid" style="width:45%; margin-left: 5rem;" alt="Responsive image">
+              <br>
               <br>
               <h5>En donde: </h5>
               <h5><b>V<sub>p</sub></b> = Flujo de tránsito, en veh/h/carril. (q<sub>p</sub>)</h5>
@@ -431,7 +443,8 @@
               <h5><b>f<sub>p</sub></b> = 0.90 (conductores ocasionales)</h5>
               <br>
               <h5>El factor de correción por camiones se calcula con siguiente expresión: </h5>
-              <img src="../static/assets/img/fhv.JPG" class="img-fluid" style="width:50%; margin-left: 5rem;" alt="Responsive image">
+              <img src="../static/assets/img/fhv.JPG" class="img-fluid" style="width:35%; margin-left: 5rem;" alt="Responsive image">
+              <br>
               <h5>En donde: </h5>
               <h5><b>f<sub>HV</sub></b> = Factor de corrección por camiones</h5>
               <h5><b>P<sub>C</sub></b> = Porcentaje de camiones</h5>
@@ -449,6 +462,7 @@
               <h5 style="text-align:center ;"><b>* Tipo de terreno genérico </b></h5>
               <h5>Cuando la aplicación corresponde a terreno genérico se deben utilizar los equivalentes indicados en la Tabla 17.</h5>
               <h5><b>Tabla 17. Equivalente de camiones para tipo de terreno genérico.</b></h5>
+              <div class="table-responsive">
                 <table class="table-bordered">
                   <thead class="thead-dark">
                     <tr>
@@ -470,19 +484,20 @@
                       <td style="text-align:center ;">4.4</td>
                     </tr>
                 </table>
+              </div>             
               <br>
               <h5>Para un tipo de terreno {{datos.v2}} - {{datos.v21}}</h5>
               {% endif %}
               {% if datos.v2 == "Ascenso" %}
               <h5 style="text-align:center ;"><b>* Rampas en Ascenso </b></h5>
               <h5 style="text-align:justify ;">Esta situación corresponde a sectores de análisis con pendientes ascendentes sostenidas. Es posible realizar ponderaciones de pendientes en tramos con rampas continuas en ascenso con longitudes de pendientes menores a 2000 m. Si se supera este límite de longitud se deberá estudiar esa rampa en forma independiente.</h5>
-              <h5 style="text-align:justify ;">Cuando la aplicación corresponde a rampa en ascenso se deben utilizar los equivalentes indicados en la <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger btn-sm">Tabla 18</a></b>.</h5>
+              <h5 style="text-align:justify ;">Cuando la aplicación corresponde a rampa en ascenso se deben utilizar los equivalentes indicados en la <a href={{url_for('tabla_18')}} target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger btn-sm">Tabla 18</a></b>.</h5>
               <h5 style="text-align:justify ;">Para un tipo de terreno <b>{{datos.v2}} - {{datos.v21}}</b> con pendiente de <b>{{datos.v4}}%</b> , se realiza la interpolación mediante el uso de la <b>Tabla 18</b>, y se obtiene un equivalente de camiones <b>E<sub>C</sub></b> igual a <b>{{datos.Ec}}.</b></h5>
               {% endif %}
               {% if datos.v2 == "Descenso" %}
               <h5 style="text-align:center ;"><b>* Rampas en Descenso </b></h5>
               <h5 style="text-align:justify ;">Esta situación corresponde a sectores de análisis con pendientes decendentes sostenidas. Es posible realizar ponderaciones de pendientes en tramos con rampas continuas en descenso con longitudes de pendientes menores de 1500 m. Si se supera este límite de longitud se deberá estudiar esa rampa en forma independiente.</h5>
-              <h5 style="text-align:justify ;">Cuando la aplicación corresponde a rampa en descenso se deben utilizar los equivalentes indicados en la <b><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger btn-sm">Tabla 19</a></b>.</h5>
+              <h5 style="text-align:justify ;">Cuando la aplicación corresponde a rampa en descenso se deben utilizar los equivalentes indicados en la <b><a href={{url_for('tabla_19')}} target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger btn-sm">Tabla 19</a></b>.</h5>
               <h5 style="text-align:justify ;">Para un tipo de terreno <b>{{datos.v2}} - {{datos.v21}}</b> con pendiente de <b>{{datos.v4}}%</b>, se realiza la interpolación mediante el uso de la <b>>Tabla 19</b>, y se obtiene un equivalente de camiones <b>E<sub>C</sub></b> igual a <b>{{datos.Ec}}.</b></h5>
               {% endif %}
               <br>
@@ -548,53 +563,55 @@
               <br>
               <h5><b>Tabla 20. Niveles de Servicio para carreteras multicarril en Colombia.</b></h5>
               <br>
-              <table class="table-bordered">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col"style="text-align:center" >Nivel de Servicio</th>
-                    <th scope="col"style="text-align:center" >Multicarril tipo 1 (96km/h) y tipo 2 (90km/h)</th>
-                    <th scope="col"style="text-align:center" >Multicarril tipo 3 (80km/h)</th>
-                    <th scope="col"style="text-align:center" >Multicarril tipo 4 (70km/h)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td style="text-align:center ;">A</td>
-                    <td style="text-align:center ;"><= 6</td>
-                    <td style="text-align:center ;"><= 7</td>
-                    <td style="text-align:center ;"><= 8</td>
-                  </tr>
-                  <tr>
-                    <td style="text-align:center ;">B</td>
-                    <td style="text-align:center ;">> 6 - 11</td>
-                    <td style="text-align:center ;">> 7 - 12</td>
-                    <td style="text-align:center ;">> 8 - 15</td>
-                  </tr>
-                  <tr>
-                    <td style="text-align:center ;">C</td>
-                    <td style="text-align:center ;">> 11 - 16</td>
-                    <td style="text-align:center ;">> 12 - 18</td>
-                    <td style="text-align:center ;">> 15 - 23</td>
-                  </tr>
-                  <tr>
-                    <td style="text-align:center ;">D</td>
-                    <td style="text-align:center ;">> 16 - 22</td>
-                    <td style="text-align:center ;">> 18 - 25</td>
-                    <td style="text-align:center ;">> 23 - 32</td>
-                  </tr>
-                  <tr>
-                    <td style="text-align:center ;">E</td>
-                    <td style="text-align:center ;">> 22 - 28</td>
-                    <td style="text-align:center ;">> 25 - 31</td>
-                    <td style="text-align:center ;">> 32 - 40</td>
-                  </tr>
-                  <tr>
-                    <td style="text-align:center ;">F</td>
-                    <td style="text-align:center ;">> 28</td>
-                    <td style="text-align:center ;">> 31</td>
-                    <td style="text-align:center ;">> 40</td>
-                  </tr>
-              </table>
+              <div class="table-responsive">
+                <table class="table-bordered">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col"style="text-align:center" >Nivel de Servicio</th>
+                      <th scope="col"style="text-align:center" >Multicarril tipo 1 (96km/h) y tipo 2 (90km/h)</th>
+                      <th scope="col"style="text-align:center" >Multicarril tipo 3 (80km/h)</th>
+                      <th scope="col"style="text-align:center" >Multicarril tipo 4 (70km/h)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="text-align:center ;">A</td>
+                      <td style="text-align:center ;"><= 6</td>
+                      <td style="text-align:center ;"><= 7</td>
+                      <td style="text-align:center ;"><= 8</td>
+                    </tr>
+                    <tr>
+                      <td style="text-align:center ;">B</td>
+                      <td style="text-align:center ;">> 6 - 11</td>
+                      <td style="text-align:center ;">> 7 - 12</td>
+                      <td style="text-align:center ;">> 8 - 15</td>
+                    </tr>
+                    <tr>
+                      <td style="text-align:center ;">C</td>
+                      <td style="text-align:center ;">> 11 - 16</td>
+                      <td style="text-align:center ;">> 12 - 18</td>
+                      <td style="text-align:center ;">> 15 - 23</td>
+                    </tr>
+                    <tr>
+                      <td style="text-align:center ;">D</td>
+                      <td style="text-align:center ;">> 16 - 22</td>
+                      <td style="text-align:center ;">> 18 - 25</td>
+                      <td style="text-align:center ;">> 23 - 32</td>
+                    </tr>
+                    <tr>
+                      <td style="text-align:center ;">E</td>
+                      <td style="text-align:center ;">> 22 - 28</td>
+                      <td style="text-align:center ;">> 25 - 31</td>
+                      <td style="text-align:center ;">> 32 - 40</td>
+                    </tr>
+                    <tr>
+                      <td style="text-align:center ;">F</td>
+                      <td style="text-align:center ;">> 28</td>
+                      <td style="text-align:center ;">> 31</td>
+                      <td style="text-align:center ;">> 40</td>
+                    </tr>
+                </table>
+              </div>
               <br>
               <h5 style="text-align:justify ;">Finalmente con una densidad de {{datos.densidad}} veh/km/carril y la curva maestra tipo {%if datos.vel_flujo_libre == 80%} 3 {%endif%}  {%if datos.vel_flujo_libre == 90 %} 2 {%endif%} {%if datos.vel_flujo_libre == 96%} 1 {%endif%}  {%if datos.vel_flujo_libre == 70 %} 4 {%endif%}, {{datos.vel_flujo_libre}} km/h, determinada en el paso 2, se determina que el Nivel de servicio ofrecido por la vía es <b>{{datos.final}}.</b>  </h5>
           </div>
@@ -614,40 +631,42 @@
               <h5 style="text-align:justify ;"> La gráfica 1 presenta la variación que presenta el Nivel del servicio, debido al aumento del volumen de tránsito. Los rangos se presentan a continuación: </h5>
               <br>
               <h6><b>Tabla #. Niveles de servicio según volumenes.</b></h6>
-              <table class="table-bordered">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col" class="tab">Nivel de servicio</th>
-                    <th scope="col" class="tab">Volumen de tránsito (veh/h/sentido)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="tab">A</td>
-                    <td class="tab">0 - {{data[1]}}</td>
-                  </tr>
-                  <tr>
-                    <td class="tab">B</td>
-                    <td class="tab">{{data[1]+1}} - {{data[2]}}</td>
-                  </tr>
-                  <tr>
-                    <td class="tab">C</td>
-                    <td class="tab">{{data[2]+1}} - {{data[3]}}</td>
-                  </tr>
-                  <tr>
-                    <td class="tab">D</td>
-                    <td class="tab">{{data[3]+1}} - {{data[4]}}</td>
-                  </tr>
-                  <tr>
-                    <td class="tab">E</td>
-                    <td class="tab">{{data[4]+1}} - {{data[5]}}</td>
-                  </tr>
-                  <tr>
-                    <td class="tab">F</td>
-                    <td class="tab">Mayores a {{data[5]+1}}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="table-responsive">
+                <table class="table-bordered">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col" class="tab">Nivel de servicio</th>
+                      <th scope="col" class="tab">Volumen de tránsito (veh/h/sentido)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="tab">A</td>
+                      <td class="tab">0 - {{data[1]}}</td>
+                    </tr>
+                    <tr>
+                      <td class="tab">B</td>
+                      <td class="tab">{{data[1]+1}} - {{data[2]}}</td>
+                    </tr>
+                    <tr>
+                      <td class="tab">C</td>
+                      <td class="tab">{{data[2]+1}} - {{data[3]}}</td>
+                    </tr>
+                    <tr>
+                      <td class="tab">D</td>
+                      <td class="tab">{{data[3]+1}} - {{data[4]}}</td>
+                    </tr>
+                    <tr>
+                      <td class="tab">E</td>
+                      <td class="tab">{{data[4]+1}} - {{data[5]}}</td>
+                    </tr>
+                    <tr>
+                      <td class="tab">F</td>
+                      <td class="tab">Mayores a {{data[5]+1}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>            
               <br>
               <h5 style="text-align:justify">De los resultados obtenidos se analiza que la vía va a presentar un nivel de servicio <b>E</b> a partir de un voolmen de tránsito igual a <b>{{data[4]+1}} (veh/h/sentido)</b>, valor equivalente a la capacidad de la vía.</h5>
             </div>
@@ -683,54 +702,56 @@
                 <br>
                 <hr>
                 <h6><b>Tabla #. Resultados obtenidos.</b></h6>
-                <table class="table-bordered">
-                  <thead class="thead-dark">
-                    <tr>
-                      <th scope="col" class="tab">Nivel de servicio</th>
-                      <th scope="col" class="tab">Flujo vehicular (veh/h/sentido)</th>
-                      <th scope="col" class="tab">Velocidad de operación (km/h)</th>
-                      <th scope="col" class="tab">Densidad (veh/km/carril)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="tab">A</td>
-                      <td class="tab">0 - {{data[6]}}</td>
-                      <td class="tab">{{datos.vel_flujo_libre}} - {{data[16]}}</td>
-                      <td class="tab">0 - {{data[11]}}</td>
-                    </tr>
-                    <tr>
-                      <td class="tab">B</td>
-                      <td class="tab">{{data[6]}} - {{data[7]}}</td>
-                      <td class="tab">{{data[16]}} - {{data[17]}}</td>
-                      <td class="tab">{{data[11]}} - {{data[12]}}</td>
-                    </tr>
-                    <tr>
-                      <td class="tab">C</td>
-                      <td class="tab">{{data[7]}} - {{data[8]}}</td>
-                      <td class="tab">{{data[17]}} - {{data[18]}}</td>
-                      <td class="tab">{{data[12]}} - {{data[13]}}</td>
-                    </tr>
-                    <tr>
-                      <td class="tab">D</td>
-                      <td class="tab">{{data[8]}} - {{data[9]}}</td>
-                      <td class="tab">{{data[18]}} - {{data[19]}}</td>
-                      <td class="tab">{{data[13]}} - {{data[14]}}</td>
-                    </tr>
-                    <tr>
-                      <td class="tab">E</td>
-                      <td class="tab">{{data[9]}} - {{data[10]}}</td>
-                      <td class="tab">{{data[19]}} - {{data[20]}}</td>
-                      <td class="tab">{{data[14]}} - {{data[15]}}</td>
-                    </tr>
-                    <tr>
-                      <td class="tab">F</td>
-                      <td class="tab">Mayores a {{data[10]}}</td>
-                      <td class="tab">Menores a - {{data[20]}}</td>
-                      <td class="tab">Mayores a - {{data[15]}}</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="table-bordered">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col" class="tab">Nivel de servicio</th>
+                        <th scope="col" class="tab">Flujo vehicular (veh/h/sentido)</th>
+                        <th scope="col" class="tab">Velocidad de operación (km/h)</th>
+                        <th scope="col" class="tab">Densidad (veh/km/carril)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="tab">A</td>
+                        <td class="tab">0 - {{data[6]}}</td>
+                        <td class="tab">{{datos.vel_flujo_libre}} - {{data[16]}}</td>
+                        <td class="tab">0 - {{data[11]}}</td>
+                      </tr>
+                      <tr>
+                        <td class="tab">B</td>
+                        <td class="tab">{{data[6]}} - {{data[7]}}</td>
+                        <td class="tab">{{data[16]}} - {{data[17]}}</td>
+                        <td class="tab">{{data[11]}} - {{data[12]}}</td>
+                      </tr>
+                      <tr>
+                        <td class="tab">C</td>
+                        <td class="tab">{{data[7]}} - {{data[8]}}</td>
+                        <td class="tab">{{data[17]}} - {{data[18]}}</td>
+                        <td class="tab">{{data[12]}} - {{data[13]}}</td>
+                      </tr>
+                      <tr>
+                        <td class="tab">D</td>
+                        <td class="tab">{{data[8]}} - {{data[9]}}</td>
+                        <td class="tab">{{data[18]}} - {{data[19]}}</td>
+                        <td class="tab">{{data[13]}} - {{data[14]}}</td>
+                      </tr>
+                      <tr>
+                        <td class="tab">E</td>
+                        <td class="tab">{{data[9]}} - {{data[10]}}</td>
+                        <td class="tab">{{data[19]}} - {{data[20]}}</td>
+                        <td class="tab">{{data[14]}} - {{data[15]}}</td>
+                      </tr>
+                      <tr>
+                        <td class="tab">F</td>
+                        <td class="tab">Mayores a {{data[10]}}</td>
+                        <td class="tab">Menores a - {{data[20]}}</td>
+                        <td class="tab">Mayores a - {{data[15]}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -743,82 +764,84 @@
                   <h5 style="text-align:justify ;"> La gráfica # presenta la variación que presenta el Nivel del servicio, debido a la pendiente del sector de estudio. Los resultados se presentan a continuación: </h5>
                   <br>
                   <h6><b>Tabla #. Niveles de servicio según volumenes.</b></h6>
-                  <table class="table-bordered">
-                    <thead class="thead-dark">
-                      <tr>
-                        <th scope="col" class="tab">Pendiente</th>
-                        <th scope="col" class="tab">Nivel de servicio</th>
-                        <th scope="col" class="tab">Flujo vehicular (veh/h/sentido)</th>
-                        <th scope="col" class="tab">Velocidad de operación (km/h)</th>
-                        <th scope="col" class="tab">Densidad (veh/km/carril)</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="tab">0</td>
-                        <td class="tab">{{data[21]}}</td>
-                        <td class="tab">{{data[30]}}</td>
-                        <td class="tab">{{data[39]}}</td>
-                        <td class="tab">{{data[48]}}</td>
-                      </tr>
-                      <tr>
-                        <td class="tab">1</td>
-                        <td class="tab">{{data[22]}}</td>
-                        <td class="tab">{{data[31]}}</td>
-                        <td class="tab">{{data[40]}}</td>
-                        <td class="tab">{{data[49]}}</td>
-                      </tr>
-                      <tr>
-                        <td class="tab">2</td>
-                        <td class="tab">{{data[23]}}</td>
-                        <td class="tab">{{data[32]}}</td>
-                        <td class="tab">{{data[41]}}</td>
-                        <td class="tab">{{data[50]}}</td>
-                      </tr>
-                      <tr>
-                        <td class="tab">3</td>
-                        <td class="tab">{{data[24]}}</td>
-                        <td class="tab">{{data[33]}}</td>
-                        <td class="tab">{{data[42]}}</td>
-                        <td class="tab">{{data[51]}}</td>
-                      </tr>
-                      <tr>
-                        <td class="tab">4</td>
-                        <td class="tab">{{data[25]}}</td>
-                        <td class="tab">{{data[34]}}</td>
-                        <td class="tab">{{data[43]}}</td>
-                        <td class="tab">{{data[52]}}</td>
-                      </tr>
-                      <tr>
-                        <td class="tab">5</td>
-                        <td class="tab">{{data[26]}}</td>
-                        <td class="tab">{{data[35]}}</td>
-                        <td class="tab">{{data[44]}}</td>
-                        <td class="tab">{{data[53]}}</td>
-                      </tr>
-                      <tr>
-                        <td class="tab">6</td>
-                        <td class="tab">{{data[27]}}</td>
-                        <td class="tab">{{data[36]}}</td>
-                        <td class="tab">{{data[45]}}</td>
-                        <td class="tab">{{data[54]}}</td>
-                      </tr>
-                      <tr>
-                        <td class="tab">7</td>
-                        <td class="tab">{{data[28]}}</td>
-                        <td class="tab">{{data[37]}}</td>
-                        <td class="tab">{{data[46]}}</td>
-                        <td class="tab">{{data[55]}}</td>
-                      </tr>
-                      <tr>
-                        <td class="tab">8</td>
-                        <td class="tab">{{data[29]}}</td>
-                        <td class="tab">{{data[38]}}</td>
-                        <td class="tab">{{data[47]}}</td>
-                        <td class="tab">{{data[56]}}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div class="table-responsive">
+                    <table class="table-bordered">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col" class="tab">Pendiente</th>
+                          <th scope="col" class="tab">Nivel de servicio</th>
+                          <th scope="col" class="tab">Flujo vehicular (veh/h/sentido)</th>
+                          <th scope="col" class="tab">Velocidad de operación (km/h)</th>
+                          <th scope="col" class="tab">Densidad (veh/km/carril)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="tab">0</td>
+                          <td class="tab">{{data[21]}}</td>
+                          <td class="tab">{{data[30]}}</td>
+                          <td class="tab">{{data[39]}}</td>
+                          <td class="tab">{{data[48]}}</td>
+                        </tr>
+                        <tr>
+                          <td class="tab">1</td>
+                          <td class="tab">{{data[22]}}</td>
+                          <td class="tab">{{data[31]}}</td>
+                          <td class="tab">{{data[40]}}</td>
+                          <td class="tab">{{data[49]}}</td>
+                        </tr>
+                        <tr>
+                          <td class="tab">2</td>
+                          <td class="tab">{{data[23]}}</td>
+                          <td class="tab">{{data[32]}}</td>
+                          <td class="tab">{{data[41]}}</td>
+                          <td class="tab">{{data[50]}}</td>
+                        </tr>
+                        <tr>
+                          <td class="tab">3</td>
+                          <td class="tab">{{data[24]}}</td>
+                          <td class="tab">{{data[33]}}</td>
+                          <td class="tab">{{data[42]}}</td>
+                          <td class="tab">{{data[51]}}</td>
+                        </tr>
+                        <tr>
+                          <td class="tab">4</td>
+                          <td class="tab">{{data[25]}}</td>
+                          <td class="tab">{{data[34]}}</td>
+                          <td class="tab">{{data[43]}}</td>
+                          <td class="tab">{{data[52]}}</td>
+                        </tr>
+                        <tr>
+                          <td class="tab">5</td>
+                          <td class="tab">{{data[26]}}</td>
+                          <td class="tab">{{data[35]}}</td>
+                          <td class="tab">{{data[44]}}</td>
+                          <td class="tab">{{data[53]}}</td>
+                        </tr>
+                        <tr>
+                          <td class="tab">6</td>
+                          <td class="tab">{{data[27]}}</td>
+                          <td class="tab">{{data[36]}}</td>
+                          <td class="tab">{{data[45]}}</td>
+                          <td class="tab">{{data[54]}}</td>
+                        </tr>
+                        <tr>
+                          <td class="tab">7</td>
+                          <td class="tab">{{data[28]}}</td>
+                          <td class="tab">{{data[37]}}</td>
+                          <td class="tab">{{data[46]}}</td>
+                          <td class="tab">{{data[55]}}</td>
+                        </tr>
+                        <tr>
+                          <td class="tab">8</td>
+                          <td class="tab">{{data[29]}}</td>
+                          <td class="tab">{{data[38]}}</td>
+                          <td class="tab">{{data[47]}}</td>
+                          <td class="tab">{{data[56]}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                   <br>
                   <h6><b>Gráfica #. Efecto producido en la densidad, por cambios en volumnen de tránsito.</b></h6>
                   <img src="../static/assets/img/sensibilidad/plot5.png" class="img-fluid" style="width:100%; margin-left: 2rem; margin-top: 0em;" alt="Responsive image">

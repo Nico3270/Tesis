@@ -528,6 +528,13 @@ def resultado_Multicarril():
     id1 = len(db.session.query(Sensibilidad).all())
     return render_template('resultados_multicarril.html',datos=registro, data=datos)
 
+@app.route("/tabla_18")
+def tabla_18():
+    return render_template("tabla18mp.html")
+
+@app.route("/tabla_19")
+def tabla_19():
+    return render_template("tabla19mp.html")
 
 @app.route("/registro/<int:index>", methods=["GET","POST"])
 def registro(index):

@@ -1,4 +1,4 @@
-from scipy.interpolate import lagrange
+from scipy.interpolate import lagrange, interp1d
 tabla_13 = [0.0, 0.5, 1.0, 1.5, 2.0, 3.0]
 tabla_13x = [2.8, 1.6, 1.3, 0.9, 0.7, 0]   
 
@@ -109,11 +109,16 @@ def tipo_terreno(num):
     else:
         return "Terreno Montañoso"
 
-#Función de interpolación
+# #Función de interpolación
+# def interpolacion(x,y,z):
+#     p = lagrange(x,y)
+#     resultado = (z)
+#     return round(p(z),3)
+
 def interpolacion(x,y,z):
-    p = lagrange(x,y)
-    resultado = (z)
-    return round(p(z),3)
+    y_interp = interp1d(x, y,fill_value="extrapolate")
+    resultado = float(y_interp(z))
+    return round(resultado,3)
 
 #Función que devuelve un Bool si un numero se encuentra dentro de un rango
 def in_range(rango,numero):
@@ -153,7 +158,7 @@ def intervalos1(num):
             sup= list[list.index(inf)+1]
     return(inf,sup)
 
-#Función para determinar los limites inferior y superior, para la intrpolación Ec en tabla 19 para longitudes mayores a 1000
+#Función para determinar los limites inferior y superior, para la interpolación Ec en tabla 19 para longitudes mayores a 1000
 def intervalos2(num):
     inf = 0
     sup = 0
@@ -398,7 +403,7 @@ def Ec_descenso(pendiente, p_camiones, longitud):
 
 
 
-def n_servicio(densidad):
+def n_servicio(densidad,Tipo):
     if Tipo == "Tipo 1" or Tipo == "Tipo 2":
         if densidad <= 6:
             ns = "A"
@@ -471,7 +476,7 @@ a_berma_derecha, a_berma_izquierda, n_accesos, pendiente, p_camiones, l_tramo, v
     qp = int(float(vol_transito)/(float(fhpico)*float(n_carriles)*fhv*float(fp)))
     v_densidad = round((vel_flujo_libre - a*((qp/b)**c)),1)
     densidad = round((qp/v_densidad),2)
-    final = n_servicio(densidad)
+    final = n_servicio(densidad,Tipo)
     return a,b,c,vel_generica,fc,fs,fb,fa,V_libre,vel_flujo_libre,Ec,fhv,qp,v_densidad,densidad,final
 
 #resultado = calc_multicarril("operacional", "Descenso", "B1", True, False, True, 3.3 ,1.5, 2.0,1.0, 6, 4, 30, 3000,1850,0.90,2,1)

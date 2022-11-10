@@ -1,2 +1,2 @@
-import numpy as np
-
+num = 7.635
+print(int(num))

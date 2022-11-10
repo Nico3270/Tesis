@@ -7,7 +7,7 @@ v3 = 0
 datos = ["Operacional", "Generico", "B1", True, False, True, '3.3', 1.5, 2.0, 1.0, 6, 4, 30, 2200,1850,0.90,2,1]
 
 def sensibilidad_volumen(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15,nivel,volumen,v_op,flujo,densidad):
-    list = np.arange(1,4000,10)
+    list = np.arange(1,6000,50)
     Nivel = []
     Densidad = []
     Velocidad = []
@@ -127,7 +127,7 @@ def sensibilidad_pendiente(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v
 #print(casa)
 #Función sensibilidad camiones
 def sensibilidad_camiones(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15,nivel,volumen,v_op,flujo,densidad):
-    list = np.arange(0, 50)
+    list = np.arange(1, 48)
     camiones = v17
     Nivel1 = []
     Densidad = []
@@ -200,7 +200,7 @@ def sensiblidad_carriles(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16
 
 #Función sensibilidad a_carril
 def sensibilidad_ancho_carril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15,nivel):
-    list = ['3', '3.3', '3.5']
+    list = ['3.0', '3.3', '3.5']
     Nivel = []
     ancho = str(v7)
     for element in list:
