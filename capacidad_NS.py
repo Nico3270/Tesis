@@ -1,4 +1,4 @@
-from scipy.interpolate import lagrange
+from scipy.interpolate import lagrange, interp1d
 import matplotlib.pyplot as plt
 p = ""
 resultado = 0
@@ -20,6 +20,11 @@ def interpolacion(x,y,z):
     p = lagrange(x,y)
     resultado = (z)
     return round(p(z),3)
+    
+def interpolacionp(x,y,z):
+    y_interp = interp1d(x, y,fill_value="extrapolate")
+    resultado = float(y_interp(z))
+    return round(resultado,3)
 
 #Función limite inferior y superior tabla 2
 def intervalos_2(num):
@@ -117,9 +122,9 @@ def inter_compuesta4(tabla_4x, tabla4, p_promedio, p_pesados,l_sector):
 #Funcion interpolacion Tabla 5
 def inter_tabla5(tab_5,tab_5x,tab_51,tab_51x,cap):
     if cap <= 1200:
-        return interpolacion(tab_5, tab_5x, cap)
+        return interpolacionp(tab_5, tab_5x, cap)
     else:
-        return interpolacion(tab_51, tab_51x, cap)
+        return interpolacionp(tab_51, tab_51x, cap)
 
 #Funcion interpolación compuesta tabla 6
 def inter_compuesta6(tab_6x, tab_6, p_promedio,l_sector):

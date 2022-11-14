@@ -63,39 +63,51 @@
   </header><!-- End Header -->
     <br>
     <br>
-    <section class="inner-page" style="background-color:rgb(167, 164, 164)">
+    <section class="inner-page" style="background-color:white">
       <div class="container" data-aos="fade-up">
-        <div class="card" style="width: 33rem;">
-          <div class="card-header"><h2 style="text-align:center; color: rgb(145, 5, 5);">Resultado</h2>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="container">
+              <h4 class="pasos">Valores ingresados</h4>
+            </div>
           </div>
-          <div class="card-body" >
-            <ul class="list-unstyled">
-              <li style="text-align:center; color: rgb(145, 5, 5);"><h4><strong>Cálculo de Capacidad</strong></h4></li>
-              <li><p>Capacidad en condiciones ideales (Ci) en ambos sentidos = 3200 Veh/h</p></li>
-              <li><p>1. F<small>pe</small>= {{datos.Fpe}} (Tabla 1)</p></li>
-              <li><p>2. F<small>d </small>= {{datos.Fd}} (Tabla 2)</p></li>
-              <li><p>3. F<small>cb</small>= {{datos.Fcb}} (Tabla 3)</p></li>
-              <li><p>4. E<small>c</small>= {{datos.Ec}} (Tabla 4)</p></li>
-              <li><p>Fp = {{datos.Fp}} </p></li>
-              <li><p>5. C<small>60</small> = 3200 * {{datos.Fpe}} * {{datos.Fd}} * {{datos.Fcb}} * {{datos.Fp}}</p></li>
-              <li><h4><b>Capacidad C<small>60</small>=</b> {{datos.cap_60 }} Veh/h</h4></li>
-              <li><p>FHP = {{datos.FHP}} (Tabla 5, C<small>60</small>: {{cap_60}} Veh/h )</p></li>
-              <li><h4><b>Capacidad C<small>5</small> = </b>{{datos.cap_5}} Veh/h (C<small>5</small> = C<small>60</small> * FHP)</h4></li>
-              <br>
-              <li style="text-align:center; color: rgb(145, 5, 5);"s><h4><strong>Cálculo de Nivel de Servicio</strong></h4></li>
-              <li><p>1. V<small>1</small>= {{datos.v1}} (Tabla 6)</p></li>
-              <li><p>2. F<small>u</small>= {{datos.Fu}} (Tabla 7)</p></li>
-              <li><p>3. F<small>cb</small>= {{datos.Fcb1}} (Tabla 8)</p></li>
-              <li><p>4. V<small>2</small>= {{datos.v2}} (Velocidad de automóviles V<small>2</small> : V<small>1</small> * F<small>u</small> * F<small>cb</small>)</p></li>
-              <li><p>5. E<small>c</small>= {{datos.Ec_vel}} (Tabla 9)</p></li>
-              <li><p>Fp = {{datos.Fp_vel}} </p></li>
-              <li><p>6. F<small>t</small>= {{datos.Ft}} (Tabla 10)</p></li>
-              <li><p>V<small>M</small>= {{datos.vM}} km/h (V<small>M</small> : V<small>1</small> * F<small>p</small> * F<small>t</small>)</p></li>
-              <li><h4><b>Nivel de servicio: {{datos.Final}}</b></h4></li>
-            </ul>
-            <a href="{{url_for('home')}}" class="btn btn-danger" style="text-align:center">Regresar al inicio</a>
+          <div class="col-lg-6">
+            <div class="container">
+              <div class="card" style="width: 33rem;">
+                <div class="card-header"><h2 style="text-align:center; color: rgb(145, 5, 5);background-color: white;">Resultado</h2>
+                </div>
+                <div class="card-body" >
+                  <ul class="list-unstyled">
+                    <li style="text-align:center; color: rgb(145, 5, 5);"><h4><strong>Cálculo de Capacidad</strong></h4></li>
+                    <li><p>Capacidad en condiciones ideales (Ci) en ambos sentidos = 3200 Veh/h</p></li>
+                    <li><p>1. F<small>pe</small>= {{datos.Fpe}} (Tabla 1)</p></li>
+                    <li><p>2. F<small>d </small>= {{datos.Fd}} (Tabla 2)</p></li>
+                    <li><p>3. F<small>cb</small>= {{datos.Fcb}} (Tabla 3)</p></li>
+                    <li><p>4. E<small>c</small>= {{datos.Ec}} (Tabla 4)</p></li>
+                    <li><p>Fp = {{datos.Fp}} </p></li>
+                    <li><p>5. C<small>60</small> = 3200 * {{datos.Fpe}} * {{datos.Fd}} * {{datos.Fcb}} * {{datos.Fp}}</p></li>
+                    <li><h4><b>Capacidad C<small>60</small>=</b> {{datos.cap_60 }} Veh/h</h4></li>
+                    <li><p>FHP = {{datos.FHP}} (Tabla 5, C<small>60</small>: {{cap_60}} Veh/h )</p></li>
+                    <li><h4><b>Capacidad C<small>5</small> = </b>{{datos.cap_5}} Veh/h (C<small>5</small> = C<small>60</small> * FHP)</h4></li>
+                    <br>
+                    <li style="text-align:center; color: rgb(145, 5, 5);"s><h4><strong>Cálculo de Nivel de Servicio</strong></h4></li>
+                    <li><p>1. V<small>1</small>= {{datos.v1}} (Tabla 6)</p></li>
+                    <li><p>2. F<small>u</small>= {{datos.Fu}} (Tabla 7)</p></li>
+                    <li><p>3. F<small>cb</small>= {{datos.Fcb1}} (Tabla 8)</p></li>
+                    <li><p>4. V<small>2</small>= {{datos.v2}} (Velocidad de automóviles V<small>2</small> : V<small>1</small> * F<small>u</small> * F<small>cb</small>)</p></li>
+                    <li><p>5. E<small>c</small>= {{datos.Ec_vel}} (Tabla 9)</p></li>
+                    <li><p>Fp = {{datos.Fp_vel}} </p></li>
+                    <li><p>6. F<small>t</small>= {{datos.Ft}} (Tabla 10)</p></li>
+                    <li><p>V<small>M</small>= {{datos.vM}} km/h (V<small>M</small> : V<small>1</small> * F<small>p</small> * F<small>t</small>)</p></li>
+                    <li><h4><b>Nivel de servicio: {{datos.Final}}</b></h4></li>
+                  </ul>
+                  <a href="{{url_for('home')}}" class="btn btn-danger" style="text-align:center">Regresar al inicio</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        
       </div>
     </section>
 

@@ -787,7 +787,54 @@ section {
 .tabs .tab-pane p:last-child {
   margin-bottom: 0;
 }
+/*--------------------------------------------------------------
+# Sección Multicarril - Procedimiento
+--------------------------------------------------------------*/
+.container {
+  margin-top: 2rem;
+}
+.procedimiento-1{
+  margin-top: 1rem;
+}
 
+.pasos {
+  text-align: center;
+  color: rgb(215,74,74);
+  margin-bottom: 2rem;
+}
+.text-general{
+  text-align:justify ;
+}
+
+.inner-page datos{
+  margin-bottom: 1rem;
+}
+.formulas {
+  font-family: "Tinos", serif;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.celda {
+  text-align: center;
+}
+
+.subtitulos {
+  text-align: center;
+}
+.imagenes {
+  text-align: center;
+  margin-bottom: 0rem;
+}
+
+.tablas{
+  text-align: center;
+}
+.ecuacion {
+  font-weight: bold;
+  font-style: italic;
+  
+}
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/

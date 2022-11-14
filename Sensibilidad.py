@@ -30,7 +30,7 @@ def sensibilidad_volumen(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16
     plt.scatter(volumen,nivel, label="Resultado obtenido")
     plt.legend(loc="lower right")
     plt.grid(True)
-    plt.xlabel('Volumen de tránsito, veh/h/sentido')
+    plt.xlabel('Volumen de tránsito (veh/h/sentido)')
     plt.ylabel('Nivel de servicio')
     plt.savefig("static/assets/img/sensibilidad/plot.png")
     plt.close()
@@ -39,7 +39,7 @@ def sensibilidad_volumen(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16
     plt.scatter(volumen,v_op, label="Resultado obtenido")
     plt.legend(loc="lower right")
     plt.grid(True)
-    plt.xlabel('Volumen de tránsito, veh/h/sentido')
+    plt.xlabel('Volumen de tránsito (veh/h/sentido)')
     plt.ylabel('Velocidad de operación (km/h)')
     plt.savefig("static/assets/img/sensibilidad/plot1.png")
     plt.close()
@@ -48,7 +48,7 @@ def sensibilidad_volumen(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16
     plt.scatter(volumen,densidad, label="Resultado obtenido")
     plt.legend(loc="lower right")
     plt.grid(True)
-    plt.xlabel('Volumen de tránsito, veh/h/sentido')
+    plt.xlabel('Volumen de tránsito (veh/h/sentido)')
     plt.ylabel('Densidad del sector de análisis (veh/km/carril)')
     plt.savefig("static/assets/img/sensibilidad/plot2.png")
     plt.close()
@@ -57,7 +57,7 @@ def sensibilidad_volumen(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16
     plt.scatter(volumen,flujo, label="Resultado obtenido")
     plt.legend(loc="lower right")
     plt.grid(True)
-    plt.xlabel('Volumen de tránsito, (veh/h/sentido)')
+    plt.xlabel('Volumen de tránsito (veh/h/sentido)')
     plt.ylabel('Flujo vehicular (veh/h/sentido)')
     plt.savefig("static/assets/img/sensibilidad/plot3.png")
     plt.close()
@@ -90,7 +90,6 @@ def sensibilidad_pendiente(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v
     plt.grid(True)
     plt.xlabel('Pendiente (%)')
     plt.ylabel('Nivel de Servicio')
-    plt.title('Efecto de la pendiente sobre el Nivel de Servicio')
     plt.savefig("static/assets/img/sensibilidad/plot4.png")
     plt.close()
     plt.plot(list, Flujo,color="red", label="Análisis de sensibilidad")
@@ -100,7 +99,6 @@ def sensibilidad_pendiente(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v
     plt.grid(True)
     plt.xlabel('Pendiente (%)')
     plt.ylabel('Flujo vehicular (veh/h/sentido)')
-    plt.title('Efecto de la pendiente sobre el flujo vehicular')
     plt.savefig("static/assets/img/sensibilidad/plot5.png")
     plt.close()
     plt.plot(list, Velocidad,color="red", label="Análisis de sensibilidad")
@@ -109,7 +107,6 @@ def sensibilidad_pendiente(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v
     plt.grid(True)
     plt.xlabel('Pendiente (%)')
     plt.ylabel('Velocidad de operación (km/h)')
-    plt.title('Efecto de la pendiente sobre la velocidad de operación')
     plt.savefig("static/assets/img/sensibilidad/plot6.png",bbox_inches='tight')
     plt.close()
     plt.plot(list, Densidad,color="red", label="Análisis de sensibilidad")
@@ -117,8 +114,7 @@ def sensibilidad_pendiente(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v
     plt.legend(loc="lower right")
     plt.grid(True)
     plt.xlabel('Pendiente (%)')
-    plt.ylabel('Densidad (veh/km/carril')
-    plt.title('Efecto de la pendiente sobre la densidad')
+    plt.ylabel('Densidad (veh/km/carril)')
     plt.savefig("static/assets/img/sensibilidad/plot7.png",bbox_inches='tight')
     plt.close()
     return data
@@ -147,7 +143,6 @@ def sensibilidad_camiones(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v1
     plt.grid(True)
     plt.xlabel('Porcentaje camiones (%)')
     plt.ylabel('Nivel de Servicio')
-    plt.title('Efecto del porcentaje de camiones sobre el Nivel de Servicio')
     plt.savefig("static/assets/img/sensibilidad/plot8.png")
     plt.close()
     plt.plot(list, Flujo ,color="red", label="Análisis de sensibilidad")
@@ -156,7 +151,6 @@ def sensibilidad_camiones(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v1
     plt.grid(True)
     plt.xlabel('Porcentaje camiones (%)')
     plt.ylabel('Flujo vehicular (veh/h/sentido)')
-    plt.title('Efecto del porcentaje de camiones sobre el Flujo vehicular')
     plt.savefig("static/assets/img/sensibilidad/plot9.png")
     plt.close()
     plt.plot(list, Velocidad ,color="red", label = "Análiis de sensibilidad")
@@ -165,7 +159,6 @@ def sensibilidad_camiones(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v1
     plt.grid(True)
     plt.xlabel('Porcentaje camiones (%)')
     plt.ylabel('Velocidad de operación (km/h)')
-    plt.title('Efecto del porcentaje de camiones sobre la velocidad de operación')
     plt.savefig("static/assets/img/sensibilidad/plot10.png")
     plt.close()
     plt.plot(list, Densidad ,color="red", label="Análisis de sensibilidad")
@@ -174,7 +167,6 @@ def sensibilidad_camiones(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v1
     plt.grid(True)
     plt.xlabel('Porcentaje camiones (%)')
     plt.ylabel('Densidad (veh/km/carril)')
-    plt.title('Efecto del porcentaje de camiones sobre la Densidad')
     plt.savefig("static/assets/img/sensibilidad/plot11.png")
     plt.close()
    
@@ -193,7 +185,6 @@ def sensiblidad_carriles(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16
     plt.grid(True)
     plt.xlabel('Número de carriles')
     plt.ylabel('Nivel de Servicio')
-    plt.title('Efecto del número de carriles sobre el Nivel de Servicio')
     plt.savefig("static/assets/img/sensibilidad/plot12.png")
     plt.close()
     return Nivel
@@ -213,7 +204,6 @@ def sensibilidad_ancho_carril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v1
     plt.grid(True)
     plt.xlabel('Ancho de carril (metros)')
     plt.ylabel('Nivel de Servicio')
-    plt.title('Efecto del ancho de carril sobre el Nivel de Servicio')
     plt.savefig("static/assets/img/sensibilidad/plot13.png")
     plt.close()
     return Nivel
@@ -233,7 +223,6 @@ def sensibilidad_ancho_separador(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5
     plt.grid(True)
     plt.xlabel('Ancho de separador (metros)')
     plt.ylabel('Nivel de Servicio')
-    plt.title('Efecto del ancho del separador sobre el Nivel de Servicio')
     plt.savefig("static/assets/img/sensibilidad/plot14.png")
     plt.close()
     return Nivel
@@ -255,7 +244,6 @@ def sensibilidad_ancho_bermas(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v1
     plt.grid(True)
     plt.xlabel('Ancho promedio de bermas (metros)')
     plt.ylabel('Nivel de Servicio')
-    plt.title('Efecto del ancho promedio de bermas sobre el Nivel de Servicio')
     plt.savefig("static/assets/img/sensibilidad/plot15.png")
     plt.close()
     return Nivel
@@ -277,7 +265,6 @@ def sensibilidad_n_accesos(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v
     plt.grid(True)
     plt.xlabel('Densidad de accesos ')
     plt.ylabel('Nivel de Servicio')
-    plt.title('Efecto de la densidad de accesos sobre Nivel de Servicio')
     plt.savefig("static/assets/img/sensibilidad/plot16.png")
     plt.close()
     return Nivel
@@ -292,8 +279,14 @@ def sensibilidad_bool(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6
     pea_0 = mp.calc_multicarril(v1,v2,v3,v8,v13,False,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
     con_1 = mp.calc_multicarril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,1)
     con_0 = mp.calc_multicarril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,0.90)
+    tipoA1 = mp.calc_multicarril(v1,v2,"A1",v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+    tipoB1 = mp.calc_multicarril(v1,v2,"B1",v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+    tipoC1 = mp.calc_multicarril(v1,v2,"C1",v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
     data = [sep_1[12], sep_1[13], sep_1[14], sep_1[15], sep_0[12], sep_0[13], sep_0[14], sep_0[15],
     acc_1[12], acc_1[13], acc_1[14], acc_1[15], acc_0[12], acc_0[13], acc_0[14], acc_0[15],
     pea_1[12], pea_1[13], pea_1[14], pea_1[15], pea_0[12], pea_0[13], pea_0[14], pea_0[15],
-    con_1[12], con_1[13], con_1[13], con_1[14], con_0[12], con_0[13], con_0[13], con_0[14],]
+    con_1[12], con_1[13], con_1[13], con_1[15], con_0[12], con_0[13], con_0[14], con_0[15],
+    tipoA1[12], tipoA1[13], tipoA1[14], tipoA1[15],
+    tipoB1[12], tipoB1[13], tipoB1[14], tipoB1[15],
+    tipoC1[12], tipoC1[13], tipoC1[14], tipoC1[15]]
     return data

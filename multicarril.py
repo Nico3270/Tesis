@@ -276,8 +276,7 @@ def tipo(numero):
         vel_f_libre = 90
         a = 1.040
         b = 882.082
-        c = 1036.550
-        d = 692.345
+        c = 2.545
     if tipo == "Tipo 3":
         vel_f_libre = 80
         a = 2.375
