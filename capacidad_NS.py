@@ -66,29 +66,31 @@ def inter_compuesta_1(p_promedio, tab1x, tab_1,lp):
     else:
         inf = intervalos_1(p_promedio)[0]
         sup = intervalos_1(p_promedio)[1]
-        inf_int = interpolacion(tab1x,tab_1.get(inf),lp)
-        inf_sup = interpolacion(tab1x,tab_1.get(sup),lp)
+        inf_int = interpolacionp(tab1x,tab_1.get(inf),lp)
+        inf_sup = interpolacionp(tab1x,tab_1.get(sup),lp)
         list_inf = [inf,sup]
         list_sup =[inf_int, inf_sup]
-        return interpolacion(list_inf,list_sup,p_promedio)
+        return interpolacionp(list_inf,list_sup,p_promedio)
 
 #Función interpolación compuesta Tabla 2
 def inter_compuesta_2(d_sentido, tab2x, tab_2,p_no_rebase):
     inf = intervalos_2(d_sentido)[0]
     sup = intervalos_2(d_sentido)[1]
-    inf_int = interpolacion(tab2x,tab_2.get(inf),p_no_rebase)
-    inf_sup = interpolacion(tab2x,tab_2.get(sup),p_no_rebase)
+    inf_int = interpolacionp(tab2x,tab_2.get(inf),p_no_rebase)
+    inf_sup = interpolacionp(tab2x,tab_2.get(sup),p_no_rebase)
     list_inf = [inf,sup]
     list_sup =[inf_int, inf_sup]
-    return interpolacion(list_inf,list_sup,d_sentido)
+    return interpolacionp(list_inf,list_sup,d_sentido)
 
 #Función interpolación compuesta Tabla 3
 def inter_compuesta3(tab_3x, tab_3, a_berma, a_carril):
-    sup = interpolacion(tab_3x, tab_3.get(1.8),a_carril)
-    inf = interpolacion(tab_3x, tab_3.get(0),a_carril)
+    if a_berma >= 1.8:
+        return 1.0
+    sup = interpolacionp(tab_3x, tab_3.get(1.8),a_carril)
+    inf = interpolacionp(tab_3x, tab_3.get(0),a_carril)
     list_inf = [0,1.89]
     list_sup = [inf,sup]
-    return interpolacion(list_inf,list_sup,a_berma)
+    return interpolacionp(list_inf,list_sup,a_berma)
 
 #Funcion interpolacion compuesta Tabla 4
 def inter_compuesta4(tabla_4x, tabla4, p_promedio, p_pesados,l_sector):
@@ -130,11 +132,11 @@ def inter_tabla5(tab_5,tab_5x,tab_51,tab_51x,cap):
 def inter_compuesta6(tab_6x, tab_6, p_promedio,l_sector):
     inf = intervalos_1(p_promedio)[0]
     sup = intervalos_1(p_promedio)[1]
-    int_1 = interpolacion(tab_6x, tab_6.get(inf), l_sector)
-    int_2 = interpolacion(tab_6x, tab_6.get(inf), l_sector)
+    int_1 = interpolacionp(tab_6x, tab_6.get(inf), l_sector)
+    int_2 = interpolacionp(tab_6x, tab_6.get(inf), l_sector)
     datos_1 = [inf,sup]
     datos_2 = [int_1, int_2]
-    return interpolacion(datos_1, datos_2, p_promedio)
+    return interpolacionp(datos_1, datos_2, p_promedio)
 
 #Funcion interpolacion compuesta tabla 8
 def inter_compuesta8(tab_8x, tab8, a_carril, a_berma):
@@ -155,66 +157,66 @@ def inter_compuesta8(tab_8x, tab8, a_carril, a_berma):
 def inter_compuesta_plan_ond(v2,tab_9x, terreno,p_pesados, l_sector):
     inf = intervalos(v2)[0]
     sup = intervalos(v2)[1]
-    int_0y5_0 =  interpolacion(tab_9x,terreno.get(0.5).get(inf),p_pesados)
-    int_0y5_1 =  interpolacion(tab_9x,terreno.get(0.5).get(sup),p_pesados)
-    resultado_1 = interpolacion([inf,sup],[int_0y5_0,int_0y5_1],v2)
-    int_1_0 =  interpolacion(tab_9x,terreno.get(1).get(inf),p_pesados)
-    int_1_1 =  interpolacion(tab_9x,terreno.get(1).get(sup),p_pesados)
-    resultado_2 = interpolacion([inf,sup],[int_1_0,int_1_1],v2)
-    int_1_5_0 =  interpolacion(tab_9x,terreno.get(1.5).get(inf),p_pesados)
-    int_1_5_1 =  interpolacion(tab_9x,terreno.get(1.5).get(sup),p_pesados)
-    resultado_3 = interpolacion([inf,sup],[int_1_5_0,int_1_5_1],v2)
-    int_2_0 =  interpolacion(tab_9x,terreno.get(2).get(inf),p_pesados)
-    int_2_1 =  interpolacion(tab_9x,terreno.get(2).get(sup),p_pesados)
-    resultado_4 = interpolacion([inf,sup],[int_2_0,int_2_1],v2)
-    int_2_5_0 =  interpolacion(tab_9x,terreno.get(2.5).get(inf),p_pesados) 
-    int_2_5_1 =  interpolacion(tab_9x,terreno.get(2.5).get(sup),p_pesados)
-    resultado_5 = interpolacion([inf,sup],[int_2_5_0,int_2_5_1],v2)
-    int_3_0 =  interpolacion(tab_9x,terreno.get(3).get(inf),p_pesados)
-    int_3_1 =  interpolacion(tab_9x,terreno.get(3).get(sup),p_pesados)
-    resultado_6 = interpolacion([inf,sup],[int_3_0,int_3_1],v2)
-    int_3_5_0 =  interpolacion(tab_9x,terreno.get(3.5).get(inf),p_pesados)
-    int_3_5_1 =  interpolacion(tab_9x,terreno.get(3.5).get(sup),p_pesados)
-    resultado_7 = interpolacion([inf,sup],[int_3_5_0,int_3_5_1],v2)
+    int_0y5_0 =  interpolacionp(tab_9x,terreno.get(0.5).get(inf),p_pesados)
+    int_0y5_1 =  interpolacionp(tab_9x,terreno.get(0.5).get(sup),p_pesados)
+    resultado_1 = interpolacionp([inf,sup],[int_0y5_0,int_0y5_1],v2)
+    int_1_0 =  interpolacionp(tab_9x,terreno.get(1).get(inf),p_pesados)
+    int_1_1 =  interpolacionp(tab_9x,terreno.get(1).get(sup),p_pesados)
+    resultado_2 = interpolacionp([inf,sup],[int_1_0,int_1_1],v2)
+    int_1_5_0 =  interpolacionp(tab_9x,terreno.get(1.5).get(inf),p_pesados)
+    int_1_5_1 =  interpolacionp(tab_9x,terreno.get(1.5).get(sup),p_pesados)
+    resultado_3 = interpolacionp([inf,sup],[int_1_5_0,int_1_5_1],v2)
+    int_2_0 =  interpolacionp(tab_9x,terreno.get(2).get(inf),p_pesados)
+    int_2_1 =  interpolacionp(tab_9x,terreno.get(2).get(sup),p_pesados)
+    resultado_4 = interpolacionp([inf,sup],[int_2_0,int_2_1],v2)
+    int_2_5_0 =  interpolacionp(tab_9x,terreno.get(2.5).get(inf),p_pesados) 
+    int_2_5_1 =  interpolacionp(tab_9x,terreno.get(2.5).get(sup),p_pesados)
+    resultado_5 = interpolacionp([inf,sup],[int_2_5_0,int_2_5_1],v2)
+    int_3_0 =  interpolacionp(tab_9x,terreno.get(3).get(inf),p_pesados)
+    int_3_1 =  interpolacionp(tab_9x,terreno.get(3).get(sup),p_pesados)
+    resultado_6 = interpolacionp([inf,sup],[int_3_0,int_3_1],v2)
+    int_3_5_0 =  interpolacionp(tab_9x,terreno.get(3.5).get(inf),p_pesados)
+    int_3_5_1 =  interpolacionp(tab_9x,terreno.get(3.5).get(sup),p_pesados)
+    resultado_7 = interpolacionp([inf,sup],[int_3_5_0,int_3_5_1],v2)
     datos_x =[0.5,1,1.5,2,2.5,3,3.5]
     datos = [resultado_1,resultado_2, resultado_3, resultado_4, resultado_5,
     resultado_6, resultado_7]
-    return interpolacion(datos_x, datos,l_sector)
+    return interpolacionp(datos_x, datos,l_sector)
 
 def inter_compuesta_mon_esc(v2,tab_9x, terreno,p_pesados, l_sector):
     inf = intervalos(v2)[0]
     sup = intervalos(v2)[1]
-    int_0y5_0 =  interpolacion(tab_9x,terreno.get(0.5).get(inf),p_pesados)
-    int_0y5_1 =  interpolacion(tab_9x,terreno.get(0.5).get(sup),p_pesados)
-    resultado_1 = interpolacion([inf,sup],[int_0y5_0,int_0y5_1],v2)
-    int_1_0 =  interpolacion(tab_9x,terreno.get(1).get(inf),p_pesados)
-    int_1_1 =  interpolacion(tab_9x,terreno.get(1).get(sup),p_pesados)
-    resultado_2 = interpolacion([inf,sup],[int_1_0,int_1_1],v2)
-    int_1_5_0 =  interpolacion(tab_9x,terreno.get(1.5).get(inf),p_pesados)
-    int_1_5_1 =  interpolacion(tab_9x,terreno.get(1.5).get(sup),p_pesados)
-    resultado_3 = interpolacion([inf,sup],[int_1_5_0,int_1_5_1],v2)
-    int_2_0 =  interpolacion(tab_9x,terreno.get(2).get(inf),p_pesados)
-    int_2_1 =  interpolacion(tab_9x,terreno.get(2).get(sup),p_pesados)
-    resultado_4 = interpolacion([inf,sup],[int_2_0,int_2_1],v2)
-    int_2_5_0 =  interpolacion(tab_9x,terreno.get(2.5).get(inf),p_pesados) 
-    int_2_5_1 =  interpolacion(tab_9x,terreno.get(2.5).get(sup),p_pesados)
-    resultado_5 = interpolacion([inf,sup],[int_2_5_0,int_2_5_1],v2)
-    int_3_0 =  interpolacion(tab_9x,terreno.get(3).get(inf),p_pesados)
-    int_3_1 =  interpolacion(tab_9x,terreno.get(3).get(sup),p_pesados)
-    resultado_6 = interpolacion([inf,sup],[int_3_0,int_3_1],v2)
-    int_3_5_0 =  interpolacion(tab_9x,terreno.get(3.5).get(inf),p_pesados)
-    int_3_5_1 =  interpolacion(tab_9x,terreno.get(3.5).get(sup),p_pesados)
-    resultado_7 = interpolacion([inf,sup],[int_3_5_0,int_3_5_1],v2)
-    int_4_0 =  interpolacion(tab_9x,terreno.get(4).get(inf),p_pesados)
-    int_4_1 =  interpolacion(tab_9x,terreno.get(4).get(sup),p_pesados)
-    resultado_8 = interpolacion([inf,sup],[int_4_0,int_4_1],v2)
-    int_4_5_0 =  interpolacion(tab_9x,terreno.get(4.5).get(inf),p_pesados)
-    int_4_5_1 =  interpolacion(tab_9x,terreno.get(4.5).get(sup),p_pesados)
-    resultado_9 = interpolacion([inf,sup],[int_4_5_0,int_4_5_1],v2)
+    int_0y5_0 =  interpolacionp(tab_9x,terreno.get(0.5).get(inf),p_pesados)
+    int_0y5_1 =  interpolacionp(tab_9x,terreno.get(0.5).get(sup),p_pesados)
+    resultado_1 = interpolacionp([inf,sup],[int_0y5_0,int_0y5_1],v2)
+    int_1_0 =  interpolacionp(tab_9x,terreno.get(1).get(inf),p_pesados)
+    int_1_1 =  interpolacionp(tab_9x,terreno.get(1).get(sup),p_pesados)
+    resultado_2 = interpolacionp([inf,sup],[int_1_0,int_1_1],v2)
+    int_1_5_0 =  interpolacionp(tab_9x,terreno.get(1.5).get(inf),p_pesados)
+    int_1_5_1 =  interpolacionp(tab_9x,terreno.get(1.5).get(sup),p_pesados)
+    resultado_3 = interpolacionp([inf,sup],[int_1_5_0,int_1_5_1],v2)
+    int_2_0 =  interpolacionp(tab_9x,terreno.get(2).get(inf),p_pesados)
+    int_2_1 =  interpolacionp(tab_9x,terreno.get(2).get(sup),p_pesados)
+    resultado_4 = interpolacionp([inf,sup],[int_2_0,int_2_1],v2)
+    int_2_5_0 =  interpolacionp(tab_9x,terreno.get(2.5).get(inf),p_pesados) 
+    int_2_5_1 =  interpolacionp(tab_9x,terreno.get(2.5).get(sup),p_pesados)
+    resultado_5 = interpolacionp([inf,sup],[int_2_5_0,int_2_5_1],v2)
+    int_3_0 =  interpolacionp(tab_9x,terreno.get(3).get(inf),p_pesados)
+    int_3_1 =  interpolacionp(tab_9x,terreno.get(3).get(sup),p_pesados)
+    resultado_6 = interpolacionp([inf,sup],[int_3_0,int_3_1],v2)
+    int_3_5_0 =  interpolacionp(tab_9x,terreno.get(3.5).get(inf),p_pesados)
+    int_3_5_1 =  interpolacionp(tab_9x,terreno.get(3.5).get(sup),p_pesados)
+    resultado_7 = interpolacionp([inf,sup],[int_3_5_0,int_3_5_1],v2)
+    int_4_0 =  interpolacionp(tab_9x,terreno.get(4).get(inf),p_pesados)
+    int_4_1 =  interpolacionp(tab_9x,terreno.get(4).get(sup),p_pesados)
+    resultado_8 = interpolacionp([inf,sup],[int_4_0,int_4_1],v2)
+    int_4_5_0 =  interpolacionp(tab_9x,terreno.get(4.5).get(inf),p_pesados)
+    int_4_5_1 =  interpolacionp(tab_9x,terreno.get(4.5).get(sup),p_pesados)
+    resultado_9 = interpolacionp([inf,sup],[int_4_5_0,int_4_5_1],v2)
     datos_x =[0.5,1,1.5,2,2.5,3,3.5,4,4.5]
     datos = [resultado_1,resultado_2, resultado_3, resultado_4, resultado_5,
     resultado_6, resultado_7,resultado_8,resultado_9]
-    return interpolacion(datos_x, datos,l_sector)
+    return interpolacionp(datos_x, datos,l_sector)
 
 #Función para determinar el nivel de servicio según la velocidad media
 def esta_en_rango(rango,numero):

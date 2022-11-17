@@ -18,6 +18,9 @@ a {
   text-decoration: none;
 }
 
+hr {
+  color: red; 
+}
 a:hover {
   color: #f5de12;
   text-decoration: none;

@@ -61,6 +61,20 @@ class Resultado(db.Model):
     vM = db.Column(db.Float, nullable=False)
     Vi = db.Column(db.Integer, nullable=False)
     Final = db.Column(db.Integer, nullable=False)
+    carretera = db.Column(db.String(200), nullable = False)
+    proyecto = db.Column(db.String(200), nullable = False)
+    a_carril = db.Column(db.Float, nullable=False)
+    a_berma = db.Column(db.Float, nullable=False)
+    p_promedio = db.Column(db.Float, nullable=False)
+    l_sector = db.Column(db.Float, nullable=False)
+    curvatura = db.Column(db.Integer, nullable=False)
+    d_sentido = db.Column(db.Integer, nullable=False)
+    d_sentido1 = db.Column(db.Integer, nullable=False)
+    p_no_rebase = db.Column(db.Integer, nullable=False)
+    p_automoviles = db.Column(db.Integer, nullable=False)
+    p_buses = db.Column(db.Integer, nullable=False)
+    p_camiones = db.Column(db.Integer, nullable=False)
+    vol_cap = db.Column(db.Integer, nullable=False)
 
 #Base de datos resultados para capacidad y nivel de servicio para vías multicariil
 class Multicaril_db(db.Model):
@@ -208,16 +222,19 @@ class CreatePostForm(FlaskForm):
     submit = SubmitField("Submit Post")
 
 class Capacidad(FlaskForm):
-    a_carril = FloatField(label="Ancho de carril (metros)",validators = [DataRequired(),NumberRange(min=0, max=10)])
-    a_berma = FloatField(label="Ancho de berma",  validators = [DataRequired(),NumberRange(min=0, max=3)])
-    p_promedio = FloatField(label="Pendiente promedio ", validators = [DataRequired(),NumberRange(min=0, max=12)])
-    l_sector = FloatField(label="Longitud del sector",validators = [DataRequired(),NumberRange(min=0, max=50)])
-    d_sentido= IntegerField(label="Distribución por sentido", validators = [DataRequired(),NumberRange(min=0, max=100)])
-    p_no_rebase = IntegerField(label="Porcentaje de zonas de no rebase", validators = [DataRequired(),NumberRange(min=0, max=100)])
-    p_automoviles = IntegerField(label="Porcentaje de automoviles", validators = [DataRequired(),NumberRange(min=0, max=100)])
-    p_buses = IntegerField(label="Porcentaje de buses", validators = [DataRequired(),NumberRange(min=0, max=100)])
-    p_camiones = IntegerField(label="Porcentaje de camiones", validators = [DataRequired(),NumberRange(min=0, max=100)])
-    vol_cap = IntegerField(label="Volumen horario total ambos sentidos", validators = [DataRequired(),NumberRange(min=0, max=100000)])
+    carretera = StringField(label="Nombre de carretera o proyecto", name="carretera")
+    proyecto = StringField(label="Proyecto o abscisa")
+    a_carril = FloatField(label="Ancho de carril",description="Ingrese valor en metros", validators = [DataRequired(),NumberRange(min=2.7, max=3.65)])
+    a_berma = FloatField(label="Ancho de berma",description="Ingrese valor en metros",  validators = [DataRequired(),NumberRange(min=0, max=3)])
+    p_promedio = FloatField(label="Pendiente promedio ",description="Ingrese valor en porcentaje", validators = [DataRequired(),NumberRange(min=0, max=12)])
+    l_sector = FloatField(label="Longitud del sector",description="Ingrese valor en kilometros",validators = [DataRequired(),NumberRange(min=0, max=5)])
+    curvatura = IntegerField(label="Grado de curvatura",description="Ingrese valor en °/km", validators=[NumberRange(min=0, max=799)])
+    d_sentido= IntegerField(label="Distribución por sentido", validators = [DataRequired(),NumberRange(min=50, max=100)])
+    p_no_rebase = IntegerField(label="Porcentaje de zonas de no rebase",description="Ingrese valor en porcentaje",validators=[NumberRange(min=0, max=100)])
+    p_automoviles = IntegerField(label="Porcentaje de automoviles",description="Ingrese valor en porcentaje", validators=[NumberRange(min=0, max=100)])
+    p_buses = IntegerField(label="Porcentaje de buses",default=1,description="Ingrese valor en porcentaje", validators=[NumberRange(min=0, max=100)])
+    p_camiones = IntegerField(label="Porcentaje de camiones",description="Ingrese valor en porcentaje", validators=[NumberRange(min=0, max=100)])
+    vol_cap = IntegerField(label="Volumen horario total ambos sentidos",description="Ingrese valor Veh/h", validators = [DataRequired(),NumberRange(min=0, max=100000)])
     submit = SubmitField("Calcular Capacidad y Nivel de servicio")
 
 class Multicarril(FlaskForm):
@@ -322,7 +339,7 @@ def Capacidad_Ns(a_carril, a_berma, p_promedio, l_sector, d_sentido, p_no_rebase
     v1 = cap.inter_compuesta6(cap.tabla_6x, cap.tabla_6, p_promedio, l_sector)
     Fu = cap.interpolacion(cap.tabla_7x,cap.tabla_7,vol_cap/cap_60)
     Fcb1 = cap.inter_compuesta8(cap.tabla_8x,cap.tabla_8,a_carril,a_berma)
-    v2 = v1* Fu * Fcb1
+    v2 = round(v1* Fu * Fcb1,2)
     Ec_vel = 0
     if p_promedio < 3:
         Ec_vel = cap.inter_compuesta_plan_ond(v2,cap.tabla_9x,cap.plano,p_camiones,l_sector)
@@ -335,7 +352,7 @@ def Capacidad_Ns(a_carril, a_berma, p_promedio, l_sector, d_sentido, p_no_rebase
 
     fp_vel = round(1/(1+((p_camiones/100)*(Ec_vel-1))),3)
     Ft = round(cap.interpolacion(cap.tabla_10x, cap.tabla_10, p_promedio),3)
-    vM = v2*fp_vel*Ft
+    vM = round(v2*fp_vel*Ft,2)
     Vi = int((vM * 100)/90)
 
     if p_promedio < 3:
@@ -354,12 +371,22 @@ def Capacidad_Ns(a_carril, a_berma, p_promedio, l_sector, d_sentido, p_no_rebase
 def home():
     form = Capacidad()
     if form.validate_on_submit():
+        if form.p_no_rebase == 0:
+            form.p_no_rebase = 1
+        if form.p_buses == 0:
+            form.p_buses == 1
+        if form.p_camiones == 0:
+            form.p_camiones == 1
         res = Capacidad_Ns(form.a_carril.data,form.a_berma.data,form.p_promedio.data,form.l_sector.data,
         form.d_sentido.data,form.p_no_rebase.data,form.p_automoviles.data,form.p_buses.data,
         form.p_camiones.data,form.vol_cap.data)
+        d_sen = 100-form.d_sentido.data
         new_object = Resultado(Fpe=res[0],Fd=res[1],Fcb=res[2],Ec=res[3],Fp=res[4],cap_60=res[5],
         cap_5=res[6], FHP=res[7],v1=res[8],Fu=res[9],Fcb1=res[10],v2=res[11],Ec_vel=res[12],
-        Fp_vel=res[13],Ft=res[14],vM=res[15],Vi=res[16],Final=res[17])
+        Fp_vel=res[13],Ft=res[14],vM=res[15],Vi=res[16],Final=res[17], carretera=form.carretera.data,
+        proyecto = form.proyecto.data, a_carril=form.a_carril.data,a_berma=form.a_berma.data, p_promedio=form.p_promedio.data,
+        l_sector=form.l_sector.data, curvatura=form.curvatura.data, d_sentido=form.d_sentido.data, d_sentido1=d_sen, p_no_rebase =form.p_no_rebase.data,
+        p_automoviles=form.p_automoviles.data, p_buses=form.p_buses.data, p_camiones=form.p_camiones.data, vol_cap= form.vol_cap.data)
         db.session.add(new_object)
         db.session.commit()
         return redirect(url_for('resultado'))
@@ -399,6 +426,8 @@ def multicarril():
         v16 = float(form.fhpico.data)
         v17 = form.p_camiones.data
         v18 = form.vol_transito.data
+        if v4 >= 8:
+            v4 = 7.99
         print(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
         #análisis de sensibilidad
         rs= mp.calc_multicarril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
@@ -532,7 +561,7 @@ def multicarril():
 def resultado():
     id = len(db.session.query(Resultado).all())
     registro = Resultado.query.get(id)
-    return render_template('resultados.html',datos=registro)
+    return render_template('resultados_2_carriles.html',datos=registro)
 
 @app.route("/resultado_Multicarril", methods=["GET","POST"])
 def resultado_Multicarril():

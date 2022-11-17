@@ -40,6 +40,7 @@
 
 <body>
   {% import "bootstrap/wtf.html" as wtf %}
+
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
@@ -89,8 +90,7 @@
             <b>Insertar valores</b>
           </div>
           <div class="card-body">
-            {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "danger"}) }}
-          </div>
+            {{ wtf.quick_form(form, novalidate=True,  button_map={"submit": "danger"}) }}
         </div>
       </div>
     </section>
