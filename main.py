@@ -75,6 +75,7 @@ class Resultado(db.Model):
     p_buses = db.Column(db.Integer, nullable=False)
     p_camiones = db.Column(db.Integer, nullable=False)
     vol_cap = db.Column(db.Integer, nullable=False)
+    terreno = db.Column(db.String(200), nullable = False)
 
 #Base de datos resultados para capacidad y nivel de servicio para vías multicariil
 class Multicaril_db(db.Model):
@@ -337,7 +338,7 @@ def Capacidad_Ns(a_carril, a_berma, p_promedio, l_sector, d_sentido, p_no_rebase
     cap_5 =round(cap_60*FHP,0)
     #Nivel de servico
     v1 = cap.inter_compuesta6(cap.tabla_6x, cap.tabla_6, p_promedio, l_sector)
-    Fu = cap.interpolacion(cap.tabla_7x,cap.tabla_7,vol_cap/cap_60)
+    Fu = cap.interpolacionp(cap.tabla_7x,cap.tabla_7,vol_cap/cap_60)
     Fcb1 = cap.inter_compuesta8(cap.tabla_8x,cap.tabla_8,a_carril,a_berma)
     v2 = round(v1* Fu * Fcb1,2)
     Ec_vel = 0
@@ -352,8 +353,9 @@ def Capacidad_Ns(a_carril, a_berma, p_promedio, l_sector, d_sentido, p_no_rebase
 
     fp_vel = round(1/(1+((p_camiones/100)*(Ec_vel-1))),3)
     Ft = round(cap.interpolacion(cap.tabla_10x, cap.tabla_10, p_promedio),3)
-    vM = round(v2*fp_vel*Ft,2)
-    Vi = int((vM * 100)/90)
+    vM = round(v2*fp_vel*Ft,4)
+    Vi = float((vM * 100)/90)
+    Vi = round(Vi,3)
 
     if p_promedio < 3:
         lista = cap.plano_1
@@ -364,7 +366,8 @@ def Capacidad_Ns(a_carril, a_berma, p_promedio, l_sector, d_sentido, p_no_rebase
     else:
         lista = cap.escarpado_1
     final = cap.index(lista, Vi)
-    return  Fpe,Fd,Fcb,Ec,Fp,int(cap_60),int(cap_5),FHP,v1,Fu,Fcb1,v2,Ec_vel,fp_vel,Ft,vM,Vi,final
+    terreno = cap.tipo_terreno(p_promedio)
+    return  Fpe,Fd,Fcb,Ec,Fp,int(cap_60),int(cap_5),FHP,v1,Fu,Fcb1,v2,Ec_vel,fp_vel,Ft,vM,Vi,final,terreno
 
 
 @app.route("/", methods=["GET","POST"])
@@ -386,7 +389,7 @@ def home():
         Fp_vel=res[13],Ft=res[14],vM=res[15],Vi=res[16],Final=res[17], carretera=form.carretera.data,
         proyecto = form.proyecto.data, a_carril=form.a_carril.data,a_berma=form.a_berma.data, p_promedio=form.p_promedio.data,
         l_sector=form.l_sector.data, curvatura=form.curvatura.data, d_sentido=form.d_sentido.data, d_sentido1=d_sen, p_no_rebase =form.p_no_rebase.data,
-        p_automoviles=form.p_automoviles.data, p_buses=form.p_buses.data, p_camiones=form.p_camiones.data, vol_cap= form.vol_cap.data)
+        p_automoviles=form.p_automoviles.data, p_buses=form.p_buses.data, p_camiones=form.p_camiones.data, vol_cap= form.vol_cap.data, terreno = res[18])
         db.session.add(new_object)
         db.session.commit()
         return redirect(url_for('resultado'))
@@ -440,7 +443,7 @@ def multicarril():
         sen.sensibilidad_ancho_separador(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15, rs[15])
         sen.sensibilidad_ancho_bermas(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15, rs[15])
         sen.sensibilidad_n_accesos(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15, rs[15])
-        maestra(rs[12], rs[9])       
+        maestra(rs[12], rs[13])       
         v8 = True_or_false(v8)
         v13 = True_or_false(v13)
         v14 = True_or_false(v14)

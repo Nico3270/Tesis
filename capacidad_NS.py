@@ -222,10 +222,16 @@ def inter_compuesta_mon_esc(v2,tab_9x, terreno,p_pesados, l_sector):
 def esta_en_rango(rango,numero):
     return numero in range(*rango)
 
+def in_range(rango,numero):
+    if numero >= rango[0] and numero <= rango[1]:
+        return True
+    else:
+        return False
+
 #Función para determinar el nivel de servicio según la tabla 11
 def index(rango,num):
     for element in rango:
-        if esta_en_rango(element,num):
+        if in_range(element,num):
             indice = rango.index(element)
     if indice == 0:
         level = "A"
@@ -240,7 +246,13 @@ def index(rango,num):
     else:
         level = "F"
     return level
-    
+
+#Datos de tabla 11
+plano_1 = [[92,100],[80,92], [69,80], [58,69], [47,58], [0,47]]
+ondulado_1 = [[76,100],[66,76],[57,66],[47,57],[38,47],[0,38]]
+montanoso_1 = [[58,100],[50,58],[43,50],[37,43],[29,37],[0,29]]
+escarpado_1 = [[40,100],[34,40],[30,34],[26,30],[20,26],[0,20]]
+
 tabla_1 = {0:[1,1,1,1,1,1,1,1,1,1,1,1],
 1:[0.99,0.99,0.99,0.99,0.98,0.98,0.98,0.98,0.98,0.98,0.98,0.98],
 2:[0.99,0.98,0.98,0.98,0.97,0.97,0.97,0.97,0.97,0.97,0.97,0.97],
@@ -301,7 +313,7 @@ tabla_6 = {0:[90,90,90,90,90,90,90,90,90,90,90,90], 1:[88,86,86,86,85,85,85,85,8
 tabla_6x = [0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6]
 
 tabla_7 = [0.99,0.98,0.96,0.92,0.87,0.82,0.75,0.68,0.59,0.5]
-tabla_7x = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.91]
+tabla_7x = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]
 
 tabla_8 = {1.8:[1,0.97,0.93,0.85,0.73], 1.5:[0.98,0.95,0.91,0.83,0.71], 1.2:[0.96,0.93,0.89,0.81,0.7], 1:[0.95,0.92,0.88,0.8,0.69],
 0.5:[0.91,0.88,0.84,0.76,0.66], 0:[0.88,0.85,0.81,0.73,0.63]}
@@ -429,11 +441,7 @@ escarpado = {0.5:{10:[1.00,1.00,1.04,1.10,1.12,1.13,1.14,1.13,1.14,1.14],20:[1.0
 tabla_10x = [0,2.5,4,6,8]
 tabla_10 = [1.00,0.99,0.99,0.98,0.97]
 
-#Datos de tabla 11
-plano_1 = [[92,100],[80,92], [69,80], [58,69], [47,58], [0,47]]
-ondulado_1 = [[76,100],[66,76],[57,66],[48,57],[38,48],[0,38]]
-montanoso_1 = [[58,100],[50,58],[43,50],[37,43],[29,37],[0,29]]
-escarpado_1 = [[40,100],[34,40],[30,34],[26,30],[20,26],[0,20]]
+
 
 # print('Bienvenido al sistema de cálculo de capacidad')
 # print('Ingrese información de la vía: ')

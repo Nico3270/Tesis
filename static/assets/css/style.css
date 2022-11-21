@@ -208,6 +208,10 @@ h6 {
   transition: 0.3s;
 }
 
+section{
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
 .navbar .dropdown ul li {
   min-width: 200px;
 }
@@ -731,9 +735,17 @@ section {
   font-weight: 600;
   margin: 0;
 }
-
+.datos {
+padding-top: 0%;
+padding-bottom: 0%;
+}
 .tab {
   text-align: center;
+}
+
+.titulos_tablas {
+  text-decoration: solid;
+  font-weight: bold;
 }
 .tabs .nav-link:hover {
   color: #e03a3c;

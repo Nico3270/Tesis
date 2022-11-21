@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Tablas para vías de dos carriles </title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/assets/img/favicon.png" rel="icon">
+  <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,700;1,100&family=Tinos:ital@0;1&family=Ubuntu:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="../static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+
+  <!-- Template Main CSS File -->
+  <link href="../static/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Presento - v3.9.0
+  * Template URL: https://bootstrapmade.com/presento-bootstrap-corporate-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+  {% import "bootstrap/wtf.html" as wtf %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo me-auto"><a href="{{url_for('home')}}">Capacidad y Niveles de Servicio<span>.</span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a href="{{url_for('home')}}" class="logo me-auto"><img src="../static/assets/img/logo.png" alt=""></a>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{{url_for('home')}}">Inicio</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('blog')}}">Blog</a></li>
+          <li><a class="nav-link scrollto " href="{{url_for('resultados')}}">Resultados</a></li>
+          <li><a href="{{url_for('resultado')}}">Último</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('multicarril')}}">Multicarril</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="#about" class="get-started-btn scrollto">Iniciar</a>
+    </div>
+  </header><!-- End Header -->
+  <br>
+  <section class="tabla1">
+    <div class="container">
+      <h5 class="tab titulos_tablas">Tabla 1. Factores de correción a la capacidad por pendiente (F<sub>pe</sub>)</h5>
+      <br>
+      <div class="table-responsive" , style="text-align:center ;">
+        <table class="table-bordered table-hover table-sm" style="margin: 0 auto;">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col" class="tab"></th>
+              <th colspan="12" class="tab">Longitud de la pendiente (km)</th>
+            </tr>
+            <tr>
+              <th scope="col" class="tab">Pendiente</th>
+              <th scope="col" class="tab">0.5</th>
+              <th scope="col" class="tab">1</th>
+              <th scope="col" class="tab">1.5</th>
+              <th scope="col" class="tab">2</th>
+              <th scope="col" class="tab">2.5</th>
+              <th scope="col" class="tab">3</th>
+              <th scope="col" class="tab">3.5</th>
+              <th scope="col" class="tab">4</th>
+              <th scope="col" class="tab">4.5</th>
+              <th scope="col" class="tab">5</th>
+              <th scope="col" class="tab">5.5</th>
+              <th scope="col" class="tab">6</th>
+            </tr>
+          <tbody>
+            <tr>
+              <td class="tab">0</td>
+              <td class="tab">1</td>
+              <td class="tab">1</td>
+              <td class="tab">1</td>
+              <td class="tab">1</td>
+              <td class="tab">1</td>
+              <td class="tab">1</td>
+              <td class="tab">1</td>
+              <td class="tab">1</td>
+              <td class="tab">1</td>
+              <td class="tab">1</td>
+              <td class="tab">1</td>
+              <td class="tab">1</td>
+            </tr>
+            <tr>
+              <td class="tab">1</td>
+              <td class="tab">0.99</td>
+              <td class="tab">0.99</td>
+              <td class="tab">0.99</td>
+              <td class="tab">0.99</td>
+              <td class="tab">0.98</td>
+              <td class="tab">0.98</td>
+              <td class="tab">0.98</td>
+              <td class="tab">0.98</td>
+              <td class="tab">0.98</td>
+              <td class="tab">0.98</td>
+              <td class="tab">0.98</td>
+              <td class="tab">0.98</td>
+            </tr>
+            <tr>
+              <td class="tab">2</td>
+              <td class="tab">0.99</td>
+              <td class="tab">0.98</td>
+              <td class="tab">0.98</td>
+              <td class="tab">0.98</td>
+              <td class="tab">0.97</td>
+              <td class="tab">0.97</td>
+              <td class="tab">0.97</td>
+              <td class="tab">0.97</td>
+              <td class="tab">0.97</td>
+              <td class="tab">0.97</td>
+              <td class="tab">0.97</td>
+              <td class="tab">0.97</td>
+            </tr>
+            <tr>
+              <td class="tab">3</td>
+              <td class="tab">0.98</td>
+              <td class="tab">0.97</td>
+              <td class="tab">0.96</td>
+              <td class="tab">0.96</td>
+              <td class="tab">0.95</td>
+              <td class="tab">0.95</td>
+              <td class="tab">0.95</td>
+              <td class="tab">0.95</td>
+              <td class="tab">0.95</td>
+              <td class="tab">0.95</td>
+              <td class="tab">0.95</td>
+              <td class="tab">0.95</td>
+            </tr>
+            <tr>
+              <td class="tab">4</td>
+              <td class="tab">0.98</td>
+              <td class="tab">0.96</td>
+              <td class="tab">0.95</td>
+              <td class="tab">0.94</td>
+              <td class="tab">0.94</td>
+              <td class="tab">0.94</td>
+              <td class="tab">0.93</td>
+              <td class="tab">0.93</td>
+              <td class="tab">0.93</td>
+              <td class="tab">0.93</td>
+              <td class="tab">0.93</td>
+              <td class="tab">0.93</td>
+            </tr>
+            <tr>
+              <td class="tab">5</td>
+              <td class="tab">0.98</td>
+              <td class="tab">0.95</td>
+              <td class="tab">0.94</td>
+              <td class="tab">0.92</td>
+              <td class="tab">0.92</td>
+              <td class="tab">0.92</td>
+              <td class="tab">0.92</td>
+              <td class="tab">0.92</td>
+              <td class="tab">0.91</td>
+              <td class="tab">0.91</td>
+              <td class="tab">0.91</td>
+              <td class="tab">0.91</td>
+            </tr>
+            <tr>
+              <td class="tab">6</td>
+              <td class="tab">0.97</td>
+              <td class="tab">0.95</td>
+              <td class="tab">0.92</td>
+              <td class="tab">0.91</td>
+              <td class="tab">0.91</td>
+              <td class="tab">0.90</td>
+              <td class="tab">0.90</td>
+              <td class="tab">0.90</td>
+              <td class="tab">0.89</td>
+              <td class="tab">0.89</td>
+              <td class="tab">0.89</td>
+              <td class="tab">0.89</td>
+            </tr>
+            <tr>
+              <td class="tab">7</td>
+              <td class="tab">0.96</td>
+              <td class="tab">0.93</td>
+              <td class="tab">0.91</td>
+              <td class="tab">0.89</td>
+              <td class="tab">0.89</td>
+              <td class="tab">0.87</td>
+              <td class="tab">0.87</td>
+              <td class="tab">0.87</td>
+              <td class="tab">0.86</td>
+              <td class="tab">0.86</td>
+              <td class="tab">0.86</td>
+              <td class="tab">0.86</td>
+            </tr>
+            <tr>
+              <td class="tab">8</td>
+              <td class="tab">0.96</td>
+              <td class="tab">0.92</td>
+              <td class="tab">0.89</td>
+              <td class="tab">0.87</td>
+              <td class="tab">0.86</td>
+              <td class="tab">0.85</td>
+              <td class="tab">0.84</td>
+              <td class="tab">0.84</td>
+              <td class="tab">0.84</td>
+              <td class="tab">0.84</td>
+              <td class="tab">0.84</td>
+              <td class="tab">0.84</td>
+            </tr>
+            <tr>
+              <td class="tab">9</td>
+              <td class="tab">0.94</td>
+              <td class="tab">0.89</td>
+              <td class="tab">0.85</td>
+              <td class="tab">0.83</td>
+              <td class="tab">0.82</td>
+              <td class="tab">0.81</td>
+              <td class="tab">0.86</td>
+              <td class="tab">0.86</td>
+              <td class="tab">0.86</td>
+              <td class="tab">0.86</td>
+              <td class="tab">0.86</td>
+              <td class="tab">0.86</td>
+            </tr>
+            <tr>
+              <td class="tab">10</td>
+              <td class="tab">0.92</td>
+              <td class="tab">0.85</td>
+              <td class="tab">0.81</td>
+              <td class="tab">0.79</td>
+              <td class="tab">0.78</td>
+              <td class="tab">0.77</td>
+              <td class="tab">0.76</td>
+              <td class="tab">0.75</td>
+              <td class="tab">0.75</td>
+              <td class="tab">0.74</td>
+              <td class="tab">0.74</td>
+              <td class="tab">0.74</td>
+            </tr>
+            <tr>
+              <td class="tab">11</td>
+              <td class="tab">0.90</td>
+              <td class="tab">0.81</td>
+              <td class="tab">0.76</td>
+              <td class="tab">0.73</td>
+              <td class="tab">0.72</td>
+              <td class="tab">0.71</td>
+              <td class="tab">0.70</td>
+              <td class="tab">0.69</td>
+              <td class="tab">0.69</td>
+              <td class="tab">0.68</td>
+              <td class="tab">0.68</td>
+              <td class="tab">0.68</td>
+            </tr>
+            <tr>
+              <td class="tab">12</td>
+              <td class="tab">0.87</td>
+              <td class="tab">0.76</td>
+              <td class="tab">0.71</td>
+              <td class="tab">0.68</td>
+              <td class="tab">0.67</td>
+              <td class="tab">0.64</td>
+              <td class="tab">0.64</td>
+              <td class="tab">0.63</td>
+              <td class="tab">0.63</td>
+              <td class="tab">0.61</td>
+              <td class="tab">0.61</td>
+              <td class="tab">0.61</td>
+            </tr>
+        </table>
+        <h6>Fuente: Manual INVIAS</h6>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class=" container">
+            <h5 class="tab titulos_tablas">Tabla 2. Factores de correción a la capacidad por distribución de sentidos (F<sub>d</sub>)</h5>
+            <br>
+            <div class="table-responsive" , style="text-align:center ;">
+              <table class="table-bordered table-hover table-sm" style="margin: 0 auto;">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" class="tab"></th>
+                    <th colspan="6" class="tab">% Zonas de no rebase</th>
+                  </tr>
+                  <tr>
+                    <th scope="col" class="tab">Distribución por sentidos (% en ascenso)</th>
+                    <th scope="col" class="tab">0</th>
+                    <th scope="col" class="tab">20</th>
+                    <th scope="col" class="tab">40</th>
+                    <th scope="col" class="tab">60</th>
+                    <th scope="col" class="tab">80</th>
+                    <th scope="col" class="tab">100</th>
+                <tbody>
+                  <tr>
+                    <td class="tab">50</td>
+                    <td class="tab">1</td>
+                    <td class="tab">1</td>
+                    <td class="tab">1</td>
+                    <td class="tab">1</td>
+                    <td class="tab">1</td>
+                    <td class="tab">1</td>
+                  </tr>
+                  <tr>
+                    <td class="tab">60</td>
+                    <td class="tab">0.9</td>
+                    <td class="tab">0.89</td>
+                    <td class="tab">0.87</td>
+                    <td class="tab">0.86</td>
+                    <td class="tab">0.85</td>
+                    <td class="tab">0.83</td>
+                  </tr>
+                  <tr>
+                    <td class="tab">70</td>
+                    <td class="tab">0.82</td>
+                    <td class="tab">0.80</td>
+                    <td class="tab">0.78</td>
+                    <td class="tab">0.76</td>
+                    <td class="tab">0.74</td>
+                    <td class="tab">0.71</td>
+                  </tr>
+                  <tr>
+                    <td class="tab">80</td>
+                    <td class="tab">0.75</td>
+                    <td class="tab">0.72</td>
+                    <td class="tab">0.70</td>
+                    <td class="tab">0.67</td>
+                    <td class="tab">0.65</td>
+                    <td class="tab">0.63</td>
+                  </tr>
+                  <tr>
+                    <td class="tab">90</td>
+                    <td class="tab">0.69</td>
+                    <td class="tab">0.66</td>
+                    <td class="tab">0.64</td>
+                    <td class="tab">0.61</td>
+                    <td class="tab">0.58</td>
+                    <td class="tab">0.56</td>
+                  </tr>
+                  <tr>
+                    <td class="tab">100</td>
+                    <td class="tab">0.64</td>
+                    <td class="tab">0.61</td>
+                    <td class="tab">0.58</td>
+                    <td class="tab">0.56</td>
+                    <td class="tab">0.53</td>
+                    <td class="tab">0.50</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h6 class="subtitulos">Fuente: Manual INVIAS</h6>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="tab titulos_tablas">Tabla 3. Factores de correción a la capacidad por efecto combinado del ancho de carril y berma (F<sub>cb</sub>)</h5>
+            <br>
+            <div class="table-responsive" , style="text-align:center ;">
+              <table class="table-bordered table-hover table-sm" style="margin: 0 auto; ">
+                <thead class="thead-dark">
+                  <tr>
+                    <th colspan="6" class="tab">Ancho de carril (m)</th>
+                  </tr>
+                  <tr>
+                    <th scope="col" class="tab">Berma</th>
+                    <th scope="col" class="tab">3.65</th>
+                    <th scope="col" class="tab">3.5</th>
+                    <th scope="col" class="tab">3.3</th>
+                    <th scope="col" class="tab">3</th>
+                <tbody>
+                  <tr>
+                    <td class="tab">1.8</td>
+                    <td class="tab">1</td>
+                    <td class="tab">0.99</td>
+                    <td class="tab">0.98</td>
+                    <td class="tab">0.96</td>
+                  </tr>
+                  <tr>
+                    <td class="tab">1.5</td>
+                    <td class="tab">0.99</td>
+                    <td class="tab">0.99</td>
+                    <td class="tab">0.98</td>
+                    <td class="tab">0.95</td>
+                  </tr>
+                  <tr>
+                    <td class="tab">1.2</td>
+                    <td class="tab">0.99</td>
+                    <td class="tab">0.98</td>
+                    <td class="tab">0.97</td>
+                    <td class="tab">0.95</td>
+                  </tr>
+                  <tr>
+                    <td class="tab">1</td>
+                    <td class="tab">0.99</td>
+                    <td class="tab">0.98</td>
+                    <td class="tab">0.97</td>
+                    <td class="tab">0.94</td>
+                  </tr>
+                  <tr>
+                    <td class="tab">0.5</td>
+                    <td class="tab">0.98</td>
+                    <td class="tab">0.97</td>
+                    <td class="tab">0.96</td>
+                    <td class="tab">0.93</td>
+                  </tr>
+                  <tr>
+                    <td class="tab">0</td>
+                    <td class="tab">0.97</td>
+                    <td class="tab">0.95</td>
+                    <td class="tab">0.95</td>
+                    <td class="tab">0.92</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+          <h6 class="subtitulos">Fuente: Manual INVIAS</h6>
+        </div>
+      </div>
+    </div>
+    <br>
+    <h5 class="tab titulos_tablas">Tabla 4. Equivalentes camión E<sub>C</sub>.</h5>
+      <br>
+      <div class="table-responsive" , style="text-align:center ;">
+        <table class="table-bordered table-hover table-sm" style="margin: 0 auto;">
+          <thead class="thead-dark">
+            <tr>
+              <th colspan="2" class="tab">Equivalentes camión factor de corrección a la capacidad por la presencia de<br> vehículos pesados en pendientes ascendentes (E<sub>c</sub>)</th>
+              <th colspan="6" class="tab">Porcentaje de vehiculos pesados (buses más camiones)</th>
+            </tr>
+            <tr>
+              <th scope="col" class="tab">Pendiente Ascendente %</th>
+              <th scope="col" class="tab">Longitud de la pendiente (km)</th>
+              <th scope="col" class="tab">10</th>
+              <th scope="col" class="tab">20</th>
+              <th scope="col" class="tab">30</th>
+              <th scope="col" class="tab">40</th>
+              <th scope="col" class="tab">50</th>
+              <th scope="col" class="tab">60</th>
+            </tr>
+          <tbody>
+            <tr>
+              <td class="tab">0</td>
+              <td class="tab">0.5</td>
+              <td class="tab">1.53</td>
+              <td class="tab">1.56</td>
+              <td class="tab">1.50</td>
+              <td class="tab">1.48</td>
+              <td class="tab">1.47</td>
+              <td class="tab">1.47</td>
+            </tr>
+            <tr>
+              <td class="tab">0</td>
+              <td class="tab">1</td>
+              <td class="tab">1.53</td>
+              <td class="tab">1.56</td>
+              <td class="tab">1.50</td>
+              <td class="tab">1.48</td>
+              <td class="tab">1.47</td>
+              <td class="tab">1.47</td>
+            </tr>
+            <tr>
+              <td class="tab">0</td>
+              <td class="tab">1.5</td>
+              <td class="tab">1.53</td>
+              <td class="tab">1.56</td>
+              <td class="tab">1.50</td>
+              <td class="tab">1.48</td>
+              <td class="tab">1.47</td>
+              <td class="tab">1.47</td>
+            </tr>
+            <tr>
+              <td class="tab">0</td>
+              <td class="tab">2</td>
+              <td class="tab">1.53</td>
+              <td class="tab">1.56</td>
+              <td class="tab">1.50</td>
+              <td class="tab">1.48</td>
+              <td class="tab">1.47</td>
+              <td class="tab">1.47</td>
+            </tr>
+            <tr>
+              <td class="tab">0</td>
+              <td class="tab">3</td>
+              <td class="tab">1.53</td>
+              <td class="tab">1.56</td>
+              <td class="tab">1.50</td>
+              <td class="tab">1.48</td>
+              <td class="tab">1.47</td>
+              <td class="tab">1.47</td>
+            </tr>
+            <tr>
+              <td class="tab">0</td>
+              <td class="tab">4</td>
+              <td class="tab">1.53</td>
+              <td class="tab">1.56</td>
+              <td class="tab">1.50</td>
+              <td class="tab">1.48</td>
+              <td class="tab">1.47</td>
+              <td class="tab">1.47</td>
+            </tr>
+            <tr>
+              <td class="tab">0</td>
+              <td class="tab">5</td>
+              <td class="tab">1.53</td>
+              <td class="tab">1.56</td>
+              <td class="tab">1.50</td>
+              <td class="tab">1.48</td>
+              <td class="tab">1.47</td>
+              <td class="tab">1.47</td>
+            </tr>
+            <tr>
+              <td class="tab">1</td>
+              <td class="tab">0.5</td>
+              <td class="tab">1.53</td>
+              <td class="tab">1.56</td>
+              <td class="tab">1.50</td>
+              <td class="tab">1.48</td>
+              <td class="tab">1.47</td>
+              <td class="tab">1.47</td>
+            </tr>
+            <tr>
+              <td class="tab">1</td>
+              <td class="tab">1</td>
+              <td class="tab">1.64</td>
+              <td class="tab">1.62</td>
+              <td class="tab">1.54</td>
+              <td class="tab">1.51</td>
+              <td class="tab">1.50</td>
+              <td class="tab">1.50</td>
+            </tr>
+
+
+
+  </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../static/assets/vendor/aos/aos.js"></script>
+  <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../static/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../static/assets/js/main.js"></script>
+
+</body>
+
+</html>
