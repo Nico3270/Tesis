@@ -9,8 +9,11 @@ from datetime import date
 import capacidad_NS as cap
 import multicarril as mp
 import Sensibilidad as sen
+import peatones as peaton
 import numpy as np
 import matplotlib
+import sensibilidad_2_carriles as sen2
+import sensibilidad_peatones as sp
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 
@@ -211,6 +214,41 @@ class Sensibilidad(db.Model):
     n86 = db.Column(db.Float, nullable=False)
     n87 = db.Column(db.Float, nullable=False)
     n88 = db.Column(db.String(10), nullable=False)
+
+class Peatones_db(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    carretera = db.Column(db.String(500), nullable=False)
+    tipo = db.Column(db.String(500), nullable=False)
+    estado = db.Column(db.String(500), nullable=False)
+    infraestructura = db.Column(db.String(500), nullable=False)
+    pendiente = db.Column(db.Float, nullable=False)
+    ancho = db.Column(db.Float, nullable=False)
+    vol_peatonal = db.Column(db.Integer, nullable=False)
+    d_sentido = db.Column(db.Float, nullable=False)
+    p_hombres = db.Column(db.Float, nullable=False)
+    p_ninos = db.Column(db.Float, nullable=False)
+    p_jovenes = db.Column(db.Float, nullable=False)
+    p_adultos = db.Column(db.Float, nullable=False)
+    p_mayores = db.Column(db.Float, nullable=False)
+    p_paquetes = db.Column(db.Float, nullable=False)
+    p_acompanadas = db.Column(db.Float, nullable=False)
+    fhp = db.Column(db.Float, nullable=False)
+    feg = db.Column(db.Float, nullable=False)
+    fpe = db.Column(db.Float, nullable=False)
+    fd = db.Column(db.Float, nullable=False)
+    fac = db.Column(db.Float, nullable=False)
+    capacidad = db.Column(db.Integer, nullable=False)
+    vfl = db.Column(db.Float, nullable=False)
+    relacion_vc = db.Column(db.Float, nullable=False)
+    fu = db.Column(db.Float, nullable=False)
+    Eo = db.Column(db.Float, nullable=False)
+    fo = db.Column(db.Float, nullable=False)
+    fz = db.Column(db.Float, nullable=False)
+    far = db.Column(db.Float, nullable=False)
+    vel_media = db.Column(db.Float, nullable=False)
+    espacio = db.Column(db.Float, nullable=False)
+    nivel_de_s = db.Column(db.String(500), nullable=False)
+
 db.create_all()
 
 ##WTForm
@@ -261,6 +299,26 @@ class Multicarril(FlaskForm):
     p_camiones = FloatField(label="Porcentaje de camiones", validators = [DataRequired(),NumberRange(min=0, max=50)])
     vol_transito = IntegerField(label="Volumen del tránsito", validators = [DataRequired(),NumberRange(min=0, max=100000)])
     submit = SubmitField("Calcular Capacidad y Nivel de servicio")
+
+class Peatones(FlaskForm):
+    carretera = StringField(label="Descripción del sector", validators=[DataRequired()])
+    tipo = SelectField(label="Tipo de sector", choices=[("Centro", "Centro"), ("Educativo","Educativo"), ("Transporte","Transporte"),("Otros","Otros")])
+    estado = SelectField(label="Estado superficie", choices=[("Bueno","Bueno"),("Regular","Regular"),("Malo","Malo")])
+    infraestructura = SelectField(label="Tipo de infraestructura", choices=[("Acera","Acera"),("Vía exclusiva","Vía exclusiva"),("Escalera","Escalera"),("Sendero","Sendero")])
+    pendiente = FloatField(label="Pendiente Longitudinal (%)", validators=[DataRequired(),NumberRange(0,15)])
+    ancho = FloatField(label="Ancho efectivo", validators=[NumberRange(0,50), DataRequired()], description="Ingrese valor en metros")
+    vol_peatonal = IntegerField(label="Volumen peatonal (pe/hora/vía)", validators=[DataRequired()])
+    d_sentido = FloatField(label="Distribución máxima por sentido (%)", validators=[DataRequired(),NumberRange(49,100)])
+    p_hombres = FloatField(label="Porcentaje de hombres (%)", validators=[DataRequired(),NumberRange(0,100)])
+    p_ninos = FloatField(label="Porcentaje de niños (%)", validators=[DataRequired(),NumberRange(0,100)])
+    p_jovenes = FloatField(label="Porcentaje de jovenes (%)", validators=[DataRequired(),NumberRange(0,100)])
+    p_adultos = FloatField(label="Porcentaje de adultos (%)", validators=[DataRequired(),NumberRange(0,100)])
+    p_mayores = FloatField(label="Porcentaje de adultos mayores (%)", validators=[DataRequired(),NumberRange(0,100)])
+    p_paquetes = FloatField(label="Porcentaje de personas con paquetes (%)", validators=[DataRequired(),NumberRange(0,100)])
+    p_acompañadas = FloatField(label="Porcentaje de personas acompañadas (%)", validators=[DataRequired(),NumberRange(0,100)])
+    fhp = FloatField(label="Factor de hora pico (FHP)", validators=[DataRequired(),NumberRange(0,1)])
+    submit = SubmitField("Calcular Capacidad y Nivel de servicio")
+
 
 
 #Gráfica de curva maestra
@@ -392,6 +450,12 @@ def home():
         p_automoviles=form.p_automoviles.data, p_buses=form.p_buses.data, p_camiones=form.p_camiones.data, vol_cap= form.vol_cap.data, terreno = res[18])
         db.session.add(new_object)
         db.session.commit()
+        sen2.sensibilidad_volumen(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data, res[17] )
+        sen2.sensibilidad_pendiente(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data,res[5],res[17])
+        sen2.sensibilidad_camiones(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data,res[17],res[5])
+        sen2.sensiblidad_longitud(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data, res[5], res[17])
+        sen2.sensibilidad_carril(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data,  res[5], res[17])
+        sen2.sensibilidad_berma(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data,res[17], res[5])
         return redirect(url_for('resultado'))
     return render_template ('index.html', form=form)
 datos = ["","0","1","2","3","4","5","6","7","8","9","10","0","1","2","3","4","5","6","7","8","9","10",
@@ -399,6 +463,38 @@ datos = ["","0","1","2","3","4","5","6","7","8","9","10","0","1","2","3","4","5"
         "0","1","2","3","4","5","6","7","8","9","10","0","1","2","3","4","5","6","7","8","9","10",
         "0","81","83","84","85","86","87","84","85","76","86","88","89","90","91","92","93","94","95","96","97",
         "98","99","100","101"]
+
+@app.route("/peatones", methods=["GET","POST"])
+def peatones():
+    form = Peatones()
+    if form.validate_on_submit():
+        res = peaton.capacidad_peatones(form.tipo.data, form.estado.data,form.pendiente.data, form.ancho.data,
+        form.vol_peatonal.data, form.d_sentido.data, form.p_hombres.data, form.p_ninos.data, form.p_jovenes.data, form.p_adultos.data, form.p_mayores.data,
+        form.p_paquetes.data, form.p_acompañadas.data, form.fhp.data)
+        new_object = Peatones_db(carretera=form.carretera.data, tipo=form.tipo.data, estado=form.estado.data, infraestructura=form.infraestructura.data, pendiente=form.pendiente.data, ancho=form.ancho.data,
+        vol_peatonal=form.vol_peatonal.data, d_sentido=form.d_sentido.data, p_hombres=form.p_hombres.data, p_ninos=form.p_ninos.data, p_jovenes=form.p_jovenes.data, p_adultos= form.p_adultos.data,
+        p_mayores=form.p_mayores.data, p_paquetes=form.p_paquetes.data, p_acompanadas=form.p_acompañadas.data,fhp=form.fhp.data, feg=res[0], fpe=res[1],fd=res[2], fac=res[3], capacidad=res[4], vfl=res[5],
+        relacion_vc=res[6], fu=res[7], Eo=res[8], fo=res[9], fz = res[10], far=res[11], vel_media=res[12], espacio=res[13], nivel_de_s=res[14])
+        db.session.add(new_object)
+        db.session.commit()
+        peaton.sen_peatones_vol(form.tipo.data, form.estado.data,form.pendiente.data, form.ancho.data,form.vol_peatonal.data, form.d_sentido.data, form.p_hombres.data, form.p_ninos.data, form.p_jovenes.data, form.p_adultos.data, form.p_mayores.data,form.p_paquetes.data, form.p_acompañadas.data, form.fhp.data,res[4],res[14],res[13],res[12])
+        peaton.sen_peatones_pen(form.tipo.data, form.estado.data,form.pendiente.data, form.ancho.data,form.vol_peatonal.data, form.d_sentido.data, form.p_hombres.data, form.p_ninos.data, form.p_jovenes.data, form.p_adultos.data, form.p_mayores.data,form.p_paquetes.data, form.p_acompañadas.data, form.fhp.data,res[4],res[14],res[13],res[12])
+        peaton.sen_peatones_acompanadas(form.tipo.data, form.estado.data,form.pendiente.data, form.ancho.data,form.vol_peatonal.data, form.d_sentido.data, form.p_hombres.data, form.p_ninos.data, form.p_jovenes.data, form.p_adultos.data, form.p_mayores.data,form.p_paquetes.data, form.p_acompañadas.data, form.fhp.data,res[4],res[14])
+        peaton.sen_peatones_ancho(form.tipo.data, form.estado.data,form.pendiente.data, form.ancho.data,form.vol_peatonal.data, form.d_sentido.data, form.p_hombres.data, form.p_ninos.data, form.p_jovenes.data, form.p_adultos.data, form.p_mayores.data,form.p_paquetes.data, form.p_acompañadas.data, form.fhp.data,res[4],res[14],res[13],res[12])
+        peaton.sen_peatones_estado(form.tipo.data, form.estado.data,form.pendiente.data, form.ancho.data,form.vol_peatonal.data, form.d_sentido.data, form.p_hombres.data, form.p_ninos.data, form.p_jovenes.data, form.p_adultos.data, form.p_mayores.data,form.p_paquetes.data, form.p_acompañadas.data, form.fhp.data,res[4],res[14])
+        peaton.sen_peatones_hombres(form.tipo.data, form.estado.data,form.pendiente.data, form.ancho.data,form.vol_peatonal.data, form.d_sentido.data, form.p_hombres.data, form.p_ninos.data, form.p_jovenes.data, form.p_adultos.data, form.p_mayores.data,form.p_paquetes.data, form.p_acompañadas.data, form.fhp.data, res[4],res[14])
+        peaton.sen_peatones_paquetes(form.tipo.data, form.estado.data,form.pendiente.data, form.ancho.data,form.vol_peatonal.data, form.d_sentido.data, form.p_hombres.data, form.p_ninos.data, form.p_jovenes.data, form.p_adultos.data, form.p_mayores.data,form.p_paquetes.data, form.p_acompañadas.data, form.fhp.data, res[4], res[14])
+        peaton.sen_peatones_sector(form.tipo.data, form.estado.data,form.pendiente.data, form.ancho.data,form.vol_peatonal.data, form.d_sentido.data, form.p_hombres.data, form.p_ninos.data, form.p_jovenes.data, form.p_adultos.data, form.p_mayores.data,form.p_paquetes.data, form.p_acompañadas.data, form.fhp.data, res[4],res[14])
+        peaton.sen_peatones_sentido(form.tipo.data, form.estado.data,form.pendiente.data, form.ancho.data,form.vol_peatonal.data, form.d_sentido.data, form.p_hombres.data, form.p_ninos.data, form.p_jovenes.data, form.p_adultos.data, form.p_mayores.data,form.p_paquetes.data, form.p_acompañadas.data, form.fhp.data,res[4],res[14])
+        return redirect(url_for('peatones_resultado'))
+    return render_template("peatones.html", form=form)
+    
+
+@app.route("/peatones_resultado", methods=["GET","POST"])
+def peatones_resultado():
+    id = len(db.session.query(Peatones_db).all())
+    registro = Peatones_db.query.get(id)
+    return render_template("resultados_peatones.html", datos=registro)
 
 @app.route("/multicarril", methods=["GET","POST"])
 def multicarril():
@@ -649,6 +745,8 @@ def delete(post_id):
     db_blog.session.delete(post_to_delete)
     db_blog.session.commit()
     return render_template("blog_final.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 

@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Resultados infraestructura peatonal</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/assets/img/favicon.png" rel="icon">
+  <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,700;1,100&family=Tinos:ital@0;1&family=Ubuntu:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="../static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+
+  <!-- Template Main CSS File -->
+  <link href="../static/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Presento - v3.9.0
+  * Template URL: https://bootstrapmade.com/presento-bootstrap-corporate-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+  {% import "bootstrap/wtf.html" as wtf %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo me-auto"><a href="{{url_for('home')}}">Capacidad y Niveles de Servicio<span>.</span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a href="{{url_for('home')}}" class="logo me-auto"><img src="../static/assets/img/logo.png" alt=""></a>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{{url_for('home')}}">Inicio</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('blog')}}">Blog</a></li>
+          <li><a class="nav-link scrollto " href="{{url_for('resultados')}}">Resultados</a></li>
+          <li><a href="{{url_for('resultado')}}">Último</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('multicarril')}}">Multicarril</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="#about" class="get-started-btn scrollto">Iniciar</a>
+    </div>
+  </header><!-- End Header -->
+  <br>
+  <br>
+  <section class="inner-page datos" style="background-color:white">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="container">
+            <h1 style="text-align:center ;">Datos Ingresados</h1>
+            <div class="card">
+              <div class="card-body">
+                <p class="card-text">
+                <table class="table table-bordered">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col" style="text-align:center;color:rgb(215, 74, 74) ;">Variable</th>
+                      <th scope="col" style="text-align:center;color:rgb(215, 74, 74) ;">Valor ingresado</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Información general de la vía</th>
+                      <td>
+                        <ul class="list-group">
+                          <li class="list-group-item">Descripción zona: <b>{{datos.carretera}}</b> </li>
+                          <li class="list-group-item">Tipo de sector: <b>{{datos.tipo}}</b></li>
+                          <li class="list-group-item">Estado de la superficie: <b>{{datos.estado}}</b></li>
+                          <li class="list-group-item">Tipo de infraestructura <b>{{datos.infraestructura}}</b></li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Características de la infraestructura peatonal</th>
+                      <td>
+                        <ul class="list-group">
+                          <li class="list-group-item">Pendiente longitudinal <b>{{datos.pendiente}} %</b></li>
+                          <li class="list-group-item">Ancho efectivo <b>{{datos.ancho}} m</b> </li>
+                          <li class="list-group-item">Voluemn peatonal <b>{{datos.vol_peatonal}} pea/hora/vía</b> </li>
+                          <li class="list-group-item">Distribución por sentido <b>{{datos.d_sentido}} %</b></li>
+                          <li class="list-group-item">Factor de hora pico (FHP): <b>{{datos.fhp}} </b></li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Características de los usuarios</th>
+                      <td>
+                        <ul class="list-group">
+                          <li class="list-group-item">Porcentaje de hombres: <b>{{datos.p_hombres}} %</b></li>
+                          <li class="list-group-item">Porcentaje de niños: <b>{{datos.p_ninos}} %</b> </li>
+                          <li class="list-group-item">Porcentaje de jovenes: <b>{{datos.p_jovenes}} %</b> </li>
+                          <li class="list-group-item">Porcentaje de adultos: <b>{{datos.p_adultos}} %</b> </li>
+                          <li class="list-group-item">Porcentaje de adultos mayores: <b>{{datos.p_mayores}} %</b> </li>
+                          <li class="list-group-item">Personas con paquete: <b>{{datos.p_paquetes}} %</b> </li>
+                          <li class="list-group-item">Personas acompañadas: <b>{{datos.p_acompanadas}} %</b> </li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+  </section>
+  <section id="resultados" class="datos">
+    <div class="container">
+      <div class="row">
+        <h1 style="text-align:center ;">Resultados obtenidos</h1>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="container">
+            <h3 class="pasos"><b>Cálculo de Capacidad</b></h3>
+            <h5 class="text-general">La capacidad de una infraestructura peatonal, se expresa en unidades de peatones
+              para un periodo determinado de tiempo (usualmente una hora) y por metro lineal de ancho de sección
+              transversal, su estimación se propone en la ecuación 1.</b></h5>
+            <h5 class="ecuacion">Ecuación 1</h5>
+            <h4 class="formulas"><i> C = C<sub>b</sub> * A<sub>e</sub> * F<sub>eg</sub> * F<sub>pe</sub> * F<sub>d</sub>
+                * F<sub>ac</sub></i></h4>
+            <br>
+            <h5 class="text-general">Donde:</h5>
+            <h5 class="text-general"><b>C</b> = Capacidad de la infraestructura analizada, expresada en p/m/acera</h5>
+            <h5 class="text-general"><b>C<sub>b</sub></b> = Valor máximo de flujo bajo condiciones base; se obtuvo 3850
+              p/h/m a partir de datos locales de los modelos calibrados para la ciudad de Tunja Colombia.</h5>
+            <h5 class="text-general"><b>A<sub>e</sub></b> = Ancho efectivo utilizado por los peatones, expresado en m.
+            </h5>
+            <h5 class="text-general"><b>F<sub>eg</sub></b> = Factor de ajuste por edad y género.</h5>
+            <h5 class="text-general"><b>F<sub>pe</sub></b> = Factor de ajuste por pendiente y estado de la vía.</h5>
+            <h5 class="text-general"><b>F<sub>d</sub></b> = Factor de ajuste por distribución direccional.</h5>
+            <h5 class="text-general"><b>F<sub>d</sub></b> = Factor de ajuste por acompañantes.</h5><br>
+            <h5 class=" subtitulos pasos"><b>Factor de ajuste por edad y género (F<sub>eg</sub>)</b></h5>
+            <h5 class="text-general">Se parte de la formulación de la ecuación 2 para cada género.</h5>
+            <h5 class="ecuacion">Ecuación 2</h5>
+            <img src="../static/assets/img/ecu_peatones1.JPG" class="img-fluid" style="width:75%; margin-left: 2rem;"
+              alt="Responsive image"><br>
+            <br>
+            <h5 class="text-general">Donde, para cada genero se tiene <br>
+              <b>P<sub>n</sub></b> = Proporción de niños (personas entre 3 y 10 años)<br>
+              <b>E<sub>n</sub></b> = Equivalente de joven por niño (de la tabla 1)<br>
+              <b>p<sub>j</sub></b> = Proporción de jovenes (personas entre 11 y 25 años)<br>
+              <b>E<sub>j</sub></b> = Equivalente de joven por joven (de la tabla 1)<br>
+              <b>p<sub>a</sub></b> = Proporción de adultos (personas entre 26 y 60 años)<br>
+              <b>E<sub>a</sub></b> = Equivalente de joven por adulto (de la tabla 1)<br>
+              <b>p<sub>m</sub></b> = Proporción de adultos mayores (personas mayores de 60 años)<br>
+              <b>E<sub>a</sub></b> = Equivalente de joven por adulto mayor (de la tabla 1)<br>
+            </h5>
+            <h5 class="tablas"><b>Tabla 1. Equivalente en hombre joven por diferentes edades y géneros</b></h5>
+            <div class="table-responsive">
+              <table class="table-bordered" , style="text-align:center ;max-width: max-content;margin: auto;">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" class="celda">GÉNERO</th>
+                    <th scope="col" class="celda">EDAD </th>
+                    <th scope="col" class="celda">EQUIVALENTE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="celda">Masculino</td>
+                    <td class="celda">Niño<br>Joven<br>Adulto<br>Mayor</td>
+                    <td class="celda">1.21<br>1<br>1.12<br>1.224</td>
+                  </tr>
+                  <tr>
+                    <td class="celda">Femenino</td>
+                    <td class="celda">Niño<br>Joven<br>Adulto<br>Mayor</td>
+                    <td class="celda">1.29<br>1.061<br>1.197<br>1.317</td>
+                  </tr>
+              </table>
+            </div>
+            <br>
+            <h5 class="text-general">De acuerdo a los valores ingresados, la aplicación de la ecuación 2 y el uso de la
+              tabla 1, se obtiene un factor de ajuste por edad y género, igual a: <br>
+            </h5>
+            <h5 class="subtitulos"><b>F<sub>eg</sub></b> = {{datos.feg}}</h5><br>
+            <hr>
+            <h5 class=" subtitulos pasos"><b>Factor de ajuste por pendiente y estado de la acera (F<sub>pe</sub>)</b>
+            </h5>
+            <h5 class="tex-general">Este factor fue calibrado a partir de la relación entre la velocidad y la pendiente
+              longitudinal de la acera, en observaciones para personas jóvenes. Los resultados obtenidos se muestran en
+              la tabla 2.</h5>
+            <h5 class="tablas"><b>Tabla 2. Factor de ajuste por pendiente y estado de la vía</b></h5>
+            <table class="table-bordered" , style="text-align:center ;max-width: max-content;margin: auto;">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col" class="celda"><b>PENDIENTE</b></th>
+                  <th scope="col" class="celda" colspan="3"><b>ESTADO</b> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="celda"></td>
+                  <td class="celda">Bueno</td>
+                  <td class="celda">Regular</td>
+                  <td class="celda">Malo</td>
+                </tr>
+                <tr>
+                  <td class="celda">Suave <3%< /td>
+                  <td class="celda">1.0</td>
+                  <td class="celda">0.965</td>
+                  <td class="celda">0.931</td>
+                </tr>
+                <tr>
+                  <td class="celda">Media 3-7%</td>
+                  <td class="celda">0.929</td>
+                  <td class="celda">0.894</td>
+                  <td class="celda">0.859</td>
+                </tr>
+                <tr>
+                  <td class="celda">Alta > 7% </td>
+                  <td class="celda">0.857</td>
+                  <td class="celda">0.823</td>
+                  <td class="celda">0.788</td>
+                </tr>
+            </table><br>
+            <h5 class="text-general">De acuerdo a la pendiente de la vía igual a <b>{{datos.pendiente}}%</b>, en estado
+              <b>{{datos.estado}}</b> y el uso de la tabla 2, se obtiene un factor de ajuste por pendiente y estado de
+              la acera, igual a:
+            </h5>
+            <h5 class="subtitulos"><b>F<sub>pe</sub> = {{datos.fpe}}</b></h5>
+            <hr>
+            <h5 class="subtitulos pasos"><b>Factor de ajuste por distribución direccional F<sub>d</sub></b></h5>
+            <h5 class="text-general">Con base en observaciones de campo se encontró que el efecto de la distribución
+              direccional en la capacidad de la acera se refleja en la tabla 3.</h5>
+            <br>
+            <h5 class="tablas"><b>Tabla 3. Factor de ajuste por distribución direccional</b></h5>
+            <table class="table-bordered" , style="text-align:center ;max-width: max-content;margin: auto;">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col" class="celda"><b>Distribución direccional</b></th>
+                  <th scope="col" class="celda"><b>Factor de ajuste por
+                      distribución<br>direccional(<i>F<sub>d</sub></i>)</b> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="celda">50/50</td>
+                  <td class="celda">1.0</td>
+                </tr>
+                <tr>
+                  <td class="celda">60/40</td>
+                  <td class="celda">0.87</td>
+                </tr>
+                <tr>
+                  <td class="celda">70/30</td>
+                  <td class="celda">0.78</td>
+                </tr>
+                <tr>
+                  <td class="celda">80/20</td>
+                  <td class="celda">0.7</td>
+                </tr>
+                <tr>
+                  <td class="celda">90/10</td>
+                  <td class="celda">0.64</td>
+                </tr>
+                <tr>
+                  <td class="celda">100/0</td>
+                  <td class="celda">0.58</td>
+                </tr>
+            </table><br>
+            <h5 class="text-general">Para una distribución direccional de {{datos.d_sentido}}/{{100-datos.d_sentido}} y
+              el uso de la tabla 3, se obtiene que el factor de distribución direccional es:</h5>
+            <h5 class="subtitulos"><b>F<sub>d</sub> = {{datos.fd}}</b></h5>
+            <hr>
+            <h5 class="subtitulos pasos"><b>Factor de ajuste por acompañantes (F<sub>ac</sub>)</b></h5>
+            <h5 class="text-general">Caminar acompañado reduce la capacidad de la acera debido a que el comportamiento
+              del grupo de peatones se altera (principalmente respecto a la velocidad),
+              se evaluó el impacto del tamaño del grupo de peatones y se encontró que su efecto es similar a caminar con
+              un solo acompañante, así, se plantea el uso de la ecuación 3 para estimar este factor de ajuste.</h5>
+            <h5 class="ecuacion">Ecuación 3</h5>
+            <img src="../static/assets/img/ecu_peatones2.JPG" class="img-fluid" style="width:45%; margin-left: 10rem;"
+              alt="Responsive image"><br>
+            <br>
+            <h5 class="text general">Donde: <br>
+              p<sub>a</sub> = proporción de peatones que caminan acompañados<br>
+              E<sub>a</sub> = Equivalente de acompañantes a condiciones base = 1.078.
+            </h5>
+            <h5 class="text general">Reemplanzando la proporción de peatones que caminan acompañados p<sub>a</sub> igual
+              a {{datos.p_acompanadas}}% en la ecuación 3, se obtiene un factor de ajuste por acompañantes igual a:</h5>
+            <h5 class="subtitulos"><b> F<sub>ac</sub> = {{datos.fac}} </b></h5>
+            <hr>
+            <h5 class="subtitulos pasos"><b>Cálculo final de la capacidad</b></h5>
+            <h5 class="text-general">Reemplazando los factores de ajuste hallados en los pasos anteriores en la ecuación
+              1, se obtiene que la capacidad de la infraestructura peatonal es igual a:</h5>
+            <h5 class="formulas subtitulos">Capacidad = 3850 * {{datos.ancho}} * {{datos.feg}} * {{datos.fpe}} *
+              {{datos.fd}} * {{datos.fac}}</h5>
+            <h5 class="subtitulos"><b>Capacidad = {{datos.capacidad}} pea/hora/m</b></h5>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="container">
+            <h3 class="pasos"><b>Nivel de Servicio</b></h3>
+            <h5 class="text-general">El nivel de servicio presente en un acera se calcula en función del espacio medio
+              peatonal. Para determinar este valor se requiere conocer el flujo peatonal y la velocidad media de
+              caminata que se estima a partir de la ecuación 4.</h5>
+            <h5 class="ecuacion">Ecuación 4.</h5>
+            <h3 class="formulas"> V = V<sub>fl</sub> * F<sub>u</sub> * F<sub>o</sub> * F<sub>z</sub> * F<sub>ar</sub>
+            </h3>
+            <h5 class="text-general">Donde: <br>
+              <i><b>V</b></i> = Velocidad media de caminata expresada en m/s.<br>
+              <i><b>V<sub>fl</sub></b></i> = Velocidad a flujo libre en condiciones base, para la pendiente
+              especificada, expresada en m/s.<br>
+              <i><b>F<sub>u</sub></b></i> = Factor de ajuste por utilización de la capacidad.<br>
+              <i><b>F<sub>o</sub></b></i> = Factor de ajuste por el porte de objetos.<br>
+              <i><b>F<sub>z</sub></b></i> = Factor de ajuste por el tipo de zona.<br>
+              <i><b>F<sub>ar</sub></b></i> = Factor de ajuste por ancho restringido.
+            </h5>
+            <br>
+            <hr>
+            <h5 class="subtitulos pasos">Velocidad a flujo libre</h5>
+            <h5 class="text-general">La velocidad a flujo libre en condiciones base fue tabulado a partir de
+              observaciones para distintos valores de pendiente longitudinal de las aceras entre 0 y 17%. Los valores se
+              muestran en la tabla 4.</h5>
+            <h5 class="tablas">Tabla 4. Velocidad a flujo libre en condiciones base</h5>
+            <div class="table-responsive">
+              <table class="table-bordered" , style="text-align:center ;max-width: max-content;margin: auto;">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" class="celda">PENDIENTE</th>
+                    <th scope="col" class="celda">%</th>
+                    <th scope="col" class="celda">V<sub>fl</sub> (m/s)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="col" class="celda">SUAVE</td>
+                    <td scope="col" class="celda">0 - 2.9%</td>
+                    <td scope="col" class="celda">1.45</td>
+                  </tr>
+                  <tr>
+                    <td scope="col" class="celda">MEDIA</td>
+                    <td scope="col" class="celda">3% - 6.9%</td>
+                    <td scope="col" class="celda">1.32</td>
+                  </tr>
+                  <tr>
+                    <td scope="col" class="celda">ALTA</td>
+                    <td scope="col" class="celda">>= 7%</td>
+                    <td scope="col" class="celda">1.2</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <br>
+            <h5 class="text-general">La velocidad a flujo libre para una infraestructura peatonal con pendiente de
+              <b>{{datos.pendiente}} %</b>, según la tabla 4, es igual a:
+            </h5>
+            <h5 class="subtitulos formulas"><b>V<sub>fl</sub> = {{datos.vfl}} m/s</b></h5>
+            <hr>
+            <h5 class="subtitulos pasos"><b>Factor de ajuste por el porte objetos (F<sub>u</sub>)</b></h5>
+            <h5 class="text-general">De las condiciones locales se obtuvo la función parabólica que representa la
+              relación velocidad vs flujo, se definieron tramos de la función para obtener el factor que se muestra en
+              la tabla 5.</h5>
+            <h5 class="tablas"><b>Tabla 5. Factor de ajuste por utilización de la capacidad</b></h5>
+            <div class="table-responsive">
+              <table class="table-bordered" , style="text-align:center ;max-width: max-content;margin: auto;">
+                <thead class="thead-dark">
+                  <tr>
+                    <td scope="col" class="celda"><b>V/C</b></td>
+                    <td scope="col" class="celda">0.05 </td>
+                    <td scope="col" class="celda">0.1 </td>
+                    <td scope="col" class="celda">0.2 </td>
+                    <td scope="col" class="celda">0.3 </td>
+                    <td scope="col" class="celda">0.4 </td>
+                    <td scope="col" class="celda">0.5 </td>
+                    <td scope="col" class="celda">0.6 </td>
+                    <td scope="col" class="celda">0.7 </td>
+                    <td scope="col" class="celda">0.8 </td>
+                    <td scope="col" class="celda">0.9 </td>
+                    <td scope="col" class="celda">0.95 </td>
+                    <td scope="col" class="celda">1.0 </td>
+                  </tr>
+                </thead>
+                <thead class="thead-dark">
+                  <tr>
+                    <td scope="col" class="celda"><b>F<sub>V/C</sub></b></th>
+                    <td scope="col" class="celda">1.0 </td>
+                    <td scope="col" class="celda">0.99 </td>
+                    <td scope="col" class="celda">0.98 </td>
+                    <td scope="col" class="celda">0.95 </td>
+                    <td scope="col" class="celda">0.92 </td>
+                    <td scope="col" class="celda">0.87 </td>
+                    <td scope="col" class="celda">0.82 </td>
+                    <td scope="col" class="celda">0.75 </td>
+                    <td scope="col" class="celda">0.68 </td>
+                    <td scope="col" class="celda">0.59 </td>
+                    <td scope="col" class="celda">0.55 </td>
+                    <td scope="col" class="celda">0.50 </td>
+                  </tr>
+                </thead>
+              </table><br>
+            </div>
+            <h5 class="text-general">La relación <b>V/C</b>, teniendo un volumen peatonal de {{datos.vol_peatonal}}
+              pea/hora/m y una capacidad determinada previamente de {{datos.capacidad}} pea/hora/m, es igual a:</h5>
+            <h5 class=" formulas subtitulos"><b>V/C = {{datos.relacion_vc}}</b></h5>
+            <h5 class="text-general">Con el valor anterior, y el uso de la tabla 5, se estima que el factor de ajuste
+              por utilización de la capacidad es igual a:</h5>
+            <h5 class="formulas subtitulos"><b>F<sub>u</sub></b> = {{datos.fu}}</h5>
+            <hr>
+            <h5 class="subtitulos pasos"><b>Factor de ajuste por el porte objetos (<i>F<sub>o</sub></i>)</b></h5>
+            <h5 class="text-general">Se comparó la velocidad hombre joven caminado sin objetos y con objetos en
+              diferentes niveles de pendiente longitudinal, dicha relación definió el factor de ajuste mediante el uso
+              de la ecuación 5 y la tabla 6. Se considera que un objeto es un elemento que se lleva en la mano y
+              dificulta la movilidad al reducirla velocidad de caminata (por ejemplo coche de bebé, equipaje o bolsas).
+              En el caso de estudiantes no se consideró como objeto el porte de morral puesto que se lleva en la espalda
+              o el hombro.</h5>
+            <h5 class="ecuacion">Ecuación 5</h5>
+            <img src="../static/assets/img/ecu_peatones3.JPG" class="img-fluid" style="width:35%; margin-left: 10rem;"
+              alt="Responsive image"><br>
+            <br>
+            <h5 class="text-general">Donde: <br>
+              <b>p>sub>o</b> = Proporción de peatones con objetos<br>
+              <b>E<sub>o</sub></b> = Equivalente de peatones con objetos, de la tabla 6.
+            </h5>
+            <h5 class="tablas">Tabla 6. Factores de equivalencia para peatones con objetos</h5>
+            <div class="table-responsive">
+              <table class="table-bordered" , style="text-align:center ;max-width: max-content;margin: auto;">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" class="celda" colspan="2"><b>Pendiente</b></th>
+                    <th scope="col" class="celda">Eo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="celda">Suave</td>
+                    <td class="celda">
+                      <3%< /td>
+                    <td class="celda">1.045</td>
+                  </tr>
+                  <tr>
+                    <td class="celda">Media</td>
+                    <td class="celda">3% - 7%</td>
+                    <td class="celda">1.286</td>
+                  </tr>
+                  <tr>
+                    <td class="celda">Alta</td>
+                    <td class="celda">>7%</td>
+                    <td class="celda">1.543</td>
+                  </tr>
+                </tbody>
+              </table><br>
+            </div>
+            <h5 class="text-general">Con la proporción de peatones con objetos igual a {{datos.p_paquetes}}%, pendiente
+              longitudinal de {{datos.pendiente}}% y el uso de la ecuación y tabla 6, se estima el factor de ajuste por
+              por el porte de objetos, igual a:</h5>
+            <h5 class="subtitulos formulas"><b> F<sub>o</sub> = {{datos.fo}}</b></h5>
+            <hr>
+            <h5 class="subtitulos pasos"><b>Factor de ajuste por el tipo de zona (<i>f<sub>z</sub></i>)</b></h5>
+            <h5 class="text-general">Se relaciona la velocidad de hombres jóvenes en zona centro con la de otros tipos
+              de sectores como se muestra en la tabla 7.</h5>
+            <h5 class="tablas">Tabla 7. Factor de ajuste por sector urbano.</h5>
+            <div class="table-responsive">
+              <table class="table-bordered" , style="text-align:center ;max-width: max-content;margin: auto;">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" class="celda"><b>Sector</b></th>
+                    <th scope="col" class="celda">Factor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="celda">Centro</td>
+                    <td class="celda">1.0</td>
+                  </tr>
+                  <tr>
+                    <td class="celda">Educativo</td>
+                    <td class="celda">1.266</td>
+                  </tr>
+                  <tr>
+                    <td class="celda">Transporte</td>
+                    <td class="celda">1.139</td>
+                  </tr>
+                  <tr>
+                    <td class="celda">Otros</td>
+                    <td class="celda">1.063</td>
+                  </tr>
+                </tbody>
+              </table><br>
+            </div>
+            <h5 class="text-general">Para el sector <b>{{datos.tipo}}</b>, el factor de ajuste por sector urbano es
+              igual a:</h5>
+            <h5 class="subtitulos formulas"><b>f<sub>z</sub></b> = {{datos.fz}}</h5>
+            <hr>
+            <h5 class="subtitulos pasos"> Factor de ajuste por ancho restringido (F<sub>ar</sub>)</h5>
+            <h5 class="text-general">Este factor considera una penalización adicional causada opr un ancho efectivo muy
+              pequeño, que incluso para flujos peatonales bajos resulta molesto para los usuarios, este factor resultó
+              de gran utilidad para reflejar la percepción de los peatones y se muestra en la tabla 8.</h5>
+            <h5 class="tablas"><b>Tabla 8. Factor de ajuste por ancho restringido</b></h5>
+            <div class="table-responsive">
+              <table class="table-bordered" , style="text-align:center ;max-width: max-content;margin: auto;">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" class="celda"><b>Ancho efectivo (m)</b></th>
+                    <th scope="col" class="celda">Factor</th>
+                    <th scope="col" class="celda"><b>Ancho efectivo (m)</b></th>
+                    <th scope="col" class="celda">Factor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="celda"><b>>= 2.1</b></td>
+                    <td class="celda">1.000</td>
+                    <td class="celda"><b>1.2</b></td>
+                    <td class="celda">0.741</td>
+                  </tr>
+                  <tr>
+                    <td class="celda"><b>2.0</b></td>
+                    <td class="celda">0.987</td>
+                    <td class="celda"><b>1.1</b></td>
+                    <td class="celda">0.683</td>
+                  </tr>
+                  <tr>
+                    <td class="celda"><b>1.9</b></td>
+                    <td class="celda">0.978</td>
+                    <td class="celda"><b>1.0</b></td>
+                    <td class="celda">0.619</td>
+                  </tr>
+                  <tr>
+                    <td class="celda"><b>1.8</b></td>
+                    <td class="celda">0.962</td>
+                    <td class="celda"><b>0.9</b></td>
+                    <td class="celda">0.550</td>
+                  </tr>
+                  <tr>
+                    <td class="celda"><b>1.7</b></td>
+                    <td class="celda">0.940</td>
+                    <td class="celda"><b>0.8</b></td>
+                    <td class="celda">0.474</td>
+                  </tr>
+                  <tr>
+                    <td class="celda"><b>1.6</b></td>
+                    <td class="celda">0.912</td>
+                    <td class="celda"><b>0.7</b></td>
+                    <td class="celda">0.392</td>
+                  </tr>
+                  <tr>
+                    <td class="celda"><b>1.5</b></td>
+                    <td class="celda">0.879</td>
+                    <td class="celda"><b>0.6</b></td>
+                    <td class="celda">0.304</td>
+                  </tr>
+                  <tr>
+                    <td class="celda"><b>1.4</b></td>
+                    <td class="celda">0.839</td>
+                    <td class="celda"><b>0.5</b></td>
+                    <td class="celda">0.210</td>
+                  </tr>
+                  <tr>
+                    <td class="celda"><b>1.3</b></td>
+                    <td class="celda">0.793</td>
+                    <td class="celda"><b>
+                        <= 0.4</b>
+                    </td>
+                    <td class="celda">0.110</td>
+                  </tr>
+                </tbody>
+              </table><br>
+            </div>
+            <h5 class="text-general">El factor de ajuste por ancho restringido para la infraestructura peatonal con
+              ancho efectivo de <b>{{datos.ancho}} m</b>, según la tabla 8 es:</h5>
+            <h5 class="formulas"><b>F<sub>ar</sub> = {{datos.far}}</b></h5>
+            <hr>
+
+
+            <h5 class="subtitulos pasos">Velocidad media de caminata</h5>
+            <h5 class="text-general">Luego de estimar la velocidad a flujo libre en condiciones base y los factoes de
+              ajuste, mediante el uso de la ecuación 4, se determina la velocidad media de caminata igual a:</h5>
+            <h5 class="formulas">V = {{datos.vfl}} m/s * {{datos.fu}} * {{datos.fo}} * {{datos.fz}} * {{datos.far}}</h5>
+            <h5 class="formulas"><b>V = {{datos.vel_media}} m/s</b></h5>
+            <hr>
+            <h5 class="subtitulos pasos">Espacio medio peatonal</h5>
+            <h5 class="text-general">Una vez estimada la velocidad media de caminata, se determina el espacio medio
+              peatonal mediante la relación entre velocidad media y flujo que se muestra en la ecuación 6.</h5>
+            <h5 class="ecuacion">Ecuación 6</h5>
+            <img src="../static/assets/img/espacio.JPG" class="img-fluid" style="width:35%; margin-left: 10rem;"
+              alt="Responsive image"><br>
+            <h5 class="text-general">
+              Donde:<br>
+              E = Espacio medio peatonal expresado en m<sup>2</sup>,<br>
+              V = Velocidad media de caminata expresada en m/s <b>({{datos.vel_media}} m/s</b>),<br>
+              FHP = Factor de hora pico considerando periodos de 15 minutos <b>({{datos.fhp}})</b>,<br>
+              Q = Volumen peatonal horario, expresado en p/h/m. <b>({{datos.vol_peatonal}} p/h/m</b>.)
+            </h5><br>
+            <h5 class="text general">
+              Reemplazando los valores previamente obtenidos en la ecuación 6, se obtien que el espacio medio peatonal
+              es igual a:
+            </h5>
+            <h5 class="formulas subtitulos"><b>E = {{datos.espacio}} m<sup>2</sup>p.</b></h5>
+            <hr>
+            <h5 class="subtitulos pasos"><b>Nivel de servicio obtenido</b></h5>
+            <h5 class="text-general">La calidad del servicio se determina mediante la escala de niveles de servicio,
+              para este fin, con base en las observaciones y el modelo calibrado se definió la escala que se muestra en
+              la tabla 9.</h5>
+            <h5 class="tablas"><b>Tabla 9. Escala de niveles de servicio propuesta.</b></h5>
+            <div class="table-responsive">
+              <table class="table-bordered" , style="text-align:center ;max-width: max-content;margin: auto;">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" class="celda"><b>Nivel de Servicio</b></th>
+                    <th scope="col" class="celda">Espacio medio (m<sup>2</sup>/p)</th>
+                    <th scope="col" class="celda"><b>Tasa de flujo (p/h/m)</b></th>
+                    <th scope="col" class="celda">Velocidad media (m/s) </th>
+                    <th scope="col" class="celda">Relación v/c </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="col" class="celda">A</td>
+                    <td scope="col" class="celda">>5.3</td>
+                    <td scope="col" class="celda">
+                      <= 810</td>
+                    <td scope="col" class="celda">>1.20</td>
+                    <td scope="col" class="celda">
+                      <= 0.21</td>
+                  </tr>
+                  <tr>
+                    <td scope="col" class="celda">B</td>
+                    <td scope="col" class="celda">>3.5 - 5.3</td>
+                    <td scope="col" class="celda">>810 - 1200</td>
+                    <td scope="col" class="celda">>1.17 - 1.20</td>
+                    <td scope="col" class="celda"> >0.21 - 0.31</td>
+                  </tr>
+                  <tr>
+                    <td scope="col" class="celda">C</td>
+                    <td scope="col" class="celda">>2.4 - 3.5</td>
+                    <td scope="col" class="celda">>1200 - 1700</td>
+                    <td scope="col" class="celda">>1.12 - 1.17</td>
+                    <td scope="col" class="celda"> >0.31 - 0.44</td>
+                  </tr>
+                  <tr>
+                    <td scope="col" class="celda">D</td>
+                    <td scope="col" class="celda">>1.5 - 2.4</td>
+                    <td scope="col" class="celda">>1700 - 2500</td>
+                    <td scope="col" class="celda">>1.05 - 1.12</td>
+                    <td scope="col" class="celda"> >0.44 - 0.65</td>
+                  </tr>
+                  <tr>
+                    <td scope="col" class="celda">E</td>
+                    <td scope="col" class="celda">>0.65 - 1.5</td>
+                    <td scope="col" class="celda">>2500 - 3850</td>
+                    <td scope="col" class="celda">>0.70 - 1.05</td>
+                    <td scope="col" class="celda"> >0.65 - 1.00</td>
+                  </tr>
+                  <tr>
+                    <td scope="col" class="celda">F</td>
+                    <td scope="col" class="celda">
+                      <= 0.65>
+                    </td>
+                    <td scope="col" class="celda">Variable</td>
+                    <td scope="col" class="celda">
+                      <0.70< /td>
+                    <td scope="col" class="celda">Variable</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <br>
+            <h5 class="text-general">Mediante el uso de la tabla 9, y un espacio medio calculado de {{datos.espacio}}
+              m<sup>2</sup>/p,
+              se determina que el Nivel de Servicio que presenta la infraestructura peatonal es de
+              <b>{{datos.nivel_de_s}}.</b>
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </section>
+  <section id="Sensibilidad">
+    <div class="container">
+      <h1 class="subtitulos">Análisis de sensibilidad</h1>
+      <div class="row">
+        <h3 class="subtitulos pasos">Efectos producidos por variaciones en el volumen peatonal</h3>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 1. Variación de la capacidad de la infraestructura peatonal</h5>
+            <img src="../static/assets/img/sensibilidad/cap_peatones_data_volumen.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 2. Variación del nivel de servicio</h5>
+            <img src="../static/assets/img/sensibilidad/ns_peatones_volumen.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-lg-6">
+          <h5 class="imagenes">Gráfica 3. Variación del espacio medio peatonal</h5>
+          <img src="../static/assets/img/sensibilidad/espacio_peatones_volumen.png" class="img-fluid"
+            style="width:100%; margin-left: 2rem;" alt="Responsive image">
+        </div>
+        <div class="col-lg-6">
+          <h5 class="imagenes">Gráfica 4. Variación de la velocidad media de caminata</h5>
+          <img src="../static/assets/img/sensibilidad/velocidad_peatones_volumen.png" class="img-fluid"
+            style="width:100%; margin-left: 2rem;" alt="Responsive image">
+        </div>
+      </div>
+      <br>
+      <hr>
+      <div class="row">
+        <h3 class="subtitulos pasos">Efectos producidos por variaciones en la pendiente longitudinal</h3>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 5. Variación de la capacidad de la infraestructura peatonal</h5>
+            <img src="../static/assets/img/sensibilidad/cap_peatones_data_pendiente.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 6. Variación del Nivel de servicio</h5>
+            <img src="../static/assets/img/sensibilidad/ns_peatones_pendiente.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 7. Variación del espacio medio peatonal</h5>
+            <img src="../static/assets/img/sensibilidad/espacio_peatones_pendiente.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 8. Variación de la velocidad media de caminata</h5>
+            <img src="../static/assets/img/sensibilidad/velocidad_peatones_pendiente.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <div class="row">
+        <h3 class="subtitulos pasos">Efectos producidos por variaciones en el ancho efectivo</h3>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 9. Variación de la capacidad de la infraestructura peatonal</h5>
+            <img src="../static/assets/img/sensibilidad/cap_peatones_data_ancho.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 10. Variación del Nivel de servicio</h5>
+            <img src="../static/assets/img/sensibilidad/ns_peatones_ancho.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 11. Variación del espacio medio peatonal</h5>
+            <img src="../static/assets/img/sensibilidad/espacio_peatones_ancho.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 12. Variación de la velocidad media de caminata</h5>
+            <img src="../static/assets/img/sensibilidad/velocidad_peatones_ancho.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <div class="row">
+        <h3 class="subtitulos pasos">Efectos producidos por variaciones en el estado de la superficie de la infraestructura peatonal.</h3>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 13. Variación de la capacidad de la infraestructura peatonal</h5>
+            <img src="../static/assets/img/sensibilidad/cap_peatones_data_estado.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 14. Variación del Nivel de servicio</h5>
+            <img src="../static/assets/img/sensibilidad/ns_peatones_estado.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+      </div>
+      <hr>
+      <br>
+      <div class="row">
+        <h3 class="subtitulos pasos">Efectos producidos por variaciones en el tipo de sector de la infraestructura peatonal.</h3>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 15. Variación de la capacidad de la infraestructura peatonal</h5>
+            <img src="../static/assets/img/sensibilidad/cap_peatones_data_sector.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 16. Variación del Nivel de servicio</h5>
+            <img src="../static/assets/img/sensibilidad/ns_peatones_sector.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <div class="row">
+        <h3 class="subtitulos pasos">Efectos producidos por variaciones en el sentido de circulación.</h3>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 17. Variación de la capacidad de la infraestructura peatonal</h5>
+            <img src="../static/assets/img/sensibilidad/cap_peatones_data_sentido.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 18. Variación del Nivel de servicio</h5>
+            <img src="../static/assets/img/sensibilidad/ns_peatones_sentido.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <div class="row">
+        <h3 class="subtitulos pasos">Efectos producidos por variaciones en el porcentaje de hombres que cirulan por la infraestructura peatonal.</h3>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 19. Variación de la capacidad de la infraestructura peatonal</h5>
+            <img src="../static/assets/img/sensibilidad/cap_peatones_data_hombres.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 20. Variación del Nivel de servicio</h5>
+            <img src="../static/assets/img/sensibilidad/ns_peatones_hombres.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <div class="row">
+        <h3 class="subtitulos pasos">Efectos producidos por variaciones en porcentaje de personas que se desplazan acompañadas.</h3>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 21. Variación de la capacidad de la infraestructura peatonal</h5>
+            <img src="../static/assets/img/sensibilidad/cap_peatones_data_acompanadas.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 22. Variación del Nivel de servicio</h5>
+            <img src="../static/assets/img/sensibilidad/ns_peatones_acompanadas.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <div class="row">
+        <h3 class="subtitulos pasos">Efectos producidos por variaciones en el porcentaje de personas que se desplazan con paquetes.</h3>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 23. Variación de la capacidad de la infraestructura peatonal</h5>
+            <img src="../static/assets/img/sensibilidad/cap_peatones_data_paquetes.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="imagenes">Gráfica 24. Variación del Nivel de servicio</h5>
+            <img src="../static/assets/img/sensibilidad/ns_peatones_paquetes.png" class="img-fluid"
+              style="width:100%; margin-left: 2rem;" alt="Responsive image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../static/assets/vendor/aos/aos.js"></script>
+  <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../static/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../static/assets/js/main.js"></script>
+
+</body>
+
+</html>

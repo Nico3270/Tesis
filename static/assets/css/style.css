@@ -35,6 +35,11 @@ h6 {
   font-family: "Raleway", sans-serif;
 }
 
+img {
+  padding-top: 0%;
+  margin-top: 0%;
+}
+
 .formulas {
   font-family: 'Tinos', serif;
 }

@@ -1,16 +1,4 @@
 import multicarril as mp
-import capacidad_NS as cap
-import numpy as np
+import sensibilidad_2_carriles as sen2
 
-pen1 = np.arange(0,5.9,0.5)
-pen2 = np.arange(6.3,8.9,0.5)
-pen3 = np.arange(9.2,12,0.5)
-
-pendiente =[]
-for element in pen1:
-    pendiente.append(element)
-for element in pen2:
-    pendiente.append(element)
-for element in pen3:
-    pendiente.append(element)
-print(pendiente)
+sen2.sensibilidad_volumen(3.2,1.3,7.5,2.6,55,80,50,10,40,650,"C")
