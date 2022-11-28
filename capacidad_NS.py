@@ -88,7 +88,7 @@ def inter_compuesta3(tab_3x, tab_3, a_berma, a_carril):
         return 1.0
     sup = interpolacionp(tab_3x, tab_3.get(1.8),a_carril)
     inf = interpolacionp(tab_3x, tab_3.get(0),a_carril)
-    list_inf = [0,1.89]
+    list_inf = [0,1.80]
     list_sup = [inf,sup]
     return interpolacionp(list_inf,list_sup,a_berma)
 
@@ -133,7 +133,7 @@ def inter_compuesta6(tab_6x, tab_6, p_promedio,l_sector):
     inf = intervalos_1(p_promedio)[0]
     sup = intervalos_1(p_promedio)[1]
     int_1 = interpolacionp(tab_6x, tab_6.get(inf), l_sector)
-    int_2 = interpolacionp(tab_6x, tab_6.get(inf), l_sector)
+    int_2 = interpolacionp(tab_6x, tab_6.get(sup), l_sector)
     datos_1 = [inf,sup]
     datos_2 = [int_1, int_2]
     return interpolacionp(datos_1, datos_2, p_promedio)
@@ -186,6 +186,8 @@ def inter_compuesta_plan_ond(v2,tab_9x, terreno,p_pesados, l_sector):
 def inter_compuesta_mon_esc(v2,tab_9x, terreno,p_pesados, l_sector):
     inf = intervalos(v2)[0]
     sup = intervalos(v2)[1]
+    print(inf,sup)
+    print(v2)
     int_0y5_0 =  interpolacionp(tab_9x,terreno.get(0.5).get(inf),p_pesados)
     int_0y5_1 =  interpolacionp(tab_9x,terreno.get(0.5).get(sup),p_pesados)
     resultado_1 = interpolacionp([inf,sup],[int_0y5_0,int_0y5_1],v2)
@@ -230,6 +232,7 @@ def in_range(rango,numero):
 
 #Función para determinar el nivel de servicio según la tabla 11
 def index(rango,num):
+    indice = 0
     for element in rango:
         if in_range(element,num):
             indice = rango.index(element)
@@ -326,7 +329,7 @@ plano = {0.5:{40:[1.00, 1.00, 1.04, 1.10, 1.12, 1.13, 1.14, 1.13, 1.14, 1.14], 5
 1:{40:[1.00,1.00,1.04,1.10,1.12,1.13,1.14,1.13,1.14,1.14],50:[1.00,1.00,1.04,1.10,1.12,1.13,1.14,1.13,1.14,1.14],
 60:[1.09,1.21,1.22,1.23,1.24,1.23,1.22,1.21,1.20,1.20],70:[1.67,1.54,1.45,1.41,1.38,1.35,1.32,1.30,1.29,1.27],
 80:[2.26,1.85,1.66,1.57,1.51,1.46,1.42,1.39,1.36,1.34],90:[2.57,2.02,1.77,1.65,1.58,1.52,1.47,1.43,1.41,1.38]},
-1.5:{40:{1.00,1.00,1.04,1.10,1.12,1.13,1.14,1.13,1.14,1.14},50:[1.00,1.00,1.05,1.10,1.13,1.14,1.14,1.14,1.14,1.14],
+1.5:{40:[1.00,1.00,1.04,1.10,1.12,1.13,1.14,1.13,1.14,1.14],50:[1.00,1.00,1.05,1.10,1.13,1.14,1.14,1.14,1.14,1.14],
 60:[1.13,1.23,1.23,1.24,1.24,1.23,1.22,1.21,1.21,1.20],70:[1.79,1.61,1.49,1.44,1.41,1.37,1.34,1.32,1.30,1.29],
 80:[2.50,1.98,1.74,1.63,1.56,1.50,1.46,1.42,1.40,1.37],90:[2.93,2.20,1.89,1.75,1.66,1.59,1.53,1.48,1.45,1.42]},
 2:{40:[1.00,1.00,1.04,1.10,1.12,1.13,1.14,1.13,1.14,1.14],50:[1.00,1.02,1.06,1.11,1.14,1.14,1.15,1.14,1.15,1.14],
@@ -436,8 +439,8 @@ escarpado = {0.5:{10:[1.00,1.00,1.04,1.10,1.12,1.13,1.14,1.13,1.14,1.14],20:[1.0
 70:[9.63,5.68,4.27,3.59,3.15,2.85,2.63,2.46,2.33,2.22]},4.5:{10:[1.00,1.00,1.04,1.10,1.12,1.13,1.14,1.13,1.14,1.14],
 20:[2.17,1.76,1.58,1.51,1.46,1.42,1.39,1.36,1.34,1.32],30:[4.69,3.12,2.52,2.23,2.05,1.92,1.82,1.74,1.68,1.63],
 40:[6.59,4.11,3.19,2.75,2.48,2.28,2.13,2.02,1.93,1.86],50:[8.02,4.85,3.70,3.14,2.79,2.55,2.37,2.22,2.12,2.03],
-60:[9.22,5.47,4.12,3.46,3.06,2.77,2.56,2.40,2.28,2.17]}}
- 
+60:[9.22,5.47,4.12,3.46,3.06,2.77,2.56,2.40,2.28,2.17]}} 
+
 tabla_10x = [0,2.5,4,6,8]
 tabla_10 = [1.00,0.99,0.99,0.98,0.97]
 

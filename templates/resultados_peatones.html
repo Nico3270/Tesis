@@ -78,10 +78,17 @@
 
   <section id="menu">
     <div class="container">
-      <div class="btn-group btn-group-lg" style="text-align: center; margin-left: 20rem;">
-        <a href="#datos" class="btn btn-outline-danger active" aria-current="page">Resultados obtenidos</a>
-        <a href="#procedimiento" class="btn btn-outline-danger">Procedimiento realizado</a>
-        <a href="#sensibilidad" class="btn btn-outline-danger">Análisis de Sensibilidad</a>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="container" style="text-align:center; margin: auto;">
+            <div class="btn-group btn-group-md">
+              <a href="#datos" class="btn btn-outline-danger active" aria-current="page">Resultados obtenidos</a>
+              <a href="#procedimiento" class="btn btn-outline-danger">Capacidad</a>
+              <a href="#nivel" class="btn btn-outline-danger">Nivel de servicio</a>
+              <a href="#sensibilidad" class="btn btn-outline-danger">Análisis de sensibilidad</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -436,7 +443,9 @@
     </div>
   </section>
   <hr>
+  <a name="nivel"></a>
   <section id="resultados-nivel" class="datos">
+    
     <div class="container">
       <h3 class="pasos"><b>Cálculo del Nivel de servicio</b></h3>
       <div class="row">
@@ -684,7 +693,6 @@
             <h5 class="text-general">Este factor considera una penalización adicional causada opr un ancho efectivo muy
               pequeño, que incluso para flujos peatonales bajos resulta molesto para los usuarios, este factor resultó
               de gran utilidad para reflejar la percepción de los peatones y se muestra en la tabla 8.</h5>
-            <h5 class="tablas">Tabla 8. Factor de ajuste por ancho restringido</h5><br>
             <h5 class="text-general">El factor de ajuste por ancho restringido para la infraestructura peatonal con
               ancho efectivo de <b>{{datos.ancho}} m</b>, según la tabla 8 es:</h5><br>
             <h4 class="formulas"><b>F<sub>ar</sub> = {{datos.far}}</b></h4>
@@ -810,7 +818,7 @@
       </div>
       <hr>
       <div class="row">
-        <h4 class="text-general pasos">Nivel de servicio obtenido.</h4>
+        <h4 class="text-general pasos"><b>Nivel de servicio obtenido.</b></h4>
         <div class="col-lg-6">
           <div class="container">
             <h5 class="text-general">La calidad del servicio se determina mediante la escala de niveles de servicio,

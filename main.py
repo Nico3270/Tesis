@@ -266,7 +266,7 @@ class Capacidad(FlaskForm):
     a_carril = FloatField(label="Ancho de carril",description="Ingrese valor en metros", validators = [DataRequired(),NumberRange(min=2.7, max=3.65)])
     a_berma = FloatField(label="Ancho de berma",description="Ingrese valor en metros",  validators = [DataRequired(),NumberRange(min=0, max=3)])
     p_promedio = FloatField(label="Pendiente promedio ",description="Ingrese valor en porcentaje", validators = [DataRequired(),NumberRange(min=0, max=12)])
-    l_sector = FloatField(label="Longitud del sector",description="Ingrese valor en kilometros",validators = [DataRequired(),NumberRange(min=0, max=5)])
+    l_sector = FloatField(label="Longitud del sector",description="Ingrese valor en kilometros",validators = [DataRequired(),NumberRange(min=0.5, max=5)])
     curvatura = IntegerField(label="Grado de curvatura",description="Ingrese valor en °/km", validators=[NumberRange(min=0, max=799)])
     d_sentido= IntegerField(label="Distribución por sentido", validators = [DataRequired(),NumberRange(min=50, max=100)])
     p_no_rebase = IntegerField(label="Porcentaje de zonas de no rebase",description="Ingrese valor en porcentaje",validators=[NumberRange(min=0, max=100)])
@@ -387,7 +387,7 @@ def Capacidad_Ns(a_carril, a_berma, p_promedio, l_sector, d_sentido, p_no_rebase
     #Capacidad
     Fpe = cap.inter_compuesta_1(p_promedio, cap.tabla_1x, cap.tabla_1, l_sector)
     Fd = cap.inter_compuesta_2(d_sentido,cap.tabla_2x,cap.tabla_2,p_no_rebase)
-    Fcb = cap.inter_compuesta3(cap.tabla_3x,cap.tabla_3,a_berma,a_carril)
+    Fcb = round(cap.inter_compuesta3(cap.tabla_3x,cap.tabla_3,a_berma,a_carril),2)
     Ec = cap.inter_compuesta4(cap.tabla_4x, cap.tabla_4, p_promedio, p_pesados, l_sector)
     Fp = (1/(1+(p_pesados/100)*(Ec-1)))
     Fp = round(Fp,4)
@@ -399,17 +399,18 @@ def Capacidad_Ns(a_carril, a_berma, p_promedio, l_sector, d_sentido, p_no_rebase
     Fu = cap.interpolacionp(cap.tabla_7x,cap.tabla_7,vol_cap/cap_60)
     Fcb1 = cap.inter_compuesta8(cap.tabla_8x,cap.tabla_8,a_carril,a_berma)
     v2 = round(v1* Fu * Fcb1,2)
+    print(v2)
     Ec_vel = 0
-    if p_promedio < 3:
-        Ec_vel = cap.inter_compuesta_plan_ond(v2,cap.tabla_9x,cap.plano,p_camiones,l_sector)
-    elif  p_promedio < 6:
-        Ec_vel = cap.inter_compuesta_plan_ond(v2,cap.tabla_9x,cap.ondulado,p_camiones,l_sector)
-    elif  p_promedio <9:
-        Ec_vel = cap.inter_compuesta_mon_esc(v2,cap.tabla_9x,cap.montanoso,p_camiones,l_sector)
-    else:
-        Ec_vel = cap.inter_compuesta_mon_esc(v2,cap.tabla_9x,cap.escarpado,p_camiones,l_sector)
-
-    fp_vel = round(1/(1+((p_camiones/100)*(Ec_vel-1))),3)
+    if v2 >= 20.5:
+        if p_promedio < 3:
+            Ec_vel = cap.inter_compuesta_plan_ond(v2,cap.tabla_9x,cap.plano,p_camiones,l_sector)
+        elif  p_promedio < 6:
+            Ec_vel = cap.inter_compuesta_plan_ond(v2,cap.tabla_9x,cap.ondulado,p_camiones,l_sector)
+        elif  p_promedio <9:
+            Ec_vel = cap.inter_compuesta_mon_esc(v2,cap.tabla_9x,cap.montanoso,p_camiones,l_sector)
+        else:
+            Ec_vel = cap.inter_compuesta_mon_esc(v2,cap.tabla_9x,cap.escarpado,p_camiones,l_sector)
+    fp_vel = round(1/(1+((p_pesados/100)*(Ec_vel-1))),3)
     Ft = round(cap.interpolacion(cap.tabla_10x, cap.tabla_10, p_promedio),3)
     vM = round(v2*fp_vel*Ft,4)
     Vi = float((vM * 100)/90)

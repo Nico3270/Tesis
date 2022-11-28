@@ -181,7 +181,7 @@
               <dd class="col-sm-8 text-general">V<sub>2</sub> = <b>{{datos.v2}} km/h</b><br>(Velocidad de automóviles V<sub>2</sub>: V<sub>1</sub> * F<sub>u</sub> * F<sub>cb</sub></dd>
               <hr>
               <dt class="col-sm-4">Equivalente camiones (E<sub>C</sub>)</dt>
-              <dd class="col-sm-8 text-general">F<sub>p</sub> = <b>{{datos.Ec_vel}}</b> <br>(Tabla 9, pendiente {{datos.p_promedio}} %, longitud del sector {{datos.l_sector}} km), V<sub>1</sub>: {{datos.v1}} km/h, porcentaje de vehículos pesados C={{datos.p_camiones}}%)</dd>
+              <dd class="col-sm-8 text-general">E<sub>c</sub> = <b>{{datos.Ec_vel}}</b> <br>(Tabla 9, pendiente {{datos.p_promedio}} %, longitud del sector {{datos.l_sector}} km), V<sub>1</sub>: {{datos.v1}} km/h, porcentaje de vehículos pesados C={{datos.p_camiones}}%)</dd>
               <hr>
               <dt class="col-sm-4">Factor de corrección por la presencia de vehículos pesados en pendientes ascendentes. (F<sub>p</sub>)</dt>
               <dd class="col-sm-8">F<sub>p</sub> = <b>{{datos.Fp_vel}}</b> <br> <img src="../static/assets/img/Fp.JPG" class="img-fluid text-general" style="width:40%; margin-left: 5rem;" alt="Responsive image"></dd>
@@ -205,7 +205,7 @@
           <div class="col-lg-6">
             <div class="container">
               <h5 class="imagenes"> Gráfica 1. Variación del Nivel de Servicio debido a cambios en el volumen de tránsito </h5>
-              <img src="../static/assets/img/sensibilidad/multi_ns.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
+              <img src="../static/assets/img/sensibilidad/ns_2carriles_volumen.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
             </div>
           </div>
           <div class="col-lg-6">
@@ -221,13 +221,13 @@
           <div class="col-lg-6">
             <div class="container">
               <h5 class="imagenes">Gráfica 2. Variación de la Capacidad por variaciones en la longitud del tramo</h5>
-              <img src="../static/assets/img/sensibilidad/cap_lon.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
+              <img src="../static/assets/img/sensibilidad/cap_2carriles_longitud.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
             </div>
           </div>
           <div class="col-lg-6">
             <div class="container">
               <h5 class="imagenes">Gráfica 3. Variación del Nivel de Servicio por variaciones en la longitud del tramo</h5>
-              <img src="../static/assets/img/sensibilidad/ns_lon.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
+              <img src="../static/assets/img/sensibilidad/ns_2carriles_longitud.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
             </div>
           </div>
         </div>
@@ -237,14 +237,14 @@
           <div class="col-lg-6">
             <div class="container">
               <h5 class="imagenes">Gráfica 4. Variación de la Capacidad por variaciones en la pendiente del tramo</h5>
-              <img src="../static/assets/img/sensibilidad/pendiente_cap.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
+              <img src="../static/assets/img/sensibilidad/cap_2carriles_pendiente.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
 
             </div>
           </div>
           <div class="col-lg-6">
             <div class="container">
               <h5 class="imagenes">Gráfica 5. Variación del Nivel de Servicio por variaciones en la pendiente del tramo</h5>
-              <img src="../static/assets/img/sensibilidad/pendiente_ns.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
+              <img src="../static/assets/img/sensibilidad/ns_2carriles_pendiente.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
 
             </div>
           </div>
@@ -255,13 +255,13 @@
           <div class="col-lg-6">
             <div class="container">
               <h5 class="imagenes">Gráfica 6. Variación de la Capacidad por cambios en el porcentaje de Camiones</h5>
-              <img src="../static/assets/img/sensibilidad/cap_camion.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
+              <img src="../static/assets/img/sensibilidad/cap_2carriles_camiones.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
             </div>
           </div>
           <div class="col-lg-6">
             <div class="container">
               <h5 class="imagenes">Gráfica 7. Variación del Nivel de Servicio por cambios en el porcentaje de Camiones</h5>
-              <img src="../static/assets/img/sensibilidad/ns_camiones.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">      
+              <img src="../static/assets/img/sensibilidad/ns_2carriles_camiones.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">      
             </div>
           </div>
         </div>
@@ -271,13 +271,13 @@
           <div class="col-lg-6">
             <div class="container">
               <h5 class="imagenes">Gráfica 8. Variación de la capacidad por cambios en el ancho de carril</h5>
-              <img src="../static/assets/img/sensibilidad/cap_carril.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">      
+              <img src="../static/assets/img/sensibilidad/cap_2carriles_carril.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">      
             </div>
           </div>
           <div class="col-lg-6">
             <div class="container">
               <h5 class="imagenes">Gráfica 9. Variación del Nivel de Servicio por cambios en el ancho de carril</h5>
-              <img src="../static/assets/img/sensibilidad/ns_carril.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">      
+              <img src="../static/assets/img/sensibilidad/ns_2carriles_carril.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">      
             </div>
           </div>
         </div>
@@ -287,13 +287,13 @@
           <div class="col-lg-6">
             <div class="container">
               <h5 class="imagenes">Gráfica 10. Variación de la Capacidad por cambios en el ancho de la berma</h5>
-            <img src="../static/assets/img/sensibilidad/cap_berma.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
+            <img src="../static/assets/img/sensibilidad/cap_2carriles_berma.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
             </div>
           </div>
           <div class="col-lg-6">
             <div class="container">
               <h5 class="imagenes">Gráfica 11. Variación del Nivel de Servicio por cambios en el ancho de la berma</h5>
-              <img src="../static/assets/img/sensibilidad/ns_berma.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
+              <img src="../static/assets/img/sensibilidad/ns_2carriles_berma.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
             </div>
 
           </div>
