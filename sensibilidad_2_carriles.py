@@ -5,9 +5,9 @@ matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 
 #Función para gráficar las variaciones en capacidad y nivel de servicio, por cambios en volumen
-def sensibilidad_volumen(a_carril, a_berma, p_promedio,l_tramo,d_sentido,p_no_rebase,p_autos,p_buses,p_camiones,volumen,nivel):
+def sensibilidad_volumen(a_carril, a_berma, p_promedio,l_tramo,d_sentido,p_no_rebase,p_autos,p_buses,p_camiones,volumen,nivel,capa):
     ns = []
-    vol = np.arange(0,3000,5)
+    vol = np.arange(0,capa+100,5)
     for element in vol:
         data = mn.Capacidad_Ns(a_carril, a_berma, p_promedio, l_tramo, d_sentido, p_no_rebase, p_autos, p_buses, p_camiones, element)
         ns.append(data[17])
@@ -31,7 +31,6 @@ def sensibilidad_pendiente(a_carril, a_berma, p_promedio,l_tramo,d_sentido,p_no_
         data = mn.Capacidad_Ns(a_carril,a_berma,element,l_tramo,d_sentido,p_no_rebase,p_autos,p_buses,p_camiones,volumen)
         ns_pen.append(data[17])
         cap_pen.append(data[5])
-    print(ns_pen, cap_pen, pendiente)
     #Gráfica Pendiente vs N de S
     plt.style.use("seaborn-dark-palette")
     plt.plot(pendiente, ns_pen ,color="red", label='Nivel de servicio')
@@ -86,7 +85,7 @@ def sensiblidad_longitud(a_carril, a_berma, p_promedio,l_tramo,d_sentido,p_no_re
 
 #Función para gráficar las variaciones en capacidad y nivel de servicio, por cambios en el ancho de la berma:
 def sensibilidad_berma(a_carril, a_berma, p_promedio,l_tramo,d_sentido,p_no_rebase,p_autos,p_buses,p_camiones,volumen, ns, cap):
-    berma = np.arange(0,1.8,0.1)
+    berma = np.arange(0,3,0.2)
     ns_berma = []
     cap_berma = []
     for element in berma:
@@ -98,7 +97,7 @@ def sensibilidad_berma(a_carril, a_berma, p_promedio,l_tramo,d_sentido,p_no_reba
     plt.plot(berma, ns_berma ,color="red", label='Nivel de servicio')
     plt.scatter(a_berma,ns, label="Resultado obtenido")
     plt.grid(True)
-    plt.xlabel('Berma')
+    plt.xlabel('Ancho de berma (m)')
     plt.ylabel('Nivel de servicio')
     plt.savefig("static/assets/img/sensibilidad/ns_2carriles_berma.png")
     plt.close()
@@ -108,15 +107,15 @@ def sensibilidad_berma(a_carril, a_berma, p_promedio,l_tramo,d_sentido,p_no_reba
     plt.scatter(a_berma,cap, label="Resultado obtenido")
     plt.legend(loc="lower right")
     plt.grid(True)
-    plt.xlabel('Berma')
-    plt.ylabel('Capacidad')
+    plt.xlabel('Ancho de Berma')
+    plt.ylabel('Capacidad (Veh/h)')
     plt.savefig("static/assets/img/sensibilidad/cap_2carriles_berma.png")
     plt.close()
 
 
 #Función para gráficar las variaciones en capacidad y nivel de servicio, por cambios en el ancho del carril:
 def sensibilidad_carril(a_carril, a_berma, p_promedio,l_tramo,d_sentido,p_no_rebase,p_autos,p_buses,p_camiones,volumen, cap, ns):
-    carril = np.arange(2.7,3.7,0.1)
+    carril = np.arange(2.7,3.8,0.1)
     ns_carril = []
     cap_carril = []
     for element in carril:
@@ -130,8 +129,8 @@ def sensibilidad_carril(a_carril, a_berma, p_promedio,l_tramo,d_sentido,p_no_reb
     plt.scatter(a_carril,cap, label="Resultado obtenido")
     plt.legend()
     plt.grid(True)
-    plt.xlabel('Carril')
-    plt.ylabel('Capacidad')
+    plt.xlabel('Ancho de carril (metros)')
+    plt.ylabel('Capacidad (Veh/h)')
     plt.savefig("static/assets/img/sensibilidad/cap_2carriles_carril.png")
     plt.close()
     #Gráfica Ancho del carril vs Nivel de Servicio
@@ -140,14 +139,15 @@ def sensibilidad_carril(a_carril, a_berma, p_promedio,l_tramo,d_sentido,p_no_reb
     plt.scatter(a_carril,ns, label="Resultado obtenido")
     plt.legend()
     plt.grid(True)
-    plt.xlabel('Carril')
+    plt.xlabel('Ancho de carril (metros)')
     plt.ylabel('Nivel de servicio')
     plt.savefig("static/assets/img/sensibilidad/ns_2carriles_carril.png")
     plt.close()
 
 #Función para gráficar las variaciones en capacidad y nivel de servicio, por cambios en el porcentaje de camiones:
 def sensibilidad_camiones(a_carril, a_berma, p_promedio,l_tramo,d_sentido,p_no_rebase,p_autos,p_buses,p_camiones,volumen,ns,cap):
-    camiones = np.arange(0,50,2)
+    iterar = 60-p_buses
+    camiones = np.arange(0,iterar,1)
     ns_camion = []
     cap_camion = []
     for element in camiones:
@@ -159,7 +159,7 @@ def sensibilidad_camiones(a_carril, a_berma, p_promedio,l_tramo,d_sentido,p_no_r
     plt.plot(camiones, ns_camion ,color="red", label='Nivel de servicio')
     plt.scatter(p_camiones,ns, label="Resultado obtenido")
     plt.grid(True)
-    plt.xlabel('Porcentaje camiones')
+    plt.xlabel('Porcentaje camiones (%)')
     plt.ylabel('Nivel de servicio')
     plt.savefig("static/assets/img/sensibilidad/ns_2carriles_camiones.png")
     plt.close()
@@ -169,7 +169,7 @@ def sensibilidad_camiones(a_carril, a_berma, p_promedio,l_tramo,d_sentido,p_no_r
     plt.scatter(p_camiones,cap, label="Resultado obtenido")
     plt.legend(loc="lower right")
     plt.grid(True)
-    plt.xlabel('Camiones')
-    plt.ylabel('Capacidad')
+    plt.xlabel('Porcentaje de camiones')
+    plt.ylabel('Capacidad (Veh/h)')
     plt.savefig("static/assets/img/sensibilidad/cap_2carriles_camiones.png")
     plt.close()

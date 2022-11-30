@@ -94,7 +94,7 @@
                           <td><ul class="list-group">
                             <li class="list-group-item">Ancho de carril: <b>{{datos.a_carril}} m</b></li>
                             <li class="list-group-item">Ancho de berma <b>{{datos.a_berma}} m</b> </li>
-                            <li class="list-group-item">Pendiente promedio <b>{{datos.p_promedio}} m</b> </li>
+                            <li class="list-group-item">Pendiente promedio <b>{{datos.p_promedio}} %</b> </li>
                             <li class="list-group-item">Longitud del sector <b>{{datos.l_sector}}</b></li>
                             <li class="list-group-item">Grado de curvatura: <b>{{datos.curvatura}} m</b></li>
                           </ul></td>
@@ -181,7 +181,7 @@
               <dd class="col-sm-8 text-general">V<sub>2</sub> = <b>{{datos.v2}} km/h</b><br>(Velocidad de automóviles V<sub>2</sub>: V<sub>1</sub> * F<sub>u</sub> * F<sub>cb</sub></dd>
               <hr>
               <dt class="col-sm-4">Equivalente camiones (E<sub>C</sub>)</dt>
-              <dd class="col-sm-8 text-general">E<sub>c</sub> = <b>{{datos.Ec_vel}}</b> <br>(Tabla 9, pendiente {{datos.p_promedio}} %, longitud del sector {{datos.l_sector}} km), V<sub>1</sub>: {{datos.v1}} km/h, porcentaje de vehículos pesados C={{datos.p_camiones}}%)</dd>
+              <dd class="col-sm-8 text-general">E<sub>c</sub> = <b>{{datos.Ec_vel}}</b> <br>(Tabla 9, pendiente {{datos.p_promedio}} %, longitud del sector {{datos.l_sector}} km), V<sub>2</sub>: {{datos.v2}} km/h, porcentaje de vehículos pesados C={{datos.p_camiones}}%)</dd>
               <hr>
               <dt class="col-sm-4">Factor de corrección por la presencia de vehículos pesados en pendientes ascendentes. (F<sub>p</sub>)</dt>
               <dd class="col-sm-8">F<sub>p</sub> = <b>{{datos.Fp_vel}}</b> <br> <img src="../static/assets/img/Fp.JPG" class="img-fluid text-general" style="width:40%; margin-left: 5rem;" alt="Responsive image"></dd>

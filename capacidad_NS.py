@@ -14,7 +14,7 @@ def tipo_terreno(num):
         
         return "Terreno Escarpado"
 
-print(tipo_terreno(7.5))
+
 #Función interpolación normal
 def interpolacion(x,y,z):
     p = lagrange(x,y)
@@ -86,10 +86,14 @@ def inter_compuesta_2(d_sentido, tab2x, tab_2,p_no_rebase):
 def inter_compuesta3(tab_3x, tab_3, a_berma, a_carril):
     if a_berma >= 1.8:
         return 1.0
-    sup = interpolacionp(tab_3x, tab_3.get(1.8),a_carril)
-    inf = interpolacionp(tab_3x, tab_3.get(0),a_carril)
-    list_inf = [0,1.80]
-    list_sup = [inf,sup]
+    val1 = interpolacionp(tab_3x, tab_3.get(0),a_carril)
+    val2 =interpolacionp(tab_3x, tab_3.get(0.5),a_carril)
+    val3 =interpolacionp(tab_3x, tab_3.get(1),a_carril)
+    val4 =interpolacionp(tab_3x, tab_3.get(1.2),a_carril)
+    val5 =interpolacionp(tab_3x, tab_3.get(1.5),a_carril)
+    val6 = interpolacionp(tab_3x, tab_3.get(1.8),a_carril)
+    list_inf = [0,0.5,1,1.2,1.5,1.8]
+    list_sup = [val1,val2,val3,val4,val5,val6]
     return interpolacionp(list_inf,list_sup,a_berma)
 
 #Funcion interpolacion compuesta Tabla 4
@@ -186,8 +190,6 @@ def inter_compuesta_plan_ond(v2,tab_9x, terreno,p_pesados, l_sector):
 def inter_compuesta_mon_esc(v2,tab_9x, terreno,p_pesados, l_sector):
     inf = intervalos(v2)[0]
     sup = intervalos(v2)[1]
-    print(inf,sup)
-    print(v2)
     int_0y5_0 =  interpolacionp(tab_9x,terreno.get(0.5).get(inf),p_pesados)
     int_0y5_1 =  interpolacionp(tab_9x,terreno.get(0.5).get(sup),p_pesados)
     resultado_1 = interpolacionp([inf,sup],[int_0y5_0,int_0y5_1],v2)
@@ -275,7 +277,7 @@ tabla_2 = {50:[1,1,1,1,1,1],60:[0.9,0.89,0.87,0.86,0.85,0.83],70:[0.82,0.8,0.78,
 80:[0.75,0.72,0.7,0.67,0.65,0.63],90:[0.69,0.66,0.64,0.61,0.58,0.56],100:[0.64,0.61,0.58,0.56,0.53,0.5]}
 tabla_2x = [0,20,40,60,80,100]
 
-tabla_3 = {1.8:[1,0.99,0.98,0.95], 1.5:[0.99,0.99,0.98,0.95], 1.2:[0.99,0.98,0.97,0.95],
+tabla_3 = {1.8:[1,0.99,0.98,0.96], 1.5:[0.99,0.99,0.98,0.95], 1.2:[0.99,0.98,0.97,0.95],
  1:[0.99,0.98,0.97,0.94],0.5:[0.98,0.97,0.96,0.93],0:[0.97,0.96,0.95,0.92]}
 tabla_3x = [3.65, 3.5, 3.3, 3.0]
 
@@ -439,7 +441,7 @@ escarpado = {0.5:{10:[1.00,1.00,1.04,1.10,1.12,1.13,1.14,1.13,1.14,1.14],20:[1.0
 70:[9.63,5.68,4.27,3.59,3.15,2.85,2.63,2.46,2.33,2.22]},4.5:{10:[1.00,1.00,1.04,1.10,1.12,1.13,1.14,1.13,1.14,1.14],
 20:[2.17,1.76,1.58,1.51,1.46,1.42,1.39,1.36,1.34,1.32],30:[4.69,3.12,2.52,2.23,2.05,1.92,1.82,1.74,1.68,1.63],
 40:[6.59,4.11,3.19,2.75,2.48,2.28,2.13,2.02,1.93,1.86],50:[8.02,4.85,3.70,3.14,2.79,2.55,2.37,2.22,2.12,2.03],
-60:[9.22,5.47,4.12,3.46,3.06,2.77,2.56,2.40,2.28,2.17]}} 
+60:[9.22,5.47,4.12,3.46,3.06,2.77,2.56,2.40,2.28,2.17],70:[9.22,5.47,4.12,3.46,3.06,2.77,2.56,2.40,2.28,2.17]}} 
 
 tabla_10x = [0,2.5,4,6,8]
 tabla_10 = [1.00,0.99,0.99,0.98,0.97]

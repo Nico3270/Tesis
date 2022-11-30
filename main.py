@@ -263,16 +263,16 @@ class CreatePostForm(FlaskForm):
 class Capacidad(FlaskForm):
     carretera = StringField(label="Nombre de carretera o proyecto", name="carretera")
     proyecto = StringField(label="Proyecto o abscisa")
-    a_carril = FloatField(label="Ancho de carril",description="Ingrese valor en metros", validators = [DataRequired(),NumberRange(min=2.7, max=3.65)])
-    a_berma = FloatField(label="Ancho de berma",description="Ingrese valor en metros",  validators = [DataRequired(),NumberRange(min=0, max=3)])
-    p_promedio = FloatField(label="Pendiente promedio ",description="Ingrese valor en porcentaje", validators = [DataRequired(),NumberRange(min=0, max=12)])
-    l_sector = FloatField(label="Longitud del sector",description="Ingrese valor en kilometros",validators = [DataRequired(),NumberRange(min=0.5, max=5)])
+    a_carril = FloatField(label="Ancho de carril",description="Ingrese valor en metros (Valores permitidos entre 2.7 y 3.7 metros)", validators = [DataRequired(),NumberRange(min=3, max=3.7)])
+    a_berma = FloatField(label="Ancho de berma",description="Ingrese valor en metros (Valores permitidos entre 0 y 3 metros)",  validators = [DataRequired(),NumberRange(min=0, max=3)])
+    p_promedio = FloatField(label="Pendiente promedio ",description="Ingrese valor en porcentaje (Valores permitidos entre 0 a 12%)", validators = [DataRequired(),NumberRange(min=0, max=12)])
+    l_sector = FloatField(label="Longitud del sector",description="Ingrese valor en kilometros (Valores permitidos de 0.5 a 5 kilometros)",validators = [DataRequired(),NumberRange(min=0.5, max=5)])
     curvatura = IntegerField(label="Grado de curvatura",description="Ingrese valor en °/km", validators=[NumberRange(min=0, max=799)])
-    d_sentido= IntegerField(label="Distribución por sentido", validators = [DataRequired(),NumberRange(min=50, max=100)])
-    p_no_rebase = IntegerField(label="Porcentaje de zonas de no rebase",description="Ingrese valor en porcentaje",validators=[NumberRange(min=0, max=100)])
-    p_automoviles = IntegerField(label="Porcentaje de automoviles",description="Ingrese valor en porcentaje", validators=[NumberRange(min=0, max=100)])
-    p_buses = IntegerField(label="Porcentaje de buses",default=1,description="Ingrese valor en porcentaje", validators=[NumberRange(min=0, max=100)])
-    p_camiones = IntegerField(label="Porcentaje de camiones",description="Ingrese valor en porcentaje", validators=[NumberRange(min=0, max=100)])
+    d_sentido= IntegerField(label="Distribución por sentido (Valor permitido entre 50% a 100%)", validators = [DataRequired(),NumberRange(min=50, max=100)])
+    p_no_rebase = IntegerField(label="Porcentaje de zonas de no rebase (Valor permitido entre 0 a 100 %)",description="Ingrese valor en porcentaje",validators=[NumberRange(min=0, max=100)])
+    p_automoviles = IntegerField(label="Porcentaje de automoviles",description="Ingrese valor en porcentaje (Valor permitido entre 0 a 100 %)", validators=[NumberRange(min=0, max=100)])
+    p_buses = IntegerField(label="Porcentaje de buses",default=1,description="Ingrese valor en porcentaje (Valor permitido entre 0 a 100 %)", validators=[NumberRange(min=0, max=100)])
+    p_camiones = IntegerField(label="Porcentaje de camiones",description="Ingrese valor en porcentaje (Valor permitido entre 0 a 100 %)", validators=[NumberRange(min=0, max=100)])
     vol_cap = IntegerField(label="Volumen horario total ambos sentidos",description="Ingrese valor Veh/h", validators = [DataRequired(),NumberRange(min=0, max=100000)])
     submit = SubmitField("Calcular Capacidad y Nivel de servicio")
 
@@ -387,7 +387,7 @@ def Capacidad_Ns(a_carril, a_berma, p_promedio, l_sector, d_sentido, p_no_rebase
     #Capacidad
     Fpe = cap.inter_compuesta_1(p_promedio, cap.tabla_1x, cap.tabla_1, l_sector)
     Fd = cap.inter_compuesta_2(d_sentido,cap.tabla_2x,cap.tabla_2,p_no_rebase)
-    Fcb = round(cap.inter_compuesta3(cap.tabla_3x,cap.tabla_3,a_berma,a_carril),2)
+    Fcb = round(cap.inter_compuesta3(cap.tabla_3x,cap.tabla_3,a_berma,a_carril),3)
     Ec = cap.inter_compuesta4(cap.tabla_4x, cap.tabla_4, p_promedio, p_pesados, l_sector)
     Fp = (1/(1+(p_pesados/100)*(Ec-1)))
     Fp = round(Fp,4)
@@ -400,15 +400,30 @@ def Capacidad_Ns(a_carril, a_berma, p_promedio, l_sector, d_sentido, p_no_rebase
     Fcb1 = cap.inter_compuesta8(cap.tabla_8x,cap.tabla_8,a_carril,a_berma)
     v2 = round(v1* Fu * Fcb1,2)
     print(v2)
-    Ec_vel = 0
-    if v2 >= 20.5:
-        if p_promedio < 3:
-            Ec_vel = cap.inter_compuesta_plan_ond(v2,cap.tabla_9x,cap.plano,p_camiones,l_sector)
-        elif  p_promedio < 6:
-            Ec_vel = cap.inter_compuesta_plan_ond(v2,cap.tabla_9x,cap.ondulado,p_camiones,l_sector)
-        elif  p_promedio <9:
-            Ec_vel = cap.inter_compuesta_mon_esc(v2,cap.tabla_9x,cap.montanoso,p_camiones,l_sector)
+    Ec_vel = 1.0
+    if p_promedio < 3:
+        if v2 < 40:
+            Ec_vel = Ec_vel
         else:
+            Ec_vel = cap.inter_compuesta_plan_ond(v2,cap.tabla_9x,cap.plano,p_camiones,l_sector)
+    elif  p_promedio < 6:
+        if v2 < 40:
+            Ec_vel = Ec_vel
+        else:
+            Ec_vel = cap.inter_compuesta_plan_ond(v2,cap.tabla_9x,cap.ondulado,p_camiones,l_sector)
+    elif  p_promedio <9:
+        if v2 >= 80:
+            v2 = 80
+        if v2 <20: 
+            Ec_vel=1.0
+        else: 
+            Ec_vel = cap.inter_compuesta_mon_esc(v2,cap.tabla_9x,cap.montanoso,p_camiones,l_sector)
+    else:
+        if v2 >= 70:
+            v2 = 70
+        if v2 < 10: 
+            Ec_vel = 1.0
+        else: 
             Ec_vel = cap.inter_compuesta_mon_esc(v2,cap.tabla_9x,cap.escarpado,p_camiones,l_sector)
     fp_vel = round(1/(1+((p_pesados/100)*(Ec_vel-1))),3)
     Ft = round(cap.interpolacion(cap.tabla_10x, cap.tabla_10, p_promedio),3)
@@ -451,10 +466,10 @@ def home():
         p_automoviles=form.p_automoviles.data, p_buses=form.p_buses.data, p_camiones=form.p_camiones.data, vol_cap= form.vol_cap.data, terreno = res[18])
         db.session.add(new_object)
         db.session.commit()
-        sen2.sensibilidad_volumen(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data, res[17] )
+        sen2.sensibilidad_volumen(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data, res[17],res[5] )
+        sen2.sensiblidad_longitud(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data, res[5], res[17])
         sen2.sensibilidad_pendiente(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data,res[5],res[17])
         sen2.sensibilidad_camiones(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data,res[17],res[5])
-        sen2.sensiblidad_longitud(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data, res[5], res[17])
         sen2.sensibilidad_carril(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data,  res[5], res[17])
         sen2.sensibilidad_berma(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data,res[17], res[5])
         return redirect(url_for('resultado'))
@@ -528,7 +543,7 @@ def multicarril():
         v18 = form.vol_transito.data
         if v4 >= 8:
             v4 = 7.99
-        print(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
+        
         #análisis de sensibilidad
         rs= mp.calc_multicarril(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15)
         vol = sen.sensibilidad_volumen(v1,v2,v3,v8,v13,v14,v7,v9,v10,v11,v12,v4,v17,v5,v18,v16,v6,v15,rs[15],v18,rs[13],rs[12],rs[14])
@@ -653,7 +668,6 @@ def multicarril():
         datos[100]=fin[43]
         plt.close()
         matplotlib.use('Agg')
-        print(datos)
         return redirect(url_for("resultado_Multicarril"))
     return render_template("multicarril.html", form = form)
 
