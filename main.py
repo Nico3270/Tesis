@@ -396,10 +396,9 @@ def Capacidad_Ns(a_carril, a_berma, p_promedio, l_sector, d_sentido, p_no_rebase
     cap_5 =round(cap_60*FHP,0)
     #Nivel de servico
     v1 = cap.inter_compuesta6(cap.tabla_6x, cap.tabla_6, p_promedio, l_sector)
-    Fu = cap.interpolacionp(cap.tabla_7x,cap.tabla_7,vol_cap/cap_60)
+    Fu = round(cap.interpolacionp(cap.tabla_7x,cap.tabla_7,vol_cap/cap_60),4)
     Fcb1 = cap.inter_compuesta8(cap.tabla_8x,cap.tabla_8,a_carril,a_berma)
     v2 = round(v1* Fu * Fcb1,2)
-    print(v2)
     Ec_vel = 1.0
     if p_promedio < 3:
         if v2 < 40:
