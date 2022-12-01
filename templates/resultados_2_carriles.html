@@ -94,7 +94,7 @@
                           <td><ul class="list-group">
                             <li class="list-group-item">Ancho de carril: <b>{{datos.a_carril}} m</b></li>
                             <li class="list-group-item">Ancho de berma <b>{{datos.a_berma}} m</b> </li>
-                            <li class="list-group-item">Pendiente promedio <b>{{datos.p_promedio}} %</b> </li>
+                            <li class="list-group-item">Pendiente promedió <b>{{datos.p_promedió}} %</b> </li>
                             <li class="list-group-item">Longitud del sector <b>{{datos.l_sector}}</b></li>
                             <li class="list-group-item">Grado de curvatura: <b>{{datos.curvatura}} m</b></li>
                           </ul></td>
@@ -103,16 +103,16 @@
                           <th scope="row">Características del tránsito</th>
                           <td><ul class="list-group">
                             <li class="list-group-item">Distribución por sentido: <b>{{datos.d_sentido}}/{{datos.d_sentido1}}</b></li>
-                            <li class="list-group-item">Porcentaje de zonas de no rebase <b>{{datos.p_no_rebase}} %</b> </li>
+                            <li class="list-group-item">Porcentaje de zonas de no rebase: <b>{{datos.p_no_rebase}} %</b> </li>
                           </ul></td>
                         </tr>
                         <tr>
                           <th scope="row">Composición vehicular</th>
                           <td><ul class="list-group">
-                            <li class="list-group-item">Porcentaje de automóviles <b>{{datos.p_automoviles}} %</b></li>
-                            <li class="list-group-item">Porcentaje de buses <b>{{datos.p_buses}} %</b> </li>
-                            <li class="list-group-item">Porcentaje de camiones <b>{{datos.p_camiones}} %</b> </li>
-                            <li class="list-group-item">Volumen horario total ambos sentidos (Q) <b>{{datos.vol_cap}} Veh/h</b> </li>
+                            <li class="list-group-item">Porcentaje de automóviles: <b>{{datos.p_automoviles}} %</b></li>
+                            <li class="list-group-item">Porcentaje de buses: <b>{{datos.p_buses}} %</b> </li>
+                            <li class="list-group-item">Porcentaje de camiones: <b>{{datos.p_camiones}} %</b> </li>
+                            <li class="list-group-item">Volumen horario total ambos sentidos (Q): <b>{{datos.vol_cap}} Veh/h</b> </li>
                           </ul></td>
                         </tr>   
                       </tbody>
@@ -132,33 +132,33 @@
           <div class="col-lg-6 col-md-12 col-sm-12">
             <div class="container">
             <h5 class="pasos"><b>Cálculo de Capacidad</b></h5>
-            <h5 class="text-general">Capacidad en condiciones ideales (C<sub>i</sub>) en ambos sentidos = <b>3200 Veh/h</b></h5>
+            <h5 class="text-general">Capacidad en condiciones ideales (C<sub>i</sub>) en ambos sentidos = <br><b>3200 Veh/h</b></h5>
             <dl class="row">
               <dt class="col-sm-4">Factor de corrección por pendiente (F<sub>pe</sub>)</dt>
-              <dd class="col-sm-8">F<sub>pe</sub> = <b>{{datos.Fpe}}</b>   (Tabla 1, pendiente {{datos.p_promedio}} %, longitud del sector {{datos.l_sector}} km)</dd>
+              <dd class="col-sm-8">F<sub>pe</sub> = <b>{{datos.Fpe}}</b>   (Tabla 1, pendiente = {{datos.p_promedio}} %, longitud del sector = {{datos.l_sector}} km)</dd>
               <hr>
               <dt class="col-sm-4">Factor de corrección por distribución por sentidos (F<sub>d</sub>)</dt>
-              <dd class="col-sm-8">F<sub>d</sub> = <b>{{datos.Fd}}</b><br>(Tabla 2, zonas de no rebase {{datos.p_no_rebase}} %, distribución por sentido {{datos.d_sentido}}/{{datos.d_sentido1}})</dd>
+              <dd class="col-sm-8">F<sub>d</sub> = <b>{{datos.Fd}}</b><br>(Tabla 2, zonas de no rebase = {{datos.p_no_rebase}} %, distribución por sentido = {{datos.d_sentido}}/{{datos.d_sentido1}})</dd>
               <hr>
               <dt class="col-sm-4">Factor de corrección por ancho de carril y berma (F<sub>cb</sub>)</dt>
-              <dd class="col-sm-8">F<sub>cb</sub> = <b>{{datos.Fcb}}</b><br>(Tabla 3, ancho de carril {{datos.a_carril}} m, ancho de berma {{datos.a_berma}} m.)</dd>
+              <dd class="col-sm-8">F<sub>cb</sub> = <b>{{datos.Fcb}}</b><br>(Tabla 3, ancho de carril = {{datos.a_carril}} m, ancho de berma = {{datos.a_berma}} m.)</dd>
               <hr>
-              <dt class="col-sm-4">Equivalentes camión (E<sub>c</sub>)</dt>
-              <dd class="col-sm-8">E<sub>c</sub> = <b>{{datos.Ec}}</b><br>(Tabla 4, pendiente {{datos.p_promedio}} %, longitud del sector {{datos.l_sector}} km, porcentaje de vehículos pesados (C+B).)</dd>
+              <dt class="col-sm-4">Equivalentes camiones (E<sub>c</sub>)</dt>
+              <dd class="col-sm-8">E<sub>c</sub> = <b>{{datos.Ec}}</b><br>(Tabla 4, pendiente = {{datos.p_promedio}} %, longitud del sector = {{datos.l_sector}} km, porcentaje de vehículos pesados = {{datos.p_camiones}}% + {{datos.p_buses}}%  = {{datos.p_camiones + datos.p_buses}}% (C+B).)</dd>
               <hr>
               <dt class="col-sm-4">Factor de corrección por la presencia de vehículos pesados en pendientes ascendentes. (F<sub>p</sub>)</dt>
               <dd class="col-sm-8">F<sub>p</sub> = <b>{{datos.Fp}}</b> <br> <img src="../static/assets/img/Fp.JPG" class="img-fluid text-general" style="width:40%; margin-left: 5rem;" alt="Responsive image"></dd>
               <hr>
               <dt class="col-sm-4">Cálculo de la capacidad</dt>
-              <dd class="col-sm-8"><b>C<sub>60</sub>:</b> C<sub>i</sub>* F<sub>pe</sub>* F<sub>d</sub>* F<sub>cb</sub>* F<sub>p</sub> <br>
-                <b>C<sub>60</sub>:</b> 3200 * {{datos.Fpe}} * {{datos.Fd}} * {{datos.Fcb}}* {{datos.Fp}}<br>
-                <b>C<sub>60</sub>:</b> {{datos.cap_60}} Veh/h</dd>
+              <dd class="col-sm-8"><C<sub>60</sub>: C<sub>i</sub>* F<sub>pe</sub>* F<sub>d</sub>* F<sub>cb</sub>* F<sub>p</sub> <br>
+                C<sub>60</sub>: 3200 * {{datos.Fpe}} * {{datos.Fd}} * {{datos.Fcb}}* {{datos.Fp}}<br>
+                C<sub>60</sub>:  <b>{{datos.cap_60}} Veh/h</b></dd>
               <hr>
               <dt class="col-sm-4">Factor de hora pico FHP</dt>
               <dd class="col-sm-8 text-general">FHP = {{datos.FHP}} (Tabla 5, C<sub>60</sub>: {{datos.cap_60}} Veh/h)<br></dd>
               <hr>
               <dt class="col-sm-4">Capacidad C<sub>5</sub></dt>
-              <dd class="col-sm-8 text-general"><b>C<sub>5</sub></b>= {{datos.cap_5}} Veh/h (C<sub>5</sub>: C<sub>60</sub>* FHP)</dd>
+              <dd class="col-sm-8 text-general">C<sub>5</sub>= <b>{{datos.cap_5}} Veh/h</b> (C<sub>5</sub>: C<sub>60</sub>* FHP)</dd>
               <hr>
             </dl>  
             </div>
@@ -169,25 +169,25 @@
             <h5 class="text-general">Velocidad en condiciones ideales (V<sub>i</sub>)  = <b>90 km/h</b></h5>
             <dl class="row">
               <dt class="col-sm-4">Velocidad ideal de automóviles a flujo libre (V<sub>1</sub>)</dt>
-              <dd class="col-sm-8 text-general">V<sub>1</sub> = <b>{{datos.v1}} km/h</b>   (Tabla 6,  velocidad media automóviles,pendiente {{datos.p_promedio}} %, longitud del sector {{datos.l_sector}} km)</dd>
+              <dd class="col-sm-8 text-general">V<sub>1</sub> = <b>{{datos.v1}} km/h</b>   (Tabla 6,  velocidad media automóviles, pendiente = {{datos.p_promedio}} %, longitud del sector = {{datos.l_sector}} km)</dd>
               <hr>
               <dt class="col-sm-4">Factor de corrección al Nivel de Servicio por el efecto de la utilización de la capacidad (F<sub>u</sub>)</dt>
-              <dd class="col-sm-8 text-general">F<sub>u</sub> = <b>{{datos.Fu}}</b><br>(Tabla 7, Q: {{datos.vol_cap}} Veh/h, C<sub>60</sub>: {{datos.cap_60}} veh/h)</dd>
+              <dd class="col-sm-8 text-general">F<sub>u</sub> = <b>{{datos.Fu}}</b><br>(Tabla 7, Q = {{datos.vol_cap}} Veh/h, C<sub>60</sub> = {{datos.cap_60}} veh/h)</dd>
               <hr>
               <dt class="col-sm-4">Factor de corrección por ancho de carril y berma (F<sub>cb</sub>)</dt>
-              <dd class="col-sm-8 text-general">F<sub>cb1</sub> = <b>{{datos.Fcb1}}</b><br>(Tabla 8, ancho de carril {{datos.a_carril}} m, ancho de berma {{datos.a_berma}} m.)</dd>
+              <dd class="col-sm-8 text-general">F<sub>cb1</sub> = <b>{{datos.Fcb1}}</b><br>(Tabla 8, ancho de carril = {{datos.a_carril}} m, ancho de berma = {{datos.a_berma}} m.)</dd>
               <hr>
               <dt class="col-sm-4">Velocidad de autos (V<sub>2</sub>)</dt>
               <dd class="col-sm-8 text-general">V<sub>2</sub> = <b>{{datos.v2}} km/h</b><br>(Velocidad de automóviles V<sub>2</sub>: V<sub>1</sub> * F<sub>u</sub> * F<sub>cb</sub></dd>
               <hr>
               <dt class="col-sm-4">Equivalente camiones (E<sub>C</sub>)</dt>
-              <dd class="col-sm-8 text-general">E<sub>c</sub> = <b>{{datos.Ec_vel}}</b> <br>(Tabla 9, pendiente {{datos.p_promedio}} %, longitud del sector {{datos.l_sector}} km), V<sub>2</sub>: {{datos.v2}} km/h, porcentaje de vehículos pesados C={{datos.p_camiones}}%)</dd>
+              <dd class="col-sm-8 text-general">E<sub>c</sub> = <b>{{datos.Ec_vel}}</b> <br>(Tabla 9, pendiente = {{datos.p_promedio}}%, longitud del sector = {{datos.l_sector}} km), V<sub>2</sub> = {{datos.v2}} km/h, porcentaje de vehículos pesados C={{datos.p_camiones}}%)</dd>
               <hr>
               <dt class="col-sm-4">Factor de corrección por la presencia de vehículos pesados en pendientes ascendentes. (F<sub>p</sub>)</dt>
               <dd class="col-sm-8">F<sub>p</sub> = <b>{{datos.Fp_vel}}</b> <br> <img src="../static/assets/img/Fp.JPG" class="img-fluid text-general" style="width:40%; margin-left: 5rem;" alt="Responsive image"></dd>
               <hr>
               <dt class="col-sm-4">Factor de corrección al Nivel de Servicio por efecto de la tortuosidad (F<sub>T</sub>)</dt>
-              <dd class="col-sm-8 text-general">F<sub>T</sub> = <b>{{datos.Ft}}</b> <br>(Tabla 10, pendiente {{datos.p_promedio}} %, grado de curvatura {{datos.curvatura}} °), V<sub>1</sub>: {{datos.v1}} km/h, porcentaje de vehículos pesados C={{datos.p_camiones}}%)</dd>
+              <dd class="col-sm-8 text-general">F<sub>T</sub> = <b>{{datos.Ft}}</b> <br>(Tabla 10, pendiente = {{datos.p_promedio}} %, grado de curvatura = {{datos.curvatura}} °), V<sub>1</sub> = {{datos.v1}} km/h, porcentaje de vehículos pesados C={{datos.p_camiones}}%)</dd>
               <hr>
               <dt class="col-sm-4">Velocidad del tramo en estudio (V<sub>M</sub>)</dt>
               <dd class="col-sm-8 text-general">V<sub>M</sub> = <b>{{datos.vM}} km/h</b> <br>(V<sub>M</sub>: V<sub>1</sub> * F<sub>P</sub> * F<sub>T</sub>)</dd>
@@ -201,10 +201,10 @@
         </div>
         <h1 class="subtitulos">Análisis de sensibilidad</h1>
         <div class="row">
-          <h3 class="subtitulos">Efecto de lo cambios en volumen de tránsito</h3>
+          <h3 class="subtitulos">Efecto de los cambios en volumen de tránsito</h3>
           <div class="col-lg-6">
             <div class="container">
-              <h5 class="imagenes"> Gráfica 1. Variación del Nivel de Servicio debido a cambios en el volumen de tránsito </h5>
+              <h5 class="imagenes"><b>Gráfica 1.</b> Variación del Nivel de Servicio debido a cambios en el volumen de tránsito </h5>
               <img src="../static/assets/img/sensibilidad/ns_2carriles_volumen.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
             </div>
           </div>
@@ -220,13 +220,13 @@
           <h3 class="subtitulos">Efecto de los cambios de longitud del tramo en la Capacidad y Niveles de Servicio</h3>
           <div class="col-lg-6">
             <div class="container">
-              <h5 class="imagenes">Gráfica 2. Variación de la Capacidad por variaciones en la longitud del tramo</h5>
+              <h5 class="imagenes"><b>Gráfica 2.</b> Variación de la Capacidad por variaciones en la longitud del tramo</h5>
               <img src="../static/assets/img/sensibilidad/cap_2carriles_longitud.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
             </div>
           </div>
           <div class="col-lg-6">
             <div class="container">
-              <h5 class="imagenes">Gráfica 3. Variación del Nivel de Servicio por variaciones en la longitud del tramo</h5>
+              <h5 class="imagenes"><b>Gráfica 3.</b> Variación del Nivel de Servicio por variaciones en la longitud del tramo</h5>
               <img src="../static/assets/img/sensibilidad/ns_2carriles_longitud.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
             </div>
           </div>
@@ -236,14 +236,14 @@
           <h3 class="subtitulos">Efecto de la variación de la pendiente en la Capacidad y Niveles de Servicio</h3>
           <div class="col-lg-6">
             <div class="container">
-              <h5 class="imagenes">Gráfica 4. Variación de la Capacidad por variaciones en la pendiente del tramo</h5>
+              <h5 class="imagenes"><b>Gráfica 4.</b> Variación de la Capacidad por variaciones en la pendiente del tramo</h5>
               <img src="../static/assets/img/sensibilidad/cap_2carriles_pendiente.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
 
             </div>
           </div>
           <div class="col-lg-6">
             <div class="container">
-              <h5 class="imagenes">Gráfica 5. Variación del Nivel de Servicio por variaciones en la pendiente del tramo</h5>
+              <h5 class="imagenes"><b>Gráfica 5.</b> Variación del Nivel de Servicio por variaciones en la pendiente del tramo</h5>
               <img src="../static/assets/img/sensibilidad/ns_2carriles_pendiente.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
 
             </div>
@@ -254,13 +254,13 @@
           <h3 class="subtitulos">Efecto de la variación del porcentaje de camiones en la Capacidad y Niveles de Servicio</h3>
           <div class="col-lg-6">
             <div class="container">
-              <h5 class="imagenes">Gráfica 6. Variación de la Capacidad por cambios en el porcentaje de Camiones</h5>
+              <h5 class="imagenes"><b>Gráfica 6.</b> Variación de la Capacidad por cambios en el porcentaje de Camiones</h5>
               <img src="../static/assets/img/sensibilidad/cap_2carriles_camiones.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
             </div>
           </div>
           <div class="col-lg-6">
             <div class="container">
-              <h5 class="imagenes">Gráfica 7. Variación del Nivel de Servicio por cambios en el porcentaje de Camiones</h5>
+              <h5 class="imagenes"><b>Gráfica 7.</b> Variación del Nivel de Servicio por cambios en el porcentaje de Camiones</h5>
               <img src="../static/assets/img/sensibilidad/ns_2carriles_camiones.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">      
             </div>
           </div>
@@ -270,13 +270,13 @@
           <h3 class="subtitulos">Efecto del ancho del carril en la Capacidad y Nivel de Servicio</h3>
           <div class="col-lg-6">
             <div class="container">
-              <h5 class="imagenes">Gráfica 8. Variación de la capacidad por cambios en el ancho de carril</h5>
+              <h5 class="imagenes"><b>Gráfica 8.</b> Variación de la capacidad por cambios en el ancho de carril</h5>
               <img src="../static/assets/img/sensibilidad/cap_2carriles_carril.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">      
             </div>
           </div>
           <div class="col-lg-6">
             <div class="container">
-              <h5 class="imagenes">Gráfica 9. Variación del Nivel de Servicio por cambios en el ancho de carril</h5>
+              <h5 class="imagenes"><b>Gráfica 9.</b> Variación del Nivel de Servicio por cambios en el ancho de carril</h5>
               <img src="../static/assets/img/sensibilidad/ns_2carriles_carril.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">      
             </div>
           </div>
@@ -286,13 +286,13 @@
           <h3 class="subtitulos">Efecto del ancho de la berma en la Capacidad y Nivel de Servicio</h3>
           <div class="col-lg-6">
             <div class="container">
-              <h5 class="imagenes">Gráfica 10. Variación de la Capacidad por cambios en el ancho de la berma</h5>
+              <h5 class="imagenes"><b>Gráfica 10.</b> Variación de la Capacidad por cambios en el ancho de la berma</h5>
             <img src="../static/assets/img/sensibilidad/cap_2carriles_berma.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
             </div>
           </div>
           <div class="col-lg-6">
             <div class="container">
-              <h5 class="imagenes">Gráfica 11. Variación del Nivel de Servicio por cambios en el ancho de la berma</h5>
+              <h5 class="imagenes"><b>Gráfica 11.</b> Variación del Nivel de Servicio por cambios en el ancho de la berma</h5>
               <img src="../static/assets/img/sensibilidad/ns_2carriles_berma.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
             </div>
 
