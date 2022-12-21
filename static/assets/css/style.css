@@ -835,8 +835,28 @@ padding-bottom: 0%;
   margin-top: 1rem;
 }
 
+.fraction {
+  display: inline-block;
+  vertical-align: middle; 
+  margin: 0 0.2em 0.4ex;
+  text-align: center;
+}
+.fraction > span {
+  display: block;
+  padding-top: 0.15em;
+}
+.fraction span.fdn {border-top: thin solid black;}
+.fraction span.bar {display: none;}
+
 .celda {
   text-align: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.celda2{
+  text-align: center;
+  padding: auto;
 }
 
 .subtitulos {

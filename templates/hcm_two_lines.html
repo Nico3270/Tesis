@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Inicio</title>
+  <title>HCM dos carriles</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -53,55 +53,42 @@
           <li><a class="nav-link scrollto active" href="{{url_for('home')}}">Inicio</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('blog')}}">Blog</a></li>
           <li><a class="nav-link scrollto " href="{{url_for('resultados')}}">Resultados</a></li>
-          <li><a href="{{url_for('hcm_function')}}">Dos carriles HCM</a></li>
+          <li><a href="{{url_for('resultado')}}">Último</a></li>
           <li><a class="nav-link scrollto" href="{{url_for('multicarril')}}">Multicarril</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
-      <a href="#about" class="get-started-btn scrollto">Iniciar</a>
+      <a href="{{url_for('hcm_function')}}" class="get-started-btn scrollto">HCM</a>
     </div>
   </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-
-    <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <div class="row">
-        <div class="col-xl-6">
-          <div class="container">
-            <br>
-            <br>
-            <h1>Capacidad y Niveles de Servicio</h1>
-            <h2>Cálculo de Capacidad y Niveles de Servicio para vías de dos carriles </h2>
-            <a href="#about" class="btn-get-started scrollto"  style="text-align:center">Calcular</a>
-            <h2>Cálculo de Capacidad y Niveles de Servicio para vías multicarril </h2>
-            <a href="{{url_for('multicarril')}}" class="btn-get-started scrollto" style="text-align:center ;">Calcular</a>
-            <h2>Cálculo de Capacidad y Niveles de Servicio en infraestructuras peatonales </h2>
-            <a href="{{url_for('peatones')}}" class="btn-get-started scrollto" style="text-align:center ;">Calcular</a>
-            <h2>Cálculo de Capacidad y Niveles de Servicio para vías de carriles, método HCM. </h2>
-            <a href="{{url_for('hcm_function')}}" class="btn-get-started scrollto" style="text-align:center ;">Calcular</a>
-            <br>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </section ><!-- End Hero -->
   <section id="about">
   <main id="main">
     <section class="inner-page">
       <div class="container" data-aos="fade-up">
-        <h2 style="text-align: center ; color: rgb(174, 15, 15);width: max-content;">Cálculo de la capacidad y Nivel de servicio para carretera de dos carriles</h2>
+        <h2 style="text-align: center ; color: rgb(174, 15, 15);width: max-content;">Cálculo de la capacidad y Nivel de servicio de infraestructuras peatones</h2>
         <br>
-        <div class="card" style="width: 38rem;">
-          <div class="card-header">
-            <b>Insertar valores</b>
-          </div>
-          <div class="card-body">
-            {{ wtf.quick_form(form, novalidate=True,  button_map={"submit": "danger"}) }}
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="container">
+                    <div class="card" style="width: 38rem;">
+                        <div class="card-header">
+                          <b>Insertar valores</b>
+                        </div>
+                        <div class="card-body">
+                          {{ wtf.quick_form(form, novalidate=True,  button_map={"submit": "danger"}) }}
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="container">
+                    <h2 class="subtitulos">Información acerca del método.</h2>
+                </div>
+            </div>
+            
         </div>
-      </div>
+        
     </section>
   </section>
     

@@ -14,6 +14,7 @@ import numpy as np
 import matplotlib
 import sensibilidad_2_carriles as sen2
 import sensibilidad_peatones as sp
+import HCM_2carriles as hcm2
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 
@@ -249,6 +250,67 @@ class Peatones_db(db.Model):
     espacio = db.Column(db.Float, nullable=False)
     nivel_de_s = db.Column(db.String(500), nullable=False)
 
+class HcM2_db(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    carretera_db = db.Column(db.String(500), nullable=False)
+    clase_db = db.Column(db.String(500), nullable=False)
+    a_carril_db = db.Column(db.Float, nullable=False)
+    a_berma_db = db.Column(db.Float, nullable=False)
+    longitud_tramo_db = db.Column(db.Float, nullable=False)
+    pendiente_tramo_db = db.Column(db.Float, nullable=False)
+    velocidad_db = db.Column(db.Float, nullable=False)
+    p_no_rebase_db = db.Column(db.Float, nullable=False)
+    volumen_db = db.Column(db.Float, nullable=False)
+    d_sentido_db = db.Column(db.Float, nullable=False)
+    fhpico_db = db.Column(db.Float, nullable=False)
+    p_pesados_db = db.Column(db.Float, nullable=False)
+    recreativos_db = db.Column(db.Float, nullable=False)
+    FA_db = db.Column(db.Float, nullable=False)
+    Fls_db = db.Column(db.Float, nullable=False)
+    bffs_db = db.Column(db.Float, nullable=False)
+    vel_flujo_libre_db = db.Column(db.Float, nullable=False)
+    volumen1_db = db.Column(db.Float, nullable=False)
+    volumen2_db = db.Column(db.Float, nullable=False)
+    fgATS1_db = db.Column(db.Float, nullable=False)
+    fgATS2_db = db.Column(db.Float, nullable=False)
+    facET1_db = db.Column(db.Float, nullable=False)
+    facET2_db = db.Column(db.Float, nullable=False)
+    facER1_db = db.Column(db.Float, nullable=False)
+    facER2_db = db.Column(db.Float, nullable=False)
+    p_camiones_db = db.Column(db.Float, nullable=False)
+    p_recreativos_db = db.Column(db.Float, nullable=False)
+    fhv1_db = db.Column(db.Float, nullable=False)
+    fhv2_db = db.Column(db.Float, nullable=False)
+    vol_ats1_db = db.Column(db.Float, nullable=False)
+    vol_ats2_db = db.Column(db.Float, nullable=False)
+    factor_fnp_ats1_db = db.Column(db.Float, nullable=False)
+    factor_fnp_ats2_db = db.Column(db.Float, nullable=False)
+    ATSd1_db = db.Column(db.Float, nullable=False)
+    ATSd2_db = db.Column(db.Float, nullable=False)
+    fg_PTSF1_db = db.Column(db.Float, nullable=False)
+    fg_PTSF2_db = db.Column(db.Float, nullable=False)
+    ETptsf1_db = db.Column(db.Float, nullable=False)
+    ETptsf2_db = db.Column(db.Float, nullable=False)
+    fhvptsf1_db = db.Column(db.Float, nullable=False)
+    fhvptsf2_db = db.Column(db.Float, nullable=False)
+    vol_ptsf1_db = db.Column(db.Float, nullable=False)
+    vol_ptsf2_db = db.Column(db.Float, nullable=False)
+    coef_a1_db = db.Column(db.Float, nullable=False)
+    coef_b1_db = db.Column(db.Float, nullable=False)
+    coef_a2_db = db.Column(db.Float, nullable=False)
+    coef_b2_db = db.Column(db.Float, nullable=False)
+    BTSF1_db = db.Column(db.Float, nullable=False)
+    BTSF2_db = db.Column(db.Float, nullable=False)
+    fnp_ptsf_db = db.Column(db.Float, nullable=False)
+    ptsf1_db = db.Column(db.Float, nullable=False)
+    ptsf2_db = db.Column(db.Float, nullable=False)
+    PFFS1_db = db.Column(db.Float, nullable=False)
+    PFFS2_db = db.Column(db.Float, nullable=False)
+    level1_db = db.Column(db.String(5), nullable=False)
+    level2_db = db.Column(db.String(5), nullable=False)
+    accesos_db = db.Column(db.Integer, nullable=False)
+
+
 db.create_all()
 
 ##WTForm
@@ -319,7 +381,22 @@ class Peatones(FlaskForm):
     fhp = FloatField(label="Factor de hora pico (FHP)", validators=[DataRequired(),NumberRange(0,1)])
     submit = SubmitField("Calcular Capacidad y Nivel de servicio")
 
-
+class HCM2(FlaskForm):
+    carretera = StringField(label="Descripción del sector", validators=[DataRequired()])
+    clase = SelectField(label="Tipo de sector", choices=[("I", "I"), ("II","II"), ("III","III")])
+    a_carril = FloatField(label="Ancho de carril (ft)", description="Ingrese valor en pies", validators=[NumberRange(9,20),DataRequired()])
+    a_berma = FloatField(label="Ancho de berma (ft)", description="Ingrese valor en pies", validators=[NumberRange(0,20),DataRequired()])
+    longitud_tramo = FloatField(label="Longitud del tramo de estudio (mi)", description="Ingrese valor en millas", validators=[NumberRange(0.25,10),DataRequired()])
+    pendiente_tramo = FloatField(label="Pendiente del tramo %", description="Terreno plano = 1 %, Terreno ondulado = 1.1% - 2.9%") 
+    velocidad = FloatField(label="Velocidad a flujo libre base -BFFS (mi/h)", default=100, description="Se puede ingresar velocidad de diseño o velocidad del tramo + 10 mi/h",validators=[DataRequired(),NumberRange(40,200)])
+    volumen = IntegerField(label="Volumen de demanda total en ambos sentidos", description="Ingrese valor Veh/h", validators = [DataRequired(),NumberRange(min=0, max=100000)])
+    d_sentido = FloatField(label="Distribución por sentido", description="Ingrese en % el valor mayor (Valores permitidos entre 50% a 90%", validators=[DataRequired(),NumberRange(50,90)])
+    accesos = IntegerField(label="Puntos de acceso", description="Ingrese puntos de acceso por millas (Ambos sentidos)", validators=[DataRequired(),NumberRange(0,500)])
+    p_no_rebase =FloatField(label="Porcentaje de zonas de no rebase ",description="Ingrese valor en porcentaje (Valor permitido entre 0 a 100 %)",validators=[NumberRange(min=0, max=100)])
+    p_pesados = FloatField(label="Porcentaje de vehiculos pesados", description="(0-100)", validators=[DataRequired(),NumberRange(0,100)])
+    recreativos = FloatField(label="Porcentaje de vehiculos recreativos",default = 0, description="(0-100)",validators=[NumberRange(0,100)])
+    fhpico = FloatField(label="Factor de Hora Pico", validators = [DataRequired()] )
+    submit = SubmitField("Calcular Capacidad y Nivel de servicio")
 
 #Gráfica de curva maestra
 lista_maestra = np.arange(0,2500)
@@ -682,6 +759,38 @@ def resultado_Multicarril():
     registro = Multicaril_db.query.get(id)
     id1 = len(db.session.query(Sensibilidad).all())
     return render_template('resultados_multicarril.html',datos=registro, data=datos)
+
+@app.route("/hcm2",methods=["GET","POST"])
+def hcm_function():
+    form = HCM2()
+    if form.validate_on_submit():
+        if form.clase.data == "I":
+            clase = 1
+        elif form.clase.data == "II":
+            clase = 2
+        else:
+            clase = 3
+        ent= hcm2.hcm2_final(clase,form.a_carril.data, form.a_berma.data,form.longitud_tramo.data,
+        form.pendiente_tramo.data, form.velocidad.data, form.volumen.data, form.d_sentido.data,form.accesos.data,form.p_no_rebase.data,
+        form.fhpico.data, form.p_pesados.data,form.recreativos.data)
+        base_datos = HcM2_db(carretera_db = form.carretera.data, clase_db = form.clase.data, a_carril_db = form.a_carril.data,a_berma_db=form.a_berma.data,
+        longitud_tramo_db = form.longitud_tramo.data, pendiente_tramo_db = form.pendiente_tramo.data, velocidad_db = form.velocidad.data, p_no_rebase_db = form.p_no_rebase.data,
+        volumen_db = form.volumen.data, d_sentido_db = form.d_sentido.data, fhpico_db =form.fhpico.data, p_pesados_db = form.p_pesados.data, recreativos_db = form.recreativos.data,
+        FA_db = ent[0], Fls_db = ent[1], bffs_db=ent[2], vel_flujo_libre_db=ent[3],volumen1_db=ent[4],volumen2_db=ent[5],fgATS1_db=ent[6],fgATS2_db=ent[7],facET1_db=ent[8],facET2_db=ent[9],
+        facER1_db=ent[10],facER2_db=ent[11],p_camiones_db = ent[12],p_recreativos_db=ent[13],fhv1_db = ent[14],fhv2_db=ent[15],vol_ats1_db=ent[16],vol_ats2_db=ent[17],
+        factor_fnp_ats1_db=ent[18],factor_fnp_ats2_db=ent[19],ATSd1_db=ent[20],ATSd2_db=ent[21], fg_PTSF1_db=ent[22], fg_PTSF2_db=ent[23], ETptsf1_db=ent[24], ETptsf2_db=ent[25],
+        fhvptsf1_db=ent[26], fhvptsf2_db=ent[27], vol_ptsf1_db=ent[28], vol_ptsf2_db=ent[29], coef_a1_db=ent[30], coef_b1_db=ent[31],coef_a2_db=ent[32],coef_b2_db=ent[33],
+        BTSF1_db=ent[34],BTSF2_db=ent[35],fnp_ptsf_db=ent[36],ptsf1_db=ent[37],ptsf2_db=ent[38],PFFS1_db=ent[39],PFFS2_db=ent[40],level1_db=ent[41],level2_db=ent[42],accesos_db = form.accesos.data)
+        db.session.add(base_datos)
+        db.session.commit()
+        return redirect(url_for("hcm2_resultados"))
+    return render_template("hcm_two_lines.html", form=form)
+
+@app.route("/hcm2_resultados", methods=["GET","POST"])
+def hcm2_resultados():
+    id = len(db.session.query(HcM2_db).all())
+    registro = HcM2_db.query.get(id)
+    return render_template('resultados_hcm2.html', data=registro)
 
 @app.route("/tabla_18")
 def tabla_18():

@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Resultados infraestructura peatonal</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/assets/img/favicon.png" rel="icon">
+  <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,700;1,100&family=Tinos:ital@0;1&family=Ubuntu:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="../static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+
+  <!-- Template Main CSS File -->
+  <link href="../static/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Presento - v3.9.0
+  * Template URL: https://bootstrapmade.com/presento-bootstrap-corporate-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+  {% import "bootstrap/wtf.html" as wtf %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo me-auto"><a href="{{url_for('home')}}">Capacidad y Niveles de Servicio.</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a href="{{url_for('home')}}" class="logo me-auto"><img src="../static/assets/img/logo.png" alt=""></a>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{{url_for('home')}}">Inicio</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('blog')}}">Blog</a></li>
+          <li><a class="nav-link scrollto " href="{{url_for('resultados')}}">Resultados</a></li>
+          <li><a href="{{url_for('resultado')}}">Último</a></li>
+          <li><a class="nav-link scrollto" href="{{url_for('multicarril')}}">Multicarril</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="#about" class="get-started-btn scrollto">Iniciar</a>
+    </div>
+  </header><!-- End Header -->
+  <br>
+  <br>
+  <section id="resultados" class="datos">
+    <br>
+    <br>
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="container">
+            <h1 style="text-align:center ;">Datos Ingresados</h1>
+            <div class="card" >
+              <div class="card-body">
+                <p class="card-text">
+                  <table class="table table-bordered">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col" style="text-align:center;color:rgb(215, 74, 74) ;">Variable</th>
+                        <th scope="col"style="text-align:center;color:rgb(215, 74, 74) ;">Valor ingresado</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Descripción del tramo</th>
+                        <td><ul class="list-group">
+                          <li class="list-group-item">Carretera: <b>{{data.carretera_db}}</b> </li>
+                        </ul></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Variables relacionadas con la geometría</th>
+                        <td><ul class="list-group">
+                          <li class="list-group-item">Clase de carretera: <b>{{data.clase_db}}</b></li>
+                          <li class="list-group-item">Ancho de carril: <b>{{data.a_carril_db}} pies</b> </li>
+                          <li class="list-group-item">Ancho de berma: <b>{{data.a_berma_db}} pies</b> </li>
+                          <li class="list-group-item">Longitud del tramo: <b>{{data.longitud_tramo_db}} millas</b></li>
+                          <li class="list-group-item">Pendiente del tramo: <b> {{data.pendiente_tramo_db}} %</b></li>
+                          <li class="list-group-item">Velocidad a flujo libre base: <b> {{data.velocidad_db}} mi/h</b></li>
+                          <li class="list-group-item">Porcentaje de zonas de no pase: <b>{{data.p_no_rebase_db}} % </b></li>
+                          <li class="list-group-item">Densidad de puntos de acceo (Ambos sentidos): <b>{{data.accesos_db}} accesos/milla</b></li>
+                        </ul></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Variables relacionadas con el tránsito</th>
+                        <td><ul class="list-group">
+                          <li class="list-group-item">Volumen de demanda total en ambos sentidos: <b>{{data.volumen_db}} veh/h</b></li>
+                          <li class="list-group-item">Distribución por sentido mayor: <b>{{data.d_sentido_db}} %</b></li>
+                          <li class="list-group-item">Porcentaje de camiones: <b>{{data.p_pesados_db}} %</b> </li>
+                          <li class="list-group-item">Porcentaje de vehiculos recreativos (Rv): <b>{{data.recreativos_db}} %</b></li>
+                          <li class="list-group-item">Factor de hora pico (FHP): <b>{{data.fhpico_db}}</b></li>
+                        </ul></td>
+                      </tr>   
+                    </tbody>
+                  </table>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+          <br>
+          <br>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="container">
+            <h1 style="text-align:center ;">Resultados obtenidos</h1>
+            
+          </div>
+        </div>
+       </div>
+    </div>
+    
+  </section>
+
+
+  <section id="Resultados">
+    <div class="container">
+      <h3 class="subtitulos pasos">Paso 1. Introducción de información de entrada</h3>
+      <h5 class="text-general">Previamente, se insertó la información del tramo. A continuación se presentan los pasos mínimos requeridos
+        para aplicar la metodología del manual HCM para vías de carriles. Debido a que hay tres clases de carreteras, las cuales usan
+      diferentes medidas de servicio, no se requieren todos los pasos para calcular el nivel de servicio para una clase de carretera dada. 
+      En particular, el paso para estimar <b>ATS (Velocidad de viaje promedio)</b> es solo un requisito para carreteras Clase I y III, y el paso para estimar 
+      <b>PTSF (Porcentaje de zonas de no pase)</b> es solo un requisito para carreteras Clase I y II. El paso para estimar <b>PFFS (Porcentaje de velocidad a flujo libre)</b>
+      es solo un requisito para carreteras Clase III. 
+      Sin embargo, a continuación se presenta el procedimiento con todos los pasos realizados, y al final se determina el nivel de servicio
+      según la clase de carretera y el factor necesario, las demás medidas de desempeño adicionales pueden ser utilizadas para realizar análisis del funcionamiento del sector.</h5>
+      <hr>
+      <h3 class="subtitulos pasos">Paso 2. Estimación de velocidad a flujo libre (FFS)</h3>
+      <h5 class="text-general">Para estimar la FFS, el analista debe caracterizar las condiciones de operación de la instalación en términos de una BFFS (Velocidad a flujo libre base) que refleje la naturaleza del tráfico y la alineación de la instalación. 
+      Las estimaciones de BFFS se pueden desarrollar sobre la base de los datos de velocidad y el conocimiento local de las condiciones operativas en instalaciones similares. Como se verá, una vez que se determina el BFFS, 
+      se aplican ajustes para los anchos de los carriles y bermas y para la densidad de los puntos de acceso sin semáforos para estimar el FFS.<br> En concepto, el BFFS es la velocidad que se esperaría sobre la base de la alineación 
+      horizontal y vertical de la instalación si estuvieran presentes los anchos estándar de carril y berma y sin puntos de acceso al costado de la carretera. Por lo tanto, la velocidad de diseño de
+      la instalación podría ser un estimador aceptable de BFFS, ya que se basa principalmente en la alineación horizontal y vertical. Los límites de velocidad publicados pueden no reflejar 
+      las condiciones actuales o los deseos del conductor. Se podría tomar una estimación aproximada de BFFS como el límite de velocidad publicado más 10 mi/h.</h5>
+      <h5 class="text-general">El valor ingresado como velocidad a flujo libre base por el usuario es: <b>{{data.velocidad_db}} mi/h</b></h5>
+      <h5 class="text-general">La velocidad a flujo libre <b>FFS</b> puede estimarse de la siguiente manera:</h5>
+      <h5 class="ecuacion">Ecuación 1.</h5>
+      <h4 class="formulas subtitulos"><i>FFS = BFFS - f<sub>LS</sub> - F<sub>A</sub></i></h4>
+      <h5 class="text-general">Donde:</h5>
+      <h5 class="text-general"><i><b>FFS</b></i> = Velocidad a flujo libre (mi/h),</h5>
+      <h5 class="text-general"><i><b>BFFS</b></i> = Velocidad a flujo libre base (mi/h),</h5>
+      <h5 class="text-general"><i><b>F<sub>LS</sub></b></i> = Ajuste por ancho de carril y berma (mi/h),</h5>
+      <h5 class="text-general"><i><b>F<sub>A</sub></b></i> = Ajuste por densidad de puntos de acceso (mi/h)</h5>
+      <br>
+      <hr>
+      <h4 class="text-general pasos">Factor de ajuste por anchos de carril y berma (F<sub>LS</sub>)</h4>
+      <div class="row">
+        <div class="col-lg-4 col-md-4">
+          <div class="container">
+            <h5 class="text-general">Para estimar el factor de ajuste, se realiza una interpolación en la tabla 1, teniendo en cuenta
+              los anchos de carril y berma ingresados.<br>
+              <b>Ancho de carril </b>= {{data.a_carril_db}} pies<br>
+              <b>Ancho de berma </b> = {{data.a_berma_db}} pies <br>
+            </h5>
+            <h5 class="text-general">Mediante el uso de la tabla 1, y los anchos de carril y berma ingresados, se obtiene que el
+              factor de ajuste por ancho de carril y berma es igual a:
+            </h5>
+            <h5 class="subtitulos"><b>F<sub>LS</sub></b> = {{data.Fls_db}} mi/h.</h5>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-8">
+          <div class="container">
+            <h5 class="tablas"><b>Tabla 1.</b> Factor de ajuste por anchos de carril y berma F<sub>LS</sub>.</h5>
+            <div class="table-responsive ">
+              <table class="table-bordered mx-auto">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" class="celda" ><b>Ancho de carril</b></th>
+                    <th colspan="4" scope="col" class="celda" ><b>Ancho de berma (ft)</b></th>
+                  </tr>
+                  <tr>
+                    <th scope="col" class="celda" ><b>(ft)</b></th>
+                    <th scope="col" class="celda" >>=0, <2</th>
+                    <th scope="col" class="celda" >>=2, <4</th>
+                    <th scope="col" class="celda" >>=4, <6</th>
+                    <th scope="col" class="celda" >>=6 </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="celda">>= 9,<10</td>
+                    <td class="celda" >6.4</td>
+                    <td class="celda" >4.8</td>
+                    <td class="celda" >3.5</td>
+                    <td class="celda" >2.2</td>
+                  </tr>
+                  <tr>
+                    <td class="celda">>= 10,<11</td>
+                    <td class="celda" >5.3</td>
+                    <td class="celda" >3.7</td>
+                    <td class="celda" >2.4</td>
+                    <td class="celda" >1.1</td>
+                  </tr>
+                  <tr>
+                    <td class="celda">>= 11,<12</td>
+                    <td class="celda" >4.7</td>
+                    <td class="celda" >3.0</td>
+                    <td class="celda" >1.7</td>
+                    <td class="celda" >0.4</td>
+                  </tr>
+                  <tr>
+                    <td class="celda">>= 12</td>
+                    <td class="celda" >4.2</td>
+                    <td class="celda" >2.6</td>
+                    <td class="celda" >1.3</td>
+                    <td class="celda" >0.0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <hr>
+        <h4 class="text-general pasos">Factor de ajuste por densidad de accesos (F<sub>A</sub>)</h4>
+        <div class="col-lg-4 col-md-4">
+          <div class="container">
+            <h5 class="text-general">El factor de ajuste se determina mediante el uso de la tabla 2, y teniendo en cuenta la densidad de accesos ingresada.<br>
+              <br><b>Densidad de accesos</b> = {{data.accesos_db}} accesos/milla<br>
+              <br>Se realiza una interpolación con los datos de la tabla 2 y se estima que el factor de ajuste por densidad de accesos es:<br>
+            </h5>
+            <h5 class="subtitulos"><b>F<sub>A</sub></b> = {{data.FA_db}} mi/h</h5>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-8">
+          <div class="container">
+            <h5 class="tablas"><b>Tabla 2.</b> Factor de ajuste por densidad de accesos (F<sub>A</sub>)</h5>
+            <div class="table-responsive ">
+              <table class="table-bordered mx-auto">
+                <thead>
+                  <tr>
+                    <th scope="col" class="celda">Puntos de acceso por milla (Ambos sentidos)</th>
+                    <th scope="col" class="celda">Reducción en FFS (mi/h)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="celda">0</td>
+                    <td class="celda">0</td>
+                  </tr>
+                  <tr>
+                    <td class="celda">10</td>
+                    <td class="celda">2.5</td>
+                  </tr>
+                  <tr>
+                    <td class="celda">20</td>
+                    <td class="celda">5.0</td>
+                  </tr>
+                  <tr>
+                    <td class="celda">30</td>
+                    <td class="celda">7.5</td>
+                  </tr>
+                  <tr>
+                    <td class="celda">40</td>
+                    <td class="celda">10.0</td>
+                  </tr>
+                </tbody>
+              </table>  
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <h4 class="pasos text-general">Velocidad a flujo libre (FFS)</h4>
+      <h5 class="text-general">Luego de estimar la velocidad a flujo libre base (BFFS) y determinar los factores de ajuste,
+        se reemplazan estos valores en la ecuación 1, y se obtiene el siguiente resultado:
+      </h5>
+      <h5 class="subtitulos formulas"><b><i>FFS</i></b> = {{data.velocidad_db}} mi/h - {{data.Fls_db}} mi/h - {{data.FA_db}} mi/h</h5>
+      <h4 class="subtitulos formulas"><b>FFS</b> = {{data.vel_flujo_libre_db}} mi/h</h4>
+    </div>
+    <hr>
+    <h3 class="subtitulos pasos">Paso 3. Ajuste de demanda para ATS (Velocidad de viaje promedio)</h3>
+    <h5 class="text-general">Este paso solo se requiere para carreteras de dos carriles Clase I y Clase III. El nivel de servicio
+       en carreteras de Clase II no se basa en ATS; por lo tanto, este paso se puede omitir para esas carreteras, 
+       a menos que el ATS o el tiempo promedio de viaje sean medidas de rendimiento adicionales deseadas del análisis.<br>
+      Los volúmenes de demanda en ambas direcciones (dirección de análisis y dirección opuesta) deben convertirse a 
+      tasas de flujo en condiciones base equivalentes con la ecuación 2.</h5>
+    <h5 class="ecuacion">Ecuación 2.</h5>
+    <h4 class="formulas subtitulos">
+      <div class="eq-c">
+      <i>V<sub>i,ATS </sub></i>=
+      <div class="fraction">
+      <span class="fup"><i>V<sub>i</sub></i></span>
+      <span class="bar">/</span>
+      <span class="fdn"><i>PHF x f<sub>g,ATS</sub> x f<sub>HV,ATS</sub></i></span>        
+    </h4>
+    <h5 class="text-general">Donde: <br></h5>
+    <h5 class="text-general"><b><i>V<sub>i,ATS</sub></i></b> = Volumen de demanda <i>i</i> para estimación ATS (pc/h);</h5>
+    <h5 class="text-general"><b><i>i</i></b> = "d" (dirección de análisis) u "o" (dirección opuesta);</h5>
+    <h5 class="text-general"><b><i>V<sub>i</sub></i></b> = Volumen de demanda para la dirección <i>i</i> (veh/h);</h5>
+    <h5 class="text-general"><b><i>f<sub>g,ATS</sub></i></b> = Factor de ajuste por pendiente;</h5>
+    <h5 class="text-general"><b><i>f<sub>HV,ATS</sub></i></b> = Factor de ajuste por vehiculos pesados;</h5>
+    <h5 class="text-general"><b><i>FHP</i></b> = Factor de hora pico.</h5>
+    <hr>
+    <h4 class="pasos text-general">Volumen de demanda por sentido</h4>
+    <h5 class="text-general">La metodología del manual, se encuentra diseñada para realizar el análisis de capacidad y nivel de servicio,
+      según el sentido de dirección. Por lo cuál a partir del volumen horario de demanda total en ambos sentidos, se determinan tanto el volumen
+      de dirección como el volumen opuesto para cada sentido.
+    </h5>
+    <h5 class="text-general">A partir del volumen de demanda total y la distribución por sentido mayor, se determinan los volumenes por sentido.</h5>
+    <h5>
+      <li><b>Volumen horario total</b> = {{data.volumen_db}} veh/h</li>
+      <li><b>Distribución por sentido mayor</b> = {{data.d_sentido_db}} veh/h</li>
+      <li><b>Volumen en dirección al sentido 1 </b> = {{data.volumen1_db}} veh/h</li>
+      <li><b>Volumen en dirección opuesta al sentido 1 </b> = {{data.volumen2_db}} veh/h</li>
+      <li><b>Volumen en dirección al sentido 2 </b> = {{data.volumen2_db}} veh/h</li>
+      <li><b>Volumen en dirección opuesta al sentido 2 </b> = {{data.volumen1_db}} veh/h</li>
+    </h5>
+    <hr>
+    <h4 class="text-general pasos">Factor de ajuste de pendiente de ATS</h4>
+    <h5 class="text-general">El factor de ajuste de pendiente <b><i>f<sub>g,ATS</sub></i></b> depende del terreno. 
+      Cualquier pendiente que tenga una inclinación del 3 % o más y de 0,6 millas o más debe analizarse como una pendiente de subida o bajada específica, 
+      según la dirección del análisis que se esté considerando. Sin embargo, 
+      un grado del 3% o más puede analizarse como un grado específico si es de 0,25 millas o más.</h5>
+    <h5>Teniendo en cuenta que esta aplicación solo permite el ingreso de pendiente, se debe tener en cuenta que pendientes menores al 1% 
+      se clasifican dentro de terreno plano o Level Terrain and Specific Downngrades según el manual HCM y pendientes menores a 3% se clasifica
+      como Rolling Terrain o terreno ondulado y se utiliza la tabla 3 para estimar el factor de ajuste de grado de ATS. 
+    </h5>
+    <h5>Finalmente si la pendiente es mayor o igual al 3%, se utiliza la tabla 4 para estimar el factor de ajuste por pendiente de ATS.</h5><br>
+    <h5 class="tablas"><b>Tabla 3.</b> Factor de ajuste de grado de ATS (f<sub>g,ATS</sub>) para terreno nivelado (Level Terrain),
+    terreno ondulado (Rolling Terrain). </h5>
+    <div class="table-responsive">
+      <table  class="table-bordered mx-auto">
+        <thead>
+          <tr class="row0">
+            <td class="celda 0 style4 s style6" rowspan="2"><b>Volumen de demanda en una dirección (veh/h)</b></td>
+            <td class="celda 1 style5 s style13" colspan="2"><b>Factor de ajuste</b></td>
+          </tr>
+          <tr class="row1">
+            <td class="celda 1 style14 s"><span ><b>Level Terrain and Specific Downgrades <br>(pendiente menores a 1%)</b></td>
+            <td class="celda 2 style15 s"><span ><b>Rolling Terrain<br> (1%  &gt;= pendientes  &lt; 3%)</b></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row2">
+            <td class="celda 0 style11 s">&lt;= 100</td>
+            <td class="celda 1 style1 s"><span >1.00</td>
+            <td class="celda 2 style16 s"><span >0.67</td>
+          </tr>
+          <tr class="row3">
+            <td class="celda 0 style7 s"><span >200</td>
+            <td class="celda 1 style8 s"><span >1.00</td>
+            <td class="celda 2 style17 s"><span >0.75</td>
+          </tr>
+          <tr class="row4">
+            <td class="celda 0 style9 s"><span >300</td>
+            <td class="celda 1 style2 s"><span >1.00</td>
+            <td class="celda 2 style18 s"><span >0.83</td>
+          </tr>
+          <tr class="row5">
+            <td class="celda 0 style9 s"><span >400</td>
+            <td class="celda 1 style2 s"><span >1.00</td>
+            <td class="celda 2 style18 s"><span >0.90</td>
+          </tr>
+          <tr class="row6">
+            <td class="celda 0 style7 s"><span >500</td>
+            <td class="celda 1 style8 s"><span >1.00</td>
+            <td class="celda 2 style17 s"><span >0.95</td>
+          </tr>
+          <tr class="row7">
+            <td class="celda 0 style9 s"><span >600</td>
+            <td class="celda 1 style2 s"><span >1.00</td>
+            <td class="celda 2 style18 s"><span >0.97</td>
+          </tr>
+          <tr class="row8">
+            <td class="celda 0 style7 s"><span >700</td>
+            <td class="celda 1 style8 s"><span >1.00</td>
+            <td class="celda 2 style17 s"><span >0.98</td>
+          </tr>
+          <tr class="row9">
+            <td class="celda 0 style7 s"><span >800</td>
+            <td class="celda 1 style8 s"><span >1.00</td>
+            <td class="celda 2 style17 s"><span >0.99</td>
+          </tr>
+          <tr class="row10">
+            <td class="celda 0 style12 s">&gt;= 900</td>
+            <td class="celda 1 style3 s"><span >1.00</td>
+            <td class="celda 2 style10 s"><span >1.00</td>
+          </tr>
+        </tbody>
+    </table>
+    </div>
+    <br>
+    <h5 class="tablas"><b>Tabla 4.</b> Factor de ajuste de grado de ATS (f<sub>g,ATS</sub>) para pendientes superiores a 3%</h5>
+    <div class="table-responsive">
+      <table class="table table-bordered mx-auto" style="border-color: rgb(126, 114, 114);" >
+        <thead class="thead-dark">
+          <tr>
+            <td class="celda" rowspan="2"><b>Pendiente (%)</b></td>
+            <td class="celda" rowspan="2"><b>Longitud pendiente (mi)</b></td>
+            <td class="celda" colspan="9"><b>Volumen direccional de demanda (veh/h)</b></td>
+          </tr>
+          <tr>
+            <td class="celda"><b><=100</b></td>
+            <td class="celda"><b>200</b></td>
+            <td class="celda"><b>300</b></td>
+            <td class="celda"><b>400</b></td>
+            <td class="celda"><b>500</b></td>
+            <td class="celda"><b>600</b></td>
+            <td class="celda"><b>700</b></td>
+            <td class="celda"><b>800</b></td>
+            <td class="celda"><b>>=900</b></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="celda table-active" rowspan="8"><b>&gt;= 3, &lt;3.5></b></td>
+            <td class="celda">0.25</td>
+            <td class="celda">0.78</td>
+            <td class="celda">0.84</td>
+            <td class="celda">0.87</td>
+            <td class="celda">0.91</td>
+            <td class="celda">1,00</td>
+            <td class="celda">1.00</td>
+            <td class="celda">1.00</td>
+            <td class="celda">1.00</td>
+            <td class="celda">1.00</td>
+          </tr>
+          <tr>
+            <td class="celda"><span >O.50</td>
+            <td class="celda"><span >0.75</td>
+            <td class="celda"><span >0.83</td>
+            <td class="celda"><span >0.86</td>
+            <td class="celda"><span >0.90</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr>
+            <td class="celda"><span >0.75</td>
+            <td class="celda"><span >0.73</td>
+            <td class="celda"><span >0.81</td>
+            <td class="celda"><span >0.85</td>
+            <td class="celda"><span >0.89</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row5">
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >0.73</td>
+            <td class="celda"><span >0.79</td>
+            <td class="celda"><span >0.83</td>
+            <td class="celda"><span >0.88</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row6">
+            <td class="celda"><span >1.50</td>
+            <td class="celda"><span >0.73</td>
+            <td class="celda"><span >0.79</td>
+            <td class="celda"><span >0.83</td>
+            <td class="celda"><span >0.87</td>
+            <td class="celda"><span >0.99</td>
+            <td class="celda"><span >0.99</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row7">
+            <td class="celda"><span >2.00</td>
+            <td class="celda"><span >0.73</td>
+            <td class="celda"><span >0.79</td>
+            <td class="celda"><span >0.82</td>
+            <td class="celda"><span >086</td>
+            <td class="celda"><span >0.98</td>
+            <td class="celda"><span >0.98</td>
+            <td class="celda"><span >0.99</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row8">
+            <td class="celda"><span >3.00</td>
+            <td class="celda"><span >0.73</td>
+            <td class="celda"><span >0.78</td>
+            <td class="celda"><span >0.82</td>
+            <td class="celda"><span >0.85</td>
+            <td class="celda"><span >0.95</td>
+            <td class="celda"><span >0.96</td>
+            <td class="celda"><span >0.96</td>
+            <td class="celda"><span >0.97</td>
+            <td class="celda"><span >0.98</td>
+          </tr>
+          <tr class="row9">
+            <td class="celda"><span >4.00</td>
+            <td class="celda"><span >0.73</td>
+            <td class="celda"><span >0.78</td>
+            <td class="celda"><span >0.81</td>
+            <td class="celda"><span >0 85</td>
+            <td class="celda"><span >0.94</td>
+            <td class="celda"><span >0.94</td>
+            <td class="celda"><span >0.95</td>
+            <td class="celda"><span >0.95</td>
+            <td class="celda"><span >0.96</td>
+          </tr>
+          <tr class="row10">
+            <td class="celda table-active" rowspan="8"><b>&gt;= 3.5, &lt;4.5</b></td>
+            <td class="celda"><span >0.25</td>
+            <td class="celda"><span >0.75</td>
+            <td class="celda"><span >0.83</td>
+            <td class="celda"><span >0.86</td>
+            <td class="celda"><span >0.90</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1,00</td>
+          </tr>
+          <tr class="row11">
+            <td class="celda"><span >0.50</td>
+            <td class="celda"><span >0.72</td>
+            <td class="celda"><span >0.80</td>
+            <td class="celda"><span >0.84</td>
+            <td class="celda"><span >0.88</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row12">
+            <td class="celda"><span >0.75</td>
+            <td class="celda"><span >0.67</td>
+            <td class="celda"><span >0.77</td>
+            <td class="celda"><span >0.81</td>
+            <td class="celda"><span >0.86</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.0O</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row13">
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >0.65</td>
+            <td class="celda"><span >0.73</td>
+            <td class="celda"><span >0.77</td>
+            <td class="celda"><span >0.81</td>
+            <td class="celda"><span >0.94</td>
+            <td class="celda"><span >0.9S</td>
+            <td class="celda"><span >0.97</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row14">
+            <td class="celda"><span >1.50</td>
+            <td class="celda"><span >0.63</td>
+            <td class="celda"><span >0.72</td>
+            <td class="celda"><span >0.76</td>
+            <td class="celda"><span >0.80</td>
+            <td class="celda"><span >0.93</td>
+            <td class="celda"><span >0.95</td>
+            <td class="celda"><span >0.96</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row15">
+            <td class="celda"><span >2.00</td>
+            <td class="celda"><span >062</td>
+            <td class="celda"><span >0.70</td>
+            <td class="celda"><span >0.74</td>
+            <td class="celda"><span >0.79</td>
+            <td class="celda"><span >0.93</td>
+            <td class="celda"><span >0.94</td>
+            <td class="celda"><span >0.96</td>
+            <td class="celda"><span >100</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row16">
+            <td class="celda"><span >3.00</td>
+            <td class="celda"><span >0.61</td>
+            <td class="celda"><span >0.69</td>
+            <td class="celda"><span >0.74</td>
+            <td class="celda"><span >0.78</td>
+            <td class="celda"><span >0.92</td>
+            <td class="celda"><span >093</td>
+            <td class="celda"><span >0.94</td>
+            <td class="celda"><span >0.98</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row17">
+            <td class="celda"><span >4.00</td>
+            <td class="celda"><span >0.61</td>
+            <td class="celda"><span >0.69</td>
+            <td class="celda"><span >0.73</td>
+            <td class="celda"><span >0.78</td>
+            <td class="celda"><span >0.91</td>
+            <td class="celda"><span >0.91</td>
+            <td class="celda"><span >0.92</td>
+            <td class="celda"><span >0.96</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row18">
+            <td class="celda table-active" rowspan="8"><b>&gt;= 4.5, &lt;5.5</b></td>
+            <td class="celda"><span >025</td>
+            <td class="celda"><span >0.71</td>
+            <td class="celda"><span >0.79</td>
+            <td class="celda"><span >0.83</td>
+            <td class="celda"><span >0.88</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row19">
+            <td class="celda"><span >0.50</td>
+            <td class="celda"><span >0.60</td>
+            <td class="celda"><span >0.70</td>
+            <td class="celda"><span >0.74</td>
+            <td class="celda"><span >0.79</td>
+            <td class="celda"><span >0.94</td>
+            <td class="celda"><span >0.95</td>
+            <td class="celda"><span >0.97</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row20">
+            <td class="celda"><span >0.75</td>
+            <td class="celda"><span >0.55</td>
+            <td class="celda"><span >0.65</td>
+            <td class="celda"><span >0.70</td>
+            <td class="celda"><span >0.75</td>
+            <td class="celda"><span >0.91</td>
+            <td class="celda"><span >0.93</td>
+            <td class="celda"><span >0.95</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row21">
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >0.54</td>
+            <td class="celda"><span >0.64</td>
+            <td class="celda"><span >0.69</td>
+            <td class="celda"><span >0.74</td>
+            <td class="celda"><span >0.91</td>
+            <td class="celda"><span >0.93</td>
+            <td class="celda"><span >0.95</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row22">
+            <td class="celda"><span >1.50</td>
+            <td class="celda"><span >0.52</td>
+            <td class="celda"><span >0.62</td>
+            <td class="celda"><span >067</td>
+            <td class="celda"><span >0.72</td>
+            <td class="celda"><span >0.88</td>
+            <td class="celda"><span >0.90</td>
+            <td class="celda"><span >0.93</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row23">
+            <td class="celda"><span >2.00</td>
+            <td class="celda"><span >0.51</td>
+            <td class="celda"><span >0.61</td>
+            <td class="celda"><span >0.66</td>
+            <td class="celda"><span >0.71</td>
+            <td class="celda"><span >0.87</td>
+            <td class="celda"><span >089</td>
+            <td class="celda"><span >0.92</td>
+            <td class="celda"><span >0.99</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row24">
+            <td class="celda"><span >3.00</td>
+            <td class="celda"><span >0.51</td>
+            <td class="celda"><span >0.61</td>
+            <td class="celda"><span >0.65</td>
+            <td class="celda"><span >0.70</td>
+            <td class="celda"><span >0.86</td>
+            <td class="celda"><span >0.88</td>
+            <td class="celda"><span >0.91</td>
+            <td class="celda"><span >0.98</td>
+            <td class="celda"><span >0.99</td>
+          </tr>
+          <tr class="row25">
+            <td class="celda"><span >4.00</td>
+            <td class="celda"><span >0.51</td>
+            <td class="celda"><span >0.60</td>
+            <td class="celda"><span >0.65</td>
+            <td class="celda"><span >0.69</td>
+            <td class="celda"><span >0.84</td>
+            <td class="celda"><span >0.86</td>
+            <td class="celda"><span >0.88</td>
+            <td class="celda"><span >0.95</td>
+            <td class="celda"><span >0.97</td>
+          </tr>
+          <tr class="row26">
+            <td class="celda table-active" rowspan="8"><b>&gt;= 5.5, &lt;6.5</b></td>
+            <td class="celda"><span >0.25</td>
+            <td class="celda"><span >0.57</td>
+            <td class="celda"><span >0.68</td>
+            <td class="celda"><span >0.72</td>
+            <td class="celda"><span >0.77</td>
+            <td class="celda"><span >0.93</td>
+            <td class="celda"><span >0.94</td>
+            <td class="celda"><span >0.96</td>
+            <td class="celda"><span >100</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row27">
+            <td class="celda"><span >0.50</td>
+            <td class="celda"><span >0.52</td>
+            <td class="celda"><span >0.62</td>
+            <td class="celda"><span >0.66</td>
+            <td class="celda"><span >0.71</td>
+            <td class="celda"><span >0.87</td>
+            <td class="celda"><span >0.90</td>
+            <td class="celda"><span >0.92</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row28">
+            <td class="celda"><span >0.75</td>
+            <td class="celda"><span >0.49</td>
+            <td class="celda"><span >0.57</td>
+            <td class="celda"><span >0.62</td>
+            <td class="celda"><span >0.68</td>
+            <td class="celda"><span >0.85</td>
+            <td class="celda"><span >0.88</td>
+            <td class="celda"><span >0.90</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row29">
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >0.46</td>
+            <td class="celda"><span >0.56</td>
+            <td class="celda"><span >0.60</td>
+            <td class="celda"><span >0.65</td>
+            <td class="celda"><span >0.82</td>
+            <td class="celda"><span >0.85</td>
+            <td class="celda"><span >0.88</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row30">
+            <td class="celda">1.50</td>
+            <td class="celda"><span >0.44</td>
+            <td class="celda"><span >0.54</td>
+            <td class="celda"><span >059</td>
+            <td class="celda"><span >0.64</td>
+            <td class="celda"><span >0.81</td>
+            <td class="celda"><span >0.84</td>
+            <td class="celda"><span >0.87</td>
+            <td class="celda"><span >0.98</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row31">
+            <td class="celda"><span >2.00</td>
+            <td class="celda"><span >0.43</td>
+            <td class="celda"><span >0.53</td>
+            <td class="celda"><span >0.58</td>
+            <td class="celda"><span >0.63</td>
+            <td class="celda"><span >0.81</td>
+            <td class="celda"><span >0.83</td>
+            <td class="celda"><span >0.86</td>
+            <td class="celda"><span >0.97</td>
+            <td class="celda"><span >0.99</td>
+          </tr>
+          <tr class="row32">
+            <td class="celda"><span >3.00</td>
+            <td class="celda"><span >0.41</td>
+            <td class="celda"><span >0.51</td>
+            <td class="celda"><span >056</td>
+            <td class="celda"><span >0.61</td>
+            <td class="celda"><span >0.79</td>
+            <td class="celda"><span >0.82</td>
+            <td class="celda"><span >0.85</td>
+            <td class="celda"><span >0.97</td>
+            <td class="celda"><span >0.99</td>
+          </tr>
+          <tr class="row33">
+            <td class="celda"><span >4.00</td>
+            <td class="celda"><span >0.40</td>
+            <td class="celda"><span >0.50</td>
+            <td class="celda"><span >0.55</td>
+            <td class="celda"><span >0.61</td>
+            <td class="celda"><span >0.79</td>
+            <td class="celda"><span >0.82</td>
+            <td class="celda"><span >0.85</td>
+            <td class="celda"><span >0.97</td>
+            <td class="celda"><span >0.99</td>
+          </tr>
+          <tr class="row34">
+            <td class="celda table-active" rowspan="8"><b>&gt;= 6.5</b></td>
+            <td class="celda"><span >0.25</td>
+            <td class="celda"><span >0.54</td>
+            <td class="celda"><span >0.64</td>
+            <td class="celda"><span >0.68</td>
+            <td class="celda"><span >0.73</td>
+            <td class="celda"><span >0.88</td>
+            <td class="celda"><span >0.90</td>
+            <td class="celda"><span >0.92</td>
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row35">
+            <td class="celda"><span >0.50</td>
+            <td class="celda"><span >0.43</td>
+            <td class="celda"><span >0.53</td>
+            <td class="celda"><span >0.57</td>
+            <td class="celda"><span >0.62</td>
+            <td class="celda"><span >0.79</td>
+            <td class="celda"><span >0.82</td>
+            <td class="celda"><span >0.85</td>
+            <td class="celda"><span >0.98</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row36">
+            <td class="celda"><span >0.75</td>
+            <td class="celda"><span >0.39</td>
+            <td class="celda"><span >0.49</td>
+            <td class="celda"><span >0.54</td>
+            <td class="celda"><span >0.59</td>
+            <td class="celda"><span >0.77</td>
+            <td class="celda"><span >0.80</td>
+            <td class="celda"><span >0.83</td>
+            <td class="celda"><span >0.96</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row37">
+            <td class="celda"><span >1.00</td>
+            <td class="celda"><span >0.37</td>
+            <td class="celda"><span >0.45</td>
+            <td class="celda"><span >0 50</td>
+            <td class="celda"><span >0.54</td>
+            <td class="celda"><span >0.74</td>
+            <td class="celda"><span >0.77</td>
+            <td class="celda"><span >0.81</td>
+            <td class="celda"><span >0 96</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row38">
+            <td class="celda"><span >1.50</td>
+            <td class="celda"><span >0.35</td>
+            <td class="celda"><span >0.45</td>
+            <td class="celda"><span >0.49</td>
+            <td class="celda"><span >0.54</td>
+            <td class="celda"><span >0.71</td>
+            <td class="celda"><span >0.75</td>
+            <td class="celda"><span >0.79</td>
+            <td class="celda"><span >096</td>
+            <td class="celda"><span >1.00</td>
+          </tr>
+          <tr class="row39">
+            <td class="celda"><span >2.00</td>
+            <td class="celda"><span >0.34</td>
+            <td class="celda"><span >0.44</td>
+            <td class="celda"><span >0.48</td>
+            <td class="celda"><span >0.53</td>
+            <td class="celda"><span >0.71</td>
+            <td class="celda"><span >0.74</td>
+            <td class="celda"><span >0.78</td>
+            <td class="celda"><span >0.94</td>
+            <td class="celda"><span >0.99</td>
+          </tr>
+          <tr class="row40">
+            <td class="celda"><span >300</td>
+            <td class="celda"><span >0.34</td>
+            <td class="celda"><span >0.44</td>
+            <td class="celda"><span >048</td>
+            <td class="celda"><span >0.53</td>
+            <td class="celda"><span >0.70</td>
+            <td class="celda"><span >0.73</td>
+            <td class="celda"><span >0.77</td>
+            <td class="celda"><span >0.93</td>
+            <td class="celda"><span >0.93</td>
+          </tr>
+          <tr class="row41">
+            <td class="celda"><span >&gt;4.00</td>
+            <td class="celda"><span >0.33</td>
+            <td class="celda"><span >0.43</td>
+            <td class="celda"><span >0.47</td>
+            <td class="celda"><span >0.52</td>
+            <td class="celda"><span >0.70</td>
+            <td class="celda"><span >0.73</td>
+            <td class="celda"><span >0.77</td>
+            <td class="celda"><span >0.91</td>
+            <td class="celda"><span >0.95</td>
+          </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6">
+        <div class="container">
+          <h5 class="subtitulos pasos">
+            Factor de ajuste de grado de ATS (f<sub>g,ATS</sub>) sentido 1.
+          </h5>
+          <h5 class="text-general">
+            <li><b>Pendiente</b> = {{data.pendiente_tramo_db}} %</li>
+            <li><b>Longitud</b> = {{data.longitud_tramo_db}} mi/h</li>
+            <li><b>Volumen de demanda</b> = {{data.volumen1_db}} veh/h</li>
+          </h5>
+          <h5>Con estos valores se realiza la interpolación con la tabla {% if data.pendiente_tramo_db >= 3%} 4 {%endif%} {% if data.pendiente_tramo_db < 3%} 3 {%endif%}.</h5>
+          <h5 class="text-general">Se obtiene factor de ajuste de grado de ATS igual a: </h5>
+          <h5 class="subtitulos"><b>f<sub>g,ATS</sub></b> = {{data.fgATS1_db}}</h5>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <div class="container">
+          <h5 class="subtitulos pasos">
+            Factor de ajuste de grado de ATS (f<sub>g,ATS</sub>) sentido 2.
+          </h5>
+          <h5 class="text-general">
+            <li><b>Pendiente</b> = {{data.pendiente_tramo_db}} %</li>
+            <li><b>Longitud</b> = {{data.longitud_tramo_db}} mi/h</li>
+            <li><b>Volumen de demanda</b> = {{data.volumen2_db}} veh/h</li>
+          </h5>
+          <h5>Con estos valores se realiza la interpolación con la tabla {% if data.pendiente_tramo_db >= 3%} 4 {%endif%} {% if data.pendiente_tramo_db < 3%} 3 {%endif%}.</h5>
+          <h5 class="text-general">Se obtiene factor de ajuste de grado de ATS igual a: </h5>
+          <h5 class="subtitulos"><b>f<sub>g,ATS</sub></b> = {{data.fgATS2_db}}</h5>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <h4 class="pasos text-general">Factor de ajuste de vehículos pesados</h4>
+    <h5 class="text-general">Las condiciones básicas para las carreteras de dos carriles incluyen un 100 % de automóviles de pasajeros en el flujo de tráfico. Esta es una ocurrencia rara, y la presencia de vehículos pesados en el flujo de tráfico reduce el ATS.
+      <br>Determinar el factor de ajuste de vehículos pesados es un proceso de dos pasos:
+      <br><b>1.</b> Los equivalentes de automóviles de pasajeros se encuentran para camiones (Er) y vehículos recreativos (RV) (ER) en las condiciones predominantes.
+      <br><b>2.</b> Se calcula un factor de ajuste de vehículos pesados a partir de los equivalentes de vehículos de pasajeros con la ecuación 3.</h5>
+    <h5 class="ecuacion">Ecuación 3.</h5>
+    <h4 class="formulas subtitulos">
+      <div class="eq-c">
+      <i>f<sub>HV,ATS</sub></i>=
+      <div class="fraction">
+      <span class="fup"><i>1</i></span>
+      <span class="bar">/</span>
+      <span class="fdn"><i>1 + P<sub>T</sub> (E<sub>T</sub> - 1) + P<sub>R</sub> (E<sub>R</sub> - 1)</i></span>        
+    </h4>
+    <h5 class="text-general">Donde</h5>
+    <h5 class="text-general"><b><i>f<sub>HV,ATS</sub></i></b> = factor de ajuste de vehículos pesados para la estimación de ATS, </h5>
+    <h5 class="text-general"><b><i>P<sub>T</sub></i></b> = Proporción de camiones en el flujo de tráfico (decimal),</h5>
+    <h5 class="text-general"><b><i>P<sub>R</sub></i></b> = Proporción de vehiculos recreativos RVS en el flujo de tráfico (decimal),</h5>
+    <h5 class="text-general"><b><i>E<sub>T</sub></i></b> = Equivalente de automóviles para camiones</h5>
+    <h5 class="text-general"><b><i>E<sub>R</sub></i></b> = Equivalente de automóviles para vehiculos recreativos</h5>
+    <br>
+    <h5 class="text-general">Los valores E<sub>T</sub> y E<sub>R</sub> se determinan mendiante interpolación con las tablas 5, 6 y 7.</h5>
+  </section>
+
+
+  <section id="Sensibilidad">
+    <div class="container">
+      <h1 class="subtitulos">Análisis de sensibilidad</h1>
+      
+    </div>
+  </section>
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../static/assets/vendor/aos/aos.js"></script>
+  <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../static/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../static/assets/js/main.js"></script>
+
+</body>
+
+</html>
