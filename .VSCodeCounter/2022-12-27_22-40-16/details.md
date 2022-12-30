@@ -1,0 +1,205 @@
+---
+noteId: "5a7462c0866111edb3f0415b87828c44"
+tags: []
+
+---
+
+# Details
+
+Date : 2022-12-27 22:40:16
+
+Directory e:\\Mis doumentos\\Desktop\\Universidad\\Tesis
+
+Total : 184 files,  266577 codes, 11381 comments, 29036 blanks, all 306994 lines
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
+
+## Files
+| filename | language | code | comment | blank | total |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| [HCM_2carriles.py](/HCM_2carriles.py) | Python | 786 | 31 | 96 | 913 |
+| [Sensibilidad.py](/Sensibilidad.py) | Python | 300 | 26 | 13 | 339 |
+| [capacidad_NS.py](/capacidad_NS.py) | Python | 396 | 83 | 45 | 524 |
+| [data.js](/data.js) | JavaScript | 1 | 0 | 2 | 3 |
+| [main.py](/main.py) | Python | 814 | 13 | 50 | 877 |
+| [multicarril.py](/multicarril.py) | Python | 407 | 28 | 55 | 490 |
+| [peatones.py](/peatones.py) | Python | 361 | 41 | 22 | 424 |
+| [pr.py](/pr.py) | Python | 4 | 0 | 1 | 5 |
+| [prueba.py](/prueba.py) | Python | 14 | 1 | 10 | 25 |
+| [requirements.txt](/requirements.txt) | pip requirements | 91 | 0 | 0 | 91 |
+| [sensibilidad_2_carriles.py](/sensibilidad_2_carriles.py) | Python | 176 | 19 | 11 | 206 |
+| [sensibilidad_peatones.py](/sensibilidad_peatones.py) | Python | 282 | 34 | 3 | 319 |
+| [static/assets/css/style.css](/static/assets/css/style.css) | CSS | 1,807 | 84 | 338 | 2,229 |
+| [static/assets/js/main.js](/static/assets/js/main.js) | JavaScript | 211 | 60 | 26 | 297 |
+| [static/assets/vendor/aos/aos.css](/static/assets/vendor/aos/aos.css) | CSS | 1 | 0 | 0 | 1 |
+| [static/assets/vendor/aos/aos.js](/static/assets/vendor/aos/aos.js) | JavaScript | 1 | 0 | 0 | 1 |
+| [static/assets/vendor/bootstrap-icons/bootstrap-icons.css](/static/assets/vendor/bootstrap-icons/bootstrap-icons.css) | CSS | 1,874 | 0 | 3 | 1,877 |
+| [static/assets/vendor/bootstrap-icons/bootstrap-icons.json](/static/assets/vendor/bootstrap-icons/bootstrap-icons.json) | JSON | 1,856 | 0 | 0 | 1,856 |
+| [static/assets/vendor/bootstrap-icons/index.html](/static/assets/vendor/bootstrap-icons/index.html) | HTML | 7,286 | 0 | 6 | 7,292 |
+| [static/assets/vendor/bootstrap/css/bootstrap-grid.css](/static/assets/vendor/bootstrap/css/bootstrap-grid.css) | CSS | 3,925 | 7 | 192 | 4,124 |
+| [static/assets/vendor/bootstrap/css/bootstrap-grid.min.css](/static/assets/vendor/bootstrap/css/bootstrap-grid.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [static/assets/vendor/bootstrap/css/bootstrap-grid.rtl.css](/static/assets/vendor/bootstrap/css/bootstrap-grid.rtl.css) | CSS | 3,925 | 7 | 191 | 4,123 |
+| [static/assets/vendor/bootstrap/css/bootstrap-grid.rtl.min.css](/static/assets/vendor/bootstrap/css/bootstrap-grid.rtl.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [static/assets/vendor/bootstrap/css/bootstrap-reboot.css](/static/assets/vendor/bootstrap/css/bootstrap-reboot.css) | CSS | 409 | 15 | 64 | 488 |
+| [static/assets/vendor/bootstrap/css/bootstrap-reboot.min.css](/static/assets/vendor/bootstrap/css/bootstrap-reboot.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [static/assets/vendor/bootstrap/css/bootstrap-reboot.rtl.css](/static/assets/vendor/bootstrap/css/bootstrap-reboot.rtl.css) | CSS | 415 | 7 | 63 | 485 |
+| [static/assets/vendor/bootstrap/css/bootstrap-reboot.rtl.min.css](/static/assets/vendor/bootstrap/css/bootstrap-reboot.rtl.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [static/assets/vendor/bootstrap/css/bootstrap-utilities.css](/static/assets/vendor/bootstrap/css/bootstrap-utilities.css) | CSS | 3,830 | 9 | 358 | 4,197 |
+| [static/assets/vendor/bootstrap/css/bootstrap-utilities.min.css](/static/assets/vendor/bootstrap/css/bootstrap-utilities.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [static/assets/vendor/bootstrap/css/bootstrap-utilities.rtl.css](/static/assets/vendor/bootstrap/css/bootstrap-utilities.rtl.css) | CSS | 3,826 | 7 | 355 | 4,188 |
+| [static/assets/vendor/bootstrap/css/bootstrap-utilities.rtl.min.css](/static/assets/vendor/bootstrap/css/bootstrap-utilities.rtl.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [static/assets/vendor/bootstrap/css/bootstrap.css](/static/assets/vendor/bootstrap/css/bootstrap.css) | CSS | 10,131 | 35 | 748 | 10,914 |
+| [static/assets/vendor/bootstrap/css/bootstrap.min.css](/static/assets/vendor/bootstrap/css/bootstrap.min.css) | CSS | 2 | 5 | 0 | 7 |
+| [static/assets/vendor/bootstrap/css/bootstrap.rtl.css](/static/assets/vendor/bootstrap/css/bootstrap.rtl.css) | CSS | 10,133 | 7 | 734 | 10,874 |
+| [static/assets/vendor/bootstrap/css/bootstrap.rtl.min.css](/static/assets/vendor/bootstrap/css/bootstrap.rtl.min.css) | CSS | 2 | 5 | 0 | 7 |
+| [static/assets/vendor/bootstrap/js/bootstrap.bundle.js](/static/assets/vendor/bootstrap/js/bootstrap.bundle.js) | JavaScript | 5,059 | 535 | 1,497 | 7,091 |
+| [static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js](/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js) | JavaScript | 1 | 6 | 0 | 7 |
+| [static/assets/vendor/bootstrap/js/bootstrap.esm.js](/static/assets/vendor/bootstrap/js/bootstrap.esm.js) | JavaScript | 3,562 | 458 | 1,198 | 5,218 |
+| [static/assets/vendor/bootstrap/js/bootstrap.esm.min.js](/static/assets/vendor/bootstrap/js/bootstrap.esm.min.js) | JavaScript | 1 | 6 | 0 | 7 |
+| [static/assets/vendor/bootstrap/js/bootstrap.js](/static/assets/vendor/bootstrap/js/bootstrap.js) | JavaScript | 3,599 | 464 | 1,202 | 5,265 |
+| [static/assets/vendor/bootstrap/js/bootstrap.min.js](/static/assets/vendor/bootstrap/js/bootstrap.min.js) | JavaScript | 1 | 6 | 0 | 7 |
+| [static/assets/vendor/boxicons/css/animations.css](/static/assets/vendor/boxicons/css/animations.css) | CSS | 354 | 0 | 32 | 386 |
+| [static/assets/vendor/boxicons/css/boxicons.css](/static/assets/vendor/boxicons/css/boxicons.css) | CSS | 5,271 | 0 | 53 | 5,324 |
+| [static/assets/vendor/boxicons/css/boxicons.min.css](/static/assets/vendor/boxicons/css/boxicons.min.css) | CSS | 1 | 0 | 0 | 1 |
+| [static/assets/vendor/boxicons/css/transformations.css](/static/assets/vendor/boxicons/css/transformations.css) | CSS | 25 | 0 | 6 | 31 |
+| [static/assets/vendor/boxicons/fonts/boxicons.svg](/static/assets/vendor/boxicons/fonts/boxicons.svg) | XML | 1,626 | 0 | 0 | 1,626 |
+| [static/assets/vendor/glightbox/css/glightbox.css](/static/assets/vendor/glightbox/css/glightbox.css) | CSS | 819 | 8 | 113 | 940 |
+| [static/assets/vendor/glightbox/css/glightbox.min.css](/static/assets/vendor/glightbox/css/glightbox.min.css) | CSS | 1 | 0 | 0 | 1 |
+| [static/assets/vendor/glightbox/css/plyr.css](/static/assets/vendor/glightbox/css/plyr.css) | CSS | 1,615 | 0 | 185 | 1,800 |
+| [static/assets/vendor/glightbox/css/plyr.min.css](/static/assets/vendor/glightbox/css/plyr.min.css) | CSS | 1 | 0 | 0 | 1 |
+| [static/assets/vendor/glightbox/js/glightbox.js](/static/assets/vendor/glightbox/js/glightbox.js) | JavaScript | 3,066 | 0 | 590 | 3,656 |
+| [static/assets/vendor/glightbox/js/glightbox.min.js](/static/assets/vendor/glightbox/js/glightbox.min.js) | JavaScript | 1 | 0 | 0 | 1 |
+| [static/assets/vendor/isotope-layout/isotope.pkgd.js](/static/assets/vendor/isotope-layout/isotope.pkgd.js) | JavaScript | 2,198 | 830 | 536 | 3,564 |
+| [static/assets/vendor/isotope-layout/isotope.pkgd.min.js](/static/assets/vendor/isotope-layout/isotope.pkgd.min.js) | JavaScript | 2 | 9 | 1 | 12 |
+| [static/assets/vendor/php-email-form/validate.js](/static/assets/vendor/php-email-form/validate.js) | JavaScript | 66 | 5 | 11 | 82 |
+| [static/assets/vendor/purecounter/purecounter_vanilla.js](/static/assets/vendor/purecounter/purecounter_vanilla.js) | JavaScript | 1 | 8 | 0 | 9 |
+| [static/assets/vendor/remixicon/remixicon.css](/static/assets/vendor/remixicon/remixicon.css) | CSS | 2,303 | 10 | 5 | 2,318 |
+| [static/assets/vendor/remixicon/remixicon.less](/static/assets/vendor/remixicon/remixicon.less) | Less | 2,305 | 10 | 5 | 2,320 |
+| [static/assets/vendor/remixicon/remixicon.svg](/static/assets/vendor/remixicon/remixicon.svg) | XML | 6,825 | 10 | 1 | 6,836 |
+| [static/assets/vendor/remixicon/remixicon.symbol.svg](/static/assets/vendor/remixicon/remixicon.symbol.svg) | XML | 11,346 | 10 | 0 | 11,356 |
+| [static/assets/vendor/swiper/swiper-bundle.min.css](/static/assets/vendor/swiper/swiper-bundle.min.css) | CSS | 1 | 11 | 1 | 13 |
+| [static/assets/vendor/swiper/swiper-bundle.min.js](/static/assets/vendor/swiper/swiper-bundle.min.js) | JavaScript | 1 | 12 | 1 | 14 |
+| [static/blog/assets/css/style.css](/static/blog/assets/css/style.css) | CSS | 1,722 | 81 | 330 | 2,133 |
+| [static/blog/assets/js/main.js](/static/blog/assets/js/main.js) | JavaScript | 211 | 60 | 26 | 297 |
+| [static/blog/assets/vendor/aos/aos.css](/static/blog/assets/vendor/aos/aos.css) | CSS | 1 | 0 | 0 | 1 |
+| [static/blog/assets/vendor/aos/aos.js](/static/blog/assets/vendor/aos/aos.js) | JavaScript | 1 | 0 | 0 | 1 |
+| [static/blog/assets/vendor/bootstrap-icons/bootstrap-icons.css](/static/blog/assets/vendor/bootstrap-icons/bootstrap-icons.css) | CSS | 1,874 | 0 | 3 | 1,877 |
+| [static/blog/assets/vendor/bootstrap-icons/bootstrap-icons.json](/static/blog/assets/vendor/bootstrap-icons/bootstrap-icons.json) | JSON | 1,856 | 0 | 0 | 1,856 |
+| [static/blog/assets/vendor/bootstrap-icons/index.html](/static/blog/assets/vendor/bootstrap-icons/index.html) | HTML | 7,286 | 0 | 6 | 7,292 |
+| [static/blog/assets/vendor/bootstrap/css/bootstrap-grid.css](/static/blog/assets/vendor/bootstrap/css/bootstrap-grid.css) | CSS | 3,925 | 7 | 192 | 4,124 |
+| [static/blog/assets/vendor/bootstrap/css/bootstrap-grid.min.css](/static/blog/assets/vendor/bootstrap/css/bootstrap-grid.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [static/blog/assets/vendor/bootstrap/css/bootstrap-grid.rtl.css](/static/blog/assets/vendor/bootstrap/css/bootstrap-grid.rtl.css) | CSS | 3,925 | 7 | 191 | 4,123 |
+| [static/blog/assets/vendor/bootstrap/css/bootstrap-grid.rtl.min.css](/static/blog/assets/vendor/bootstrap/css/bootstrap-grid.rtl.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [static/blog/assets/vendor/bootstrap/css/bootstrap-reboot.css](/static/blog/assets/vendor/bootstrap/css/bootstrap-reboot.css) | CSS | 409 | 15 | 64 | 488 |
+| [static/blog/assets/vendor/bootstrap/css/bootstrap-reboot.min.css](/static/blog/assets/vendor/bootstrap/css/bootstrap-reboot.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [static/blog/assets/vendor/bootstrap/css/bootstrap-reboot.rtl.css](/static/blog/assets/vendor/bootstrap/css/bootstrap-reboot.rtl.css) | CSS | 415 | 7 | 63 | 485 |
+| [static/blog/assets/vendor/bootstrap/css/bootstrap-reboot.rtl.min.css](/static/blog/assets/vendor/bootstrap/css/bootstrap-reboot.rtl.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [static/blog/assets/vendor/bootstrap/css/bootstrap-utilities.css](/static/blog/assets/vendor/bootstrap/css/bootstrap-utilities.css) | CSS | 3,830 | 9 | 358 | 4,197 |
+| [static/blog/assets/vendor/bootstrap/css/bootstrap-utilities.min.css](/static/blog/assets/vendor/bootstrap/css/bootstrap-utilities.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [static/blog/assets/vendor/bootstrap/css/bootstrap-utilities.rtl.css](/static/blog/assets/vendor/bootstrap/css/bootstrap-utilities.rtl.css) | CSS | 3,826 | 7 | 355 | 4,188 |
+| [static/blog/assets/vendor/bootstrap/css/bootstrap-utilities.rtl.min.css](/static/blog/assets/vendor/bootstrap/css/bootstrap-utilities.rtl.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [static/blog/assets/vendor/bootstrap/css/bootstrap.css](/static/blog/assets/vendor/bootstrap/css/bootstrap.css) | CSS | 10,131 | 35 | 748 | 10,914 |
+| [static/blog/assets/vendor/bootstrap/css/bootstrap.min.css](/static/blog/assets/vendor/bootstrap/css/bootstrap.min.css) | CSS | 2 | 5 | 0 | 7 |
+| [static/blog/assets/vendor/bootstrap/css/bootstrap.rtl.css](/static/blog/assets/vendor/bootstrap/css/bootstrap.rtl.css) | CSS | 10,133 | 7 | 734 | 10,874 |
+| [static/blog/assets/vendor/bootstrap/css/bootstrap.rtl.min.css](/static/blog/assets/vendor/bootstrap/css/bootstrap.rtl.min.css) | CSS | 2 | 5 | 0 | 7 |
+| [static/blog/assets/vendor/bootstrap/js/bootstrap.bundle.js](/static/blog/assets/vendor/bootstrap/js/bootstrap.bundle.js) | JavaScript | 5,059 | 535 | 1,497 | 7,091 |
+| [static/blog/assets/vendor/bootstrap/js/bootstrap.bundle.min.js](/static/blog/assets/vendor/bootstrap/js/bootstrap.bundle.min.js) | JavaScript | 1 | 6 | 0 | 7 |
+| [static/blog/assets/vendor/bootstrap/js/bootstrap.esm.js](/static/blog/assets/vendor/bootstrap/js/bootstrap.esm.js) | JavaScript | 3,562 | 458 | 1,198 | 5,218 |
+| [static/blog/assets/vendor/bootstrap/js/bootstrap.esm.min.js](/static/blog/assets/vendor/bootstrap/js/bootstrap.esm.min.js) | JavaScript | 1 | 6 | 0 | 7 |
+| [static/blog/assets/vendor/bootstrap/js/bootstrap.js](/static/blog/assets/vendor/bootstrap/js/bootstrap.js) | JavaScript | 3,599 | 464 | 1,202 | 5,265 |
+| [static/blog/assets/vendor/bootstrap/js/bootstrap.min.js](/static/blog/assets/vendor/bootstrap/js/bootstrap.min.js) | JavaScript | 1 | 6 | 0 | 7 |
+| [static/blog/assets/vendor/boxicons/css/animations.css](/static/blog/assets/vendor/boxicons/css/animations.css) | CSS | 354 | 0 | 32 | 386 |
+| [static/blog/assets/vendor/boxicons/css/boxicons.css](/static/blog/assets/vendor/boxicons/css/boxicons.css) | CSS | 5,271 | 0 | 53 | 5,324 |
+| [static/blog/assets/vendor/boxicons/css/boxicons.min.css](/static/blog/assets/vendor/boxicons/css/boxicons.min.css) | CSS | 1 | 0 | 0 | 1 |
+| [static/blog/assets/vendor/boxicons/css/transformations.css](/static/blog/assets/vendor/boxicons/css/transformations.css) | CSS | 25 | 0 | 6 | 31 |
+| [static/blog/assets/vendor/boxicons/fonts/boxicons.svg](/static/blog/assets/vendor/boxicons/fonts/boxicons.svg) | XML | 1,626 | 0 | 0 | 1,626 |
+| [static/blog/assets/vendor/glightbox/css/glightbox.css](/static/blog/assets/vendor/glightbox/css/glightbox.css) | CSS | 819 | 8 | 113 | 940 |
+| [static/blog/assets/vendor/glightbox/css/glightbox.min.css](/static/blog/assets/vendor/glightbox/css/glightbox.min.css) | CSS | 1 | 0 | 0 | 1 |
+| [static/blog/assets/vendor/glightbox/css/plyr.css](/static/blog/assets/vendor/glightbox/css/plyr.css) | CSS | 1,615 | 0 | 185 | 1,800 |
+| [static/blog/assets/vendor/glightbox/css/plyr.min.css](/static/blog/assets/vendor/glightbox/css/plyr.min.css) | CSS | 1 | 0 | 0 | 1 |
+| [static/blog/assets/vendor/glightbox/js/glightbox.js](/static/blog/assets/vendor/glightbox/js/glightbox.js) | JavaScript | 3,066 | 0 | 590 | 3,656 |
+| [static/blog/assets/vendor/glightbox/js/glightbox.min.js](/static/blog/assets/vendor/glightbox/js/glightbox.min.js) | JavaScript | 1 | 0 | 0 | 1 |
+| [static/blog/assets/vendor/isotope-layout/isotope.pkgd.js](/static/blog/assets/vendor/isotope-layout/isotope.pkgd.js) | JavaScript | 2,198 | 830 | 536 | 3,564 |
+| [static/blog/assets/vendor/isotope-layout/isotope.pkgd.min.js](/static/blog/assets/vendor/isotope-layout/isotope.pkgd.min.js) | JavaScript | 2 | 9 | 1 | 12 |
+| [static/blog/assets/vendor/php-email-form/validate.js](/static/blog/assets/vendor/php-email-form/validate.js) | JavaScript | 66 | 5 | 11 | 82 |
+| [static/blog/assets/vendor/purecounter/purecounter_vanilla.js](/static/blog/assets/vendor/purecounter/purecounter_vanilla.js) | JavaScript | 1 | 8 | 0 | 9 |
+| [static/blog/assets/vendor/remixicon/remixicon.css](/static/blog/assets/vendor/remixicon/remixicon.css) | CSS | 2,303 | 10 | 5 | 2,318 |
+| [static/blog/assets/vendor/remixicon/remixicon.less](/static/blog/assets/vendor/remixicon/remixicon.less) | Less | 2,305 | 10 | 5 | 2,320 |
+| [static/blog/assets/vendor/remixicon/remixicon.svg](/static/blog/assets/vendor/remixicon/remixicon.svg) | XML | 6,825 | 10 | 1 | 6,836 |
+| [static/blog/assets/vendor/remixicon/remixicon.symbol.svg](/static/blog/assets/vendor/remixicon/remixicon.symbol.svg) | XML | 11,346 | 10 | 0 | 11,356 |
+| [static/blog/assets/vendor/swiper/swiper-bundle.min.css](/static/blog/assets/vendor/swiper/swiper-bundle.min.css) | CSS | 1 | 11 | 1 | 13 |
+| [static/blog/assets/vendor/swiper/swiper-bundle.min.js](/static/blog/assets/vendor/swiper/swiper-bundle.min.js) | JavaScript | 1 | 12 | 1 | 14 |
+| [static/blog/css/clean-blog.css](/static/blog/css/clean-blog.css) | CSS | 348 | 8 | 57 | 413 |
+| [static/blog/css/clean-blog.min.css](/static/blog/css/clean-blog.min.css) | CSS | 1 | 4 | 0 | 5 |
+| [static/blog/js/clean-blog.js](/static/blog/js/clean-blog.js) | JavaScript | 31 | 6 | 5 | 42 |
+| [static/blog/js/clean-blog.min.js](/static/blog/js/clean-blog.min.js) | JavaScript | 1 | 5 | 1 | 7 |
+| [static/blog/js/contact_me.js](/static/blog/js/contact_me.js) | JavaScript | 64 | 8 | 4 | 76 |
+| [static/blog/js/jqBootstrapValidation.js](/static/blog/js/jqBootstrapValidation.js) | JavaScript | 757 | 96 | 85 | 938 |
+| [static/blog/scss/_bootstrap-overrides.scss](/static/blog/scss/_bootstrap-overrides.scss) | SCSS | 24 | 1 | 3 | 28 |
+| [static/blog/scss/_contact.scss](/static/blog/scss/_contact.scss) | SCSS | 55 | 1 | 3 | 59 |
+| [static/blog/scss/_footer.scss](/static/blog/scss/_footer.scss) | SCSS | 12 | 1 | 1 | 14 |
+| [static/blog/scss/_global.scss](/static/blog/scss/_global.scss) | SCSS | 66 | 1 | 11 | 78 |
+| [static/blog/scss/_masthead.scss](/static/blog/scss/_masthead.scss) | SCSS | 80 | 2 | 1 | 83 |
+| [static/blog/scss/_mixins.scss](/static/blog/scss/_mixins.scss) | SCSS | 66 | 2 | 1 | 69 |
+| [static/blog/scss/_navbar.scss](/static/blog/scss/_navbar.scss) | SCSS | 96 | 4 | 1 | 101 |
+| [static/blog/scss/_post.scss](/static/blog/scss/_post.scss) | SCSS | 41 | 1 | 1 | 43 |
+| [static/blog/scss/_variables.scss](/static/blog/scss/_variables.scss) | SCSS | 29 | 1 | 4 | 34 |
+| [static/blog/scss/clean-blog.scss](/static/blog/scss/clean-blog.scss) | SCSS | 9 | 0 | 1 | 10 |
+| [static/blog/vendor/bootstrap/css/bootstrap-grid.css](/static/blog/vendor/bootstrap/css/bootstrap-grid.css) | CSS | 3,686 | 7 | 211 | 3,904 |
+| [static/blog/vendor/bootstrap/css/bootstrap-grid.min.css](/static/blog/vendor/bootstrap/css/bootstrap-grid.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [static/blog/vendor/bootstrap/css/bootstrap-reboot.css](/static/blog/vendor/bootstrap/css/bootstrap-reboot.css) | CSS | 262 | 8 | 55 | 325 |
+| [static/blog/vendor/bootstrap/css/bootstrap-reboot.min.css](/static/blog/vendor/bootstrap/css/bootstrap-reboot.min.css) | CSS | 1 | 7 | 0 | 8 |
+| [static/blog/vendor/bootstrap/css/bootstrap.css](/static/blog/vendor/bootstrap/css/bootstrap.css) | CSS | 9,063 | 7 | 1,208 | 10,278 |
+| [static/blog/vendor/bootstrap/css/bootstrap.min.css](/static/blog/vendor/bootstrap/css/bootstrap.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [static/blog/vendor/bootstrap/js/bootstrap.bundle.js](/static/blog/vendor/bootstrap/js/bootstrap.bundle.js) | JavaScript | 4,494 | 1,364 | 1,176 | 7,034 |
+| [static/blog/vendor/bootstrap/js/bootstrap.bundle.min.js](/static/blog/vendor/bootstrap/js/bootstrap.bundle.min.js) | JavaScript | 1 | 6 | 0 | 7 |
+| [static/blog/vendor/bootstrap/js/bootstrap.js](/static/blog/vendor/bootstrap/js/bootstrap.js) | JavaScript | 3,255 | 314 | 852 | 4,421 |
+| [static/blog/vendor/bootstrap/js/bootstrap.min.js](/static/blog/vendor/bootstrap/js/bootstrap.min.js) | JavaScript | 1 | 6 | 0 | 7 |
+| [static/blog/vendor/fontawesome-free/css/all.css](/static/blog/vendor/fontawesome-free/css/all.css) | CSS | 3,070 | 6 | 1,481 | 4,557 |
+| [static/blog/vendor/fontawesome-free/css/all.min.css](/static/blog/vendor/fontawesome-free/css/all.min.css) | CSS | 1 | 4 | 0 | 5 |
+| [static/blog/vendor/fontawesome-free/css/brands.css](/static/blog/vendor/fontawesome-free/css/brands.css) | CSS | 10 | 4 | 2 | 16 |
+| [static/blog/vendor/fontawesome-free/css/brands.min.css](/static/blog/vendor/fontawesome-free/css/brands.min.css) | CSS | 1 | 4 | 0 | 5 |
+| [static/blog/vendor/fontawesome-free/css/fontawesome.css](/static/blog/vendor/fontawesome-free/css/fontawesome.css) | CSS | 3,039 | 6 | 1,478 | 4,523 |
+| [static/blog/vendor/fontawesome-free/css/fontawesome.min.css](/static/blog/vendor/fontawesome-free/css/fontawesome.min.css) | CSS | 1 | 4 | 0 | 5 |
+| [static/blog/vendor/fontawesome-free/css/regular.css](/static/blog/vendor/fontawesome-free/css/regular.css) | CSS | 10 | 4 | 2 | 16 |
+| [static/blog/vendor/fontawesome-free/css/regular.min.css](/static/blog/vendor/fontawesome-free/css/regular.min.css) | CSS | 1 | 4 | 0 | 5 |
+| [static/blog/vendor/fontawesome-free/css/solid.css](/static/blog/vendor/fontawesome-free/css/solid.css) | CSS | 11 | 4 | 2 | 17 |
+| [static/blog/vendor/fontawesome-free/css/solid.min.css](/static/blog/vendor/fontawesome-free/css/solid.min.css) | CSS | 1 | 4 | 0 | 5 |
+| [static/blog/vendor/fontawesome-free/css/svg-with-js.css](/static/blog/vendor/fontawesome-free/css/svg-with-js.css) | CSS | 312 | 4 | 56 | 372 |
+| [static/blog/vendor/fontawesome-free/css/svg-with-js.min.css](/static/blog/vendor/fontawesome-free/css/svg-with-js.min.css) | CSS | 1 | 4 | 0 | 5 |
+| [static/blog/vendor/fontawesome-free/css/v4-shims.css](/static/blog/vendor/fontawesome-free/css/v4-shims.css) | CSS | 1,556 | 4 | 613 | 2,173 |
+| [static/blog/vendor/fontawesome-free/css/v4-shims.min.css](/static/blog/vendor/fontawesome-free/css/v4-shims.min.css) | CSS | 1 | 4 | 0 | 5 |
+| [static/blog/vendor/fontawesome-free/webfonts/fa-brands-400.svg](/static/blog/vendor/fontawesome-free/webfonts/fa-brands-400.svg) | XML | 3,566 | 4 | 1 | 3,571 |
+| [static/blog/vendor/fontawesome-free/webfonts/fa-regular-400.svg](/static/blog/vendor/fontawesome-free/webfonts/fa-regular-400.svg) | XML | 799 | 4 | 1 | 804 |
+| [static/blog/vendor/fontawesome-free/webfonts/fa-solid-900.svg](/static/blog/vendor/fontawesome-free/webfonts/fa-solid-900.svg) | XML | 4,934 | 4 | 1 | 4,939 |
+| [static/blog/vendor/jquery/jquery.js](/static/blog/vendor/jquery/jquery.js) | JavaScript | 6,906 | 1,890 | 2,077 | 10,873 |
+| [static/blog/vendor/jquery/jquery.min.js](/static/blog/vendor/jquery/jquery.min.js) | JavaScript | 1 | 1 | 1 | 3 |
+| [static/blog/vendor/jquery/jquery.slim.js](/static/blog/vendor/jquery/jquery.slim.js) | JavaScript | 5,522 | 1,561 | 1,695 | 8,778 |
+| [static/blog/vendor/jquery/jquery.slim.min.js](/static/blog/vendor/jquery/jquery.slim.min.js) | JavaScript | 1 | 1 | 1 | 3 |
+| [static/css/styles.css](/static/css/styles.css) | CSS | 8 | 0 | 3 | 11 |
+| [static/forms/contact.php](/static/forms/contact.php) | PHP | 18 | 16 | 8 | 42 |
+| [templates/Tablas_2_carriles.html](/templates/Tablas_2_carriles.html) | HTML | 550 | 15 | 19 | 584 |
+| [templates/blog-single.html](/templates/blog-single.html) | HTML | 394 | 22 | 83 | 499 |
+| [templates/blog.html](/templates/blog.html) | HTML | 317 | 22 | 74 | 413 |
+| [templates/blog_final.html](/templates/blog_final.html) | HTML | 149 | 21 | 32 | 202 |
+| [templates/data.html](/templates/data.html) | HTML | 89 | 15 | 18 | 122 |
+| [templates/footer.html](/templates/footer.html) | HTML | 40 | 3 | 5 | 48 |
+| [templates/hcm_two_lines.html](/templates/hcm_two_lines.html) | HTML | 98 | 19 | 20 | 137 |
+| [templates/header.html](/templates/header.html) | HTML | 38 | 4 | 12 | 54 |
+| [templates/index.html](/templates/index.html) | HTML | 114 | 20 | 21 | 155 |
+| [templates/index_1.html](/templates/index_1.html) | HTML | 80 | 2 | 2 | 84 |
+| [templates/indextem.html](/templates/indextem.html) | HTML | 830 | 29 | 104 | 963 |
+| [templates/make-post.html](/templates/make-post.html) | HTML | 29 | 4 | 7 | 40 |
+| [templates/multicarril.html](/templates/multicarril.html) | HTML | 123 | 15 | 18 | 156 |
+| [templates/peatones.html](/templates/peatones.html) | HTML | 98 | 19 | 21 | 138 |
+| [templates/post.html](/templates/post.html) | HTML | 87 | 14 | 12 | 113 |
+| [templates/prueba.html](/templates/prueba.html) | HTML | 56 | 2 | 2 | 60 |
+| [templates/resultados.html](/templates/resultados.html) | HTML | 101 | 15 | 19 | 135 |
+| [templates/resultados_2_carriles.html](/templates/resultados_2_carriles.html) | HTML | 289 | 15 | 22 | 326 |
+| [templates/resultados_hcm2.html](/templates/resultados_hcm2.html) | HTML | 3,346 | 15 | 27 | 3,388 |
+| [templates/resultados_multicarril.html](/templates/resultados_multicarril.html) | HTML | 1,139 | 15 | 25 | 1,179 |
+| [templates/resultados_peatones.html](/templates/resultados_peatones.html) | HTML | 1,117 | 15 | 21 | 1,153 |
+| [templates/tabla18mp.html](/templates/tabla18mp.html) | HTML | 1,386 | 15 | 19 | 1,420 |
+| [templates/tabla19mp.html](/templates/tabla19mp.html) | HTML | 963 | 15 | 20 | 998 |
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)

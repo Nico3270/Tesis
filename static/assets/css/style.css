@@ -1991,6 +1991,22 @@ padding-bottom: 0%;
   color: #e03a3c;
 }
 
+.limes {
+  position: relative;
+  display: inline-block;
+  margin: 0 0.2em;
+  vertical-align: middle; 
+  text-align: center;
+}
+.limes > span { 
+  display: block;
+  margin:-0.5ex auto;
+}
+.limes span.numup,
+.limes span.overdn {
+  font-size: 70%;
+}
+
 .blog .sidebar .categories ul a span {
   padding-left: 5px;
   color: #aaaaaa;

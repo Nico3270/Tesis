@@ -761,6 +761,7 @@ def resultado_Multicarril():
     return render_template('resultados_multicarril.html',datos=registro, data=datos)
 
 @app.route("/hcm2",methods=["GET","POST"])
+@app.route("/hcm2",methods=["GET","POST"])
 def hcm_function():
     form = HCM2()
     if form.validate_on_submit():
