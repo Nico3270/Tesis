@@ -1,5 +1,6 @@
 from scipy.interpolate import lagrange, interp1d
 import math
+import sensibilidadHcm2 as senHcm2
 
 def interpolacion(x,y,z):
     y_interp = interp1d(x, y,fill_value="extrapolate")
@@ -28,6 +29,7 @@ recreativos = 0
 #Estimación de factor de ajuste por ancho de carril y berma
 carril_factor = 0
 def factor_carril(a_carril,a_berma):
+    global carril_factor
     if a_carril >= 9 and a_carril < 10:
         if a_berma >= 0 and a_berma < 2:
             carril_factor = 6.4
@@ -141,6 +143,8 @@ tabla65 = {0.25:[0.54,0.64,0.68,0.73,0.88,0.90,0.92,1.00,1.00],
 tabla15_10 = [100,200,300,400,500,600,700,800,900]
 longitudes = [0.25, 0.50, 0.75, 1.00, 1.50, 2.00, 3.00, 4.00]
 def puntos(longitud):
+    var = 0
+    var1 = 0
     for element in longitudes:
         if longitud > element and longitud <= longitudes[(longitudes.index(element))+1]:
             var = element
@@ -150,6 +154,7 @@ valor = 0
 #print(tabla3_35.get(2.00))
 ### fg ATS para pendientes mayores a 3
 def fgATS_pendientes(longitud, volumen, pendiente, tabla):
+    global vars
     vars = puntos(longitud)
     if volumen <= 100:
         valor1 = tabla.get(vars[0])[0]
@@ -192,15 +197,19 @@ def fgATS_pendientes2(longitud, volumen, pendiente):
         return final
     elif pendiente >= 3 and pendiente <3.5:
         tabla = tabla3_35
+        final = fgATS_pendientes1(longitud, volumen, pendiente, tabla)
     elif pendiente >= 3.5 and pendiente <4.5:
         tabla = tabla35_45
+        final = fgATS_pendientes1(longitud, volumen, pendiente, tabla)
     elif pendiente >= 4.5 and pendiente < 5.5:
         tabla = tabla45_55
+        final = fgATS_pendientes1(longitud, volumen, pendiente, tabla)
     elif pendiente >= 5.5 and pendiente < 6.5:
         tabla = tabla55_65
+        final = fgATS_pendientes1(longitud, volumen, pendiente, tabla)
     else:
         tabla = tabla65
-    final = fgATS_pendientes1(longitud, volumen, pendiente, tabla)
+        final = fgATS_pendientes1(longitud, volumen, pendiente, tabla)
     return final
 
 ## Fáctores según volumen ##
@@ -307,6 +316,7 @@ def factorER(pendiente):
         final = 1.0
     elif pendiente <3:
         final = 1.1
+    return final
 
 def factorERpendientes30(longitud, volumen):
     if longitud <= 0.25:
@@ -445,7 +455,7 @@ def factorERpendientes65(longitud,volumen):
     return round(final,1)
 
 def factorERfinal(pendiente, longitud, volumen):
-    if pendiente <3:
+    if pendiente < 3:
         final = factorER(pendiente)
     elif pendiente <3.5:
         final = factorERpendientes30(longitud, volumen)
@@ -627,13 +637,13 @@ tabla15_19_65 = {0.50:[1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0],0.75:[1.0,1.0,1.0,1.
 
 def puntos4(longitud,lista):
     var = 0
-    var1 = 1
+    var1 = 0
     for element in lista:
         if longitud > element and longitud < lista[(lista.index(element))+1]:
             var = element
             var1 = lista[(lista.index(element))+1]
     return(var,var1) 
-print(puntos4(52,[10,20,30,40,50,60,70]))
+
 
 def factorETptsf(pendiente, volumen):
     if pendiente <= 1:
@@ -756,6 +766,7 @@ tabla15_21_90 = {200:[4.6,24.1,33.6,43.1,43.4,43.6],400:[0.0,20.2,28.3,36.3,36.7
 tabla15_21x = [0,20,40,60,80,100]
 
 def factornp(volumen, direccional, no_pase):
+    final = 0
     if direccional <60:
         if volumen <= 200: 
             final = interpolacion(tabla15_21x, tabla15_21_50.get(200), no_pase)
@@ -807,9 +818,11 @@ ptsf2 = BTSF2+fnp_ptsf*(vol_ptsf2/(vol_ptsf1+vol_ptsf2))
 PFFS1 = (ATSd1/vel_flujo_libre)*100
 PFFS2 = (ATSd2/vel_flujo_libre)*100
 print(PFFS1,PFFS2)
-def nivel_servicio(clase,ats,ptsf,pffs):
+def nivel_servicio(clase,ats,ptsf,pffs, vol_ats1, vol_ats2, vol_ptsf1, vol_ptsf2):
     if clase == 1:
-        if ats >55 or ptsf <= 35:
+        if vol_ats1 + vol_ats2 >= 1700 or vol_ptsf1 + vol_ptsf2 >= 1700:
+            final = "F"
+        elif ats >55 or ptsf <= 35:
             final = "A"
         elif ats > 50 or ptsf >35:
             final = "B"
@@ -822,7 +835,9 @@ def nivel_servicio(clase,ats,ptsf,pffs):
         else:
             final = "F"
     elif clase == 2:
-        if ptsf <= 40:
+        if vol_ats1 + vol_ats2 >= 1700 or vol_ptsf1 + vol_ptsf2 >= 1700:
+            final = "F"
+        elif ptsf <= 40:
             final = "A"
         elif ptsf >40 and ptsf <= 55:
             final = "B"
@@ -833,7 +848,9 @@ def nivel_servicio(clase,ats,ptsf,pffs):
         elif ptsf > 85:
             final = "E"
     elif clase == 3:
-        if pffs > 91.7:
+        if vol_ats1 + vol_ats2 >= 1700 or vol_ptsf1 + vol_ptsf2 >= 1700:
+            final = "F"
+        elif pffs > 91.7:
             final = "A"
         elif pffs > 83.3 and pffs <= 91.7:
             final = "B"
@@ -846,67 +863,124 @@ def nivel_servicio(clase,ats,ptsf,pffs):
     return final
 #Paso 8 - Nivel de Servicio - ####
 
-level1 = (nivel_servicio(clase_autopista,ATSd1,ptsf1,PFFS1))
-level2 = (nivel_servicio(clase_autopista,ATSd1,ptsf1,PFFS1))
+# level1 = (nivel_servicio(clase_autopista,ATSd1,ptsf1,PFFS1))
+# level2 = (nivel_servicio(clase_autopista,ATSd1,ptsf1,PFFS1))
 
-def hcm2_final(clase,a_carril,a_berma,longitud,pendiente,velocidad,volumen_inicial,d_sentido,accesos,p_no_rebase,fhp,p_pesados,recreativos):
-    clase = int(clase)
-    a_carril = float(a_carril)
-    a_berma = float(a_berma)
-    longitud = float(longitud)
-    pendiente = float(pendiente)
-    velocidad = float(velocidad)
-    volumen_inicial = int(volumen_inicial)
-    d_sentido = float(d_sentido)
+def distSentido (vol1, vol2):
+    if vol1 > vol2:
+        mayor = vol1
+    else:
+        mayor = vol2
+    sume = vol1 + vol2
+    data = round((mayor*100)/sume,0)
+    data = float(data)
+    return data
+
+def hcm2_final_asc(clase, a_carril, a_berma,longitud,asc_desc,pendiente,velocidad,vol_analisis,vol_opuesto,accesos,p_no_rebase,fhp,p_camiones,
+p_recreativos,opc_velocidad, vel_campo,camiones_freno ):
+    volumen_inicial = int(vol_analisis + vol_opuesto)
+    d_sentido = distSentido(vol_opuesto, vol_analisis)
     FA = factor_accesos(accesos)
     Fls = factor_carril(a_carril, a_berma)
-    bffs = velocidad
-    vel_flujo_libre = bffs - FA - Fls   
-    volumen1 = int(volumen_inicial*(d_sentido/100))
-    volumen2 = volumen_inicial- volumen1
+    bffs = velocidad  
+    volumen1 = vol_analisis
+    volumen2 = vol_opuesto
     volumen1 = float(volumen1)
     volumen2 = float(volumen2)
     fgATS1 = fgATS_pendientes2(longitud, volumen1, pendiente)
-    fgATS2 = fgATS_pendientes2(longitud, volumen2, pendiente)
+    fgATS2 = fgATS_pendientes2(longitud, volumen2, 0)
     facET1 = factorETpendientes2(longitud, volumen1, pendiente)
-    facET2 = factorETpendientes2(longitud, volumen2, pendiente)
+    facET2 = factorETpendientes2(longitud, volumen2, 0)
     facER1 = factorERfinal(pendiente, longitud, volumen1)
-    facER2 = factorERfinal(pendiente, longitud, volumen2) 
-    p_camiones = p_pesados/100
-    p_recreativos = recreativos/100
-    print("No encuentro el error")
-    print(fhp)
-    print("Nada aún")
-    fhv1 = round(1/(1+(p_camiones*(facET1-1))+(p_recreativos*(facER1-1))),2)
-    fhv2 = round(1/(1+(p_camiones*(facET2-1))+(p_recreativos*(facER2-1))),2)
-    print(fhp,fgATS1,fhv1)
-    vol_ats1 = volumen1/(fhp*fgATS1*fhv1)
-    vol_ats2 = volumen2/(fhp*fgATS2*fhv2)
-    factor_fnp_ats1 = fns_ats_final(volumen2, p_no_rebase, vel_flujo_libre)
-    factor_fnp_ats2 = fns_ats_final(volumen1, p_no_rebase, vel_flujo_libre)
+    facER2 = factorERfinal(0, longitud, volumen2) 
+    p_camiones = p_camiones/100
+    p_recreativos = p_recreativos/100
+    fhv1 = round(1/(1+(p_camiones*(facET1-1))+(p_recreativos*(facER1-1))),3)
+    fhv2 = round(1/(1+(p_camiones*(facET2-1))+(p_recreativos*(facER2-1))),3)
+    if opc_velocidad == "Si":
+        vel_flujo_libre = round(vel_campo + (0.00776*(volumen_inicial/fhv1)),2)
+    else:
+        vel_flujo_libre = bffs - FA - Fls 
+    vol_ats1 = round(volumen1/(fhp*fgATS1*fhv1),0)
+    vol_ats2 = round(volumen2/(fhp*fgATS2*fhv2),0)
+    factor_fnp_ats1 = fns_ats_final(volumen1, p_no_rebase, vel_flujo_libre)
+    factor_fnp_ats2 = fns_ats_final(volumen2, p_no_rebase, vel_flujo_libre)
     ATSd1 = round(vel_flujo_libre - 0.00776*(vol_ats1 + vol_ats2) - factor_fnp_ats1,2)
     ATSd2 = round(vel_flujo_libre - 0.00776*(vol_ats1 + vol_ats2) - factor_fnp_ats2,2)
     fg_PTSF1 = factorfgPTSF_final(pendiente, longitud, volumen1)
-    fg_PTSF2 = factorfgPTSF_final(pendiente, longitud, volumen2)
+    fg_PTSF2 = factorfgPTSF_final(0, longitud, volumen2)
     ETptsf1 = factorETptsf_final(pendiente,longitud,volumen1)
-    ETptsf2 = factorETptsf_final(pendiente,longitud,volumen2)
-    fhvptsf1 = round(1/(1+p_camiones*(ETptsf1-1)+p_recreativos*(1-1)),3)
-    fhvptsf2 = round(1/(1+p_camiones*(ETptsf2-1)+p_recreativos*(1-1)),3)
+    ETptsf2 = factorETptsf_final(0,longitud,volumen2)
+    fhvptsf1 = round(1/(1+p_camiones*(ETptsf1-1)+p_recreativos*(1-1)),4)
+    fhvptsf2 = round(1/(1+p_camiones*(ETptsf2-1)+p_recreativos*(1-1)),4)
     vol_ptsf1 = round(volumen1/(fhp*fg_PTSF1*fhvptsf1),0)
     vol_ptsf2 = round(volumen2/(fhp*fg_PTSF2*fhvptsf2),0)
-    coef_1 = coeficientes(volumen1)
-    coef_2 = coeficientes(volumen2)
-    BTSF1 = round(100*(1-math.exp(coef_1[0]*(volumen1**coef_1[1]))),2)
-    BTSF2 = round(100*(1-math.exp(coef_1[0]*(volumen2**coef_2[1]))),2)
-    fnp_ptsf = factornp(volumen_demanda, volumen_direccional, p_no_rebase)
+    coef_1 = coeficientes(vol_ptsf2)
+    coef_2 = coeficientes(vol_ptsf1)
+    BTSF1 = round(100*(1-math.exp(coef_1[0]*(vol_ptsf1**coef_1[1]))),2)
+    BTSF2 = round(100*(1-math.exp(coef_1[0]*(vol_ptsf2**coef_2[1]))),2)
+    fnp_ptsf = factornp(vol_ptsf1+vol_ptsf2,d_sentido, p_no_rebase)
     ptsf1 = round(BTSF1+fnp_ptsf*(vol_ptsf1/(vol_ptsf1+vol_ptsf2)),2)
     ptsf2 = round(BTSF2+fnp_ptsf*(vol_ptsf2/(vol_ptsf1+vol_ptsf2)),2)
     PFFS1 = round((ATSd1/vel_flujo_libre*100),2)
     PFFS2 = round((ATSd2/vel_flujo_libre*100),2)
-    level1 = (nivel_servicio(clase,ATSd1,ptsf1,PFFS1))
-    level2 = (nivel_servicio(clase,ATSd2,ptsf2,PFFS2))
+    level1 = (nivel_servicio(clase,ATSd1,ptsf1,PFFS1, vol_ats1, vol_ats2, vol_ptsf1, vol_ptsf2))
+    level2 = (nivel_servicio(clase,ATSd2,ptsf2,PFFS2, vol_ats1, vol_ats2, vol_ptsf1, vol_ptsf2))
     return (FA,Fls,bffs,vel_flujo_libre,volumen1,volumen2,fgATS1,fgATS2,facET1,facET2,facER1,facER2,p_camiones,p_recreativos,
     fhv1,fhv2,vol_ats1,vol_ats2,factor_fnp_ats1,factor_fnp_ats2,ATSd1,ATSd2,fg_PTSF1,fg_PTSF2,ETptsf1,ETptsf2,fhvptsf1,fhvptsf2,
     vol_ptsf1,vol_ptsf2,coef_1[0],coef_1[1],coef_2[0],coef_2[1],BTSF1,BTSF2,fnp_ptsf,ptsf1,ptsf2,PFFS1,PFFS2,level1,level2)
 
+def hcm2_final_desc(clase, a_carril, a_berma,longitud,asc_desc,pendiente,velocidad,vol_analisis,vol_opuesto,accesos,p_no_rebase,fhp,p_camiones,
+p_recreativos,opc_velocidad, vel_campo,camiones_freno ):
+    volumen_inicial = int(vol_analisis + vol_opuesto)
+    d_sentido = distSentido(vol_opuesto, vol_analisis)
+    FA = factor_accesos(accesos)
+    Fls = factor_carril(a_carril, a_berma)
+    bffs = velocidad  
+    volumen1 = vol_analisis
+    volumen2 = vol_opuesto
+    volumen1 = float(volumen1)
+    volumen2 = float(volumen2)
+    fgATS1 = fgATS_pendientes2(longitud, volumen1, 0)
+    fgATS2 = fgATS_pendientes2(longitud, volumen2, pendiente)
+    facET1 = factorETpendientes2(longitud, volumen1, 0)
+    facET2 = factorETpendientes2(longitud, volumen2, pendiente)
+    facER1 = factorERfinal(0, longitud, volumen1)
+    facER2 = factorERfinal(pendiente, longitud, volumen2) 
+    p_camiones = p_camiones/100
+    p_recreativos = p_recreativos/100
+    fhv1 = round(1/(1+(p_camiones*(facET1-1))+(p_recreativos*(facER1-1))),3)
+    fhv2 = round(1/(1+(p_camiones*(facET2-1))+(p_recreativos*(facER2-1))),3)
+    if opc_velocidad == "Si":
+        vel_flujo_libre = round(vel_campo + (0.00776*(volumen_inicial/fhv1)),2)
+    else:
+        vel_flujo_libre = bffs - FA - Fls 
+    vol_ats1 = round(volumen1/(fhp*fgATS1*fhv1),0)
+    vol_ats2 = round(volumen2/(fhp*fgATS2*fhv2),0)
+    factor_fnp_ats1 = fns_ats_final(volumen2, p_no_rebase, vel_flujo_libre)
+    factor_fnp_ats2 = fns_ats_final(volumen1, p_no_rebase, vel_flujo_libre)
+    ATSd1 = round(vel_flujo_libre - 0.00776*(vol_ats1 + vol_ats2) - factor_fnp_ats1,2)
+    ATSd2 = round(vel_flujo_libre - 0.00776*(vol_ats1 + vol_ats2) - factor_fnp_ats2,2)
+    fg_PTSF1 = factorfgPTSF_final(0, longitud, volumen1)
+    fg_PTSF2 = factorfgPTSF_final(pendiente, longitud, volumen2)
+    ETptsf1 = factorETptsf_final(0,longitud,volumen1)
+    ETptsf2 = factorETptsf_final(pendiente,longitud,volumen2)
+    fhvptsf1 = round(1/(1+p_camiones*(ETptsf1-1)+p_recreativos*(1-1)),4)
+    fhvptsf2 = round(1/(1+p_camiones*(ETptsf2-1)+p_recreativos*(1-1)),4)
+    vol_ptsf1 = round(volumen1/(fhp*fg_PTSF1*fhvptsf1),0)
+    vol_ptsf2 = round(volumen2/(fhp*fg_PTSF2*fhvptsf2),0)
+    coef_1 = coeficientes(vol_ptsf2)
+    coef_2 = coeficientes(vol_ptsf1)
+    BTSF1 = round(100*(1-math.exp(coef_1[0]*(vol_ptsf1**coef_1[1]))),2)
+    BTSF2 = round(100*(1-math.exp(coef_1[0]*(vol_ptsf2**coef_2[1]))),2)
+    fnp_ptsf = factornp(vol_ptsf1+vol_ptsf2,d_sentido, p_no_rebase)
+    ptsf1 = round(BTSF1+fnp_ptsf*(vol_ptsf1/(vol_ptsf1+vol_ptsf2)),2)
+    ptsf2 = round(BTSF2+fnp_ptsf*(vol_ptsf2/(vol_ptsf1+vol_ptsf2)),2)
+    PFFS1 = round((ATSd1/vel_flujo_libre*100),2)
+    PFFS2 = round((ATSd2/vel_flujo_libre*100),2)
+    level1 = (nivel_servicio(clase,ATSd1,ptsf1,PFFS1, vol_ats1, vol_ats2, vol_ptsf1, vol_ptsf2))
+    level2 = (nivel_servicio(clase,ATSd2,ptsf2,PFFS2, vol_ats1, vol_ats2, vol_ptsf1, vol_ptsf2))
+    return (FA,Fls,bffs,vel_flujo_libre,volumen1,volumen2,fgATS1,fgATS2,facET1,facET2,facER1,facER2,p_camiones,p_recreativos,
+    fhv1,fhv2,vol_ats1,vol_ats2,factor_fnp_ats1,factor_fnp_ats2,ATSd1,ATSd2,fg_PTSF1,fg_PTSF2,ETptsf1,ETptsf2,fhvptsf1,fhvptsf2,
+    vol_ptsf1,vol_ptsf2,coef_1[0],coef_1[1],coef_2[0],coef_2[1],BTSF1,BTSF2,fnp_ptsf,ptsf1,ptsf2,PFFS1,PFFS2,level1,level2)
 

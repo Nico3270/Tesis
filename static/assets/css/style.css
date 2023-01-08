@@ -804,6 +804,13 @@ padding-bottom: 0%;
   color: #e03a3c;
 }
 
+.form-label {
+    color:rgb(37, 36, 36);
+    
+    
+    
+  }
+
 .tabs .tab-pane p:last-child {
   margin-bottom: 0;
 }
@@ -833,7 +840,7 @@ padding-bottom: 0%;
   font-family: "Tinos", serif;
   text-align: center;
   margin-top: 1rem;
-}
+;}
 
 .fraction {
   display: inline-block;
@@ -951,10 +958,32 @@ padding-bottom: 0%;
   border-radius: 3px;
 }
 
+
+
+.footer-32892, .footer-32892 h3 {
+    font-family: "Poppins", sans-serif;
+}
+.footer-32892 {
+    background-color: #202126;
+    padding: 1rem 0;
+    color: #888;
+    font-size: 16px;
+}
+.footer-32892 {
+    background-color: #fff;
+    padding: 1rem 0;
+    color: rgb(211, 2, 2);
+    font-size: 16px;
+}
+
+.pb-0, .py-0 {
+  padding-bottom: 0!important;
+}
+
 .portfolio #portfolio-flters li:hover,
 .portfolio #portfolio-flters li.filter-active {
-  color: #fff;
-  background: #e03a3c;
+  color: #FFF;
+  background: #EB455F;
 }
 
 .portfolio #portfolio-flters li:last-child {
@@ -2027,6 +2056,25 @@ padding-bottom: 0%;
   margin-left: 95px;
   font-weight: bold;
 }
+
+.label-color {
+  color: red;
+}
+
+.form-color {
+  color: red;
+  background-color: #111;
+}
+
+.pynto1 { 
+  color: green;
+}
+
+.red-label {
+  color: red;
+}
+
+
 
 .blog .sidebar .recent-posts h4 a {
   color: #111111;

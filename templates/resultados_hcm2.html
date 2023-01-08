@@ -109,6 +109,8 @@
                           <li class="list-group-item">Ancho de berma: <b>{{data.a_berma_db}} pies</b> </li>
                           <li class="list-group-item">Longitud del tramo: <b>{{data.longitud_tramo_db}} millas</b></li>
                           <li class="list-group-item">Pendiente del tramo: <b> {{data.pendiente_tramo_db}} %</b></li>
+                          <li class="list-group-item">Velocidad a flujo libre en campo: <b> {{data.vel_campo_db}}
+                              mi/h</b>
                           <li class="list-group-item">Velocidad a flujo libre base: <b> {{data.velocidad_db}} mi/h</b>
                           </li>
                           <li class="list-group-item">Porcentaje de zonas de no pase: <b>{{data.p_no_rebase_db}} % </b>
@@ -146,8 +148,105 @@
         <br>
         <div class="col-lg-6 col-md-12 col-sm-12">
           <div class="container">
-            <h1 style="text-align:center ;">Resultados obtenidos</h1>
-
+            <h1 class="subtitulos">Resultados obtenidos</h1>
+            <div class="card">
+              <div class="card-body"><br>
+                <h5 class="card-title pasos">Velocidad promedio de viaje ATS</h5>
+                <div class="row">
+                  <div class="col-lg-4">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item subtitulos pasos"><b>Dirección</b></li>
+                      <li class="list-group-item"><b>Factor E<sub>T</sub></b></li>
+                      <li class="list-group-item"><b>Factor E<sub>R</sub></b></li>
+                      <li class="list-group-item"><b>Factor f<sub>HV</sub></b></li>
+                      <li class="list-group-item"><b>Volumen ajustado</b></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-4">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item text-center subtitulos pasos"><b>Análisis</b></li>
+                      <li class="list-group-item text-center">{{data.facET1_db}}</li>
+                      <li class="list-group-item text-center">{{data.facER1_db}}</li>
+                      <li class="list-group-item text-center">{{data.fhv1_db}}</li><br>
+                      <li class="list-group-item text-center">{{data.vol_ats1_db}} pc/h</li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-4">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item text-center subtitulos pasos"><b>Opuesta</b></li>
+                      <li class="list-group-item text-center">{{data.facET2_db}}</li>
+                      <li class="list-group-item text-center">{{data.facER2_db}}</li>
+                      <li class="list-group-item text-center">{{data.fhv2_db}}</li><br>
+                      <li class="list-group-item text-center">{{data.vol_ats2_db}} pc/h</li>
+                    </ul>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><b>Velocidad a flujo libre FFS<sub>d</sub></b></li>
+                      <li class="list-group-item"><b>Factor f<sub>np</sub></b></li>
+                      <li class="list-group-item"><b>ATS<sub>d</sub></b></li>
+                      <li class="list-group-item"><b>PFFS</b></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-6">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item text-center">{{data.vel_flujo_libre_db}} mi/h</li>
+                      <li class="list-group-item text-center">{{data.factor_fnp_ats1_db}}</li>
+                      <li class="list-group-item text-center">{{data.ATSd1_db}} mi/h</li>
+                      <li class="list-group-item text-center">{{data.PFFS1_db}} %</li>
+                    </ul>
+                  </div>
+                </div>
+                <hr>
+                <h5 class="card-title pasos">Porcentaje de tiempo de seguimiento PTSF</h5>
+                <div class="row">
+                  <div class="col-lg-4">
+                    <ul class="list-group list-group-flush">
+  
+                      <li class="list-group-item"><b>Factor E<sub>T</sub></b></li>
+                      <li class="list-group-item"><b>Factor  f<sub>HV</sub></b></li>
+                      <li class="list-group-item"><b>Volumen ajustado </b> </li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-4">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item text-center">{{data.ETptsf1_db}}</li>
+                      <li class="list-group-item text-center">{{data.fhvptsf1_db}}</li><br>
+                      <li class="list-group-item text-center">{{data.vol_ptsf1_db}} pc/h</li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-4">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item text-center">{{data.ETptsf2_db}}</li>
+                      <li class="list-group-item text-center">{{data.fhvptsf2_db}}</li><br>
+                      <li class="list-group-item text-center">{{data.vol_ptsf2_db}} pc/h</li>
+                    </ul>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><b>BPTSF</b></li>
+                      <li class="list-group-item"><b>Factor f<sub>np</sub></b></li>
+                      <li class="list-group-item"><b>PTSF</b></li>
+                      <li class="list-group-item"><b>Nivel de servicio</b></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-6">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item text-center">{{data.BTSF1_db}} %</li>
+                      <li class="list-group-item text-center">{{data.fnp_ptsf_db}}</li>
+                      <li class="list-group-item text-center">{{data.ptsf1_db}} %</li>
+                      <li class="list-group-item text-center">{{data.level1_db}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -191,6 +290,9 @@
         horizontal y vertical. Los límites de velocidad publicados pueden no reflejar
         las condiciones actuales o los deseos del conductor. Se podría tomar una estimación aproximada de BFFS como el
         límite de velocidad publicado más 10 mi/h.</h5>
+
+
+      {% if data.opc_velocidad_db == "No" %}
       <h5 class="text-general">El valor ingresado como velocidad a flujo libre base por el usuario es:
         <b>{{data.velocidad_db}} mi/h</b>
       </h5>
@@ -225,6 +327,7 @@
           <div class="container">
             <h5 class="tablas"><b>Tabla 1.</b> Factor de ajuste por anchos de carril y berma F<sub>LS</sub>.</h5>
             <div class="table-responsive ">
+
               <table class="table-bordered mx-auto">
                 <thead class="thead-dark">
                   <tr>
@@ -241,21 +344,21 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="celda">&#8805; 9,<10< /td>
+                    <td class="celda">&#8805; 9,<10</td>
                     <td class="celda">6.4</td>
                     <td class="celda">4.8</td>
                     <td class="celda">3.5</td>
                     <td class="celda">2.2</td>
                   </tr>
                   <tr>
-                    <td class="celda">&#8805; 10,<11< /td>
+                    <td class="celda">&#8805; 10,<11</td>
                     <td class="celda">5.3</td>
                     <td class="celda">3.7</td>
                     <td class="celda">2.4</td>
                     <td class="celda">1.1</td>
                   </tr>
                   <tr>
-                    <td class="celda">&#8805; 11,<12< /td>
+                    <td class="celda">&#8805; 11,<12</td>
                     <td class="celda">4.7</td>
                     <td class="celda">3.0</td>
                     <td class="celda">1.7</td>
@@ -337,6 +440,53 @@
           {{data.FA_db}} mi/h</h5>
         <h4 class="subtitulos formulas"><b>FFS</b> = {{data.vel_flujo_libre_db}} mi/h</h4>
       </div>
+      {% endif %}
+
+      {%if data.opc_velocidad_db == "Si"%}
+      <h5 class="text-general pasos">Velocidad a Flujo Libre medida en campo (FFS)</h5>
+      <h5 class="text-general">En ocasiones, la observación con volumenes totales inferiores a 200 veh/h puede ser
+        díficil o
+        imposible. En tales casos, se puede tomar una muestra de velocidad con volumenes superiores y ajustarse en
+        consecuencia.
+        El enfoque adoptado para este procedimiento, es que cada dirección se observa por separado, y cada muestra
+        direccional
+        incluye al menos 100 velocidad observadas. A continuación, se muestra como se ajusta la velocidad medida, bajo
+        estas condiciones. </h5>
+      <h4 class="formulas subtitulos">
+        <div class="eq-c">
+          <i>FFS = S<sub>FM</sub> + 0.0076 </i>
+          <div class="fraction">
+            <span class="fup"><i>V</i></span>
+            <span class="bar">/</span>
+            <span class="fdn"><i>f<sub>HV,ATS</sub></i></span>
+          </div>
+        </div>
+      </h4>
+      <h5 class="text-general">Donde:</h5>
+      <h5 class="text-general"><b><i>FFS</i></b> = Velocidad a flujo libre medida en campo;</h5>
+      <h5 class="text-general"><i><b>v</b></i> = Volumen total de demanda en ambos sentidos, durante el período de
+        medición de velocidad.</h5>
+      <h5 class="text-general">Factor de ajuste de vehículos pesados para la estimación de ATS</h5>
+      <br>
+      <h5 class="text-general">Se reemplaza la velocidad a flujo libre medida en campo {{data.vel_campo_db}} mi/h, un
+        volumen
+        total igual a {{data.volumen_db}} veh/h y un factor de ajuste de vehiculos pesadosequivalente a {{data.fhv1_db}}
+        (Procedimiento mas adelante), y se obiene:
+      </h5>
+      <h4 class="formulas subtitulos">
+        <div class="eq-c">
+          <i>FFS = {{data.vel_campo_db}} + 0.0076 </i>
+          <div class="fraction">
+            <span class="fup"><i>{{data.volumen_db}}</i></span>
+            <span class="bar">/</span>
+            <span class="fdn"><i>{{data.fhv1_db}}</sub></i></span>
+          </div>
+        </div>
+      </h4>
+      <h4 class="subtitulos formulas">
+        <strong>Velocidad a flujo libre FFS =</strong> {{data.vel_flujo_libre_db}}
+      </h4>
+      {%endif%}
       <hr>
       <h3 class="subtitulos pasos">Paso 3. Ajuste de demanda para ATS (Velocidad de viaje promedio)</h3>
       <h5 class="text-general">Este paso solo se requiere para carreteras de dos carriles Clase I y Clase III. El nivel
@@ -1653,7 +1803,7 @@
             </thead>
             <tbody>
               <tr>
-                <td class="celda" rowspan="5">&#8805;3, <3.5< /td>
+                <td class="celda" rowspan="5">&#8805;3, <3.5</td>
                 <td class="celda">
                   <= 0.25</td>
                 <td class="celda">1.1</td>
@@ -1718,7 +1868,7 @@
                 <td class="celda">1.0</td>
               </tr>
               <tr>
-                <td class="celda" rowspan="3">&#8805;3.5 , <4.5< /td>
+                <td class="celda" rowspan="3">&#8805;3.5 , <4.5</td>
                 <td class="celda">
                   <= 0.75</td>
                 <td class="celda">1.3</td>
@@ -1732,7 +1882,7 @@
                 <td class="celda">1.0</td>
               </tr>
               <tr>
-                <td class="celda">>0.75 , <=3.50< /td>
+                <td class="celda">>0.75 , <=3.50</td>
                 <td class="celda">1.4</td>
                 <td class="celda">1.3</td>
                 <td class="celda">1.2</td>
@@ -1756,9 +1906,9 @@
                 <td class="celda">1.0</td>
               </tr>
               <tr>
-                <td class="celda" rowspan="2">&#8805;4.5, <5.5< /td>
+                <td class="celda" rowspan="2">&#8805;4.5, <5.5</td>
                 <td class="celda">
-                  <=2.5< /td>
+                  <=2.5</td>
                 <td class="celda">1.5</td>
                 <td class="celda">1.4</td>
                 <td class="celda">1.3</td>
@@ -1782,9 +1932,9 @@
                 <td class="celda">1.0</td>
               </tr>
               <tr>
-                <td class="celda" rowspan="4">&#8805;5.5, <6.5< /td>
+                <td class="celda" rowspan="4">&#8805;5.5, <6.5</td>
                 <td class="celda">
-                  <=0.75< /td>
+                  <=0.75</td>
                 <td class="celda">1.5</td>
                 <td class="celda">1.4</td>
                 <td class="celda">1.3</td>
@@ -1796,7 +1946,7 @@
                 <td class="celda">1.0</td>
               </tr>
               <tr>
-                <td class="celda">>0.75, <=2.50< /td>
+                <td class="celda">>0.75, <=2.50 </td>
                 <td class="celda">1.6</td>
                 <td class="celda">1.5</td>
                 <td class="celda">1.4</td>
@@ -1808,7 +1958,7 @@
                 <td class="celda">1.0</td>
               </tr>
               <tr>
-                <td class="celda">>2.50, <=3.50< /td>
+                <td class="celda">>2.50, <=3.50 </td>
                 <td class="celda">1.6</td>
                 <td class="celda">1.5</td>
                 <td class="celda">1.4</td>
@@ -1847,7 +1997,7 @@
                 <td class="celda">1.0</td>
               </tr>
               <tr>
-                <td class="celda">>2.5, <=3.50< /td>
+                <td class="celda">>2.5, <=3 .50</td>
                 <td class="celda">1.6</td>
                 <td class="celda">1.5</td>
                 <td class="celda">1.4</td>
@@ -1920,8 +2070,9 @@
               </h5>
               <h5>Con estos valores se realiza la interpolación con la tabla {% if data.pendiente_tramo_db >= 3%} 7
                 {%endif%} {% if data.pendiente_tramo_db < 3%} 5 {%endif%}.</h5>
-                  <h5 class="text-general">Se obtiene un equivalente de camiones a vehiculos para ATS igual a: </h5>
-                  <h5 class="subtitulos"><b>E<sub>T</sub></b> = {{data.facER1_db}}</h5>
+                  <h5 class="text-general">Se obtiene un equivalente de vehiculos recreativos a vehiculos para ATS igual
+                    a: </h5>
+                  <h5 class="subtitulos"><b>E<sub>R</sub></b> = {{data.facER1_db}}</h5>
             </div>
           </div>
           <div class="col-lg-6">
@@ -1937,8 +2088,9 @@
                 </h5>
                 <h5>Con estos valores se realiza la interpolación con la tabla {% if data.pendiente_tramo_db >= 3%} 7
                   {%endif%} {% if data.pendiente_tramo_db < 3%} 5 {%endif%}.</h5>
-                    <h5 class="text-general">Se obtiene un equivalente de camiones a vehiculos para ATS igual a: </h5>
-                    <h5 class="subtitulos"><b>E<sub>T</sub></b> = {{data.facER2_db}}</h5>
+                    <h5 class="text-general">Se obtiene un equivalente de vehiculos recreativos a vehiculos para ATS
+                      igual a: </h5>
+                    <h5 class="subtitulos"><b>E<sub>R</sub></b> = {{data.facER2_db}}</h5>
               </div>
             </div>
           </div>
@@ -2463,6 +2615,8 @@
             </div>
             <br>
             <br>
+            <hr>
+            <h5 class="subtitulos pasos">Factor de ajuste por zonas de no paso para ATS <b>f<sub>np,ATS</sub></b></h5>
             <h5 class="text-general">De los datos iniciales se tiene:
               <li><b>Porcentaje de zonas de no paso:</b> {{data.p_no_rebase_db}} %</li>
               <li><b>Velocidad a flujo libre FFSS</b> = {{data.vel_flujo_libre_db}} mi/h</li>
@@ -2475,6 +2629,7 @@
             <h5 class="text-general"><b>f<sub>np,ATS1</sub></b> = {{data.factor_fnp_ats1_db}}</h5>
             <h5 class="text-general"><b>f<sub>np,ATS2</sub></b> = {{data.factor_fnp_ats2_db}}</h5>
             <br>
+            <hr>
             <h5 class="text general pasos">Estimación final de ATS (Velocidad de viaje promedio)</h5>
             <h5 class="text general">Se reemplazan los volumenes en condiciones base para ATS y los factores de ajuste
               por porcentaje de zonas de no paso en la ecuación 4, y se
@@ -3544,7 +3699,7 @@
           <div class="col-lg-6 col-md-6">
             <div class="container">
               <h5 class="subtitulos pasos">BTSF en dirección 1.</h5>
-              <h5 class="text-geneal">Volumen en dirección opuesta al sentido 1 = {{data.vol_ptsf1_db}} pc/h.</h5>
+              <h5 class="text-geneal">Volumen en dirección opuesta al sentido 1 = {{data.vol_ptsf2_db}} pc/h.</h5>
               <h5 class="text-general"><b>Coeficiente a</b> = {{data.coef_a1_db}}</h5>
               <h5 class="text-general"><b>Coeficiente b</b> = {{data.coef_b1_db}}</h5>
               <h5 class="text text-general">Reemplazando los coeficientes en la ecuacion 8, se obtiene:</h5>
@@ -3558,7 +3713,7 @@
           <div class="col-lg-6 col-md-6">
             <div class="container">
               <h5 class="subtitulos pasos">BTSF en dirección 2.</h5>
-              <h5 class="text-geneal">Volumen en dirección opuesta al sentido 2 = {{data.vol_ptsf2_db}} pc/h.</h5>
+              <h5 class="text-geneal">Volumen en dirección opuesta al sentido 2 = {{data.vol_ptsf1_db}} pc/h.</h5>
               <h5 class="text-general"><b>Coeficiente a</b> = {{data.coef_a2_db}}</h5>
               <h5 class="text-general"><b>Coeficiente b</b> = {{data.coef_b2_db}}</h5>
               <h5 class="text text-general">Reemplazando los coeficientes en la ecuacion 8, se obtiene:</h5>
@@ -3915,6 +4070,7 @@
             factor de ajuste por zonas de no paso es igual a:</h5>
           <h4 class="formulas subtitulos"><b><i>f<sub>np,PTSF</sub></i></b> = {{data.fnp_ptsf_db}}</h4>
           <br>
+          <hr>
           <h5 class="pasos subtitulos">Cálculo final de PTSF</h5>
           <h5 class="text-general">Luego de determinar el factor de ajuste por zonas de no paso, el porcentaje base de
             tiempo de seguimiento y los volumenes de demanda ajustados
@@ -3957,11 +4113,11 @@
         </div>
         <hr>
         <div class="row">
-          <h3 class="pasos">Paso 7. Estimacción de PFFS ( Porcentaje de velocidad a flujo libre).</h3>
-          <h5 class="text-general">Este paso es solamente requerido para el análisis de carreteras de carriles 
+          <h3 class="pasos">Paso 7. Estimación de PFFS ( Porcentaje de velocidad a flujo libre).</h3>
+          <h5 class="text-general">Este paso es solamente requerido para el análisis de carreteras de carriles
             de clase III. PFFS no se utiliza para determinar niveles de servicio en carreteras clase I y clase III,
-            sin embargo este paso puede ser utilizado para análisis del comportamiente de la vía. El Cálculo de este 
-            factor es sencillo, ya que tanto el FFS como el ATS, ya se han determinado en pasos anteriores. El PFFS 
+            sin embargo este paso puede ser utilizado para análisis del comportamiente de la vía. El Cálculo de este
+            factor es sencillo, ya que tanto el FFS como el ATS, ya se han determinado en pasos anteriores. El PFFS
             se calcula a partir de la ecuación 9.
           </h5>
           <h5 class="ecuacion"><b>Ecuación 9.</b></h5>
@@ -3980,7 +4136,7 @@
               <h5 class="pasos subtitulos">PFFS dirección 1</h5>
               <h4 class="subtitulos formulas">
                 <div class="eq-c">
-                  PFFS<sub>1</sub> = 
+                  PFFS<sub>1</sub> =
                   <div class="fraction">
                     <span class="fup">{{data.ATSd1_db}}</span>
                     <span class="bar">/</span>
@@ -3996,7 +4152,7 @@
               <h5 class="pasos subtitulos">PFFS dirección 2</h5>
               <h4 class="subtitulos formulas">
                 <div class="eq-c">
-                  PFFS<sub>1</sub> = 
+                  PFFS<sub>2</sub> =
                   <div class="fraction">
                     <span class="fup">{{data.ATSd2_db}}</span>
                     <span class="bar">/</span>
@@ -4004,20 +4160,20 @@
                   </div>
                 </div>
               </h4>
-              <h4 class="formulas subtitulos"><b>PFFS<sub>1</sub></b> = {{data.PFFS2_db}}</h4>
+              <h4 class="formulas subtitulos"><b>PFFS<sub>2</sub></b> = {{data.PFFS2_db}}</h4>
             </div>
           </div>
         </div>
         <hr>
         <div class="row">
           <h3 class="subtitulos pasos">Paso 8. Determinación de Nivel de Servicio y Capacidad</h3>
-          <h5 class="text-general">En este punto del análisis, se han determinado los valores de las medidas necesarias. 
-            Los niveles de servicio se determinan comparando las medidas apropiadas con los criterios de la tabla 15. 
+          <h5 class="text-general">En este punto del análisis, se han determinado los valores de las medidas necesarias.
+            Los niveles de servicio se determinan comparando las medidas apropiadas con los criterios de la tabla 15.
             Las medidas utilizadas deben ser apropiadas para la clase de instalación estudiada. </h5>
           <h5 class="text-general">
-              <ul><b>Clase I:</b> ATS y PTSF,</ul>
-              <ul><b>Clase II:</b> PTSF, y</ul>
-              <ul><b>Clase III:</b> PFFS.</ul>
+            <ul><b>Clase I:</b> ATS y PTSF,</ul>
+            <ul><b>Clase II:</b> PTSF, y</ul>
+            <ul><b>Clase III:</b> PFFS.</ul>
           </h5>
           <h5 class="tablas"><b>Tabla 15.</b> Niveles de servicio para carreteras de dos carriles.</h5>
           <div class="table-responsive">
@@ -4040,8 +4196,10 @@
                 <tr>
                   <td class="celda">A</td>
                   <td class="celda">> 55</td>
-                  <td class="celda"><= 35</td>
-                  <td class="celda"><= 40</td>
+                  <td class="celda">
+                    <= 35</td>
+                  <td class="celda">
+                    <= 40</td>
                   <td class="celda">> 91.7</td>
                 </tr>
                 <tr>
@@ -4067,10 +4225,12 @@
                 </tr>
                 <tr>
                   <td class="celda">E</td>
-                  <td class="celda"><= 40</td>
+                  <td class="celda">
+                    <= 40</td>
                   <td class="celda">> 80</td>
                   <td class="celda">> 85</td>
-                  <td class="celda"><= 66.7</td>
+                  <td class="celda">
+                    <= 66.7</td>
                 </tr>
                 <tr>
                   <td class="celda">F</td>
@@ -4109,6 +4269,175 @@
               </h4>
             </div>
           </div>
+          {% if data.level1_db == "F" %}
+          <h5 class="text-general"><b>En este caso la demanda excede la capacidad de 1700 pc/h.</b></h5>
+          <h5 class="text-general"><b>Volumen de demanda total para ATS </b> = {{data.vol_ats1_db + data.vol_ats2_db}}
+            pc/h</h5>
+          <h5 class="text-general"><b>Volumen de demanda total para PTSF</b> = {{data.vol_ptsf1_db + data.vol_ptsf2_db}}
+            pc/h</h5>
+          {%endif%}
+          <h5 class="text-general">Para las autopistas de clase I, se aplican dos medidas de servicio, en este caso
+            se obtienen las dos designaciones y como resultado la peor de las dos medidas de nivel de servicio, será
+            la predominante.</h5>
+        </div>
+        <hr>
+        <div class="row">
+          <h4 class="subtitulos pasos">Determinación de la Capacidad</h4>
+          <h5 class="text-general"> En condiciones básicas, la capacidad de una autopista
+            de dos carriles (en una dirección) es de 1700 pc/h. Para determinar la capacidad en condiciones imperantes,
+            deben aplicarse los factores de ajuste pertinentes que permitan determinar el volumen de demanda ajustado
+            a las condiciones base.</h5>
+          <h5 class="text-general">La relación v/c también es una medida de rendimiento común de interés en el nivel de
+            servicio y
+            análisis de capacidad. Se calcula con la ecuación 10.</h5>
+          <h5 class="ecuacion">Ecuación 10.</h5>
+          <h4 class="formulas subtitulos">
+            <div class="eq-c">
+              <i>v/c</i> =
+              <div class="fraction">
+                <span class="fup"><i>V<sub>d</sub></i></span>
+                <span class="bar">/</span>
+                <span class="fdn">1700</span>
+              </div>
+            </div>
+          </h4>
+          <h5 class="text-general">Donde V<sub>d</sub> es el volumen de demanda convertido a condiciones base.</h5>
+          <h5 class="text-general">La dificultad estriba en que puede haber dos valores de V<ub>d</ub>: uno para estimar
+            el
+            ATS y otro para estimar el PTSF (dependiendo de la clase de autopista). En el caso de las autopistas de
+            clase I, en las que se utilizan ambas medidas, se utilizaría el resultado que diera la relación v/c más
+            alta.
+            Para las autopistas de clase II, sólo se utiliza el PTSF, y sólo existiría un valor.
+            Para las autopistas de clase III, sólo se utiliza la ATS, y sólo existiría un valor.</h5>
+          <h5 class="text text-general">La autopista de dos carriles actual es <b>clase {{data.clase_db}}</b></h5>
+          <div class="col-lg-6 col-md-6">
+            <div class="container">
+              <h5 class="subtitulos pasos">Relación volumen capacidad en carril con sentido 1.</h5>
+              {% if data.clase_db == "I"%}
+              <h4 class="formulas">
+                <div class="eq-c">
+                  Relación v/c con ATS<sub>1</sub>=
+                  <div class="fraction">
+                    <span class="fup">{{data.vol_ats1_db}}</span>
+                    <span class="bar">/</span>
+                    <span class="fdn">1700</span>
+                  </div>
+                </div>
+              </h4>
+              <h4 class="formulas subtitulos"><b>Relación v/c</b> = {{data.vol_ats1_db / 1700}}</h4>
+              <h4 class="formulas">
+                <div class="eq-c">
+                  Relación v/c con PTSF<sub>1</sub>=
+                  <div class="fraction">
+                    <span class="fup">{{data.vol_ptsf1_db}}</span>
+                    <span class="bar">/</span>
+                    <span class="fdn">1700</span>
+                  </div>
+                </div>
+              </h4>
+              <h4 class="formulas"><b>Relación v/c</b> = {{data.vol_ptsf1_db / 1700}}</h4>
+              {% endif %}
+              {% if data.vol_ats1_db/1700 >= data.vol_ats1_db/1700 and data.clase_db == "I"%}
+              <h4>La relación v/c mayor es {{data.vol_ats1_db/1700}} que se obtuvo con el volumen ajustado a condiciones
+                base para ATS</h4>
+              {% endif %}
+              {% if data.vol_ats1_db/1700 < data.vol_ats1_db/1700 and data.clase_db=="I" %} <h4>La relación v/c mayor es
+                {{data.vol_ptsf1_db/1700}} que se obtuvo con el volumen ajustado a condiciones base para PTSF</h4>
+                {% endif %}
+                {% if data.clase_db == "II" %}
+                <h5 class="text-general">Se realiza la relación v/c con volumen ajustado para PTSF.</h5>
+                <h4 class="formulas">
+                  <div class="eq-c">
+                    Relación v/c PTSF<sub>1</sub>=
+                    <div class="fraction">
+                      <span class="fup">{{data.vol_ptsf1_db}}</span>
+                      <span class="bar">/</span>
+                      <span class="fdn">1700</span>
+                    </div>
+                  </div>
+                </h4>
+                <h4 class="formulas"><b>Relación v/c</b> = {{data.vol_ptsf1_db / 1700}}</h4>
+                {%endif%}
+                {% if data.clase_db == "III" %}
+                <h5 class="text-general">Se realiza la relación v/c con volumen ajustado para ATS.</h5>
+                <h4 class="formulas">
+                  <div class="eq-c">
+                    Relación v/c con ATS<sub>1</sub>=
+                    <div class="fraction">
+                      <span class="fup">{{data.vol_ats1_db}}</span>
+                      <span class="bar">/</span>
+                      <span class="fdn">1700</span>
+                    </div>
+                  </div>
+                </h4>
+                <h4 class="formulas subtitulos"><b>Relación v/c</b> = {{data.vol_ats1_db / 1700}}</h4>
+                {%endif%}
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="container">
+              <h5 class="subtitulos pasos ">Relación volumen capacidad en carril con sentido 2.</h5>
+              {% if data.clase_db == "I"%}
+              <h4 class="formulas ">
+                <div class="eq-c">
+                  Relación v/c con ATS<sub>2</sub>=
+                  <div class="fraction">
+                    <span class="fup">{{data.vol_ats2_db}}</span>
+                    <span class="bar">/</span>
+                    <span class="fdn">1700</span>
+                  </div>
+                </div>
+              </h4>
+              <h4 class="formulas subtitulos"><b>Relación v/c</b> = {{data.vol_ats2_db / 1700}}</h4>
+              <h4 class="formulas ">
+                <div class="eq-c">
+                  Relación v/c con PTSF<sub>1</sub>=
+                  <div class="fraction">
+                    <span class="fup">{{data.vol_ptsf2_db}}</span>
+                    <span class="bar">/</span>
+                    <span class="fdn">1700</span>
+                  </div>
+                </div>
+              </h4>
+              <h4 class="formulas"><b>Relación v/c</b> = {{data.vol_ptsf2_db / 1700}}</h4>
+              {% endif %}
+              {% if data.vol_ats2_db/1700 >= data.vol_ptsf2_db/1700 and data.clase_db == "I"%}
+              <h4>La relación v/c mayor es {{data.vol_ats2_db/1700}} que se obtuvo con el volumen ajustado a condiciones
+                base para ATS</h4>
+              {% endif %}
+              {% if data.vol_ats2_db/1700 < data.vol_ptsf2_db/1700 and data.clase_db=="I" %} <h4>La relación v/c mayor
+                es {{data.vol_ptsf2_db/1700}} que se obtuvo con el volumen ajustado a condiciones base para PTSF</h4>
+                {% endif %}
+                {% if data.clase_db == "II" %}
+                <h5 class="text-general">Se realiza la relación v/c con volumen ajustado para PTSF.</h5>
+                <h4 class="formulas">
+                  <div class="eq-c">
+                    Relación v/c con PTSF<sub>2</sub>=
+                    <div class="fraction">
+                      <span class="fup">{{data.vol_ptsf2_db}}</span>
+                      <span class="bar">/</span>
+                      <span class="fdn">1700</span>
+                    </div>
+                  </div>
+                </h4>
+                <h4 class="formulas"><b>Relación v/c</b> = {{data.vol_ptsf2_db / 1700}}</h4>
+                {%endif%}
+                {% if data.clase_db == "III" %}
+                <h5 class="text-general">Se realiza la relación v/c con volumen ajustado para ATS.</h5>
+                <h4 class="formulas ">
+                  <div class="eq-c">
+                    Relación v/c con ATS<sub>1</sub>=
+                    <div class="fraction">
+                      <span class="fup">{{data.vol_ats2_db}}</span>
+                      <span class="bar">/</span>
+                      <span class="fdn">1700</span>
+                    </div>
+                  </div>
+                </h4>
+                <h4 class="formulas subtitulos"><b>Relación v/c</b> = {{data.vol_ats2_db / 1700}}</h4>
+                {%endif%}
+            </div>
+          </div>
         </div>
     </div>
     <hr>
@@ -4118,16 +4447,301 @@
     <div class="container">
 
       <h1 class="subtitulos">Análisis de sensibilidad</h1>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar la clase de la vía de dos carriles.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 1. Variación del Nivel de Servicio.</h5><br>
+          <img src="../static/assets/img/sensibilidadHcm2/clase_nivel.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 2. Variación de ATS, PTSF, PFFS y FFS.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/clase_velocidades.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 3. Variación de volumenes ajustados para ATS y PTSF.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/clase_volumens.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar el ancho de carril.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 4.Variación del Nivel de Servicio. </h5>
+          <br>
+          <img src="../static/assets/img/sensibilidadHcm2/anchoCarril_nivel.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 5. Variación de ATS, PTSF, PFFS y FFS.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/anchoCarril_velocidades.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 6. Variación de volumenes ajustados para ATS y PTSF.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/anchoCarril_volumens.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar el ancho de berma.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 7.Variación del Nivel de Servicio. </h5>
+          <img src="../static/assets/img/sensibilidadHcm2/anchoBerma_nivel.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 8. Variación de ATS, PTSF, PFFS y FFS.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/anchoBerma_velocidades.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 9. Variación de volumenes ajustados para ATS y PTSF.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/anchoBerma_volumens.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar la longitud del tramo.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 10.Variación del Nivel de Servicio. </h5>
+          <img src="../static/assets/img/sensibilidadHcm2/Longitud_nivel.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 11. Variación de ATS, PTSF, PFFS y FFS.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/Longitud_velocidades.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 12. Variación de volumenes ajustados para ATS y PTSF.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/Longitud_volumens.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar la pendiente del tramo.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 13. Variación del Nivel de Servicio. </h5>
+          <img src="../static/assets/img/sensibilidadHcm2/pendiente_nivel.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 14. Variación de ATS, PTSF, PFFS y FFS.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/pendiente_velocidades.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 15. Variación de volumenes ajustados para ATS y PTSF.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/pendiente_volumens.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar el volumen en dirección al sentido de
+          análisis.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 16. Variación del Nivel de Servicio. </h5>
+          <img src="../static/assets/img/sensibilidadHcm2/pendiente_nivel.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 17. Variación de ATS, PTSF, PFFS y FFS.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/pendiente_velocidades.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 18. Variación de volumenes ajustados para ATS y PTSF.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/pendiente_volumens.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar el volumen en dirección al sentido opuesto al
+          de análisis.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 19. Variación del Nivel de Servicio. </h5>
+          <img src="../static/assets/img/sensibilidadHcm2/pendiente_nivel.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 20. Variación de ATS, PTSF, PFFS y FFS.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/pendiente_velocidades.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 21. Variación de volumenes ajustados para ATS y PTSF.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/pendiente_volumens.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar la velocidad a flujo libre medida en campo.
+        </h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 22. Variación del Nivel de Servicio. </h5>
+          <img src="../static/assets/img/sensibilidadHcm2/velCampo_nivel.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 23. Variación de ATS, PTSF, PFFS y FFS.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/velCampo_velocidades.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 24. Variación de volumenes ajustados para ATS y PTSF.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/velCampo_volumens.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar la velocidad a flujo libre base.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 25. Variación del Nivel de Servicio. </h5>
+          <img src="../static/assets/img/sensibilidadHcm2/velEstimada_nivel.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 26. Variación de ATS, PTSF, PFFS y FFS.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/velEstimada_velocidades.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 27. Variación de volumenes ajustados para ATS y PTSF.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/velEstimada_volumens.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar el número de accesos.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 28. Variación del Nivel de Servicio. </h5>
+          <img src="../static/assets/img/sensibilidadHcm2/acceos_nivel.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 29. Variación de ATS, PTSF, PFFS y FFS.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/accesos_velocidades.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 30. Variación de volumenes ajustados para ATS y PTSF.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/accesos_volumens.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar el porcentaje de vehiculos pesados.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 31. Variación del Nivel de Servicio. </h5>
+          <img src="../static/assets/img/sensibilidadHcm2/camiones_nivel.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 32. Variación de ATS, PTSF, PFFS y FFS.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/camiones_velocidades.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 33. Variación de volumenes ajustados para ATS y PTSF.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/camiones_volumens.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar el porcentaje de vehiculos recreativos.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 31. Variación del Nivel de Servicio. </h5>
+          <img src="../static/assets/img/sensibilidadHcm2/recreativos_nivel.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 32. Variación de ATS, PTSF, PFFS y FFS.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/recreativos_velocidades.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 33. Variación de volumenes ajustados para ATS y PTSF.</h5>
+          <img src="../static/assets/img/sensibilidadHcm2/recreativos_volumens.png" class="img-fluid"
+            style="width:120%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+
+
 
     </div>
   </section>
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
+  <footer class="footer-32892 pb-0">
+    <div class="site-section">
+    <div class="container">
+    <div class="row">
+    <div class="col-md pr-md-5 mb-4 mb-md-0">
+    <h3 class="subtitulos">Información</h3>
+    <p class="mb-4" style="color: black;">
+  
+      <h6 class="subtitulos" style="color: black;"><b>Universidad Pedagógica y Tecnológica de Colombia</b></h6>
+      <h6 class="subtitulos" style="color: black;">Escuela de Transporte y Vías</h6>
+      <h6 class="subtitulos" style="color: black;">Trabajo de grado en la modalidad de proyecto de investigación</h6>
+      <h6 class="subtitulos" style="color: black;"><strong>Desarrollo de aplicación Web para los Manuales de Capacidad y Nivel de Servicio de Colombia</strong></h6>
+    </p>
+    
+    
+    </div>
+
+    <div class="col-md mb-4 mb-md-0">
+    <h3 class="subtitulos">Contacto</h3>
+    <p>
+      <h6 class="text-general" style="color: black;"><b>Trabajo desarrollado por:</b> Cristian Nicolás Rodríguez González</h6>
+      <h6 class="text-general" style="color: black;"><b>Correo:</b> <a href="mailto:direccion@correo.com" style="color:rgb(164, 0, 0)">cristian.rodriguez04@uptc.edu.co</a></h6>
+      <h6 class="text-general" style="color: black;"><b>Telefono:</b> +57 3182293083</h6>
+      <br>
+      <h6 class="text-general" style="color: black;"><b>Director de tésis:</b> Ing Msc. Fredy Alberto Guío Burgos</h6>
+      <h6 class="text-general" style="color: black;"><b>Correo:</b> <a href="mailto:direccion@correo.com" style="color:rgb(164, 0, 0)">fredy.guio@uptc.edu.co </a></h6></h6>
 
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+    </p>
+
+    </div>
+
+    <div class="col-md-3 mb-4 mb-md-0">
+    <h3 class="subtitulos">Universidad</h3>
+    <div class="row gallery">
+    <div class="col-12">
+      <a href="http://www.uptc.edu.co/facultades/f_ingenieria/pregrado/transporte/inf_general/" target="blank"><img src="/static/assets/img/logo vias.png" alt="Image" class="img-fluid" style="width: 30%;display: block; margin: auto;"></a>
+      <a href="https://uptc.edu.co/sitio/portal/" target="blank"> <img src="/static/assets/img/logoUptc.jpg" alt="Image" class="img-fluid"  style="width: 50%;display: block; margin: auto;"></a>
+    </div>
+    </div>
+    </div>
+    <div class="col-12">
+    <div class="py-5 footer-menu-wrap d-md-flex align-items-center">
+    
+    
+    </a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </footer>
+
+
+
 
   <!-- Vendor JS Files -->
   <script src="../static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -4140,6 +4754,7 @@
 
   <!-- Template Main JS File -->
   <script src="../static/assets/js/main.js"></script>
+  <script src="../static/assets/vendor/data.js"></script>
 
 </body>
 
