@@ -41,96 +41,82 @@
 <body>
   {% import "bootstrap/wtf.html" as wtf %}
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto"><a href="{{url_for('home')}}">Capacidad y Niveles de Servicio<span>.</span></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="{{url_for('home')}}" class="logo me-auto"><img src="../static/assets/img/logo.png" alt=""></a>
-
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto active" href="{{url_for('home')}}">Inicio</a></li>
-          <li><a class="nav-link scrollto" href="{{url_for('blog')}}">Blog</a></li>
-          <li><a class="nav-link scrollto " href="{{url_for('resultados')}}">Resultados</a></li>
-          <li><a href="{{url_for('resultado')}}">Último</a></li>
-          <li><a class="nav-link scrollto" href="{{url_for('multicarril')}}">Multicarril</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-      <a href="#about" class="get-started-btn scrollto">Iniciar</a>
-    </div>
-  </header><!-- End Header -->
+  {% include "header.html" %}
+  <!-- End Header -->
     <br>
     <br>
-    <section class="inner-page" style="background-color:rgb(255, 253, 253)">
-      <div class ="row">
-        <div class="col-lg-6">
-          <div class="container" >
-            <div class="card" style="margin-left:7rem ;">
-              <div class="card-header">
-                <b>Insertar valores</b>
+    <section class="inner-page" style="background-color:rgb(255, 253, 253);">
+      <div class="container" style=" justify-content: center;">
+        <div class ="row">
+          <div class="col-lg-6">
+            <div class="container" >
+              <h4 class="subtitulos pasos"><b>Formulario de entrada.</b></h4>
+              <div class="card" style="margin: auto ; justify-content: center;">
+                <div class="card-header bg-danger" style="color: white; text-align: center;">
+                  <b>Insertar valores</b>
+                </div>
+                <div class="card-body">
+                  {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "danger"}) }}
+                </div>
               </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="container" style="justify-content: center;">
+              <h5><b>Tabla 10.</b> Clasificación de las carreteras multicarril según sus características geométricas</h5>
+            <div class="card" style="margin: auto ; justify-content: center;">
               <div class="card-body">
-                {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "danger"}) }}
+                <p class="card-text">
+                  <table class="table table-bordered">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Clasificación</th>
+                        <th scope="col">Características geométricas</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Tipo A1</th>
+                        <td><ul class="list-group">
+                          <li class="list-group-item">Velocidad de diseño: 100 a 120 km/h</li>
+                          <li class="list-group-item">Radio mínimo: 400 m</li>
+                          <li class="list-group-item">Pendiente máxima: 5 %</li>
+                          <li class="list-group-item">Ancho de calzada: 7.30 m</li>
+                          <li class="list-group-item">Ancho de berma izquierda: 1.00 m</li>
+                          <li class="list-group-item">Ancho de berma derecha: 2.50 m</li>
+                        </ul></td>
+                      </tr>  
+                      <th scope="row">Tipo B1</th>
+                        <td><ul class="list-group">
+                          <li class="list-group-item">Velocidad de diseño: 80 a 100 km/h</li>
+                          <li class="list-group-item">Radio mínimo: 230 m</li>
+                          <li class="list-group-item">Pendiente máxima: 6 %</li>
+                          <li class="list-group-item">Ancho de calzada: 7.30 m</li>
+                          <li class="list-group-item">Ancho de berma izquierda: 0.50 m</li>
+                          <li class="list-group-item">Ancho de berma derecha: 1.80 m</li>
+                        </ul></td>
+                      </tr> 
+                      <th scope="row">Tipo C1</th>
+                        <td><ul class="list-group">
+                          <li class="list-group-item">Velocidad de diseño: 60 a 80 km/h</li>
+                          <li class="list-group-item">Radio mínimo: 70 m</li>
+                          <li class="list-group-item">Pendiente máxima: 8 %</li>
+                          <li class="list-group-item">Ancho de calzada: 7.00 m</li>
+                          <li class="list-group-item">Ancho de berma izquierda: 0.50 m</li>
+                          <li class="list-group-item">Ancho de berma derecha: 1.50 m</li>
+                        </ul></td>
+                      </tr> 
+                    </tbody>
+                  </table>
+                </p>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="container">
-            <h5><b>Tabla 10.</b> Clasificación de las carreteras multicarril según sus características geométricas</h5>
-          <div class="card" style="margin-right:10rem;">
-            <div class="card-body">
-              <p class="card-text">
-                <table class="table table-bordered">
-                  <thead class="thead-dark">
-                    <tr>
-                      <th scope="col">Clasificación</th>
-                      <th scope="col">Características geométricas</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">Tipo A1</th>
-                      <td><ul class="list-group">
-                        <li class="list-group-item">Velocidad de diseño: 100 a 120 km/h</li>
-                        <li class="list-group-item">Radio mínimo: 400 m</li>
-                        <li class="list-group-item">Pendiente máxima: 5 %</li>
-                        <li class="list-group-item">Ancho de calzada: 7.30 m</li>
-                        <li class="list-group-item">Ancho de berma izquierda: 1.00 m</li>
-                        <li class="list-group-item">Ancho de berma derecha: 2.50 m</li>
-                      </ul></td>
-                    </tr>  
-                    <th scope="row">Tipo B1</th>
-                      <td><ul class="list-group">
-                        <li class="list-group-item">Velocidad de diseño: 80 a 100 km/h</li>
-                        <li class="list-group-item">Radio mínimo: 230 m</li>
-                        <li class="list-group-item">Pendiente máxima: 6 %</li>
-                        <li class="list-group-item">Ancho de calzada: 7.30 m</li>
-                        <li class="list-group-item">Ancho de berma izquierda: 0.50 m</li>
-                        <li class="list-group-item">Ancho de berma derecha: 1.80 m</li>
-                      </ul></td>
-                    </tr> 
-                    <th scope="row">Tipo C1</th>
-                      <td><ul class="list-group">
-                        <li class="list-group-item">Velocidad de diseño: 60 a 80 km/h</li>
-                        <li class="list-group-item">Radio mínimo: 70 m</li>
-                        <li class="list-group-item">Pendiente máxima: 8 %</li>
-                        <li class="list-group-item">Ancho de calzada: 7.00 m</li>
-                        <li class="list-group-item">Ancho de berma izquierda: 0.50 m</li>
-                        <li class="list-group-item">Ancho de berma derecha: 1.50 m</li>
-                      </ul></td>
-                    </tr> 
-                  </tbody>
-                </table>
-              </p>
             </div>
-          </div>
           </div>
         </div>
       </div>
     </section>
+    <hr>
 
   </main><!-- End #main -->
 

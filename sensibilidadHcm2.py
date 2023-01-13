@@ -52,6 +52,7 @@ p_recreativos,opc_velocidad, vel_campo,camiones_freno,vel_flujo_libre, nivel, vo
     plt.axhline(ats_in,color="teal", ls="dotted")
     plt.axhline(ptsf_in,color="gold", ls="dotted")
     plt.axhline(vel_flujo_libre,color="mediumorchid", ls="dotted")
+    
     plt.legend()
     plt.grid(True)
     plt.xlabel('Clase de la vía de dos carriles')

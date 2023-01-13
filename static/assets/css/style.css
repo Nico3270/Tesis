@@ -19,7 +19,15 @@ a {
 }
 
 hr {
-  color: red; 
+ border-style: none;
+ border-top-style: dotted;
+ border-color: #b80e0e;
+ border-width: 4px;
+ width: 90%;
+ margin: auto;
+ margin-bottom: 2%;
+ margin-top: 2%;
+ opacity: 0.7;
 }
 a:hover {
   color: #f5de12;
@@ -53,19 +61,28 @@ img {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #f5de12;
+  background: #0b0b0b;
   width: 40px;
   height: 40px;
   border-radius: 4px;
   transition: all 0.4s;
 }
-
+.table-responsive {
+  margin-top: 1%;
+}
+.margen-sup{
+  margin-top: 0%;
+}
 .back-to-top i {
   font-size: 28px;
   color: #fff;
   line-height: 0;
 }
 
+section {
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
 .back-to-top:hover {
   background: #e65d5f;
   color: #fff;

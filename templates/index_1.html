@@ -15,70 +15,11 @@
   <body>
     {%import "bootstrap/wtf.html" as wtf%}
     <div class="row">
-      <div class="col-lg-4">
-        <br>
-            <h2 class="title">Insertar datos</h2>
-            <br>
-            <div class="container-md text-center">
-              
-            </div>
-            <div class="container-md text-center">             
-              <form action="/capacidad-NS" method="post" class="form" role="form" novalidate="">
-                <input id="csrf_token" name="csrf_token" type="hidden" value="ImExOTIxNzcxOGUwNWI0OTFiNDkyMDcyMTM5ZjAwMjViZmNhNDRkNzQi.Yy52WQ.lR9PwSKii8R9MWb49sYr-RmEtX4">
-                  <div class="form-group  has-error required">
-                      <label class="control-label" for="a_carril">Ancho de carril (metros)</label>
-                      <input class="form-control" id="a_carril" name="a_carril" required="" type="text" value="">
-                          <p class="help-block">This field is required.</p>
-                </div>
-                  <div class="form-group  has-error required">
-                      <label class="control-label" for="a_berma">Ancho de berma</label>    
-                      <input class="form-control" id="a_berma" name="a_berma" required="" type="text" value="">  
-                        <p class="help-block">This field is required.</p>
-                </div>
-                  <div class="form-group  has-error required">
-                    <label class="control-label" for="p_promedio">Pendiente promedio </label>    
-                    <input class="form-control" id="p_promedio" name="p_promedio" required="" type="text" value="">  
-                        <p class="help-block">This field is required.</p>
-                </div>
-                  <div class="form-group  has-error required">
-                    <label class="control-label" for="l_sector">Longitud del sector</label>    
-                    <input class="form-control" id="l_sector" name="l_sector" required="" type="text" value="">    
-                      <p class="help-block">This field is required.</p>
-                </div>
-                  <div class="form-group  has-error required">
-                  <label class="control-label" for="d_sentido">Distribución por sentido</label>
-                  <input class="form-control" id="d_sentido" max="100" min="0" name="d_sentido" required="" type="number" value="">    
-                    <p class="help-block">This field is required.</p>
-                </div>
-                  <div class="form-group  has-error required">
-                  <label class="control-label" for="p_no_rebase">Porcentaje de zonas de no rebase</label> 
-                  <input class="form-control" id="p_no_rebase" max="100" min="0" name="p_no_rebase" required="" type="number" value="">    
-                     <p class="help-block">This field is required.</p>
-                </div>
-                  <div class="form-group  has-error required">
-                  <label class="control-label" for="p_automoviles">Porcentaje de automoviles</label>    
-                  <input class="form-control" id="p_automoviles" max="100" min="0" name="p_automoviles" required="" type="number" value="">
-                    <p class="help-block">This field is required.</p>
-                </div>
-                  <div class="form-group  has-error required">
-                  <label class="control-label" for="p_buses">Porcentaje de buses</label>   
-                  <input class="form-control" id="p_buses" max="100" min="0" name="p_buses" required="" type="number" value="">
-                   <p class="help-block">This field is required.</p>
-                </div>  
-                  <div class="form-group  has-error required">
-                  <label class="control-label" for="p_camiones">Porcentaje de camiones</label>
-                  <input class="form-control" id="p_camiones" max="100" min="0" name="p_camiones" required="" type="number" value="">    
-                    <p class="help-block">This field is required.</p>
-                </div>
-                  <div class="form-group  has-error required">
-                  <label class="control-label" for="vol_cap">Volumen horario total ambos sentidos</label>    
-                  <input class="form-control" id="vol_cap" max="100000" min="0" name="vol_cap" required="" type="number" value="">    
-                     <p class="help-block">This field is required.</p>
-                </div>
-                  <input class="btn btn-dark" id="submit" name="submit" type="submit" value="Calcular Capacidad y Nivel de servicio">
-              </form>
-              </div>
+     <div class="col-lg-8">
+      <div class="container">
+        {{wtf.quick_form(form ,extra_classes='form-label',novalidate=True, form_type="bootstrap", button_map={"submit": "danger"}) }}
       </div>
+     </div>
     </div>
   </body>
 </html>

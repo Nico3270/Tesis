@@ -43,26 +43,8 @@
 <body>
   {% import "bootstrap/wtf.html" as wtf %}
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto"><a href="{{url_for('home')}}">Capacidad y Niveles de Servicio<span>.</span></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="{{url_for('home')}}" class="logo me-auto"><img src="../static/assets/img/logo.png" alt=""></a>
-
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto active" href="{{url_for('home')}}">Inicio</a></li>
-          <li><a class="nav-link scrollto" href="{{url_for('blog')}}">Blog</a></li>
-          <li><a class="nav-link scrollto " href="{{url_for('resultados')}}">Resultados</a></li>
-          <li><a href="{{url_for('resultado')}}">Último</a></li>
-          <li><a class="nav-link scrollto" href="{{url_for('multicarril')}}">Multicarril</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-      <a href="#about" class="get-started-btn scrollto">Iniciar</a>
-    </div>
-  </header><!-- End Header -->
+  {% include "header.html" %}    
+    <!-- End Header -->
     <br>
     <br>
     <section class="inner-page datos" style="background-color:white">

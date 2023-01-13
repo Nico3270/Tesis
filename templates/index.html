@@ -41,129 +41,60 @@
 <body>
   {% import "bootstrap/wtf.html" as wtf %}
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto"><a href="{{url_for('home')}}">Capacidad y Niveles de Servicio<span>.</span></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="{{url_for('home')}}" class="logo me-auto"><img src="../static/assets/img/logo.png" alt=""></a>
-
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto active" href="{{url_for('home')}}">Inicio</a></li>
-          <li><a class="nav-link scrollto" href="{{url_for('blog')}}">Blog</a></li>
-          <li><a class="nav-link scrollto " href="{{url_for('prueba1')}}">Prueba</a></li>
-          <li><a href="{{url_for('hcm_function')}}">Dos carriles HCM</a></li>
-          <li><a class="nav-link scrollto" href="{{url_for('multicarril')}}">Multicarril</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-      <a href="#about" class="get-started-btn scrollto">Iniciar</a>
-    </div>
-  </header><!-- End Header -->
+  {% include "header.html" %}
+  <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
-
-    <div class="container" data-aos="zoom-out" data-aos-delay="10">
-      <div class="row">
-        <h1 class="subtitulos">Capacidad y Niveles de Servicio</h1>
-        <div class="col-lg-6">
-          <div class="container">
-            <h2>Cálculo de Capacidad y Niveles de Servicio para vías de dos carriles </h2>
-            <a href="#about" class="btn-get-started scrollto"  style="text-align:center">Calcular</a>
-            <br>
-            <br>
-            <h2>Cálculo de Capacidad y Niveles de Servicio para vías multicarril </h2>
-            <a href="{{url_for('multicarril')}}" class="btn-get-started scrollto" style="text-align:center ;">Calcular</a>
+    <div class="container">
+      <br>
+      <br>
+      <div class="container" data-aos="zoom-out" data-aos-delay="10">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="container">
+              <h1 class="subtitulos">Capacidad y Niveles de Servicio</h1>
+            </div>
           </div>
         </div>
-        <div class="col-lg-6">
-          <div class="container">
-            <h2>Cálculo de Capacidad y Niveles de Servicio en infraestructuras peatonales </h2>
-            <a href="{{url_for('peatones')}}" class="btn-get-started scrollto" style="text-align:center ;">Calcular</a>
-            <br>
-            <br>
-            <h2>Cálculo de Capacidad y Niveles de Servicio para vías de dos carriles, método HCM. </h2>
-            <a href="{{url_for('hcm_function')}}" class="btn-get-started scrollto" style="text-align:center ;">Calcular</a>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="container">
+              <h2>Cálculo de Capacidad y Niveles de Servicio para vías de dos carriles, método INVÍAS. </h2>
+              <a href="{{url_for('dosCarriles')}}" class="btn-get-started scrollto"  style="text-align:center">Calcular</a>
+              <br>
+              <br>
+              <h2>Cálculo de Capacidad y Niveles de Servicio para vías multicarril, método INVÍAS. </h2>
+              <a href="{{url_for('multicarril')}}" class="btn-get-started scrollto" style="text-align:center ;">Calcular</a>
+              <br>
+              <br>
+              <h2>Cálculo de Capacidad y Niveles de Servicio en infraestructuras peatonales. </h2>
+              <a href="{{url_for('peatones')}}" class="btn-get-started scrollto" style="text-align:center ;">Calcular</a>
+              <br>
+              <br>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="container">
+              <h2>Cálculo de Capacidad y Niveles de Servicio para vías de dos carriles, método HCM. </h2>
+              <a href="{{url_for('hcm_function')}}" class="btn-get-started scrollto" style="text-align:center ;">Calcular</a>
+              <br>
+              <br>
+              <h2>Cálculo de Capacidad y Niveles de Servicio para vías multicarril, método HCM. </h2>
+              <a href="{{url_for('hcmMultilane')}}" class="btn-get-started scrollto" style="text-align:center ;">Calcular</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
 
   </section ><!-- End Hero -->
-  <section id="about">
-  <main id="main">
-    <section class="inner-page">
-      <div class="container" data-aos="fade-up">
-        <h2 style="text-align: center ; color: rgb(174, 15, 15);width: max-content;">Cálculo de la capacidad y Nivel de servicio para carretera de dos carriles</h2>
-        <br>
-        <div class="card" style="width: 38rem;">
-          <div class="card-header">
-            <b>Insertar valores</b>
-          </div>
-          <div class="card-body">
-            {{ wtf.quick_form(form, novalidate=True,  button_map={"submit": "danger"}) }}
-        </div>
-      </div>
-    </section>
-  </section>
+  
+  
     
   <!-- ======= Footer ======= -->
-  <footer class="footer-32892 pb-0">
-    <div class="site-section">
-    <div class="container">
-    <div class="row">
-    <div class="col-md pr-md-5 mb-4 mb-md-0">
-    <h3 class="subtitulos">Información</h3>
-    <p class="mb-4" style="color: black;">
-  
-      <h6 class="subtitulos" style="color: black;"><b>Universidad Pedagógica y Tecnológica de Colombia</b></h6>
-      <h6 class="subtitulos" style="color: black;">Escuela de Transporte y Vías</h6>
-      <h6 class="subtitulos" style="color: black;">Trabajo de grado en la modalidad de proyecto de investigación</h6>
-      <h6 class="subtitulos" style="color: black;"><strong>Desarrollo de aplicación Web para los Manuales de Capacidad y Nivel de Servicio de Colombia</strong></h6>
-    </p>
-    
-    
-    </div>
-
-    <div class="col-md mb-4 mb-md-0">
-    <h3 class="subtitulos">Contacto</h3>
-    <p>
-      <h6 class="text-general" style="color: black;"><b>Trabajo desarrollado por:</b> Cristian Nicolás Rodríguez González</h6>
-      <h6 class="text-general" style="color: black;"><b>Correo:</b> <a href="mailto:direccion@correo.com" style="color:rgb(164, 0, 0)">cristian.rodriguez04@uptc.edu.co</a></h6>
-      <h6 class="text-general" style="color: black;"><b>Telefono:</b> +57 3182293083</h6>
-      <br>
-      <h6 class="text-general" style="color: black;"><b>Director de tésis:</b> Ing Msc. Fredy Alberto Guío Burgos</h6>
-      <h6 class="text-general" style="color: black;"><b>Correo:</b> <a href="mailto:direccion@correo.com" style="color:rgb(164, 0, 0)">fredy.guio@uptc.edu.co </a></h6></h6>
-
-
-    </p>
-
-    </div>
-
-    <div class="col-md-3 mb-4 mb-md-0">
-    <h3 class="subtitulos">Universidad</h3>
-    <div class="row gallery">
-    <div class="col-12">
-      <a href="http://www.uptc.edu.co/facultades/f_ingenieria/pregrado/transporte/inf_general/" target="blank"><img src="/static/assets/img/logo vias.png" alt="Image" class="img-fluid" style="width: 30%;display: block; margin: auto;"></a>
-      <a href="https://uptc.edu.co/sitio/portal/" target="blank"> <img src="/static/assets/img/logoUptc.jpg" alt="Image" class="img-fluid"  style="width: 50%;display: block; margin: auto;"></a>
-    </div>
-    </div>
-    </div>
-    <div class="col-12">
-    <div class="py-5 footer-menu-wrap d-md-flex align-items-center">
-    
-    
-    </a>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </footer>
+  {% include "footer.html" %}
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

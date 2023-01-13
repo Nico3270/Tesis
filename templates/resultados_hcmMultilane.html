@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Resultados HCM multicarril</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/assets/img/favicon.png" rel="icon">
+  <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,700;1,100&family=Tinos:ital@0;1&family=Ubuntu:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="../static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+
+  <!-- Template Main CSS File -->
+  <link href="../static/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Presento - v3.9.0
+  * Template URL: https://bootstrapmade.com/presento-bootstrap-corporate-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+  {% import "bootstrap/wtf.html" as wtf %}
+  <!-- ======= Header ======= -->
+  {% include "header.html" %}
+  <!-- End Header -->
+  <br>
+  <br>
+
+  <section id="resultados" class="datos">
+    <br>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="container" style="text-align:center; margin: auto;">
+            <div class="btn-group btn-group-md">
+              <a href="#resultados" class="btn btn-outline-danger active" aria-current="page">Resultados obtenidos</a>
+              <a href="#Pasos" class="btn btn-outline-danger">Procedimiento</a>
+              <a href="#Sensibilidad" class="btn btn-outline-danger">Análisis de sensibilidad</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="container">
+            <h1 style="text-align:center ;">Datos Ingresados</h1>
+            <div class="card">
+              <div class="card-body">
+                <p class="card-text">
+                <table class="table table-bordered">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col" style="text-align:center;color:rgb(215, 74, 74) ;">Variable</th>
+                      <th scope="col" style="text-align:center;color:rgb(215, 74, 74) ;">Valor ingresado</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Descripción del tramo</th>
+                      <td class ="celda">
+                        <ul class="list-group">
+                          <li class="list-group-item">Carretera: <b>{{data.carretera_db}}</b> </li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Variables relacionadas con la geometría</th>
+                      <td class ="celda">
+                        <ul class="list-group">
+                          <li class="list-group-item">Número de carriles: <b>{{data.carriles_db}}</b></li>
+                          <li class="list-group-item">Ancho de carril: <b>{{data.a_carril_db}} pies</b> </li>
+                          <li class="list-group-item">Ancho de berma derecha: <b>{{data.a_berma_derecha_db}} pies</b>
+                          </li>
+                          <li class="list-group-item">Ancho de berma izquierda: <b>{{data.a_berma_izquierda_db}}
+                              pies</b> </li>
+                          <li class="list-group-item">Tipo de separación: <b>{{data.separacion_db}} </b> </li>
+                          <li class="list-group-item">Longitud del tramo: <b>{{data.longitud_tramo_db}} millas</b></li>
+                          <li class="list-group-item">Tipo de terreno: <b>{{data.terreno_db}} </b></li>
+                          <li class="list-group-item">Pendiente del tramo: <b> {{data.pendiente_tramo_db}} %</b></li>
+                          <li class="list-group-item">Velocidad a flujo libre en campo: <b>
+                              {{data.vel_campo_db}}mi/h</b></li>
+                          <li class="list-group-item">Velocidad a flujo libre base: <b> {{data.velocidad_db}} mi/h</b>
+                          </li>
+                          <li class="list-group-item">Densidad de puntos de acceso (Ambos sentidos):
+                            <b>{{data.accesos_db}} accesos/milla</b>
+                          </li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Variables relacionadas con el tránsito</th>
+                      <td class ="celda">
+                        <ul class="list-group">
+                          <li class="list-group-item">Volumen de demanda total en ambos sentidos: <b>{{data.volumen_db}}
+                              veh/h</b></li>
+                          <li class="list-group-item">Tipo de población: <b>{{data.poblacion_db}} </b></li>
+                          <li class="list-group-item">Porcentaje de vehiculos pesados: <b>{{data.p_pesados_db}} %</b>
+                          </li>
+                          <li class="list-group-item">Porcentaje de vehiculos con remolque: <b>{{data.tractomulas_db}}
+                              %</b></li>
+                          <li class="list-group-item">Porcentaje de camiones: <b>{{data.camiones_db}} %</b></li>
+                          <li class="list-group-item">Factor de hora pico (FHP): <b>{{data.fhpico_db}}</b></li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="container">
+            <h1 class="subtitulos">Resultados obtenidos</h1>
+            <div class="card">
+              <div class="card-body"><br>
+                <h5 class="card-title pasos">Velocidad promedio de viaje ATS</h5><br>
+                <h5 class="text-general">Factor ancho de carril <i>f<sub>LW</sub></i> = <b>{{data.factorAnchoCarril_db}}
+                    mi/h</b></h5><br>
+                <h5 class="text-general">Factor espaciamiento lateral <i>f<sub>TLC</sub></i> =
+                  <b>{{data.factorBermas_db}} mi/h</b>
+                </h5><br>
+                <h5 class="text-general">Factor tipo de separador <i>f<sub>M</sub></i> = <b>{{data.factorSeparacion_db}}
+                    mi/h</b></h5><br>
+                <h5 class="text-general">Factor densidad de accesos <i>f<sub>A</sub></i> = <b>{{data.factorAccesos_db}}
+                    mi/h</b></h5><br>
+                <h5 class="text-general">Velocidad a flujo libre = <b>{{data.velocidadFlujoLibre_db}} mi/h</b></h5><br>
+                <h5 class="text-general">Velocidad a flujo ajustada = <b>{{data.velocidadFFS_ajustada_db}} mi/h</b></h5><br>
+                <h5 class="text-general">Capacidad = <b>{{data.capacidadTabla_db}} veh/h/carril</b></h5><br>
+                <h5 class="text-general">Capacidad Ajustada = <b>{{data.capacidadFinal_db}} veh/h/carril</b></h5><br>
+                <h5 class="text-general">Factor de ajuste por vehiculos pesados <i>f<sub>HV</sub></i> =
+                  <b>{{data.factorAjusteFhv_db}} </b>
+                </h5><br>
+                <h5 class="text-general">Volumen ajustado = <b>{{data.VolumenAjustadoFinal_db}} pc/h/carril</b></h5><br>
+                <h5 class="text-general">Densidad a capacidad = <b>{{data.densidadFinal_db}} pc/mi/carril</b></h5><br>
+                <h5 class="text-general">Nivel de servicio = <b>{{data.nivelDeServicio_db}} </b></h5><br>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </section>
+
+
+  <section id="Pasos">
+    <div class="container">
+      <h3 class="subtitulos pasos">Procedimiento realizado</h3>
+      <h4 class="subtitulos pasos">Estimación y ajuste de velocidad a flujo libre FFS</h4>
+      <h5 class="text-general">La Velocidad a Flujo Libre puede determinarse directamente a partir de mediciones sobre
+        el terreno o puede estimarse como se describe a continuación. </h5>
+      <h4 class="text-general pasos">Estimación de Velocidad a Flujo Libre para tramos de autopista multicarril. </h4>
+      <h5 class="text-general">Para segmentos de autopista de varios carriles, la velociad a flujo libre puede estimarse
+        utilizando la ecuación 1, que se basa en las características físicas del segmento estudiado. </h5>
+      <h5 class="ecuacion">Ecuación 1.</h5>
+      <h5 class="formulas"><i>FFS = BFFS - f<sub>LW</sub> - f<sub>TLC</sub> - f<sub>M</sub> - f<sub>A</sub></i></h5>
+      <h5 class="text-general">Donde:</h5>
+      <h5 class="text-general"><b><i>FFS</i></b> = Velocidad a flujo libre en tramo de autopista multicarril (mi/h);
+      </h5>
+      <h5 class="text-general"><b><i>BFFS</i></b> = Velocidad a flujo libre base para el tramo de autopista multicarril
+        (mi/h);</h5>
+      <h5 class="text-general"><b><i>f<sub>LW</sub></i></b> = Factor de ajuste por ancho de carril (mi/h);</h5>
+      <h5 class="text-general"><b><i>f<sub>TLC</sub></i></b> = Factor de ajuste por espaciamiento lateral (mi/h);</h5>
+      <h5 class="text-general"><b><i>f<sub>M</sub></i></b> = Factor de ajuste por tipo de separación (mi/h); y</h5>
+      <h5 class="text-general"><b><i>f<sub>A</sub></i></b> = Factor de ajuste por densidad de puntos de accesos (mi/h)
+      </h5>
+      <br>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="subtitulos pasos">Factor de ajuste por ancho de carril <b><i>f<sub>LW</sub></i></b></h5>
+            <h5 class="text-general">Este valor se determina mediante el uso de la tabla 1.</h5>
+            <h5 class="tablas"><b>Tabla 1.</b> Factor de ajuste para FFS por ancho de carril</h5>
+            <div class="table-responsive">
+              <table class="table-bordered mx-auto">
+                <thead>
+                  <tr>
+                    <td class ="celda"><b>Ancho promedio de carril (ft)</b></td>
+                    <td class ="celda"><b>Reducción en FFS (mi/h)</b></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class ="celda"> >= 12</td>
+                    <td class ="celda">0.0</td>
+                  </tr>
+                  <tr>
+                    <td class ="celda">>= 11 - 12</td>
+                    <td class ="celda">1.9</td>
+                  </tr>
+                  <tr>
+                    <td class ="celda">>= 10 -11 </td>
+                    <td class ="celda">6.6</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <br>
+            <h5 class="text-general">De acuerdo a la tabla 1 y un valor ingresado de {{data.a_carril_db}} ft, 
+              el factor de reducción a la velocidad a flujo libre FFs por ancho de carril es igual a:
+            </h5>
+            <h5 class="subtitulos"><b>f<sub>LW</sub></b> = {{data.factorAnchoCarril_db}} mi/h.</h5>
+            <br>
+            <h5 class="subtitulos pasos">Factor de ajuste por tipo de separación <b><i>f<sub>M</sub></i></b></h5>
+            <h5 class="tablas"><b>Tabla 2. Factor de ajuste por tipo de separación</b></h5>
+            <div class="table-responsive">
+              <table class="table-bordered mx-auto margen-sup">
+                <thead>
+                  <tr>
+                    <td class ="celda"><b>Tipo de separación</b></td>
+                    <td class ="celda"><b>Reducción en FFS (mi/h)</b></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class ="celda">Sin división</td>
+                    <td class ="celda">1.6</td>
+                  </tr>
+                  <tr>
+                    <td class ="celda">Carril central de giro</td>
+                    <td class ="celda">0.0</td>
+                  </tr>
+                  <tr>
+                    <td class ="celda">Con división</td>
+                    <td class ="celda">0.0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <br>
+            <h5 class="text-general">
+              Para un tipo de separación {{separacion_db}} se obtiene un factor de reducción para FFS de:
+            </h5>
+            <h5 class="subtitulos"><b>F<sub>M</sub></b> = {{data.factorSeparacion_db}} mi/h.</h5>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="container">
+            <h5 class="subtitulos pasos">Factor de ajuste por espaciamiento lateral <b><i>f<sub>LW</sub></i></b></h5>
+            <h5 class="text-general"></h5>
+            <h5 class="tablas"><b>Tabla 3.</b> Factor de ajuste para FFS por espaciamiento lateral.</h5>
+            <div class="table-responsive">
+              <table class="table-bordered mx-auto">
+                <thead>
+                  <tr>
+                    <td class ="celda" rowspan="2"><b>TLC (ft)</b></td>
+                    <td class ="celda"><b>Autopistas de 4 carriles</b></td>
+                    <td class ="celda" rowspan="2"><b>TLC (ft)</b></td>
+                    <td class ="celda"><b>Autopistas de 6 carriles</b></td>
+                  </tr>
+                  <tr>
+                    <td class ="celda"><b>Reducción en FFS (mi/h)</b></td>
+                    <td class ="celda"><b>Reducción en FFS (mi/h)</b></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class ="celda"> 12</td>
+                    <td class ="celda">0.0</td>
+                    <td class ="celda">12</td>
+                    <td class ="celda">0.0</td>
+                  </tr>
+                  <tr>
+                    <td class ="celda">10</td>
+                    <td class ="celda">0.4</td>
+                    <td class ="celda">10</td>
+                    <td class ="celda">0.4</td>
+                    
+                  </tr>
+                  <tr>
+                    <td class ="celda">8</td>
+                    <td class ="celda">0.9</td>
+                    <td class ="celda">8</td>
+                    <td class ="celda">0.9</td>
+                  </tr>
+                  <tr>
+                    <td class ="celda">6</td>
+                    <td class ="celda">1.3</td>
+                    <td class ="celda">6</td>
+                    <td class ="celda">1.3</td>
+                  </tr>
+                  <tr>
+                    <td class ="celda">4</td>
+                    <td class ="celda">1.8</td>
+                    <td class ="celda">4</td>
+                    <td class ="celda">1.7</td>
+                  </tr>
+                  <tr>
+                    <td class ="celda">2</td>
+                    <td class ="celda">3.6</td>
+                    <td class ="celda">2</td>
+                    <td class ="celda">2.8</td>
+                  </tr>
+                  <tr>
+                    <td class ="celda">0</td>
+                    <td class ="celda">5.4</td>
+                    <td class ="celda">0</td>
+                    <td class ="celda">3.9</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <br>
+            <h5 class="text-general">El espaciamiento lateral es la suma de las longitudes de la berma izquierda y derecha.</h5>
+            <h5 class="text-general"><b>Espaciamiento lateral</b> = {{data.a_berma_derecha_db}} ft + {{data.a_berma_izquierda_db}} ft = {{data.a_berma_derecha_db + data.a_berma_izquierda_db }} ft</h5>
+            <h5 class="text-general">Con este valor y el uso de la tabla 3, se encuentra que el factor de reducción a FFS por espaciamiento lateral es igual a:</h5>
+            <h5 class="subtitulos"><b>f<sub>TLC</sub></b> = {{data.factorBermas_db}} mi/h.</h5>
+            <h5 class="subtitulos pasos">Factor de ajuste por densidad de puntos de accesos <b><i>f<sub>A</sub></i></b></h5>
+            <h5 class="tablas"><b>Tabla 4.Factor de ajuste de reducción a la velocidad a flujo libre por densidad de puntos de acceso.</b></h5>
+            <div class="table-responsive">
+              <table class="table-bordered mx-auto">
+                <thead>
+                  <tr>
+                    <td class="celda"><b>Densidad de puntos de acceso (puntos de acceso / mi)</b></td>
+                    <td class="celda"><b>Reducción en FFS, <i>f<sub>A</sub></i> (mi/h)</b></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class ="celda">0</td>
+                    <td class ="celda">0.0</td>
+                  </tr>
+                  <tr>
+                    <td class ="celda">10</td>
+                    <td class ="celda">2.5</td>
+                  </tr>
+                  <tr>
+                    <td class ="celda">20</td>
+                    <td class ="celda">5.0</td>
+                  </tr>
+                  <tr>
+                    <td class ="celda">30</td>
+                    <td class ="celda">7.5</td>
+                  </tr>
+                  <tr>
+                    <td class ="celda">>= 40</td>
+                    <td class ="celda">10.0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <br>
+            <h5 class="text-general">Para un total de {{data.accesos_db}} accesos/mi, y el uso de la tabla 4, se encuentra el factor de reducción por densidad de accesos es igual a:</h5>
+            <h5 class="subtitulos"><b>f<sub>A</sub></b> = {{data.factorAccesos_db}} mi/h.</h5>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Velocidad a flujo libre FFS</h5>
+        <h5 class="text-general">La velocidad a flujo libre estimada a partir de la ecuación 1, y los factores de reducción obtenidos previamente es igual a: </h5>
+        <h5 class="subtitulos"><b>Velocidad a flujo libre</b> = {{data.velocidad_db}} mi/h - {{data.factorAnchoCarril_db}} mi/h - {{data.factorBermas_db}} mi/h - {{data.factorSeparacion_db}} mi/h - {{data.factorAccesos_db}} mi/h</h5>
+        <h5 class="subtitulos"><b>Velocidad a flujo libre = {{data.velocidadFlujoLibre_db}} mi/h</b></h5>
+        <hr>
+        <h5 class="subtitulos pasos">Velocidad a flujo libre ajustada (FFS<sub>adj</sub>)</h5>
+        <h5 class="text-general">Esta velocidad se determina mediante la ecuación 2.</h5>
+        <h5 class="ecuacion">Ecuación 2.</h5>
+        <h4 class="formulas"><i>FFS<sub>adj</sub> = FFS * SAF</i></h4>
+        <h5 class="text-general">Donde SAF es el factor de ajuste a la velocidad debido a factores locales. Para este caso el factor de ajuste a la 
+          velocidad, esta dado por el tipo de población de conductores.
+        </h5>
+        <h5 class="tablas"><b>Tabla 5.</b> Factor de ajuste a la velocidad por tipo de población.</h5>
+        <div class="table-responsive">
+          <table class="table-bordered mx-auto">
+            <thead>
+              <tr>
+                <td class="celda"><b>Tipo de población</b></td>
+                <td class="celda"><b></b>Factor de ajuste</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class ="celda">Toda conocida</td>
+                <td class ="celda">1.00</td>
+              </tr>
+              <tr>
+                <td class ="celda">Mayormente conocida</td>
+                <td class ="celda">0.975</td>
+              </tr>
+              <tr>
+                <td class ="celda">Mezcla equilibrada</td>
+                <td class ="celda">0.950</td>
+              </tr>
+              <tr>
+                <td class ="celda">Mayormente desconocida</td>
+                <td class ="celda">0.913</td>
+              </tr>
+              <tr>
+                <td class ="celda">Toda desconocida</td>
+                <td class ="celda">0.863</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+        </div>
+        <br>
+        <br>
+        <h5 class="text-general">La velocidad ajustada para un tipo de población "{{data.poblacion_db}} y el uso de la ecuación 2 es igual a:</h5>
+        <h5 class="subtitulos"><b>Velocidad a flujo libre ajustada</b> = {{data.velocidadFFS_ajustada_db}} mi/h</h5>
+        <hr>
+        <h4 class="subtitulos pasos">Estimación y ajuste de la capacidad</h4>
+        <h5 class="text-general">La capacidad del tramo es principalmente una función de la velocidad a flujo libre FFs del tramo, pero puede ajustarse según las condiciones locales.
+          La capacidad básica de un segmento de carretera de varios carriles puede estimarse directamente con la ecuación 3.</h5>
+        <h5 class="ecuacion">Ecuación 3.</h5>
+        <h5 class="formulas"><b>Capacidad </b> = 1900 + 20 * (<i>FFS<sub>adj</sub></i> - 45)</h5>
+        <h5 class="text-general">La capacidad resultante de la aplicación de la ecuación 3 nunca puede superar la capacidad de base que son 2300 pc/h/carril para tramos multicarril. 
+          Del mismo modo, la FFS utilizada en esta ecuación no debe superar las 70 m/h.</h5>
+        <h5 class="text-general">La capacidad es igual a:</h5>
+        <h5 class="formulas"><b>Capacidad</b> = 1900 + 20 * ({{data.velocidadFFS_ajustada_db}} - 45)</h5>
+        <h5 class="formulas"><b>Capacidad</b> = {{data.capacidadFormula_db}} pc/h/carril</h5>
+        <hr>
+        <h5 class="subtitulos pasos">Capacidad ajustada</h5>
+        <h5 class="text-general">La capacidad ajustada se cálcula mediante la siguiente ecuación</h5>
+        <h5 class="ecuacion">Ecuación 4.</h5>
+        <h5 class="formulas"><b>Capacidad<sub>adj</sub></b> = capacidad * <i>CAF</i></h5>
+        <h5 class="text-general">Donde el valor <i>CAF</i>, es el factor de ajuste a la capacidad por tipo de población.</h5>
+        <h5 class="tablas"><b>Tabla 6.</b> Factor de ajuste a la capacidad por tipo de población.</h5>
+        <div class="table-responsive">
+          <table class="table-bordered mx-auto">
+            <thead>
+              <tr>
+                <td class="celda"><b>Tipo de población</b></td>
+                <td class="celda"><b></b>Factor de ajuste</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class ="celda">Toda conocida</td>
+                <td class ="celda">1.00</td>
+              </tr>
+              <tr>
+                <td class ="celda">Mayormente conocida</td>
+                <td class ="celda">0.968</td>
+              </tr>
+              <tr>
+                <td class ="celda">Mezcla equilibrada</td>
+                <td class ="celda">0.939</td>
+              </tr>
+              <tr>
+                <td class ="celda">Mayormente desconocida</td>
+                <td class ="celda">0.898</td>
+              </tr>
+              <tr>
+                <td class ="celda">Toda desconocida</td>
+                <td class ="celda">0.852</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+        </div>
+        <br>
+        <br>
+        <h5 class="text-general">De acuerdo al tipo de población "{{data.poblacion_db}}" y la capacidad obtenida previamente, se determina que la capacidad ajustada es igual a:</h5>
+        <h5 class="formulas"><b>Capacidad<sub>adj</sub></b> = {{data.capacidadFinal_db}} pc/h/carril</h5>
+        <br>
+        <hr>
+        <h4 class="subtitulos pasos">Ajuste al volumen de demanda</h4>
+        <h5 class="text-general">Los volumenes de demanda expresados en vehículos por hora en las condiciones imperantes, deben convertirse
+          a vehiculos de pasajeros (pc) bajo las condiciones base, mediante la ecuación 5.
+        </h5>
+        <h5 class="ecuacion">Ecuación 5.</h5>
+        <h4 class="formulas">
+          <div class="eq-c">
+            <i>v<sub>p</sub></i> = 
+            <div class="fraction">
+              <span class="fup">V</span>
+            <span class="bar">/</span>
+            <span class="fdn"><i>PHF x N x f<sub>HV</sub></i></span>
+            </div>
+          </div>
+        </h4>
+        <h5 class="text-general">Donde:</h5>
+        <h5 class="text-general">v<sub>p</sub> = Volumen de demanda ajustado a condiciones base;</h5>
+        <h5 class="text-general">V = Volumen de demanda bajo condiciones imperantes;</h5>
+        <h5 class="text-general">PHF = Factor de Hora Pico;</h5>
+        <h5 class="text-general">N = Número de carriles en la dirección de análisis;</h5>
+        <h5 class="text-general">f<sub>HV</sub> = Factor de ajuste por presencia de vehículos pesados.</h5>
+        <br>
+        <h5 class="text-general pasos">Factor de ajuste por presencia de vehículos pesados</h5>
+        <h5 class="text-general">Se determina mediante el uso de la ecuación 6.</h5>
+        <h5 class="ecuacion">Ecuación 6.</h5>
+        <h4 class="formulas">
+          <div class="eq-c">
+            <i>F<sub>HV</sub></i> = 
+            <div class="fraction">
+              <span class="fup">1</span>
+              <span class="bar">/</span>
+              <span class="fdn">1 + P<sub>T</sub> (E<sub>T</sub> - 1)</span>
+            </div>
+          </div>
+        </h4>
+        <h5 class="text-general">Donde:</h5>
+        <h5 class="text-general">F<sub>HV</sub> = Factor de ajuste por presencia de vehículos pesados;</h5>
+        <h5 class="text-general">P<sub>T</sub> = Proporción total de vehículos pesados (decimal);</h5>
+        <h5 class="text-general">E<sub>T</sub> = Equivalente de un vehículo pesado, a vehículo de pasajeros.</h5>
+        <h5 class="text-general">El equivalente de vehículos pesados a vehículos de pasajeros, teniendo en cuenta que del {{data.p_pesados_db}} % 
+          de vehículos pesados presentes en el tramo, el {{data.tractomulas_db}} % son vehículos con trailer, y el {{data.camiones_db}}% restante,
+        son vehículos tipo camión, búses, o vehículos pesados sin remolque, es igual a:</h5>
+        <h5 class="formulas"><b>E<sub>T</sub></b> = {{data.factorPesados_db}}</h5>
+        <h5 class="text-general">Reemplazando este valor en la ecuación 6, se obtiene que el factor por presencia de vehículos pesados es igual a:</h5>
+        <h4 class="formulas">
+          <div class="eq-c">
+            <i>F<sub>HV</sub></i> = 
+            <div class="fraction">
+              <span class="fup">1</span>
+              <span class="bar">/</span>
+              <span class="fdn">1 + {{data.p_pesados_db/100}} ({{data.factorPesados_db}} - 1)</span>
+            </div>
+          </div>
+        </h4>
+        <h4 class="formulas"><b>F<sub>HV</sub></b> = {{data.factorAjusteFhv_db}}</h4>
+        <br>
+        <br>
+        <h5 class="text-general pasos">Volumen de demanda ajustado</h5><br>
+        <h5 class="text general">Reemplazando los valores en la ecuación 5, se obtiene un volumen de demanda ajustado a condiciones base, igual a:</h5>
+        <h4 class="formulas">
+          <div class="eq-c">
+            <b><i>v<sub>p</sub></i></b> = 
+            <div class="fraction">
+              <span class="fup">{{data.volumen_db}} veh/h/carril</span>
+            <span class="bar">/</span>
+            <span class="fdn"><i>{{data.fhpico_db}} x {{data.carriles_db}} x {{data.factorAjusteFhv_db}}</span>
+            </div>
+          </div>
+        </h4>
+        <h4 class="formulas"><b><i>v<sub>p</sub></i></b> = {{data.VolumenAjustadoFinal_db}} pc/h/carril</h4>
+        <h5 class="text-general">Luego de determinar el volumen ajustado a las condiciones base, se comprueba que este valor sea menor que 
+          la capacidad ajustada previamente, ya que si la demanda supera a la capacidad, el Nivel de Servicio para el tramo de autopista 
+          multicarril será <b>F</b>.
+        </h5>
+        <h5 class="text-general">Prueba = Volumen > Capacidad</h5>
+        <h5 class="text-general">Prueba = {{data.VolumenAjustadoFinal_db}} pc/h/carril > {{data.capacidadFinal_db}} pc/h/carril</h5>
+        {% if data.VolumenAjustadoFinal_db  > data.capacidadFinal_db %}
+        <h5>El volumen es mayor a la capacidad, por lo tanto el nivel de servicio es igual a <b>F.</b></h5>
+        {%endif%}
+        {% if data.VolumenAjustadoFinal_db  < data.capacidadFinal_db %}
+        <h5>El volumen es menor que la capacidad, por lo tanto se procede a determinar la densidad.</h5>
+        <br>
+        <hr>
+        <h5 class="subtitulos pasos">Densidad del tramo</h5>
+        <h5 class="text-general">Este valor se determina mediante el uso de la ecuación 7.</h5>
+        <h5 class="ecuacion">Ecuación 7.</h5>
+        <h4 class="formulas">
+          <div class="eq-c">
+            <i>D</i> = 
+            <div class="fraction">
+              <span class="fup"><i>v<sub>p</sub></i></span>
+              <span class="bar">/</span>
+              <span class="fdn">S</span>
+            </div>
+          </div>
+        </h4>
+        <h5 class="text-general">Donde:</h5>
+        <h5 class="text-general">D = Densidad (pc/mi/carril);</h5>
+        <h5 class="text-general">V<sub>p</sub> = Volumen de demanda ajustado;</h5>
+        <h5 class="text-general">S = Velocidad ajustada a condiciones base.</h5>
+        <h5 class="text-general">Reemplazando en la ecuación 7, se obtiene una densidad equivalente igual a:</h5>
+        <h4 class="formulas">
+          <div class="eq-c">
+            <i>D</i> = 
+            <div class="fraction">
+              <span class="fup">{{data.VolumenAjustadoFinal_db}}pc/h/carril</span>
+              <span class="bar">/</span>
+              <span class="fdn">{{data.velocidadFFS_ajustada_db}} mi/h</span>
+            </div>
+          </div>
+        </h4>
+        <h4 class="formulas"><b>D = {{data.densidadFinal_db}} pc/mi/carril</b></h4>
+        <hr>
+        <h4 class="subtitulos pasos">Determinación del Nivel de Servicio</h4>
+        <h5 class="text-general">Con el uso de la densidad calculada en el paso anterior, se procede a determinar el 
+          nivel de servicio, según los rangos establecidos en la tabla 7.
+        </h5>
+        <h5 class="tablas"><b>Tabla 7.</b> Niveles de Servicio</h5>
+        <div class="table-responsive">
+          <table class="table-bordered mx-auto">
+            <thead>
+              <tr>
+                <td class="celda"><b>Nivel de Servicio</b></td>
+                <td class="celda"><b>Densidad (pc/mi/carril)</b></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class ="celda">A</td>
+                <td class ="celda"><= 11</td>
+              </tr>
+              <tr>
+                <td class ="celda">B</td>
+                <td class ="celda">>11-18</td>
+              </tr>
+              <tr>
+                <td class ="celda">C</td>
+                <td class ="celda">>18-26</td>
+              </tr>
+              <tr>
+                <td class ="celda">D</td>
+                <td class ="celda">>26-35</td>
+              </tr>
+              <tr>
+                <td class ="celda">E</td>
+                <td class ="celda">>35-45</td>
+              </tr>
+              <tr>
+                <td class ="celda">F</td>
+                <td class ="celda">Demanda excede capacidad o densidad > 45</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <br>
+        <h5 class="text-general">Según el criterio de la tabla 7, para una densidad de {{data.densidadFinal_db}} pc/mi/carril, se obtiene un nivel de servicio <b>{{data.nivelDeServicio_db}}</b></h5>
+        {%endif%}
+
+      </div>
+    </div>
+    <hr>
+  </section>
+  <section id="Sensibilidad">
+    <div class="container">
+
+      <h1 class="subtitulos">Análisis de sensibilidad</h1>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar el número de carriles carriles.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 1. Variación del Nivel de Servicio.</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/carril_nivel.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 2. Variación de la Capacidad y volumen ajustado</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/carril_capacidad.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 3. Variación de la densidad y velocidad FFS ajustada.</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/carril_densidad.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar el ancho de carril.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 4.Variación del Nivel de Servicio. </h5>
+          <br>
+          <img src="../static/assets/img/sensibilidadMultiline/anchoBermas_nivel.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 5. Variación de la Capacidad y volumen ajustado</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/anchoCarril_capacidad.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 6. Variación de la densidad y velocidad FFS ajustada.</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/anchoCarril_densidad.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar el ancho de bermas.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 7. Variación del Nivel de Servicio. </h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/anchoBermas_nivel.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 8. Variación de la Capacidad y volumen ajustado</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/anchoBermas_capacidad.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 9. Variación de la densidad y velocidad FFS ajustada.</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/anchoBermas_densidad.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar la longitud del tramo.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 10.Variación del Nivel de Servicio. </h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/Longitud_nivel.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 11. Variación de la Capacidad y volumen ajustado</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/Longitud_capacidad.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 12. Variación de la densidad y velocidad FFS ajustada.</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/Longitud_densidad.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar la pendiente del tramo.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 13. Variación del Nivel de Servicio. </h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/pendiente_nivel.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 14. Variación de la Capacidad y volumen ajustado</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/pendiente_capacidad.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 15. Variación de la densidad y velocidad FFS ajustada.</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/pendiente_densidad.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar el volumen de demanda.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 16. Variación del Nivel de Servicio. </h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/volumen_nivel.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 17. Variación de la Capacidad y volumen ajustado</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/volumen_capacidad.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 18. Variación de la densidad y velocidad FFS ajustada.</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/volumen_densidad.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar el número de accesos.</h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 19. Variación del Nivel de Servicio. </h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/accesos_nivel.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 20. Variación de la Capacidad y volumen ajustado</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/accesos_capacidad.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 21. Variación de la densidad y velocidad FFS ajustada.</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/accesos_densidad.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <h5 class="subtitulos pasos">Análisis de sensibilidad al modificar el porcentaje de vehículos pesados.
+        </h5>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 22. Variación del Nivel de Servicio. </h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/pesados_nivel.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 23. Variación de la Capacidad y volumen ajustado</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/pesados_capacidad.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%;" alt="Responsive image">
+        </div>
+        <div class="col-lg-4">
+          <h5 class="imagenes">Gráfica 24. Variación de la densidad y velocidad FFS ajustada.</h5><br>
+          <img src="../static/assets/img/sensibilidadMultiline/pesados_densidad.png" class="img-fluid"
+            style="width:100%; margin-left: 0.5rem;margin: 0%;padding: 0%" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+
+
+
+    </div>
+  </section>
+  </main><!-- End #main -->
+
+  {% include "footer.html" %}
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+
+  <!-- Vendor JS Files -->
+  <script src="../static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../static/assets/vendor/aos/aos.js"></script>
+  <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../static/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../static/assets/js/main.js"></script>
+  <script src="../static/assets/vendor/data.js"></script>
+
+</body>
+
+</html>

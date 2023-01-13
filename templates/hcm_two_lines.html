@@ -42,36 +42,78 @@
   
   {% import "bootstrap/wtf.html" as wtf %}
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto"><a href="{{url_for('home')}}">Capacidad y Niveles de Servicio<span>.</span></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="{{url_for('home')}}" class="logo me-auto"><img src="../static/assets/img/logo.png" alt=""></a>
-
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto active" href="{{url_for('home')}}">Inicio</a></li>
-          <li><a class="nav-link scrollto" href="{{url_for('blog')}}">Blog</a></li>
-          <li><a class="nav-link scrollto " href="{{url_for('resultados')}}">Resultados</a></li>
-          <li><a href="{{url_for('resultado')}}">Último</a></li>
-          <li><a class="nav-link scrollto" href="{{url_for('multicarril')}}">Multicarril</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-      <a href="{{url_for('hcm_function')}}" class="get-started-btn scrollto">HCM</a>
-    </div>
-  </header><!-- End Header -->
+  {% include "header.html" %}
+  <!-- End Header -->
 
   <section id="about">
   <main id="main">
     <section class="inner-page">
       <div class="container" data-aos="fade-up">
-        <h2 style="text-align: center ; color: rgb(174, 15, 15);width: max-content;">Cálculo de la capacidad y Nivel de servicio para vías de dos carriles, metodo HCM.</h2>
+        <h2 style="text-align: center ; color: rgb(174, 15, 15);width: max-content;">Cálculo de la capacidad y Nivel de servicio para vías de dos carriles, método HCM.</h2>
         <br>
         <div class="row">
-            <div class="col-lg-6">
+          <div class="col-lg-12">
+            <div class="container">
+              <h4 class="subtitulos pasos">Información y recomendaciones.</h4>
+              <ul>
+                <li class="text-general">Esta sección de la aplicación web está desarrollada según la metodología propuesta en el manual HCM (Highway Capacity Manual 6TH Edition), para el análisis de carreteras de dos carriles en condiciones de flujo ininterrumpido.</li>
+                <li class="text-general">Las carreteras de dos carriles tienen un carril para el uso de tráfico vehicular en cada dirección.</li>
+                <li class="text-general">Complete los espacios del formulario teniendo en cuenta las recomendaciones dadas en cada ítem.</li>
+                <li class="text-general">En caso de completar el formulario y no obtener el resultado esperado, revise que los valores ingresados se 
+                  encuentren dentro del rango de valores especificado para cada caso. En caso de ingresar un valor incorrecto, la
+                aplicación creará una alerta debajo del espacio donde se ingresó mal el valor, en donde se especificará el error. </li>
+                <li class="text-general">Ingrese los valores decimales con empleando el punto y no la con coma. (<b>Ejemplo: 1.5</b>).</li>
+                <li class="text-general">El manual se encuentra diseñado en unidades del sistema imperial de medidas, donde se utilizan como medidas de longitud 
+                  los pies y las millas. Sin embargo, para facilidad de uso en la zona actual y diferentes partes del mundo, el formulario requiere que los valores
+                  que se ingresan se encuentren en unidades del sistema métrico. Luego de ingresar los valores y pasar al cálculo de Capacidad y Nivel de Servicio,
+                  la aplicación internamente realizará el cambio de unidades del sistema métrico al imperial, con el fin de que los resultados sean acordes a la metodología 
+                  planteada en el manual.
+                </li>
+                <li class="text-general">Es posible que en ocasiones la aplicación falle o los resultados obtenidos no sean los esperados. En estos casos, por favor revise los valores ingresados,
+                  y reporte los errores.
+                </li>
+                <li class="text-general">Tenga en cuenta la clase de carretera, según las definiciones que se presentan a continuación. </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <h4 class="subtitulos pasos">Clases de carreteras de dos carriles</h4>
+          <h5 class="text-general">Las clases de carreteras de dos carriles se definen según su función. La mayoría de las arterias rurales de dos carriles y carreteras principales se considerarían autopistas de Clase I, mientras que la mayoría de las colectoras de dos carriles y carreteras locales se considerarían autopistas de Clase II o Clase III. Sin embargo, el principal determinante de la clasificación de una instalación es la expectativa del automovilista, que no coincide con la categoría funcional general de la vía. Por ejemplo, una ruta interurbana importante que atraviese una zona montañosa escarpada podría describirse como de Clase II si los conductores reconocen que no es factible circular a alta velocidad debido al terreno, pero la ruta podría seguir considerándose de Clase I.</h5>
+          <div class="col-lg-4">
+            <div class="container">
+              <h5 class="subtitulos pasos">Clase I</h5>
+              <h5 class="text-general">
+                Rutas interurbanas importantes, conectores primarios de generadores de tráfico importantes, rutas de cercanías diarias o enlaces importantes en redes de autopistas estatales o nacionales se asignan generalmente a la Clase I. Estas instalaciones sirven principalmente a viajes de larga distancia o proporcionan las conexiones entre instalaciones que sirven a viajes de larga distancia y donde se espera que los conductores viajen a velocidades relativamente altas.
+              </h5>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="container">
+              <h5 class="subtitulos pasos">Clase II</h5>
+              <h5 class="text-general">
+                Las autopistas de dos carriles de clase II son carreteras en las que los conductores no esperan necesariamente viajar a velocidades relativamente altas. Las carreteras de dos carriles, que son rutas de acceso a instalaciones de Clase I, sirven como rutas escénicas o recreativas (y no como arterias primarias), o que atraviesan terrenos escarpados (donde la operación a alta velocidad sería imposible) se asignan a la Clase II. Estas instalaciones suelen servir para viajes relativamente cortos, como el comienzo o el final de viajes más largos, o viajes en los que las visitas turísticas desempeñan un papel importante.
+              </h5>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="container">
+              <h5 class="subtitulos pasos">Clase III</h5>
+              <h5 class="text-general">
+                Las autopistas de dos carriles de clase III dan servicio a zonas moderadamente desarrolladas. Pueden ser partes de una autopista de Clase I o Clase II que atraviesan pequeñas ciudades o zonas recreativas desarrolladas. El tráfico local a menudo se mezcla con el tráfico de paso en estos segmentos, y el número de entradas y cruces sin señalizar es notablemente mayor que en una zona puramente rural. Las autopistas de clase III pueden incluir segmentos de carretera más largos que atraviesan zonas recreativas más dispersas, también con una mayor densidad en los márgenes de la carretera. Estos segmentos suelen ir acompañados de límites de velocidad reducidos que reflejan el mayor nivel de actividad.
+              </h5>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-12">
+              <h4 class="subtitulos pasos"><b>Formulario para análisis de la vía</b></h4>
                {% block content %}
-               <div class="container">
+               <div class="container" style="display: flex;
+               justify-content: center;
+               align-items: center;">
                 <div class="card" style="width: 38rem;">
                     <div class="card-header bg-danger" style="color:#fff; text-align: center;">
                       <b>Insertar valores</b>
@@ -82,11 +124,6 @@
                 </div>
             </div>
                {%endblock %}
-            </div>
-            <div class="col-lg-6">
-                <div class="container">
-                    <h2 class="subtitulos">Información acerca del método.</h2>
-                </div>
             </div>
             
         </div>

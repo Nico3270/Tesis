@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, send_file
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
@@ -14,7 +14,10 @@ import numpy as np
 import matplotlib
 import sensibilidad_2_carriles as sen2
 import sensibilidad_peatones as sp
+import sensiblidad_multilane as senml
 import HCM_2carriles as hcm2
+import HCM_Multilane as hcml
+
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 import sensibilidadHcm2 as senHcm2
@@ -80,7 +83,6 @@ class Resultado(db.Model):
     p_camiones = db.Column(db.Integer, nullable=False)
     vol_cap = db.Column(db.Integer, nullable=False)
     terreno = db.Column(db.String(200), nullable = False)
-
 #Base de datos resultados para capacidad y nivel de servicio para vías multicariil
 class Multicaril_db(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -122,8 +124,6 @@ class Multicaril_db(db.Model):
     v19 = db.Column(db.String(100), nullable=False)
     v20 = db.Column(db.String(100), nullable=False)
     v21 = db.Column(db.String(10), nullable=False)
-
-
 #Base de datos para análisis de sensibilidad - Multicarril
 class Sensibilidad(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -215,7 +215,7 @@ class Sensibilidad(db.Model):
     n86 = db.Column(db.Float, nullable=False)
     n87 = db.Column(db.Float, nullable=False)
     n88 = db.Column(db.String(10), nullable=False)
-
+#
 class Peatones_db(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     carretera = db.Column(db.String(500), nullable=False)
@@ -316,6 +316,42 @@ class HcM2_db(db.Model):
     level2_db = db.Column(db.String(5), nullable=False)
     accesos_db = db.Column(db.Integer, nullable=False)
 
+class HcMUltilane_db(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    carretera_db = db.Column(db.String(500), nullable=False)
+    carriles_db = db.Column(db.Integer, nullable=False)
+    a_carril_db = db.Column(db.Float, nullable=False)
+    separacion_db = db.Column(db.String(50), nullable=False)
+    a_berma_derecha_db = db.Column(db.Float, nullable=False)
+    a_berma_izquierda_db = db.Column(db.Float, nullable=False)
+    longitud_tramo_db = db.Column(db.Float, nullable=False)
+    terreno_db = db.Column(db.String(50), nullable=False)
+    pendiente_tramo_db = db.Column(db.Float, nullable=False)
+    opc_velocidad_db = db.Column(db.String(50), nullable=False)
+    vel_campo_db = db.Column(db.Float, nullable=False)
+    velocidad_db = db.Column(db.Float, nullable=False)
+    accesos_db = db.Column(db.Integer, nullable=False)
+    volumen_db = db.Column(db.Integer, nullable=False)
+    poblacion_db = db.Column(db.String(50), nullable=False)
+    fhpico_db = db.Column(db.Float, nullable=False)
+    p_pesados_db = db.Column(db.Float, nullable=False)
+    tractomulas_db = db.Column(db.Float, nullable=False)
+    camiones_db = db.Column(db.Float, nullable=False)
+    factorAnchoCarril_db = db.Column(db.Float, nullable=False)
+    factorBermas_db = db.Column(db.Float, nullable=False)
+    factorSeparacion_db = db.Column(db.Float, nullable=False)
+    factorAccesos_db = db.Column(db.Float, nullable=False)
+    velocidadFlujoLibre_db = db.Column(db.Float, nullable=False)
+    velocidadFFS_ajustada_db = db.Column(db.Float, nullable=False)
+    capacidadTabla_db = db.Column(db.Float, nullable=False)
+    capacidadFormula_db = db.Column(db.Float, nullable=False)
+    capacidadFinal_db = db.Column(db.Float, nullable=False)
+    factorPesados_db = db.Column(db.Float, nullable=False)
+    factorAjusteFhv_db = db.Column(db.Float, nullable=False)
+    VolumenAjustadoFinal_db = db.Column(db.Float, nullable=False)
+    densidadFinal_db = db.Column(db.Float, nullable=False)
+    nivelDeServicio_db = db.Column(db.String(5), nullable=False)
+
 
 db.create_all()
 
@@ -329,68 +365,68 @@ class CreatePostForm(FlaskForm):
     submit = SubmitField("Submit Post")
 
 class Capacidad(FlaskForm):
-    carretera = StringField(label="Nombre de carretera o proyecto", name="carretera")
-    proyecto = StringField(label="Proyecto o abscisa")
-    a_carril = FloatField(label="Ancho de carril",description="Ingrese valor en metros (Valores permitidos entre 2.7 y 3.7 metros)", validators = [DataRequired(),NumberRange(min=2.7, max=3.7)])
-    a_berma = FloatField(label="Ancho de berma",description="Ingrese valor en metros (Valores permitidos entre 0 y 3 metros)",  validators = [DataRequired(),NumberRange(min=0, max=3)])
-    p_promedio = FloatField(label="Pendiente promedio ",description="Ingrese valor en porcentaje (Valores permitidos entre 0 a 12%)", validators = [DataRequired(),NumberRange(min=0, max=12)])
-    l_sector = FloatField(label="Longitud del sector",description="Ingrese valor en kilometros (Valores permitidos de 0.5 a 5 kilometros)",validators = [DataRequired(),NumberRange(min=0.5, max=5)])
-    curvatura = IntegerField(label="Grado de curvatura",description="Ingrese valor en °/km", validators=[NumberRange(min=0, max=799)])
-    d_sentido= IntegerField(label="Distribución por sentido",description="(Valor permitido entre 50% a 100%)", validators = [DataRequired(),NumberRange(min=50, max=100)])
-    p_no_rebase = IntegerField(label="Porcentaje de zonas de no rebase ",description="Ingrese valor en porcentaje (Valor permitido entre 0 a 100 %)",validators=[NumberRange(min=0, max=100)])
-    p_automoviles = IntegerField(label="Porcentaje de automoviles",description="Ingrese valor en porcentaje (Valor permitido entre 0 a 100 %)", validators=[NumberRange(min=0, max=100)])
-    p_buses = IntegerField(label="Porcentaje de buses",default=1,description="Ingrese valor en porcentaje (Valor permitido entre 1 a 100 %)", validators=[NumberRange(min=0, max=100)])
-    p_camiones = IntegerField(label="Porcentaje de camiones",description="Ingrese valor en porcentaje (Valor permitido entre 1 a 100 %)", validators=[NumberRange(min=0, max=100)])
-    vol_cap = IntegerField(label="Volumen horario total ambos sentidos",description="Ingrese valor Veh/h", validators = [DataRequired(),NumberRange(min=0, max=100000)])
+    carretera = StringField(label="Nombre de carretera o proyecto", name="carretera",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    proyecto = StringField(label="Proyecto o abscisa",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    a_carril = FloatField(label="Ancho de carril",description="Ingrese valor en metros (Valores permitidos entre 2.7 y 3.7 metros)", validators = [DataRequired(),NumberRange(min=2.7, max=3.7)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    a_berma = FloatField(label="Ancho de berma",description="Ingrese valor en metros (Valores permitidos entre 0 y 3 metros)",  validators = [DataRequired(),NumberRange(min=0, max=3)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    p_promedio = FloatField(label="Pendiente promedio ",description="Ingrese valor en porcentaje (Valores permitidos entre 0 a 12%)", validators = [DataRequired(),NumberRange(min=0, max=12)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    l_sector = FloatField(label="Longitud del sector",description="Ingrese valor en kilometros (Valores permitidos de 0.5 a 5 kilometros)",validators = [DataRequired(),NumberRange(min=0.5, max=5)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    curvatura = IntegerField(label="Grado de curvatura",description="Ingrese valor en °/km", validators=[NumberRange(min=0, max=799)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    d_sentido= IntegerField(label="Distribución por sentido",description="(Valor permitido entre 50% a 100%)", validators = [DataRequired(),NumberRange(min=50, max=100)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    p_no_rebase = IntegerField(label="Porcentaje de zonas de no rebase ",description="Ingrese valor en porcentaje (Valor permitido entre 0 a 100 %)",validators=[NumberRange(min=0, max=100)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    p_automoviles = IntegerField(label="Porcentaje de automoviles",description="Ingrese valor en porcentaje (Valor permitido entre 0 a 100 %)", validators=[NumberRange(min=0, max=100)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    p_buses = IntegerField(label="Porcentaje de buses",default=1,description="Ingrese valor en porcentaje (Valor permitido entre 1 a 100 %)", validators=[NumberRange(min=0, max=100)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    p_camiones = IntegerField(label="Porcentaje de camiones",description="Ingrese valor en porcentaje (Valor permitido entre 1 a 100 %)", validators=[NumberRange(min=0, max=100)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    vol_cap = IntegerField(label="Volumen horario total ambos sentidos",description="Ingrese valor Veh/h", validators = [DataRequired(),NumberRange(min=0, max=100000)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
     submit = SubmitField("Calcular Capacidad y Nivel de servicio")
 
 class Multicarril(FlaskForm):
-    carretera = StringField(label="Nombre de carretera o proyecto", validators=[DataRequired()])
-    proyecto = StringField(label="Proyecto o abscisa")
-    terreno = SelectField('Tipo de terreno', choices=[('Plano', 'Plano'),('Ondulado', 'Ondulado'), ('Montañoso', 'Montañoso')])
-    tipo_analisis = SelectField('¿Qué tipo de analísis desea realizar?', choices=[('Operacional', 'Operacional'), ('Planeacion', 'Planeación')])
-    tipo_tramo = SelectField("¿Cuál es el tipo de tramo?", choices=[('Generico', 'Generico'), ('Ascenso', 'Ascenso'), ('Descenso', 'Descenso')])
-    clasificacion = SelectField('¿Cuál es la clasificación de la vía Multicarril? (Referencia Tabla 10)', choices=[("A1", 'A1'), ("B1", 'B1'), ("C1",'C1')])
-    pendiente = FloatField(label="Pendiente", validators = [DataRequired(),NumberRange(min=0, max=8)] )
-    l_tramo = IntegerField(label="Longitud del tramo (metros)", validators = [DataRequired(),NumberRange(min=500, max=8000)] )
-    n_carriles = IntegerField(label="Número de carriles", validators = [DataRequired(),NumberRange(min=0, max=10)])
-    a_carril = SelectField('Ancho de carril (metros)', choices=[('3', '3 metros'), ('3.3', '3.3 metros'), ('3.5', '3.5 metros o mayor')])
-    separador = SelectField('¿La vía cuenta con separador?', choices=[(True, 'Si'), (False, 'No')])
-    a_separador = FloatField(label="Ancho de separador (metros)", validators = [DataRequired(),NumberRange(min=0, max=5)] )
-    a_berma_derecha = FloatField(label="Ancho de Berma derecha (metros)", validators = [DataRequired(),NumberRange(min=0, max=5)] )
-    a_berma_izquierda = FloatField(label="Ancho de Berma izquierda (metros)", validators = [DataRequired(),NumberRange(min=0, max=5)] )
-    n_accesos = IntegerField(label="Número de accesos", validators = [DataRequired(),NumberRange(min=0, max=50)])
-    control_accesos = SelectField('¿La vía cuenta con control de accesos?', choices=[(1, 'Si'), (2, 'No')])
-    control_peatones = SelectField('¿Peatones frecuentes?', choices=[(True, 'Si'), (False, 'No')])
-    fp = SelectField("¿Conductores frecuentes?", choices=[(1, 'Si'), (0.90, 'No')])
-    fhpico = FloatField(label="Factor de Hora Pico", validators = [DataRequired(),NumberRange(min=0, max=5)] )
-    p_camiones = FloatField(label="Porcentaje de camiones", validators = [DataRequired(),NumberRange(min=0, max=50)])
-    vol_transito = IntegerField(label="Volumen del tránsito", validators = [DataRequired(),NumberRange(min=0, max=100000)])
+    carretera = StringField(label="Nombre de carretera o proyecto", validators=[DataRequired()],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    proyecto = StringField(label="Proyecto o abscisa",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    terreno = SelectField('Tipo de terreno', choices=[('Plano', 'Plano'),('Ondulado', 'Ondulado'), ('Montañoso', 'Montañoso')],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    tipo_analisis = SelectField('¿Qué tipo de analísis desea realizar?', choices=[('Operacional', 'Operacional'), ('Planeacion', 'Planeación')],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    tipo_tramo = SelectField("¿Cuál es el tipo de tramo?", choices=[('Generico', 'Generico'), ('Ascenso', 'Ascenso'), ('Descenso', 'Descenso')],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    clasificacion = SelectField('¿Cuál es la clasificación de la vía Multicarril? (Referencia Tabla 10)', choices=[("A1", 'A1'), ("B1", 'B1'), ("C1",'C1')],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    pendiente = FloatField(label="Pendiente", validators = [DataRequired(),NumberRange(min=0, max=8)] ,render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    l_tramo = IntegerField(label="Longitud del tramo (metros)", validators = [DataRequired(),NumberRange(min=500, max=8000)] ,render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    n_carriles = IntegerField(label="Número de carriles", validators = [DataRequired(),NumberRange(min=0, max=10)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    a_carril = SelectField('Ancho de carril (metros)', choices=[('3', '3 metros'), ('3.3', '3.3 metros'), ('3.5', '3.5 metros o mayor')],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    separador = SelectField('¿La vía cuenta con separador?', choices=[(True, 'Si'), (False, 'No')],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    a_separador = FloatField(label="Ancho de separador (metros)", validators = [DataRequired(),NumberRange(min=0, max=5)] ,render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    a_berma_derecha = FloatField(label="Ancho de Berma derecha (metros)", validators = [DataRequired(),NumberRange(min=0, max=5)] ,render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    a_berma_izquierda = FloatField(label="Ancho de Berma izquierda (metros)", validators = [DataRequired(),NumberRange(min=0, max=5)] ,render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    n_accesos = IntegerField(label="Número de accesos", validators = [DataRequired(),NumberRange(min=0, max=50)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    control_accesos = SelectField('¿La vía cuenta con control de accesos?', choices=[(1, 'Si'), (2, 'No')],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    control_peatones = SelectField('¿Peatones frecuentes?', choices=[(True, 'Si'), (False, 'No')],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    fp = SelectField("¿Conductores frecuentes?", choices=[(1, 'Si'), (0.90, 'No')],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    fhpico = FloatField(label="Factor de Hora Pico", validators = [DataRequired(),NumberRange(min=0, max=5)] ,render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    p_camiones = FloatField(label="Porcentaje de camiones", validators = [DataRequired(),NumberRange(min=0, max=50)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    vol_transito = IntegerField(label="Volumen del tránsito", validators = [DataRequired(),NumberRange(min=0, max=100000)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
     submit = SubmitField("Calcular Capacidad y Nivel de servicio")
 
 class Peatones(FlaskForm):
-    carretera = StringField(label="Descripción del sector", validators=[DataRequired()])
-    tipo = SelectField(label="Tipo de sector", choices=[("Centro", "Centro"), ("Educativo","Educativo"), ("Transporte","Transporte"),("Otros","Otros")])
-    estado = SelectField(label="Estado superficie", choices=[("Bueno","Bueno"),("Regular","Regular"),("Malo","Malo")])
-    infraestructura = SelectField(label="Tipo de infraestructura", choices=[("Acera","Acera"),("Vía exclusiva","Vía exclusiva"),("Escalera","Escalera"),("Sendero","Sendero")])
-    pendiente = FloatField(label="Pendiente Longitudinal (%)", validators=[DataRequired(),NumberRange(0,15)])
-    ancho = FloatField(label="Ancho efectivo", validators=[NumberRange(0,50), DataRequired()], description="Ingrese valor en metros")
-    vol_peatonal = IntegerField(label="Volumen peatonal (pe/hora/vía)", validators=[DataRequired()])
-    d_sentido = FloatField(label="Distribución máxima por sentido (%)", validators=[DataRequired(),NumberRange(49,100)])
-    p_hombres = FloatField(label="Porcentaje de hombres (%)", validators=[DataRequired(),NumberRange(0,100)])
-    p_ninos = FloatField(label="Porcentaje de niños (%)", validators=[DataRequired(),NumberRange(0,100)])
-    p_jovenes = FloatField(label="Porcentaje de jovenes (%)", validators=[DataRequired(),NumberRange(0,100)])
-    p_adultos = FloatField(label="Porcentaje de adultos (%)", validators=[DataRequired(),NumberRange(0,100)])
-    p_mayores = FloatField(label="Porcentaje de adultos mayores (%)", validators=[DataRequired(),NumberRange(0,100)])
-    p_paquetes = FloatField(label="Porcentaje de personas con paquetes (%)", validators=[DataRequired(),NumberRange(0,100)])
-    p_acompañadas = FloatField(label="Porcentaje de personas acompañadas (%)", validators=[DataRequired(),NumberRange(0,100)])
-    fhp = FloatField(label="Factor de hora pico (FHP)", validators=[DataRequired(),NumberRange(0,1)])
+    carretera = StringField(label="Descripción del sector", validators=[DataRequired()],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    tipo = SelectField(label="Tipo de sector", choices=[("Centro", "Centro"), ("Educativo","Educativo"), ("Transporte","Transporte"),("Otros","Otros")],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    estado = SelectField(label="Estado superficie", choices=[("Bueno","Bueno"),("Regular","Regular"),("Malo","Malo")],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    infraestructura = SelectField(label="Tipo de infraestructura", choices=[("Acera","Acera"),("Vía exclusiva","Vía exclusiva"),("Escalera","Escalera"),("Sendero","Sendero")],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    pendiente = FloatField(label="Pendiente Longitudinal (%)", validators=[DataRequired(),NumberRange(0,15)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    ancho = FloatField(label="Ancho efectivo", validators=[NumberRange(0,50), DataRequired()], description="Ingrese valor en metros",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    vol_peatonal = IntegerField(label="Volumen peatonal (pe/hora/vía)", validators=[DataRequired()],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    d_sentido = FloatField(label="Distribución máxima por sentido (%)", validators=[DataRequired(),NumberRange(49,100)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    p_hombres = FloatField(label="Porcentaje de hombres (%)", validators=[DataRequired(),NumberRange(0,100)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    p_ninos = FloatField(label="Porcentaje de niños (%)", validators=[DataRequired(),NumberRange(0,100)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    p_jovenes = FloatField(label="Porcentaje de jovenes (%)", validators=[DataRequired(),NumberRange(0,100)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    p_adultos = FloatField(label="Porcentaje de adultos (%)", validators=[DataRequired(),NumberRange(0,100)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    p_mayores = FloatField(label="Porcentaje de adultos mayores (%)", validators=[DataRequired(),NumberRange(0,100)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    p_paquetes = FloatField(label="Porcentaje de personas con paquetes (%)", validators=[DataRequired(),NumberRange(0,100)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    p_acompañadas = FloatField(label="Porcentaje de personas acompañadas (%)", validators=[DataRequired(),NumberRange(0,100)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    fhp = FloatField(label="Factor de hora pico (FHP)", validators=[DataRequired(),NumberRange(0,1)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
     submit = SubmitField("Calcular Capacidad y Nivel de servicio")
 
 class HCM2(FlaskForm):
     carretera = StringField(label="Descripción del sector",description="Información de ubicación del tramo", validators=[DataRequired()], render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
     clase = SelectField(label="Clase del sector", choices=[("I", "I"), ("II","II"), ("III","III")],description="Tenga en cuenta la información de referencia", render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
-    a_carril = FloatField(label="Ancho de carril",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"}, description="Ingrese valor en metros (Valor mínimo = 2.75 m)", validators=[NumberRange(2.75,20),DataRequired()])
+    a_carril = FloatField(label="Ancho de carril",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"}, description="Ingrese valor en metros (Valor mínimo = 2.75 m)", validators=[NumberRange(3,3.8),DataRequired()])
     a_berma = FloatField(label="Ancho de berma", render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"},description="Ingrese valor en metros (Valor mínimo = 0.05 m", validators=[NumberRange(0,20),DataRequired()])
     longitud_tramo = FloatField(label="Longitud del tramo de estudio", render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"},description="Ingrese valor en metros (Valor mínimo 500 metros - máximo 6000 metros)", validators=[NumberRange(500,6400),DataRequired()])
     asc_desc = SelectField(label="Tipo de pendiente", description="Pendiente en sentido de análisis",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"},choices=[("Ascenso","Ascenso"),("Descenso","Descenso")] )
@@ -402,11 +438,35 @@ class HCM2(FlaskForm):
     vol_opuesto = IntegerField(label="Volumen de demanda en sentido opuesto al de análisis",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"}, description="Ingrese valor Veh/h", validators = [DataRequired(),NumberRange(min=0, max=100000)])
     accesos = IntegerField(label="Puntos de acceso", description="Ingrese puntos de acceso por kilometro (Ambos sentidos)",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"} ,validators=[DataRequired(),NumberRange(0,500)])
     p_no_rebase =FloatField(label="Porcentaje de zonas de no rebase ",description="Ingrese valor en porcentaje (Valor permitido entre 0 a 100 %)",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"},validators=[NumberRange(min=0, max=100)])
-    p_pesados = FloatField(label="Porcentaje de vehiculos pesados", description="(0-100)",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"}, validators=[DataRequired(),NumberRange(0,100)])
+    p_pesados = FloatField(label="Porcentaje de vehiculos pesados", description="(0-100)",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"}, validators=[DataRequired(),NumberRange(0,60)])
     camiones_freno = FloatField(label="Porcentaje de camiones que circulan a baja velocidad en descenso",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"},description="Porcentaje de camiones que realiza descenso utilizando freno de motor",default=0)
     recreativos = FloatField(label="Porcentaje de vehiculos recreativos",default = 0, description="(0-100)",validators=[NumberRange(0,100)],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
     fhpico = FloatField(label="Factor de Hora Pico", render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"},validators = [DataRequired()] )
     submit = SubmitField("Calcular Capacidad y Nivel de servicio")
+
+
+class HcmPrueba(FlaskForm):
+    carretera = StringField(label="Descripción del sector",description="Información de ubicación del tramo", validators=[DataRequired()], render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"})
+    carriles = IntegerField(label="Número de carriles", description="",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"} ,validators=[DataRequired(),NumberRange(0,12)])
+    a_carril = FloatField(label="Ancho de carril",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"}, description="Ingrese valor en metros (Valor mínimo = 2.75 m)", validators=[NumberRange(2.75,3.8),DataRequired()])
+    separacion = SelectField(label="Tipo de separación",description="Tipo de separación entre sentidos",choices = [("Dividida","Dividida"),("No dividida","No dividida"), ("Carril central de giro","Carril central de giro")],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"} )
+    a_berma_derecha = FloatField(label="Ancho de berma derecha", render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"},description="Ingrese valor en metros (Valor mínimo = 0.05 m - máximo = 1.8m)", validators=[NumberRange(0,1.8),DataRequired()])
+    a_berma_izquierda = FloatField(label="Ancho de berma izquierda", render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"},description="Ingrese valor en metros (Valor mínimo = 0.05 m - máximo = 1.8m)", validators=[NumberRange(0,1.8),DataRequired()])
+    longitud_tramo = FloatField(label="Longitud del tramo de estudio", render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"},description="Ingrese valor en metros (Valor mínimo 500 metros - máximo 6000 metros)", validators=[NumberRange(500,6400),DataRequired()])
+    terreno = SelectField(label="Tipo de terreno",description=" ",choices = [("Terreno plano","Terreno plano"),("Terreno ondulado","Terreno ondulado"),("Pendiente específica","Pendiente específica")],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"} )
+    pendiente_tramo = FloatField(label="Pendiente del tramo en dirección de análisis (%)",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"}, description="Terreno plano = 1 %, Terreno ondulado = 1.1% - 2.9%", validators=[NumberRange(0,12)]) 
+    opc_velocidad = SelectField(label="¿Velocidad a flujo libre medida en campo?",description=" ",choices = [("Si","Si"),("No","No")],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"} )
+    vel_campo = FloatField(label="Velocidad a flujo libre medida en campo  ",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"},description="Inserte velocidad en km/h (Valor mínimo 70 km/h - máximo 110 km/h", default=0,validators=[NumberRange(0,130)] )
+    velocidad = FloatField(label="Velocidad a flujo libre base - BFFS (km/h)", default=100,render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"}, description="Inserte velocidad en km/h (Valor mínimo 70 km/h - máximo 110 km/h",validators=[DataRequired(),NumberRange(70,110)])
+    accesos = IntegerField(label="Puntos de acceso", description="Ingrese puntos de acceso por kilometro (Ambos sentidos)",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"} ,validators=[DataRequired(),NumberRange(0,500)])
+    volumen = IntegerField(label="Volumen de demanda en sentido de análisis",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"}, description="Ingrese valor Veh/h", validators = [DataRequired(),NumberRange(min=0, max=100000)])
+    poblacion = SelectField(label="Población de conductores", description=" ",choices = [("Toda conocida","Toda conocida"), ("Mayormente conocida","Mayormente conocida"),("Mezcla equilibrada","Mezcla equilibrada"), ("Mayormente desconocida","Mayormente desconocida"),("Toda desconocida","Toda desconocida")],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"} )
+    fhpico = FloatField(label="Factor de Hora Pico", render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"},validators = [DataRequired()] )
+    p_pesados = FloatField(label="Porcentaje de vehiculos pesados", description="(0-100)",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"}, validators=[DataRequired(),NumberRange(0,60)])
+    tractomulas = FloatField(label="¿Cuál es el porcentaje de vehículos pesados con remolque (Tractomulas)? %", description="La suma de camiones y tractomulas debe ser igual a 100",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"}, validators=[NumberRange(0,100)])
+    camiones = FloatField(label="¿Cuál es el porcentaje de vehículos pesados sin remolque (Camiones) y buses recreativos? %", description="La suma de camiones y tractomulas debe ser igual a 100",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"}, validators=[NumberRange(0,100)])
+    submit = SubmitField("Calcular Capacidad y Nivel de servicio")
+
 
 class Prueba(FlaskForm):
     name = StringField('Nombre', validators=[DataRequired(), Length(max=64)])
@@ -565,6 +625,38 @@ def home():
         sen2.sensibilidad_berma(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data,res[17], res[5])
         return redirect(url_for('resultado'))
     return render_template ('index.html', form=form)
+
+@app.route("/dosCarriles", methods=["GET","POST"])
+def dosCarriles():
+    form = Capacidad()
+    if form.validate_on_submit():
+        if form.p_no_rebase == 0:
+            form.p_no_rebase = 1
+        if form.p_buses == 0:
+            form.p_buses == 1
+        if form.p_camiones == 0:
+            form.p_camiones == 1
+        res = Capacidad_Ns(form.a_carril.data,form.a_berma.data,form.p_promedio.data,form.l_sector.data,
+        form.d_sentido.data,form.p_no_rebase.data,form.p_automoviles.data,form.p_buses.data,
+        form.p_camiones.data,form.vol_cap.data)
+        d_sen = 100-form.d_sentido.data
+        new_object = Resultado(Fpe=res[0],Fd=res[1],Fcb=res[2],Ec=res[3],Fp=res[4],cap_60=res[5],
+        cap_5=res[6], FHP=res[7],v1=res[8],Fu=res[9],Fcb1=res[10],v2=res[11],Ec_vel=res[12],
+        Fp_vel=res[13],Ft=res[14],vM=res[15],Vi=res[16],Final=res[17], carretera=form.carretera.data,
+        proyecto = form.proyecto.data, a_carril=form.a_carril.data,a_berma=form.a_berma.data, p_promedio=form.p_promedio.data,
+        l_sector=form.l_sector.data, curvatura=form.curvatura.data, d_sentido=form.d_sentido.data, d_sentido1=d_sen, p_no_rebase =form.p_no_rebase.data,
+        p_automoviles=form.p_automoviles.data, p_buses=form.p_buses.data, p_camiones=form.p_camiones.data, vol_cap= form.vol_cap.data, terreno = res[18])
+        db.session.add(new_object)
+        db.session.commit()
+        sen2.sensibilidad_volumen(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data, res[17],res[5] )
+        sen2.sensiblidad_longitud(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data, res[5], res[17])
+        sen2.sensibilidad_pendiente(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data,res[5],res[17])
+        sen2.sensibilidad_camiones(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data,res[17],res[5])
+        sen2.sensibilidad_carril(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data,  res[5], res[17])
+        sen2.sensibilidad_berma(form.a_carril.data, form.a_berma.data,form.p_promedio.data, form.l_sector.data, form.d_sentido.data, form.p_no_rebase.data,form.p_automoviles.data, form.p_buses.data,form.p_camiones.data, form.vol_cap.data,res[17], res[5])
+        return redirect(url_for('resultado'))
+    return render_template ('dosCarriles.html', form=form)
+
 datos = ["","0","1","2","3","4","5","6","7","8","9","10","0","1","2","3","4","5","6","7","8","9","10",
         "0","1","2","3","4","5","6","7","8","9","0","1","2","3","4","5","6","7","8","9","10","0","1","2","3","4","5","6","7","8","9","10",
         "0","1","2","3","4","5","6","7","8","9","10","0","1","2","3","4","5","6","7","8","9","10",
@@ -881,7 +973,61 @@ def hcm_function():
 def hcm2_resultados():
     id = len(db.session.query(HcM2_db).all())
     registro = HcM2_db.query.get(id)
-    return render_template('resultados_hcm2.html', data=registro)
+
+    return render_template('resultados_hcm2.html', data = registro)
+
+@app.route("/hcmMultilane", methods=["GET","POST"])
+def hcmMultilane():
+    form = HcmPrueba()
+    if form.validate_on_submit():
+        a_carril = round(form.a_carril.data * 3.28084,1)
+        a_berma_derecha = round(form.a_berma_derecha.data * 3.28084,1)
+        a_berma_izquierda = round(form.a_berma_izquierda.data * 3.28084,1)
+        longitud_tramo = round(form.longitud_tramo.data * 0.000621371,2)
+        vel_campo = round(form.vel_campo.data *0.621371,2)
+        velocidad = round(form.velocidad.data *0.621371,2)
+        accesos = round(form.accesos.data/0.621371,0)
+        ent = hcml.hcmMultilaneFunction(form.carriles.data, a_carril, form.separacion.data, a_berma_derecha, a_berma_izquierda,longitud_tramo,form.terreno.data,
+        form.pendiente_tramo.data, form.opc_velocidad.data, vel_campo, velocidad,accesos,form.volumen.data,form.poblacion.data,form.fhpico.data,form.p_pesados.data,
+        form.camiones.data, form.tractomulas.data)
+
+        base_datos = HcMUltilane_db(carretera_db = form.carretera.data, carriles_db=form.carriles.data, a_carril_db=a_carril, separacion_db=form.separacion.data,
+        a_berma_derecha_db = a_berma_derecha, a_berma_izquierda_db = a_berma_derecha, longitud_tramo_db = longitud_tramo, terreno_db = form.terreno.data, 
+        pendiente_tramo_db = form.pendiente_tramo.data, opc_velocidad_db=form.opc_velocidad.data, vel_campo_db = vel_campo, velocidad_db = velocidad, accesos_db=accesos,
+        volumen_db=form.volumen.data, poblacion_db=form.poblacion.data, fhpico_db=form.fhpico.data, p_pesados_db=form.p_pesados.data, tractomulas_db=form.tractomulas.data,
+        camiones_db=form.camiones.data, factorAnchoCarril_db = ent[0], factorBermas_db = ent[1], factorSeparacion_db=ent[2], factorAccesos_db=ent[3],velocidadFlujoLibre_db=ent[4],
+        velocidadFFS_ajustada_db=ent[5], capacidadTabla_db=ent[6], capacidadFormula_db=ent[7],capacidadFinal_db=ent[8],factorPesados_db=ent[9],factorAjusteFhv_db=ent[10],
+        VolumenAjustadoFinal_db=ent[11],densidadFinal_db=ent[12],nivelDeServicio_db=ent[13])
+        db.session.add(base_datos)
+        db.session.commit()
+        arguments = {
+            "numeroCarriles":form.carriles.data, "anchoCarril":a_carril, "tipoSeparacion":form.separacion.data,
+            "anchoBermaDerecha":a_berma_derecha, "anchoBermaIzquierda":a_berma_izquierda, "longitudTramo":longitud_tramo,
+            "tipoTerreno": form.terreno.data, "pendienteTramo":form.pendiente_tramo.data, "opcionVelocidad":form.opc_velocidad.data,
+            "velocidadCampo":vel_campo, "velocidadFfsBase":velocidad,"numeroAccesos":accesos, "volumenDemanda":form.volumen.data,
+            "tipoPoblacion":form.poblacion.data, "factorHoraPico":form.fhpico.data, "porcentajePesados":form.p_pesados.data,
+            "porcentajeCamiones":form.camiones.data, "porcentajeMulas":form.tractomulas.data, "velocidadResultado":ent[5],
+            "capacidadResultado":ent[8],"nivelResultado":ent[13],"densidadResultado":ent[12],"volumenResultado":ent[11]
+        }
+        senml.sensibilidadAccesos(**arguments)
+        senml.sensibilidadAnchoBermas(**arguments)
+        senml.sensibilidadAnchoCarril(**arguments)
+        senml.sensibilidadCarriles(**arguments)
+        senml.sensibilidadLongitud(**arguments)
+        senml.sensibilidadPendiente(**arguments)
+        senml.sensibilidadPesados(**arguments)
+        senml.sensibilidadVolumen(**arguments)
+        return redirect(url_for("multilaneResultados"))
+    return render_template('hcm_multilane.html',form=form)
+
+
+@app.route("/hcmMultilaneResultados", methods=["GET","POST"])
+def multilaneResultados():
+    id = len(db.session.query(HcMUltilane_db).all())
+    registro = HcMUltilane_db.query.get(id)
+    return render_template ('resultados_hcmMultilane.html', data=registro)
+
+
 
 @app.route("/tabla_18")
 def tabla_18():
@@ -960,6 +1106,9 @@ def delete(post_id):
     db_blog.session.commit()
     return render_template("blog_final.html")
 
+
+
+   
 
 if __name__ == "__main__":
     app.run(debug=True)
