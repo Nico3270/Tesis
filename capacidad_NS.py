@@ -84,8 +84,7 @@ def inter_compuesta_2(d_sentido, tab2x, tab_2,p_no_rebase):
 
 #Función interpolación compuesta Tabla 3
 def inter_compuesta3(tab_3x, tab_3, a_berma, a_carril):
-    if a_berma >= 1.8:
-        return 1.0
+    
     val1 = interpolacionp(tab_3x, tab_3.get(0),a_carril)
     val2 =interpolacionp(tab_3x, tab_3.get(0.5),a_carril)
     val3 =interpolacionp(tab_3x, tab_3.get(1),a_carril)

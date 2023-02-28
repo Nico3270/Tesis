@@ -28,7 +28,7 @@ def sensibilidad_pendiente(a_carril, a_berma, p_promedio,l_tramo,d_sentido,p_no_
     #Gráfica Pendiente vs Nivel de servicio
     ns_pen = []
     cap_pen = []
-    pendiente= np.arange(0,12,0.5)
+    pendiente= np.arange(0,12,0.1)
     for element in pendiente:
         data = mn.Capacidad_Ns(a_carril,a_berma,element,l_tramo,d_sentido,p_no_rebase,p_autos,p_buses,p_camiones,volumen)
         ns_pen.append(data[17])
@@ -98,7 +98,7 @@ def sensiblidad_longitud(a_carril, a_berma, p_promedio,l_tramo,d_sentido,p_no_re
 
 #Función para gráficar las variaciones en capacidad y nivel de servicio, por cambios en el ancho de la berma:
 def sensibilidad_berma(a_carril, a_berma, p_promedio,l_tramo,d_sentido,p_no_rebase,p_autos,p_buses,p_camiones,volumen, ns, cap):
-    berma = np.arange(0,3,0.2)
+    berma = np.arange(0,3,0.1)
     ns_berma = []
     cap_berma = []
     for element in berma:

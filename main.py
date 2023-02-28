@@ -450,8 +450,8 @@ class HcmPrueba(FlaskForm):
     carriles = IntegerField(label="Número de carriles", description="",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"} ,validators=[DataRequired(),NumberRange(0,12)])
     a_carril = FloatField(label="Ancho de carril",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"}, description="Ingrese valor en metros (Valor mínimo = 2.75 m)", validators=[NumberRange(2.75,3.8),DataRequired()])
     separacion = SelectField(label="Tipo de separación",description="Tipo de separación entre sentidos",choices = [("Dividida","Dividida"),("No dividida","No dividida"), ("Carril central de giro","Carril central de giro")],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"} )
-    a_berma_derecha = FloatField(label="Ancho de berma derecha", render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"},description="Ingrese valor en metros (Valor mínimo = 0.05 m - máximo = 1.8m)", validators=[NumberRange(0,1.8),DataRequired()])
-    a_berma_izquierda = FloatField(label="Ancho de berma izquierda", render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"},description="Ingrese valor en metros (Valor mínimo = 0.05 m - máximo = 1.8m)", validators=[NumberRange(0,1.8),DataRequired()])
+    a_berma_derecha = FloatField(label="Ancho de berma derecha", render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"},description="Ingrese valor en metros (Valor mínimo = 0.05 m - máximo = 1.8 m)", validators=[NumberRange(0,1.8),DataRequired()])
+    a_berma_izquierda = FloatField(label="Ancho de berma izquierda", render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"},description="Ingrese valor en metros (Valor mínimo = 0.05 m - máximo = 1.8 m)", validators=[NumberRange(0,1.8),DataRequired()])
     longitud_tramo = FloatField(label="Longitud del tramo de estudio", render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"},description="Ingrese valor en metros (Valor mínimo 500 metros - máximo 6000 metros)", validators=[NumberRange(500,6400),DataRequired()])
     terreno = SelectField(label="Tipo de terreno",description=" ",choices = [("Terreno plano","Terreno plano"),("Terreno ondulado","Terreno ondulado"),("Pendiente específica","Pendiente específica")],render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"} )
     pendiente_tramo = FloatField(label="Pendiente del tramo en dirección de análisis (%)",render_kw={"style": "color:rgb(157, 6, 6); font-weight: bold;"}, description="Terreno plano = 1 %, Terreno ondulado = 1.1% - 2.9%", validators=[NumberRange(0,12)]) 
@@ -633,9 +633,9 @@ def dosCarriles():
         if form.p_no_rebase == 0:
             form.p_no_rebase = 1
         if form.p_buses == 0:
-            form.p_buses == 1
+            form.p_buses = 1
         if form.p_camiones == 0:
-            form.p_camiones == 1
+            form.p_camiones = 1
         res = Capacidad_Ns(form.a_carril.data,form.a_berma.data,form.p_promedio.data,form.l_sector.data,
         form.d_sentido.data,form.p_no_rebase.data,form.p_automoviles.data,form.p_buses.data,
         form.p_camiones.data,form.vol_cap.data)
@@ -940,9 +940,9 @@ def hcm_function():
         # Función de sensibilidad al variar el porcentaje de vehículos pesados
         senHcm2.sensibilidad_camiones(**args)
         # Función de sensibilidad al variar el volumen vehicular en sentido de análisis
-        senHcm2.sensibilidad_volumenAnalisis(**args)
+        #senHcm2.sensibilidad_volumenAnalisis(**args)
          # Función de sensibilidad al variar el volumen vehicular en sentido opuesto al de análisis
-        senHcm2.sensibilidad_volumenOpuesto(**args)
+        #senHcm2.sensibilidad_volumenOpuesto(**args)
          # Función de sensibilidad al variar la velocidad a flujo libre medida en campo
         senHcm2.sensibilidad_velCampo(**args)
          # Función de sensibilidad al variar la velocidad a flujo libre base
@@ -992,7 +992,7 @@ def hcmMultilane():
         form.camiones.data, form.tractomulas.data)
 
         base_datos = HcMUltilane_db(carretera_db = form.carretera.data, carriles_db=form.carriles.data, a_carril_db=a_carril, separacion_db=form.separacion.data,
-        a_berma_derecha_db = a_berma_derecha, a_berma_izquierda_db = a_berma_derecha, longitud_tramo_db = longitud_tramo, terreno_db = form.terreno.data, 
+        a_berma_derecha_db = a_berma_derecha, a_berma_izquierda_db = a_berma_izquierda, longitud_tramo_db = longitud_tramo, terreno_db = form.terreno.data, 
         pendiente_tramo_db = form.pendiente_tramo.data, opc_velocidad_db=form.opc_velocidad.data, vel_campo_db = vel_campo, velocidad_db = velocidad, accesos_db=accesos,
         volumen_db=form.volumen.data, poblacion_db=form.poblacion.data, fhpico_db=form.fhpico.data, p_pesados_db=form.p_pesados.data, tractomulas_db=form.tractomulas.data,
         camiones_db=form.camiones.data, factorAnchoCarril_db = ent[0], factorBermas_db = ent[1], factorSeparacion_db=ent[2], factorAccesos_db=ent[3],velocidadFlujoLibre_db=ent[4],

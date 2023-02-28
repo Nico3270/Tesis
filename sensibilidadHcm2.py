@@ -643,7 +643,7 @@ p_recreativos,opc_velocidad, vel_campo,camiones_freno,vel_flujo_libre, nivel, vo
 
 def sensibilidad_volumenAnalisis(clase, a_carril, a_berma,longitud,asc_desc,pendiente,velocidad,vol_analisis,vol_opuesto,accesos,p_no_rebase,fhp,p_camiones,
 p_recreativos,opc_velocidad, vel_campo,camiones_freno,vel_flujo_libre, nivel, volumen_ats, ats_in, volumen_ptsf, ptsf_in, pffs_in):
-    lista = np.arange(0,1000,10)
+    lista = np.arange(100,vol_opuesto,10)
     flujo_libre = []
     vol_ats = []
     ats = []
@@ -655,6 +655,7 @@ p_recreativos,opc_velocidad, vel_campo,camiones_freno,vel_flujo_libre, nivel, vo
         if asc_desc == "Ascenso":
             datos = hcm2.hcm2_final_asc(clase, a_carril, a_berma,longitud,asc_desc,pendiente,velocidad,element,vol_opuesto,accesos,p_no_rebase,fhp,p_camiones,
             p_recreativos,opc_velocidad, vel_campo,camiones_freno)
+            print(f"paso {element}")
             flujo_libre.append(datos[3])
             vol_ats.append(datos[16])
             ats.append(datos[20])
@@ -663,6 +664,7 @@ p_recreativos,opc_velocidad, vel_campo,camiones_freno,vel_flujo_libre, nivel, vo
             pffs.append(datos[39])
             level.append(datos[41])
         elif asc_desc == "Descenso":
+            print("descenso")
             datos = hcm2.hcm2_final_asc(clase,a_carril, a_berma,longitud,asc_desc,pendiente,velocidad,element,vol_opuesto,accesos,p_no_rebase,fhp,p_camiones,
             p_recreativos,opc_velocidad, vel_campo,camiones_freno)
             flujo_libre.append(datos[3])

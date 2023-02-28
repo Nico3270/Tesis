@@ -13,7 +13,7 @@ def sensibilidadCarriles(numeroCarriles, anchoCarril,tipoSeparacion, anchoBermaD
 pendienteTramo, opcionVelocidad, velocidadCampo, velocidadFfsBase, numeroAccesos, volumenDemanda,tipoPoblacion ,factorHoraPico, 
 porcentajePesados, porcentajeCamiones, porcentajeMulas,velocidadResultado, capacidadResultado, nivelResultado, densidadResultado, 
 volumenResultado):
-    lista = np.arange(3,8)
+    lista = np.arange(2,8)
     velocidadLista = []
     capacidadLista = []
     volumenLista = []

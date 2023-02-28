@@ -771,6 +771,7 @@ def factornp(volumen, direccional, no_pase):
         if volumen <= 200: 
             final = interpolacion(tabla15_21x, tabla15_21_50.get(200), no_pase)
         else:
+            print("entrada principal")
             vars = puntos4(volumen,[200,400,600,800,1400,2000,2600,3200])
             data1 = interpolacion(tabla15_21x, tabla15_21_50.get(vars[0]), no_pase)
             data2 = interpolacion(tabla15_21x, tabla15_21_50.get(vars[1]), no_pase)
@@ -793,9 +794,11 @@ def factornp(volumen, direccional, no_pase):
             final = interpolacion([vars[0], vars[1]],[data1,data2], volumen)
     elif direccional <90:
         if volumen <= 200: 
+            print("entrada 1")
             final = interpolacion(tabla15_21x, tabla15_21_80.get(200), no_pase)
         else:
             vars = puntos4(volumen,[200,400,600,800,1400,2000])
+            print("entrada")
             data1 = interpolacion(tabla15_21x, tabla15_21_80.get(vars[0]), no_pase)
             data2 = interpolacion(tabla15_21x, tabla15_21_80.get(vars[1]), no_pase)
             final = interpolacion([vars[0], vars[1]],[data1,data2], volumen)
@@ -879,7 +882,11 @@ def distSentido (vol1, vol2):
 def hcm2_final_asc(clase, a_carril, a_berma,longitud,asc_desc,pendiente,velocidad,vol_analisis,vol_opuesto,accesos,p_no_rebase,fhp,p_camiones,
 p_recreativos,opc_velocidad, vel_campo,camiones_freno ):
     volumen_inicial = int(vol_analisis + vol_opuesto)
+    print("Volumenes")
+    print(vol_analisis)
+    print(vol_opuesto)
     d_sentido = distSentido(vol_opuesto, vol_analisis)
+    print(d_sentido)
     FA = factor_accesos(accesos)
     Fls = factor_carril(a_carril, a_berma)
     bffs = velocidad  
@@ -920,6 +927,7 @@ p_recreativos,opc_velocidad, vel_campo,camiones_freno ):
     BTSF1 = round(100*(1-math.exp(coef_1[0]*(vol_ptsf1**coef_1[1]))),2)
     BTSF2 = round(100*(1-math.exp(coef_1[0]*(vol_ptsf2**coef_2[1]))),2)
     fnp_ptsf = factornp(vol_ptsf1+vol_ptsf2,d_sentido, p_no_rebase)
+    print(vol_ptsf1+vol_ptsf2,d_sentido, p_no_rebase)
     ptsf1 = round(BTSF1+fnp_ptsf*(vol_ptsf1/(vol_ptsf1+vol_ptsf2)),2)
     ptsf2 = round(BTSF2+fnp_ptsf*(vol_ptsf2/(vol_ptsf1+vol_ptsf2)),2)
     PFFS1 = round((ATSd1/vel_flujo_libre*100),2)

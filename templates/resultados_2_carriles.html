@@ -50,7 +50,7 @@
     <section class="inner-page datos" style="background-color:white">
       <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="col-lg-12 col-md-12 col-sm-12">
               <div class="container">
               <h1 style="text-align:center ;">Datos Ingresados</h1>
               <div class="card" >
@@ -75,10 +75,10 @@
                           <th scope="row">Características de la vía</th>
                           <td><ul class="list-group">
                             <li class="list-group-item">Ancho de carril: <b>{{datos.a_carril}} m</b></li>
-                            <li class="list-group-item">Ancho de berma <b>{{datos.a_berma}} m</b> </li>
-                            <li class="list-group-item">Pendiente promedió <b>{{datos.p_promedió}} %</b> </li>
-                            <li class="list-group-item">Longitud del sector <b>{{datos.l_sector}}</b></li>
-                            <li class="list-group-item">Grado de curvatura: <b>{{datos.curvatura}} m</b></li>
+                            <li class="list-group-item">Ancho de berma: <b>{{datos.a_berma}} m</b> </li>
+                            <li class="list-group-item">Pendiente promedió: <b>{{datos.p_promedio}} %</b> </li>
+                            <li class="list-group-item">Longitud del sector: <b>{{datos.l_sector}} m</b></li>
+                            <li class="list-group-item">Grado de curvatura: <b>{{datos.curvatura}} °/km</b></li>
                           </ul></td>
                         </tr>
                         <tr>
@@ -106,15 +106,16 @@
           </div>
             <br>
             <br>
+            <hr>
     </section>
     <section id="resultados" class="datos">
       <div class="container">
         <div class="row">
-          <h1 style="text-align:center ;">Resultados obtenidos</h1>
-          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <h1 class="subtitulos pasos">Resultados obtenidos</h1>
             <div class="container">
-            <h5 class="pasos"><b>Cálculo de Capacidad</b></h5>
-            <h5 class="text-general">Capacidad en condiciones ideales (C<sub>i</sub>) en ambos sentidos = <br><b>3200 Veh/h</b></h5>
+            <h4 class="pasos"><b>Cálculo de Capacidad</b></h4>
+            <h5 class="text-general">Capacidad en condiciones ideales (C<sub>i</sub>) en ambos sentidos = <b>3200 Veh/h</b></h5><brZ
             <dl class="row">
               <dt class="col-sm-4">Factor de corrección por pendiente (F<sub>pe</sub>)</dt>
               <dd class="col-sm-8">F<sub>pe</sub> = <b>{{datos.Fpe}}</b>   (Tabla 1, pendiente = {{datos.p_promedio}} %, longitud del sector = {{datos.l_sector}} km)</dd>
@@ -129,10 +130,20 @@
               <dd class="col-sm-8">E<sub>c</sub> = <b>{{datos.Ec}}</b><br>(Tabla 4, pendiente = {{datos.p_promedio}} %, longitud del sector = {{datos.l_sector}} km, porcentaje de vehículos pesados = {{datos.p_camiones}}% + {{datos.p_buses}}%  = {{datos.p_camiones + datos.p_buses}}% (C+B).)</dd>
               <hr>
               <dt class="col-sm-4">Factor de corrección por la presencia de vehículos pesados en pendientes ascendentes. (F<sub>p</sub>)</dt>
-              <dd class="col-sm-8">F<sub>p</sub> = <b>{{datos.Fp}}</b> <br> <img src="../static/assets/img/Fp.JPG" class="img-fluid text-general" style="width:40%; margin-left: 5rem;" alt="Responsive image"></dd>
+              <dd class="col-sm-8">F<sub>p</sub> = <b>{{datos.Fp}}</b> <br> 
+                <h4 class="formulas">
+                  <div class="eq-c">
+                    <i>F<sub>p</sub></i> = 
+                    <div class="fraction">
+                      <span class="fup">1</span>
+                    <span class="bar">/</span>
+                    <span class="fdn"><i>1 + P<sub>C</sub> (E<sub>C</sub> - 1 )</i></span>
+                    </div>
+                  </div>
+                </h4></dd>
               <hr>
               <dt class="col-sm-4">Cálculo de la capacidad</dt>
-              <dd class="col-sm-8"><C<sub>60</sub>: C<sub>i</sub>* F<sub>pe</sub>* F<sub>d</sub>* F<sub>cb</sub>* F<sub>p</sub> <br>
+              <dd class="col-sm-8">C<sub>60</sub>: C<sub>i</sub>* F<sub>pe</sub>* F<sub>d</sub>* F<sub>cb</sub>* F<sub>p</sub> <br>
                 C<sub>60</sub>: 3200 * {{datos.Fpe}} * {{datos.Fd}} * {{datos.Fcb}}* {{datos.Fp}}<br>
                 C<sub>60</sub>:  <b>{{datos.cap_60}} Veh/h</b></dd>
               <hr>
@@ -145,9 +156,9 @@
             </dl>  
             </div>
           </div>
-          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="container">
-            <h5 class="pasos"><b>Nivel de Servicio</b></h5>
+            <h4 class="pasos"><b>Nivel de Servicio</b></h4>
             <h5 class="text-general">Velocidad en condiciones ideales (V<sub>i</sub>)  = <b>90 km/h</b></h5>
             <dl class="row">
               <dt class="col-sm-4">Velocidad ideal de automóviles a flujo libre (V<sub>1</sub>)</dt>
@@ -157,16 +168,25 @@
               <dd class="col-sm-8 text-general">F<sub>u</sub> = <b>{{datos.Fu}}</b><br>(Tabla 7, Q = {{datos.vol_cap}} Veh/h, C<sub>60</sub> = {{datos.cap_60}} veh/h)</dd>
               <hr>
               <dt class="col-sm-4">Factor de corrección por ancho de carril y berma (F<sub>cb</sub>)</dt>
-              <dd class="col-sm-8 text-general">F<sub>cb1</sub> = <b>{{datos.Fcb1}}</b><br>(Tabla 8, ancho de carril = {{datos.a_carril}} m, ancho de berma = {{datos.a_berma}} m.)</dd>
+              <dd class="col-sm-8 text-general">F<sub>cb</sub> = <b>{{datos.Fcb1}}</b><br>(Tabla 8, ancho de carril = {{datos.a_carril}} m, ancho de berma = {{datos.a_berma}} m.)</dd>
               <hr>
-              <dt class="col-sm-4">Velocidad de autos (V<sub>2</sub>)</dt>
-              <dd class="col-sm-8 text-general">V<sub>2</sub> = <b>{{datos.v2}} km/h</b><br>(Velocidad de automóviles V<sub>2</sub>: V<sub>1</sub> * F<sub>u</sub> * F<sub>cb</sub></dd>
+              <dt class="col-sm-4">Velocidad de autos (V<sub>2</sub>)</dt> 
+              <dd class="col-sm-8 text-general"> V<sub>1</sub> * F<sub>u</sub> * F<sub>cb</sub> = {{datos.v1}}km/h * {{datos.Fu}} * {{datos.Fcb1}} = <b>{{datos.v2}} km/h</b></dd>
               <hr>
               <dt class="col-sm-4">Equivalente camiones (E<sub>C</sub>)</dt>
               <dd class="col-sm-8 text-general">E<sub>c</sub> = <b>{{datos.Ec_vel}}</b> <br>(Tabla 9, pendiente = {{datos.p_promedio}}%, longitud del sector = {{datos.l_sector}} km), V<sub>2</sub> = {{datos.v2}} km/h, porcentaje de vehículos pesados C={{datos.p_camiones}}%)</dd>
               <hr>
               <dt class="col-sm-4">Factor de corrección por la presencia de vehículos pesados en pendientes ascendentes. (F<sub>p</sub>)</dt>
-              <dd class="col-sm-8">F<sub>p</sub> = <b>{{datos.Fp_vel}}</b> <br> <img src="../static/assets/img/Fp.JPG" class="img-fluid text-general" style="width:40%; margin-left: 5rem;" alt="Responsive image"></dd>
+              <dd class="col-sm-8">F<sub>p</sub> = <b>{{datos.Fp_vel}}</b> <br> <h4 class="formulas">
+                  <div class="eq-c">
+                    <i>F<sub>p</sub></i> = 
+                    <div class="fraction">
+                      <span class="fup">1</span>
+                    <span class="bar">/</span>
+                    <span class="fdn"><i>1 + P<sub>C</sub> (E<sub>C</sub> - 1 )</i></span>
+                    </div>
+                  </div>
+                </h4></dd>
               <hr>
               <dt class="col-sm-4">Factor de corrección al Nivel de Servicio por efecto de la tortuosidad (F<sub>T</sub>)</dt>
               <dd class="col-sm-8 text-general">F<sub>T</sub> = <b>{{datos.Ft}}</b> <br>(Tabla 10, pendiente = {{datos.p_promedio}} %, grado de curvatura = {{datos.curvatura}} °), V<sub>1</sub> = {{datos.v1}} km/h, porcentaje de vehículos pesados C={{datos.p_camiones}}%)</dd>
@@ -181,21 +201,16 @@
             </div>
           </div>
         </div>
-        <h1 class="subtitulos">Análisis de sensibilidad</h1>
+        <h1 class="subtitulos pasos">Análisis de sensibilidad</h1>
         <div class="row">
           <h3 class="subtitulos">Efecto de los cambios en volumen de tránsito</h3>
-          <div class="col-lg-6">
-            <div class="container">
+          <div class="col-lg-12">
+            <div class="container" style="text-align: center;">
               <h5 class="imagenes"><b>Gráfica 1.</b> Variación del Nivel de Servicio debido a cambios en el volumen de tránsito </h5>
-              <img src="../static/assets/img/sensibilidad/ns_2carriles_volumen.png" class="img-fluid" style="width:100%; margin-left: 2rem;" alt="Responsive image">
+              <img src="../static/assets/img/sensibilidad/ns_2carriles_volumen.png" class="img-fluid" style="width:60%;" alt="Responsive image">
             </div>
           </div>
-          <div class="col-lg-6">
-            <div class="container">
-              <h5 class="tablas">Tabla #. Resultados obtenidos</h5>
-              
-            </div>
-          </div>
+          
         </div>
         <hr>
         <div class="row">

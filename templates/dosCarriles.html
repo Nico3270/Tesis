@@ -50,7 +50,30 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="container">
+            <h2 style="text-align: center ; color: rgb(174, 15, 15)">Cálculo de la capacidad y Nivel de servicio para vías de dos carriles, método Colombiano.</h2>
             <br>
+            <h4 class="subtitulos pasos">Información y recomendaciones.</h4>
+            <ul>
+              <li class="text-general">En esta sección se presenta un formulario con los valores requeridos para la aplicación de la tercera versión del Manual
+                Capacidad y Niveles de Servicio en carreteras de dos carriles, desarrollado por la Universidad del Cauca a partir de la actualización de la segunda versión
+                del manual. 
+              </li>
+              <li class="text-general">Como principio del manual se maneja independientemente la Capacidad y el Nivel de Servicio.</li>
+              <li class="text-general">El cálculo de la Capacidad parte de una Capacidad máxima en condiciones ideales, la que disminuye
+                 a medida que las condiciones particulares de la vía en estudio se apartan de estas. Las condiciones ideales son aquellas en 
+                 las que no existen restricciones geométricas, de tránsito ni ambientales.
+              </li>
+              <li class="text-general">Por favor completar los espacios del formulario teniendo en cuenta las recomendacines dadas en cada ítem.</li>
+              <li class="text-general">Si al completar el formulario no obtiene el resultado esperado, verifique que los valores ingresados se encuentren 
+                dentro del rango especificado para cada caso. En caso de ingresar un valor incorrecto, la aplicación generará una alerta debajo del espacio 
+                correspondiente, indicando el error específico para corregirlo.</li>
+              <li class="text-general">Ingrese los valores decimales empleando el punto y no la con coma. <b>(Ejemplo: 1.5).</b></li> 
+              <li class="text-general">En algunas situaciones, es posible que la aplicación presente fallos o los resultados obtenidos no cumplan con las expectativas. 
+                Si esto ocurre, por favor revise detenidamente los valores ingresados y, en caso de encontrar 
+                algún fallo, por favor reportarlo. De esta manera, se podrá brindar una mejor experiencia de uso y solucionar cualquier inconveniente que se presente.</li> 
+              <li class="text-general">En el campo "Distribución por sentido", asegúrese de ingresar el porcentaje correspondiente al mayor volumen vehicular que circula en uno de los dos sentidos. Es importante tener en cuenta que si la distribución es equitativa, el valor mínimo aceptado es del 50%, mientras que si existe una mayor circulación en uno de los sentidos, el valor ingresado debe ser mayor o igual al 50% correspondiente.</li>
+              <li class="text-general">Por favor tenga en cuenta que al completar el formulario, es importante que la suma de los valores ingresados en los campos de "automóviles", "buses" y "camiones" sea igual a 100. Se recomienda completar todos los espacios para asegurar una correcta compilación de la información.</li>
+            </ul>
             <br>
             <h4 class="subtitulos pasos"><b>Formulario para análisis de la vía</b></h4>
              {% block content %}
@@ -63,6 +86,7 @@
                   <div class="card-body">
                     {{wtf.quick_form(form ,extra_classes='form-label',novalidate=True, form_type="bootstrap", button_map={"submit": "danger"}) }}
                 </div>
+                
               </div>
           </div>
              {%endblock %}
