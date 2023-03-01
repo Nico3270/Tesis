@@ -6,8 +6,6 @@ from wtforms import StringField, SubmitField, FloatField, IntegerField, SelectFi
 from wtforms.validators import DataRequired, NumberRange,  URL, Email, Length
 from flask_ckeditor import CKEditor, CKEditorField
 from datetime import date
-import pdfkit
-import jinja2
 import capacidad_NS as cap 
 import multicarril as mp
 import Sensibilidad as sen
