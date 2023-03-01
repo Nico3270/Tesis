@@ -457,7 +457,7 @@ a_berma_derecha, a_berma_izquierda, n_accesos, pendiente, p_camiones, l_tramo, v
     vel_generica = Vl(clasificacion, separador, control_accesos, control_peatones)
     fc = correccion_carril(a_carril)
     fs = correccion_separador(a_separador)
-    fb = correccion_bermas(a_berma_derecha,a_berma_izquierda)
+    fb = round(correccion_bermas(a_berma_derecha,a_berma_izquierda),2)
     fa = correccion_accesos(n_accesos)
     V_libre = int(vel_generica-fc-fs-fb-fa)
     Tipo = tipo(V_libre)[0]
